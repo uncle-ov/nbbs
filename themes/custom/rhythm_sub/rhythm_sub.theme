@@ -62,3 +62,27 @@ function rhythm_sub_user_login($account)
   $response->send();
   return;
 }
+
+// Remove login and register menus when user is logged in
+function rhythm_sub_preprocess_menu(&$variables, $hook)
+{
+  if ($hook == 'menu') {
+    // Use array_filter() for cleaner item removal and maintainability.
+    $variables['items'] = array_filter($variables['items'], function ($item) {
+      $url = $item['url']->toString();
+      // Ensure case-insensitive comparison for login/register paths.
+      $isLoginOrRegister = stristr($url, 'login') || stristr($url, 'register');
+      $isAccountPage = stristr($url, 'account');
+
+      // Check for authentication using the current user account.
+      $isAuthenticated = \Drupal::currentUser()->isAuthenticated();
+
+      if ($isAuthenticated) {
+        return !$isLoginOrRegister;
+      } else {
+        return !$isAccountPage;
+      }
+    });
+  }
+}
+
