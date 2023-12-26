@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: gallery_800x533_
+label: 'Gallery (800x533)'
+effects:
+  d07b964b-f2cc-4439-b3f7-85d7f3a9cf30:
+    uuid: d07b964b-f2cc-4439-b3f7-85d7f3a9cf30
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 533

@@ -1,0 +1,17 @@
+langcode: en
+status: false
+dependencies:
+  theme:
+    - rhythm
+id: rhythm_page_title
+theme: rhythm
+region: '-1'
+weight: -6
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

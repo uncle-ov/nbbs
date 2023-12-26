@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: product_small_68x86
+label: 'Product Small (68x86)'
+effects:
+  58e92461-9409-472f-b6e5-c50458e5ce1a:
+    uuid: 58e92461-9409-472f-b6e5-c50458e5ce1a
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 68
+      height: 86

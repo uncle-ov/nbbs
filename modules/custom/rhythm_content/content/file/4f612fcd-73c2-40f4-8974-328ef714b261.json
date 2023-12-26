@@ -1,0 +1,84 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-5.jpg"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/file\/file\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "fid": [
+        {
+            "value": "14"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "4f612fcd-73c2-40f4-8974-328ef714b261"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/file\/file\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "filename": [
+        {
+            "value": "projects-5.jpg"
+        }
+    ],
+    "uri": [
+        {
+            "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-5.jpg"
+        }
+    ],
+    "filemime": [
+        {
+            "value": "image\/jpeg"
+        }
+    ],
+    "filesize": [
+        {
+            "value": "37867"
+        }
+    ],
+    "status": [
+        {
+            "value": "1"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480370312"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480370312"
+        }
+    ]
+}

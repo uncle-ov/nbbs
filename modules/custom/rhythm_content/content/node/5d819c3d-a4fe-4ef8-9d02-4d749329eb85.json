@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/39?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "39"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "5d819c3d-a4fe-4ef8-9d02-4d749329eb85"
+        }
+    ],
+    "vid": [
+        {
+            "value": "46"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Icons Et-Line",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480846267",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480846291",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480846291"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<div class=\"row\">\r\n                        <div class=\"col-md-8 col-md-offset-2 mb-30\">\r\n                            \r\n                            <div class=\"section-text align-center\">\r\n                                \r\n                                <p>\r\n                                    You can use a set of <a href=\"http:\/\/www.elegantthemes.com\/blog\/resources\/how-to-use-and-embed-an-icon-font-on-your-website\" target=\"_blank\">100+ ET-Line Icons<\/a>\r\n                                <\/p>\r\n                                \r\n                                <div class=\"row\">\r\n                                    <div class=\"col-md-8 col-md-offset-2\">\r\n                                        \r\n                                        <div class=\"highlight\">\r\n                                            <pre><code class=\"html\">&lt;span class=\"icon-heart\"&gt;&lt;\/span&gt; icon-heart<\/code><\/pre>\r\n                                        <\/div>\r\n                                        \r\n                                        <p>\r\n                                            <strong class=\"small\">Result:<\/strong>\r\n                                            &nbsp;<span class=\"icon-heart\"><\/span>\r\n                                            fa-heart\r\n                                        <\/p>\r\n                                        \r\n                                    <\/div>\r\n                                <\/div>\r\n                            <\/div>\r\n                            \r\n                        <\/div>\r\n                    <\/div>\r\n<div class=\"et-examples\">\r\n                        \r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-mobile\"><\/span>&nbsp;icon-mobile<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-laptop\"><\/span>&nbsp;icon-laptop<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-desktop\"><\/span>&nbsp;icon-desktop<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-tablet\"><\/span>&nbsp;icon-tablet<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-phone\"><\/span>&nbsp;icon-phone<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-document\"><\/span>&nbsp;icon-document<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-documents\"><\/span>&nbsp;icon-documents<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-search\"><\/span>&nbsp;icon-search<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-clipboard\"><\/span>&nbsp;icon-clipboard<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-newspaper\"><\/span>&nbsp;icon-newspaper<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-notebook\"><\/span>&nbsp;icon-notebook<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-book-open\"><\/span>&nbsp;icon-book-open<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-browser\"><\/span>&nbsp;icon-browser<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-calendar\"><\/span>&nbsp;icon-calendar<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-presentation\"><\/span>&nbsp;icon-presentation<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-picture\"><\/span>&nbsp;icon-picture<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-pictures\"><\/span>&nbsp;icon-pictures<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-video\"><\/span>&nbsp;icon-video<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-camera\"><\/span>&nbsp;icon-camera<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-printer\"><\/span>&nbsp;icon-printer<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-toolbox\"><\/span>&nbsp;icon-toolbox<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-briefcase\"><\/span>&nbsp;icon-briefcase<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-wallet\"><\/span>&nbsp;icon-wallet<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-gift\"><\/span>&nbsp;icon-gift<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-bargraph\"><\/span>&nbsp;icon-bargraph<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-grid\"><\/span>&nbsp;icon-grid<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-expand\"><\/span>&nbsp;icon-expand<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-focus\"><\/span>&nbsp;icon-focus<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-edit\"><\/span>&nbsp;icon-edit<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-adjustments\"><\/span>&nbsp;icon-adjustments<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-ribbon\"><\/span>&nbsp;icon-ribbon<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-hourglass\"><\/span>&nbsp;icon-hourglass<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-lock\"><\/span>&nbsp;icon-lock<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-megaphone\"><\/span>&nbsp;icon-megaphone<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-shield\"><\/span>&nbsp;icon-shield<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-trophy\"><\/span>&nbsp;icon-trophy<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-flag\"><\/span>&nbsp;icon-flag<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-map\"><\/span>&nbsp;icon-map<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-puzzle\"><\/span>&nbsp;icon-puzzle<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-basket\"><\/span>&nbsp;icon-basket<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-envelope\"><\/span>&nbsp;icon-envelope<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-streetsign\"><\/span>&nbsp;icon-streetsign<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-telescope\"><\/span>&nbsp;icon-telescope<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-gears\"><\/span>&nbsp;icon-gears<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-key\"><\/span>&nbsp;icon-key<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-paperclip\"><\/span>&nbsp;icon-paperclip<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-attachment\"><\/span>&nbsp;icon-attachment<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-pricetags\"><\/span>&nbsp;icon-pricetags<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-lightbulb\"><\/span>&nbsp;icon-lightbulb<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-layers\"><\/span>&nbsp;icon-layers<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-pencil\"><\/span>&nbsp;icon-pencil<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-tools\"><\/span>&nbsp;icon-tools<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-tools-2\"><\/span>&nbsp;icon-tools-2<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-scissors\"><\/span>&nbsp;icon-scissors<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-paintbrush\"><\/span>&nbsp;icon-paintbrush<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-magnifying-glass\"><\/span>&nbsp;icon-magnifying-glass<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-circle-compass\"><\/span>&nbsp;icon-circle-compass<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-linegraph\"><\/span>&nbsp;icon-linegraph<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-mic\"><\/span>&nbsp;icon-mic<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-strategy\"><\/span>&nbsp;icon-strategy<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-beaker\"><\/span>&nbsp;icon-beaker<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-caution\"><\/span>&nbsp;icon-caution<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-recycle\"><\/span>&nbsp;icon-recycle<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-anchor\"><\/span>&nbsp;icon-anchor<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-profile-male\"><\/span>&nbsp;icon-profile-male<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-profile-female\"><\/span>&nbsp;icon-profile-female<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-bike\"><\/span>&nbsp;icon-bike<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-wine\"><\/span>&nbsp;icon-wine<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-hotairballoon\"><\/span>&nbsp;icon-hotairballoon<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-globe\"><\/span>&nbsp;icon-globe<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-genius\"><\/span>&nbsp;icon-genius<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-map-pin\"><\/span>&nbsp;icon-map-pin<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-dial\"><\/span>&nbsp;icon-dial<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-chat\"><\/span>&nbsp;icon-chat<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-heart\"><\/span>&nbsp;icon-heart<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-cloud\"><\/span>&nbsp;icon-cloud<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-upload\"><\/span>&nbsp;icon-upload<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-download\"><\/span>&nbsp;icon-download<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-target\"><\/span>&nbsp;icon-target<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-hazardous\"><\/span>&nbsp;icon-hazardous<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-piechart\"><\/span>&nbsp;icon-piechart<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-speedometer\"><\/span>&nbsp;icon-speedometer<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-global\"><\/span>&nbsp;icon-global<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-compass\"><\/span>&nbsp;icon-compass<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-lifesaver\"><\/span>&nbsp;icon-lifesaver<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-clock\"><\/span>&nbsp;icon-clock<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-aperture\"><\/span>&nbsp;icon-aperture<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-quote\"><\/span>&nbsp;icon-quote<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-scope\"><\/span>&nbsp;icon-scope<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-alarmclock\"><\/span>&nbsp;icon-alarmclock<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-refresh\"><\/span>&nbsp;icon-refresh<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-happy\"><\/span>&nbsp;icon-happy<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-sad\"><\/span>&nbsp;icon-sad<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-facebook\"><\/span>&nbsp;icon-facebook<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-twitter\"><\/span>&nbsp;icon-twitter<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-googleplus\"><\/span>&nbsp;icon-googleplus<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-rss\"><\/span>&nbsp;icon-rss<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-tumblr\"><\/span>&nbsp;icon-tumblr<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-linkedin\"><\/span>&nbsp;icon-linkedin<\/span>\r\n                        <span class=\"box1\"><span aria-hidden=\"true\" class=\"icon-dribbble\"><\/span>&nbsp;icon-dribbble<\/span>\r\n                            \r\n                    <\/div>",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

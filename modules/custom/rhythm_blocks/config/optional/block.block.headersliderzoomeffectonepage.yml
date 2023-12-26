@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b9039c91-c46f-4831-991d-a9f2d08cf7cf'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headersliderzoomeffectonepage
+theme: rhythm
+region: header
+weight: 3
+provider: null
+plugin: 'block_content:b9039c91-c46f-4831-991d-a9f2d08cf7cf'
+settings:
+  id: 'block_content:b9039c91-c46f-4831-991d-a9f2d08cf7cf'
+  label: 'Header: Slider Zoom Effect - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/9
+    negate: false
+    context_mapping: {  }

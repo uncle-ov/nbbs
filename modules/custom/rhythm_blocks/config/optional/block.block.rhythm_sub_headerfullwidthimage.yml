@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:907807f0-9207-4580-8336-3c6f41767dde'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_headerfullwidthimage
+theme: rhythm_sub
+region: header
+weight: -16
+provider: null
+plugin: 'block_content:907807f0-9207-4580-8336-3c6f41767dde'
+settings:
+  id: 'block_content:907807f0-9207-4580-8336-3c6f41767dde'
+  label: 'Header: Fullwidth Image'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /home/6
+    negate: false
+    context_mapping: {  }

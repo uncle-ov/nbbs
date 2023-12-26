@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:9406b6d7-9c11-4ae3-b5bc-ce4d6b5892ac'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_gmapcontact
+theme: rhythm_sub
+region: footer
+weight: -12
+provider: null
+plugin: 'block_content:9406b6d7-9c11-4ae3-b5bc-ce4d6b5892ac'
+settings:
+  id: 'block_content:9406b6d7-9c11-4ae3-b5bc-ce4d6b5892ac'
+  label: 'Gmap: Contact'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/74
+    negate: false
+    context_mapping: {  }

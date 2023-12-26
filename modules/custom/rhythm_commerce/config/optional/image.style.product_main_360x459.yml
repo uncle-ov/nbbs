@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: product_main_360x459
+label: 'Product Main (360x459)'
+effects:
+  1d32c7c3-5814-4348-958c-42703571911b:
+    uuid: 1d32c7c3-5814-4348-958c-42703571911b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 459

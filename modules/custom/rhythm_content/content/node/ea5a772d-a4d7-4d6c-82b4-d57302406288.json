@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/36?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "36"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "ea5a772d-a4d7-4d6c-82b4-d57302406288"
+        }
+    ],
+    "vid": [
+        {
+            "value": "43"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Buttons",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480460092",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480805840",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480805840"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_bg banner=\"0\" slider=\"0\" extra_classes=\"page-section\" different_values=\"0\" bg_repeat=\"repeat\" no_paddings=\"0\" bg_texture=\"0\" full_height=\"0\" full_width_container=\"0\" full_width=\"1\"]\r\n[nd_container different_values=\"0\" extra_classes=\"relative\"]\r\n[nd_title extra_classes=\"section-title mb-70 mb-sm-40\" size=\"h2\" different_values=\"0\" title=\"Buttons on white\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[row different_values=\"0\"]\r\n[col wide=\"3\" desktop=\"3\" tablet=\"6\" different_values=\"0\" style_margin_bottom=\"40\"]\r\n[nd_button block=\"1\" different_values=\"0\" display=\"round\" text=\"Button\" color=\"dark\" size=\"large\" border=\"0\"]\r\n[\/nd_button]\r\n[nd_button different_values=\"0\" display=\"round\" text=\"Button\" color=\"dark\" size=\"medium\" block=\"1\" border=\"0\"]\r\n[\/nd_button]\r\n[nd_button different_values=\"0\" display=\"round\" text=\"Button\" color=\"dark\" size=\"small\" block=\"1\"]\r\n[\/nd_button]\r\n[nd_button different_values=\"0\" display=\"round\" text=\"Button\" color=\"dark\" block=\"1\" border=\"0\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col wide=\"3\" desktop=\"3\" tablet=\"6\" different_values=\"0\" style_margin_bottom=\"40\"]\r\n[nd_button button_type=\"border\" block=\"1\" different_values=\"0\" display=\"round\" text=\"Button\" color=\"dark\" size=\"large\" border=\"1\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" different_values=\"0\" display=\"round\" text=\"Button\" color=\"dark\" size=\"medium\" block=\"1\" border=\"1\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" different_values=\"0\" display=\"round\" text=\"Button\" color=\"dark\" size=\"small\" block=\"1\" border=\"1\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" different_values=\"0\" display=\"round\" text=\"Button\" color=\"dark\" block=\"1\" border=\"1\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button border=\"0\" different_values=\"0\" block=\"1\" display=\"circle\" size=\"large\" color=\"dark\" text=\"Button\" invert=\"0\"]\r\n[\/nd_button]\r\n[nd_button border=\"0\" different_values=\"0\" block=\"1\" display=\"circle\" size=\"medium\" color=\"dark\" text=\"Button\"]\r\n[\/nd_button]\r\n[nd_button border=\"0\" different_values=\"0\" block=\"1\" display=\"circle\" size=\"small\" color=\"dark\" text=\"Button\"]\r\n[\/nd_button]\r\n[nd_button border=\"0\" different_values=\"0\" block=\"1\" display=\"circle\" color=\"dark\" text=\"Button\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button button_type=\"border\" different_values=\"0\" border=\"1\" block=\"1\" display=\"circle\" text=\"Button\" size=\"large\" color=\"dark\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" different_values=\"0\" border=\"1\" block=\"1\" display=\"circle\" text=\"Button\" size=\"medium\" color=\"dark\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" different_values=\"0\" border=\"1\" block=\"1\" display=\"circle\" text=\"Button\" size=\"small\" color=\"dark\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" different_values=\"0\" border=\"1\" block=\"1\" display=\"circle\" text=\"Button\" color=\"dark\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button button_type=\"gray\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"large\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"gray\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"medium\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"gray\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"small\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"gray\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" color=\"grey\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button button_type=\"gray\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"large\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"gray\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"medium\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"gray\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"small\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"gray\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" color=\"grey\"]\r\n[\/nd_button]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n[nd_bg extra_classes=\"page-section\" different_values=\"0\" bg_repeat=\"repeat\" no_paddings=\"0\" bg_texture=\"0\" full_height=\"0\" full_width_container=\"0\" full_width=\"1\" color=\"bg-dark-lighter\" slider=\"0\" banner=\"0\"]\r\n[nd_container different_values=\"0\"]\r\n[nd_title title=\"Buttons on dark\" size=\"h2\" extra_classes=\"section-title mb-70 mb-sm-40\" different_values=\"0\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[row different_values=\"0\"]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"large\" color=\"grey\" invert=\"1\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"medium\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"small\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" color=\"grey\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button button_type=\"border\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"large\" color=\"grey\" invert=\"1\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"medium\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"small\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" color=\"grey\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"large\" color=\"grey\" invert=\"1\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"medium\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"small\" color=\"grey\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" color=\"grey\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"large\" color=\"grey\" invert=\"1\" button_type=\"border\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"medium\" color=\"grey\" button_type=\"border\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"small\" color=\"grey\" button_type=\"border\"]\r\n[\/nd_button]\r\n[nd_button invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" color=\"grey\" button_type=\"border\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button icon=\"fa fa-usd\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"large\" color=\"grey\" invert=\"1\"]\r\n[\/nd_button]\r\n[nd_button icon=\"fa fa-glass\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"medium\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[nd_button icon=\"fa fa-heart\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"small\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[nd_button icon=\"fa fa-envelope\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button button_type=\"border\" icon=\"fa fa-usd\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"large\" color=\"grey\" invert=\"1\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" icon=\"fa fa-glass\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"medium\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" icon=\"fa fa-heart\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"small\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[nd_button button_type=\"border\" icon=\"fa fa-envelope\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button icon=\"fa fa-usd\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"large\" color=\"grey\" invert=\"1\"]\r\n[\/nd_button]\r\n[nd_button icon=\"fa fa-glass\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"medium\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[nd_button icon=\"fa fa-heart\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" size=\"small\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[nd_button icon=\"fa fa-envelope\" invert=\"1\" different_values=\"0\" border=\"0\" block=\"1\" display=\"circle\" text=\"Button\" color=\"grey\" icon_position=\"beside\"]\r\n[\/nd_button]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\" desktop=\"3\" wide=\"3\" style_margin_bottom=\"40\"]\r\n[nd_button different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"large\" color=\"grey\" invert=\"0\" button_type=\"glass\"]\r\n[\/nd_button]\r\n[nd_button invert=\"0\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"medium\" color=\"grey\" icon_position=\"beside\" button_type=\"glass\"]\r\n[\/nd_button]\r\n[nd_button invert=\"0\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" size=\"small\" color=\"grey\" icon_position=\"beside\" button_type=\"glass\"]\r\n[\/nd_button]\r\n[nd_button invert=\"0\" different_values=\"0\" border=\"0\" block=\"1\" display=\"round\" text=\"Button\" color=\"grey\" icon_position=\"beside\" button_type=\"glass\"]\r\n[\/nd_button]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

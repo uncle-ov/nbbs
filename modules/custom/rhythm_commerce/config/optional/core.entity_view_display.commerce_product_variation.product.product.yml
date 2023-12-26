@@ -1,0 +1,74 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.product
+    - core.entity_view_mode.commerce_product_variation.product
+    - field.field.commerce_product_variation.product.attribute_color
+    - field.field.commerce_product_variation.product.attribute_size
+    - field.field.commerce_product_variation.product.field_description
+    - field.field.commerce_product_variation.product.field_images
+    - field.field.commerce_product_variation.product.field_length
+    - field.field.commerce_product_variation.product.field_old_price
+    - field.field.commerce_product_variation.product.field_right_side_description
+    - field.field.commerce_product_variation.product.field_sale_text
+    - field.field.commerce_product_variation.product.field_short_description
+    - field.field.commerce_product_variation.product.field_waist
+    - image.style.product_main_360x459
+  module:
+    - commerce_price
+    - commerce_variation_cart_form
+    - image
+third_party_settings:
+  commerce_variation_cart_form:
+    combine: '1'
+id: commerce_product_variation.product.product
+targetEntityType: commerce_product_variation
+bundle: product
+mode: product
+content:
+  commerce_variation_cart_form:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_images:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: product_main_360x459
+      image_link: content
+    third_party_settings: {  }
+  field_old_price:
+    type: commerce_price_default
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      strip_trailing_zeroes: false
+      display_currency_code: false
+    third_party_settings: {  }
+  price:
+    type: commerce_price_default
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      strip_trailing_zeroes: false
+      display_currency_code: false
+    third_party_settings: {  }
+hidden:
+  attribute_color: true
+  attribute_size: true
+  field_description: true
+  field_length: true
+  field_right_side_description: true
+  field_sale_text: true
+  field_short_description: true
+  field_waist: true
+  langcode: true
+  product_id: true
+  sku: true
+  title: true

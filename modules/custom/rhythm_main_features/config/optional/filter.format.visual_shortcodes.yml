@@ -1,0 +1,24 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - shortcode
+name: 'Visual Shortcodes'
+format: visual_shortcodes
+weight: -10
+filters:
+  shortcode:
+    id: shortcode
+    provider: shortcode
+    status: true
+    weight: 0
+    settings:
+      button: '1'
+      clear: '1'
+      dropcap: '1'
+      highlight: '1'
+      img: '1'
+      item: '1'
+      link: '1'
+      quote: '1'
+      random: '1'

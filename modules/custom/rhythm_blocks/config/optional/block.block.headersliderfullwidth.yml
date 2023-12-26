@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:96e17d3d-5c4b-4699-95f9-ed2c65add661'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headersliderfullwidth
+theme: rhythm
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:96e17d3d-5c4b-4699-95f9-ed2c65add661'
+settings:
+  id: 'block_content:96e17d3d-5c4b-4699-95f9-ed2c65add661'
+  label: 'Header: Slider Fullwidth'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /home/10
+    negate: false
+    context_mapping: {  }

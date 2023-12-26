@@ -1,0 +1,54 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/34?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/gallery"
+        }
+    },
+    "tid": [
+        {
+            "value": "34"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "b2708a02-550b-40f8-a418-a3ed658d7c1a"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "gallery"
+        }
+    ],
+    "name": [
+        {
+            "value": "Gallery 2",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": "0"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1481650047",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ]
+}

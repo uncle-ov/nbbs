@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b1ba8190-4ca2-4150-a6ec-06d571eab1a0'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: shop4columns
+theme: rhythm_sub
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:b1ba8190-4ca2-4150-a6ec-06d571eab1a0'
+settings:
+  id: 'block_content:b1ba8190-4ca2-4150-a6ec-06d571eab1a0'
+  label: 'Shop 4 Columns'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /4-columns-shop
+    negate: false
+    context_mapping: {  }

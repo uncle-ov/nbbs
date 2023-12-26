@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/71?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "71"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "cd4150c7-2d0a-4527-9901-85581e5d7461"
+        }
+    ],
+    "vid": [
+        {
+            "value": "78"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "FAQ 1",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1481646866",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1481646885",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1481646885"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[row different_values=\"0\"]\r\n[col extra_classes=\" col-md-offset-2\" different_values=\"0\" tablet=\"8\"]\r\n[nd_accordions different_values=\"0\"]\r\n[nd_accordion title=\"WHAT DO YOU MEAN BY AN END PRODUCT?\" active=\"1\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula porttitor rutrum. Ut laoreet sodales rutrum. Ut eget tristique nibh. Cras mattis est eget lacus dignissim, non consectetur velit pellentesque. Ut sit amet placerat eros, id gravida arcu. Sed felis purus, tempor ac vestibulum nec, consectetur at purus.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"I HAVE BOUGHT A PRODUCT THAT HAS FILES MISSING, WHAT DO I DO?\" active=\"0\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula porttitor rutrum. Ut laoreet sodales rutrum. Ut eget tristique nibh. Cras mattis est eget lacus dignissim, non consectetur velit pellentesque. Ut sit amet placerat eros, id gravida arcu. Sed felis purus, tempor ac vestibulum nec, consectetur at purus.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"DO I NEED TO BUY A LICENCE FOR EACH SITE?\" active=\"1\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula porttitor rutrum. Ut laoreet sodales rutrum. Ut eget tristique nibh. Cras mattis est eget lacus dignissim, non consectetur velit pellentesque. Ut sit amet placerat eros, id gravida arcu. Sed felis purus, tempor ac vestibulum nec, consectetur at purus.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"IS MY LICENSE TRANSFERABLE?\" active=\"0\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula porttitor rutrum. Ut laoreet sodales rutrum. Ut eget tristique nibh. Cras mattis est eget lacus dignissim, non consectetur velit pellentesque. Ut sit amet placerat eros, id gravida arcu. Sed felis purus, tempor ac vestibulum nec, consectetur at purus.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"CAN I INCORPORATE ADVERTISING IN MY END PRODUCT WITH A REGULAR LICENCE?\" active=\"0\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula porttitor rutrum. Ut laoreet sodales rutrum. Ut eget tristique nibh. Cras mattis est eget lacus dignissim, non consectetur velit pellentesque. Ut sit amet placerat eros, id gravida arcu. Sed felis purus, tempor ac vestibulum nec, consectetur at purus.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"Do I need a separate license each time I use an item in a series?\" active=\"0\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula porttitor rutrum. Ut laoreet sodales rutrum. Ut eget tristique nibh. Cras mattis est eget lacus dignissim, non consectetur velit pellentesque. Ut sit amet placerat eros, id gravida arcu. Sed felis purus, tempor ac vestibulum nec, consectetur at purus.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[\/nd_accordions]\r\n[\/col]\r\n[\/row]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

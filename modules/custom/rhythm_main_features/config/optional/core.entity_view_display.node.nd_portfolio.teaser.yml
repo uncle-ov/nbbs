@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.nd_portfolio.body
+    - field.field.node.nd_portfolio.field_category
+    - field.field.node.nd_portfolio.field_description
+    - field.field.node.nd_portfolio.field_images
+    - field.field.node.nd_portfolio.field_portfolio_category
+    - field.field.node.nd_portfolio.field_project
+    - field.field.node.nd_portfolio.field_project_link
+    - node.type.nd_portfolio
+  module:
+    - text
+    - user
+id: node.nd_portfolio.teaser
+targetEntityType: node
+bundle: nd_portfolio
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  field_category: true
+  field_description: true
+  field_images: true
+  field_portfolio_category: true
+  field_project: true
+  field_project_link: true
+  langcode: true

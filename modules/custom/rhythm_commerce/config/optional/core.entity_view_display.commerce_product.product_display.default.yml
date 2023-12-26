@@ -1,0 +1,67 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.product_display
+    - core.entity_view_display.comment.default_reviews.default
+    - field.field.commerce_product.product_display.field_category
+    - field.field.commerce_product.product_display.field_rating
+    - field.field.commerce_product.product_display.field_reviews
+    - field.field.commerce_product.product_display.field_tags
+    - field.field.commerce_product.product_display.stores
+    - field.field.commerce_product.product_display.variations
+  module:
+    - comment
+    - commerce_product
+    - fivestar
+id: commerce_product.product_display.default
+targetEntityType: commerce_product
+bundle: product_display
+mode: default
+content:
+  field_category:
+    weight: 2
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_rating:
+    weight: 0
+    label: hidden
+    settings:
+      fivestar_widget: modules/fivestar/widgets/basic/basic.css
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_reviews:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_tags:
+    weight: 3
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  variations:
+    type: commerce_add_to_cart
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      combine: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  stores: true
+  uid: true

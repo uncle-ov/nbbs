@@ -1,0 +1,6 @@
+services:
+  dawih_aeara.twig_extension:
+    arguments: ['@renderer']
+    class: Drupal\dawih_aeara\TwigExtension\DawihFilters
+    tags:
+      - { name: twig.extension }

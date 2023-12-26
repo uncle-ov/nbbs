@@ -1,0 +1,35 @@
+<div class="business_card">
+  <div class="header">
+    <a href="{{ item_link }}" class="clean">
+      <div class="item_image_by_bg" style="background-image: url({{ cover_image }})"></div>
+    </a>
+  </div>
+
+  <div class="content">
+    <div class="category">
+      {{ category }}
+    </div>
+    <h3 class="card_title">
+      {{ title_prefix }}
+      <a href="{{ item_link }}" class="clean">
+        {{ item_title }}
+      </a>
+      {{ title_suffix }}
+
+    </h3>
+    <p>
+      {{ address.address_line1 }},
+      {% if address.address_line2|trim %}
+        {{ address.address_line2 }},
+      {% endif %}
+      {{ address.postal_code }},
+      {{ address.locality }}
+    </p>
+    
+    <div class="cta">
+      <a href="{{ item_link }}" class="btn btn-primary icon_btn">
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/31?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/category"
+        }
+    },
+    "tid": [
+        {
+            "value": "31"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "2ca5dde9-11c6-4624-a956-0904fa72d95b"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "category"
+        }
+    ],
+    "name": [
+        {
+            "value": "Polo Shirts",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": "0"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480353813",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - rhythm
+id: rhythm_search
+theme: rhythm
+region: '-1'
+weight: -3
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

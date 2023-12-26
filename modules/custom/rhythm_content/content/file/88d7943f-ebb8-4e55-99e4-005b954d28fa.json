@@ -1,0 +1,84 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/pictures\/2016-11\/user-avatar.png"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/file\/file\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "fid": [
+        {
+            "value": "8"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "88d7943f-ebb8-4e55-99e4-005b954d28fa"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/file\/file\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "filename": [
+        {
+            "value": "user-avatar.png"
+        }
+    ],
+    "uri": [
+        {
+            "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/pictures\/2016-11\/user-avatar.png"
+        }
+    ],
+    "filemime": [
+        {
+            "value": "image\/png"
+        }
+    ],
+    "filesize": [
+        {
+            "value": "2833"
+        }
+    ],
+    "status": [
+        {
+            "value": "1"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480341750"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480341754"
+        }
+    ]
+}

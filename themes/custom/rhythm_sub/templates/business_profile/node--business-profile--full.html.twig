@@ -1,0 +1,50 @@
+<section class="profile_section">
+
+
+  <ul class="nav nav-tabs tpl-tabs animate">
+    <li class="active">
+      <a href="#one" data-toggle="tab" aria-expanded="true">
+        {{ 'Details'|t }}
+      </a>
+    </li>
+    <li class="none">
+      <a href="#two" data-toggle="tab" aria-expanded="false">
+        {{ 'Shop'|t }}
+      </a>
+    </li>
+    <li class="none">
+      <a href="#three" data-toggle="tab" aria-expanded="false">
+        {{ 'Reviews'|t }}
+        ({{ content.comment['#items'].comment_count }})
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content tpl-tabs-cont">
+    <div class="tab-pane fade active in" id="one">
+      {% if node.field_video_url.value %}
+        <div class="row">
+          <div class="col-md-12">
+            {{ node.field_video_url.value|dawih_embed_video | raw }}
+          </div>
+        </div>
+        
+        <div style="padding: 15px;"></div>
+      {% endif %}
+        <div class="row">
+          <div class="col-md-12">
+            {{ node.body.value|raw }}
+          </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="two">
+      {{ drupal_block('views_block:business_products-block_1') }}
+    </div>
+    <div class="tab-pane fade" id="three">
+      {{ content.comment }}
+    </div>
+  </div>
+
+</section>
+
+{# {{ vardumper(social_media) }} #}

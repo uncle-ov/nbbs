@@ -1,0 +1,20 @@
+<hr class="mt-0 mb-0">
+<section class="page-section">
+  <div class="container relative">
+    <div class="row">
+      <div class="col-md-5 col-lg-4 mb-sm-40">
+        <div class="text">
+          <h3 class="font-alt mb-30 mb-xxs-10">{{ fields.title.content }}</h3>
+          <p>{{ fields.body.content }}</p>
+          {{ fields.field_project_link.content }}
+          {% if fields.path.content %}
+            <a href="{{ fields.path.content|striptags }}" class="btn btn-mod btn-border btn-round btn-medium">{{ 'Visit Project'|t }}</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-7 col-lg-offset-1">
+        {{ fields.field_images.content }}
+      </div>
+    </div>
+  </div>
+</section>

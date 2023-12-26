@@ -1,0 +1,54 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/7?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/blog_category"
+        }
+    },
+    "tid": [
+        {
+            "value": "7"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "07357e8a-c9a0-485a-8661-b9e99ed5a509"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "blog_category"
+        }
+    ],
+    "name": [
+        {
+            "value": "Theme",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": "0"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1479923394",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ]
+}

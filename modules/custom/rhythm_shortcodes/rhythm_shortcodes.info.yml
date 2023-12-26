@@ -1,0 +1,9 @@
+name: 'Rhythm theme Shortcodes'
+description: 'All required shortcodes for Rhythm theme.'
+package: NikaDevs
+core_version_requirement: ^8.8 || ^9 || ^10
+dependencies:
+#  - nikadevs_cms
+version: 8.x-1.0
+project: NikaDevs
+type: module

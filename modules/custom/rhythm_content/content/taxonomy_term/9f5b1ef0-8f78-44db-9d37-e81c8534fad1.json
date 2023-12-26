@@ -1,0 +1,54 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/30?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/category"
+        }
+    },
+    "tid": [
+        {
+            "value": "30"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "9f5b1ef0-8f78-44db-9d37-e81c8534fad1"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "category"
+        }
+    ],
+    "name": [
+        {
+            "value": "Fashion",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": "0"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480353808",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ]
+}

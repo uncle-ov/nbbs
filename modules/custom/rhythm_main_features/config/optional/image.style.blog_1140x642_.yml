@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: blog_1140x642_
+label: 'Blog (1140x642)'
+effects:
+  7c8f6a58-1abb-435e-87fa-19fae37bcfeb:
+    uuid: 7c8f6a58-1abb-435e-87fa-19fae37bcfeb
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1140
+      height: 642

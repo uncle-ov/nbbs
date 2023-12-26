@@ -1,0 +1,8 @@
+allowed_grant_operations:
+  grant_view: true
+  grant_update: true
+  grant_delete: true
+bundles_roles_grants: {}
+grants_tab_availability: {}
+map_rid_gid: {}
+roles_settings: {}

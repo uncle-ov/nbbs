@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: product_70x70
+label: 'Product (70x70)'
+effects:
+  93ba13e3-fd1e-4567-9be1-2d7656fea4d1:
+    uuid: 93ba13e3-fd1e-4567-9be1-2d7656fea4d1
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 70
+      height: 70

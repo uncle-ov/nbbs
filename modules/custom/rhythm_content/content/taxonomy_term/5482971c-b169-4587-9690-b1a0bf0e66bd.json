@@ -1,0 +1,54 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/17?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/project"
+        }
+    },
+    "tid": [
+        {
+            "value": "17"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "5482971c-b169-4587-9690-b1a0bf0e66bd"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "project"
+        }
+    ],
+    "name": [
+        {
+            "value": "Drupal 8",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": "0"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480353699",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ]
+}

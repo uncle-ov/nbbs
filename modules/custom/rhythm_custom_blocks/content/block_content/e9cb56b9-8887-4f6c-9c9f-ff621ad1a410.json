@@ -1,0 +1,97 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/block\/14?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/basic"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/basic\/revision_user": [
+            {
+                "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "14"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "e9cb56b9-8887-4f6c-9c9f-ff621ad1a410"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "14"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "basic"
+        }
+    ],
+    "info": [
+        {
+            "value": "Header: Image Parallax 4",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1484854040",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1484853081"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/basic\/revision_user": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_menu menu=\"main\" type=\"white\" transparent=\"1\" search=\"1\" cart=\"1\" language=\"1\" different_values=\"0\" fid=\"24\"]\r\n[\/nd_menu]\r\n[nd_bg color=\"bg-gray\" slider=\"0\" banner=\"0\" different_values=\"0\" fid=\"53\" full_height=\"1\" scroll_icon=\"1\" video_sound=\"0\"]\r\n[nd_div vertical_align=\"1\" different_values=\"0\" text_align=\"center\"]\r\n[nd_container different_values=\"0\"]\r\n[nd_title title=\"BRANDING \/ DESIGN \/ DEVELOPMENT \/ PHOTO\" size=\"h4_styled\" alignment=\" align-center\" styled=\"1\" uppercase=\"0\" color=\"black\" different_values=\"0\"]\r\n[\/nd_title]\r\n[nd_title title=\"WE LOVE DESIGN\" size=\"h2_42\" alignment=\" align-center\" styled=\"1\" uppercase=\"1\" different_values=\"0\" color=\"black\" style_margin_top=\"50\" style_margin_bottom=\"50\"]\r\n[\/nd_title]\r\n[nd_button block=\"0\" display=\"round\" size=\"medium\" text=\"SEE MORE\" invert=\"0\" style_margin_right=\"8\" different_values=\"0\"]\r\n[\/nd_button]\r\n[nd_button block=\"0\" display=\"round\" size=\"medium\" text=\"PLAY REEL\" invert=\"0\" different_values=\"0\"]\r\n[\/nd_button]\r\n[\/nd_container]\r\n[\/nd_div]\r\n[\/nd_bg]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

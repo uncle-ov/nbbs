@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: portfolio_952x_613
+label: 'Portfolio (952x613)'
+effects:
+  f7c31bb5-cd5e-4bda-827f-c93a6623ca0e:
+    uuid: f7c31bb5-cd5e-4bda-827f-c93a6623ca0e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 953
+      height: 613

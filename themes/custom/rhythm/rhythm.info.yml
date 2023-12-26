@@ -1,0 +1,18 @@
+name: Rhythm
+type: theme
+description: Rhythm is Responsive Drupal 9 Theme.
+core_version_requirement: ^8.8 || ^9 || ^10
+base theme: false
+regions:
+  header: Header
+  page_top: 'Page Top'
+  content: Content
+  sidebar: Sidebar
+  content_full: 'Content Full Width'
+  page_bottom: 'Page Bottom'
+  footer: Footer
+libraries:
+  - rhythm/global-styling
+  - rhythm/global-scripts
+stylesheets-remove:
+  - core/themes/stable/css/system/components/align.module.css

@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:fddb3dae-ff3f-4eab-b348-53afefc651b5'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headermaindemoonepage
+theme: rhythm
+region: header
+weight: -5
+provider: null
+plugin: 'block_content:fddb3dae-ff3f-4eab-b348-53afefc651b5'
+settings:
+  id: 'block_content:fddb3dae-ff3f-4eab-b348-53afefc651b5'
+  label: 'Header: Main Demo - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/102
+    negate: false
+    context_mapping: {  }

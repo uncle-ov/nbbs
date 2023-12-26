@@ -1,0 +1,16 @@
+{% set local_class = link['url'] starts with '#' ? 'local-scroll' %}
+<li {{ attributes.addClass(local_class) }} >
+  {% if item_config['caption'] %}
+    <a class="mn-group-title" style="height: 97px; line-height: 75px;"> {{ item_config['caption'] }}</a>
+  {% endif %}
+  <a href="{{ link['url'] }}" {{ link['attributes'] }}>
+    {% if  item_config['xicon'] %}
+      <span><i class="{{ item_config['xicon'] }} fa-sm"></i></span>
+    {% endif %}
+    {{ link.title_translate|t }}
+    {% if submenu and block_config['auto-arrow'] %}
+      <i class="fa toggle-menu-icon fa-angle-{{ angle_class }}"></i>
+    {% endif %}
+  </a>
+  {{ submenu }}
+</li>

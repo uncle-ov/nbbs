@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: portfolio_653x368_
+label: 'Portfolio (653x368)'
+effects:
+  1931dc2c-996d-48ee-aca7-e23c46ef1dd5:
+    uuid: 1931dc2c-996d-48ee-aca7-e23c46ef1dd5
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 653
+      height: 368

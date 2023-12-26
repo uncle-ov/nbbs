@@ -1,0 +1,84 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/section-bg-15.jpg"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/file\/file\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "fid": [
+        {
+            "value": "3"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "501b4d53-9be5-49f9-85f5-68be6576c88d"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/file\/file\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "filename": [
+        {
+            "value": "section-bg-15.jpg"
+        }
+    ],
+    "uri": [
+        {
+            "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/section-bg-15.jpg"
+        }
+    ],
+    "filemime": [
+        {
+            "value": "image\/jpeg"
+        }
+    ],
+    "filesize": [
+        {
+            "value": "180800"
+        }
+    ],
+    "status": [
+        {
+            "value": "1"
+        }
+    ],
+    "created": [
+        {
+            "value": "1479930755"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1479930755"
+        }
+    ]
+}

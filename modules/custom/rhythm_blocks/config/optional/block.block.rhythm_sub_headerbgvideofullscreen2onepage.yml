@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:90013c4e-6be7-4967-bcd1-623ff20502df'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_headerbgvideofullscreen2onepage
+theme: rhythm_sub
+region: header
+weight: -19
+provider: null
+plugin: 'block_content:90013c4e-6be7-4967-bcd1-623ff20502df'
+settings:
+  id: 'block_content:90013c4e-6be7-4967-bcd1-623ff20502df'
+  label: 'Header: BG Video FullScreen 2 - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/15
+    negate: false
+    context_mapping: {  }

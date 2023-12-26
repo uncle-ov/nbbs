@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:2aa33a4b-bb38-4f6a-9c66-5cc5c7f27094'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_headersliderzoomeffect
+theme: rhythm_sub
+region: header
+weight: 2
+provider: null
+plugin: 'block_content:2aa33a4b-bb38-4f6a-9c66-5cc5c7f27094'
+settings:
+  id: 'block_content:2aa33a4b-bb38-4f6a-9c66-5cc5c7f27094'
+  label: 'Header: Slider Zoom Effect'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /home/9
+    negate: false
+    context_mapping: {  }

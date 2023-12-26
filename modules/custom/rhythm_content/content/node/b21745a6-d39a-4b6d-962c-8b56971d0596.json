@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/55?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "55"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "b21745a6-d39a-4b6d-962c-8b56971d0596"
+        }
+    ],
+    "vid": [
+        {
+            "value": "62"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Header White Transparent",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480942709",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480942721",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480942721"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, ultrices in vulputate vitae, volutpat iaculis velit. In congue dolor a ligula cursus aliquam. Aliquam id malesuada metus. Donec ultricies lorem augue, ac fringilla felis aliquet et. Integer a rutrum dui, id varius neque. Donec orci massa, porttitor sit amet velit non, interdum feugiat lacus. Fusce tincidunt id erat at consequat. Cras vel aliquet mauris, ac tempor lorem. Donec faucibus sodales eros sed pretium. Praesent ut scelerisque lectus, ut feugiat mi.<\/p>\r\n\r\n<p>Nunc vulputate semper erat, non iaculis sapien congue sit amet. Duis non nulla volutpat, dignissim leo sit amet, porta nunc. Donec placerat fermentum metus ac scelerisque. In id sollicitudin nulla. Suspendisse potenti. Integer aliquam orci aliquam eros posuere ornare. Fusce augue felis, maximus non lacus vitae, ullamcorper dignissim leo. Ut congue feugiat turpis at aliquam. Donec eros neque, accumsan sed venenatis volutpat, tempor at metus. Curabitur vel vestibulum ipsum, convallis cursus nisl. Mauris scelerisque gravida faucibus. Morbi vitae sapien nibh. Integer libero orci, ullamcorper in tincidunt at, molestie quis ipsum.<\/p>\r\n",
+            "format": "ckeditor",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

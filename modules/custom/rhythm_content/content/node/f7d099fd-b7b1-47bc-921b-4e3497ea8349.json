@@ -1,0 +1,195 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/58?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/nd_person"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_person\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_person\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_person\/field_image": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/team-3_0.jpg",
+                "lang": "en"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "58"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "f7d099fd-b7b1-47bc-921b-4e3497ea8349"
+        }
+    ],
+    "vid": [
+        {
+            "value": "65"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "nd_person"
+        }
+    ],
+    "title": [
+        {
+            "value": "Steve Anders",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_person\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_person\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_person\/field_image": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/team-3_0.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c7bbd000-b1a6-47f8-81d5-b03d96630c36"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/team-3_0.jpg"
+                    }
+                ],
+                "lang": "en"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1481227740",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1481228937",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1481228512"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[html format=\"nd_ckeditor\" different_values=\"0\"]<h4 class=\"font-alt normal\" style=\"box-sizing: border-box; font-family: Dosis, arial, sans-serif; font-weight: normal; line-height: 1.4; color: rgb(119, 119, 119); margin-top: 10px; margin-bottom: 1.3em; font-size: 18px; text-transform: uppercase; letter-spacing: 0.2em; text-align: center;\">\tHI TO ALL!<\/h4><p style=\"box-sizing: border-box; margin: 0px 0px 2em; color: rgb(119, 119, 119); font-family: 'Open Sans', arial, sans-serif; font-size: 14px; line-height: 22.3999996185303px; text-align: center;\">Adipiscing elit curabitur eu&nbsp;adipiscing lacus eu&nbsp;adipiscing lacus, a&nbsp;iaculis diam.<\/p>[\/html]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_position": [
+        {
+            "value": "Web Director"
+        }
+    ],
+    "field_social_links": [
+        {
+            "uri": "http:\/\/facebook.com\/nikadevs",
+            "title": "fa fa-facebook",
+            "options": [
+
+            ]
+        },
+        {
+            "uri": "http:\/\/twitter.com\/nikadevs",
+            "title": "fa fa-twitter",
+            "options": [
+
+            ]
+        }
+    ]
+}

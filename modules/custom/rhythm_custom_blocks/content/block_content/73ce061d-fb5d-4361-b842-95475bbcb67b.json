@@ -1,0 +1,73 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/block\/7?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/basic"
+        }
+    },
+    "id": [
+        {
+            "value": "7"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "73ce061d-fb5d-4361-b842-95475bbcb67b"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "7"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "basic"
+        }
+    ],
+    "info": [
+        {
+            "value": "Want to work with us?",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1481213252",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1481213252"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_bg color=\"bg-dark\" slider=\"0\" banner=\"0\" different_values=\"0\" text_align=\"center\" style_padding_top=\"60\" style_padding_bottom=\"60\"]\r\n[nd_title title=\"Want to work with us?\" size=\"h4\" alignment=\" align-center\" styled=\"1\" uppercase=\"1\" different_values=\"0\" color=\"white\" weight=\"fw-300\"]\r\n[\/nd_title]\r\n[nd_button button_type=\"gray\" block=\"0\" display=\"round\" size=\"medium\" text=\"JOIN NOW\" link=\"http:\/\/rhythm.nikadevs.com\" invert=\"0\" different_values=\"0\"]\r\n[\/nd_button]\r\n[\/nd_bg]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

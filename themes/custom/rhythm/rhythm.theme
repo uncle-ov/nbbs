@@ -1,0 +1,356 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param null $form_id
+ */
+function rhythm_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id = NULL)
+{
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['options'] = array(
+    '#type' => 'vertical_tabs',
+    '#default_tab' => 'nikadevs_layout_builder',
+    '#weight' => '-10',
+    '#title' => t('Rhythm Theme settings'),
+  );
+
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('nikadevs_cms')) {
+    $form['nikadevs_layout_builder'] = [
+      '#type' => 'details',
+      '#title' => t('Nikadevs Settings'),
+      '#group' => 'options',
+    ];
+    $form['nikadevs_layout_builder']['layout_builder'] = nikadevs_cms_layout_builder();
+  } else {
+    drupal_set_message('Enable NikaDevs CMS module to use layout builder.');
+  }
+
+  $form['main'] = array(
+    '#type' => 'details',
+    '#title' => t('Main settings'),
+    '#group' => 'options',
+  );
+  $form['main']['retina'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Retina Script'),
+    '#default_value' => theme_get_setting('retina'),
+    '#description' => t("Only for retina displays and for manually added images. The script will check if the same image with suffix @2x exists and will show it."),
+  );
+  $form['main']['loader_image'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Page loading GIF image'),
+    '#default_value' => theme_get_setting('loader_image'),
+  );
+  $form['main']['phone'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Phone'),
+    '#default_value' => theme_get_setting('phone'),
+  );
+
+  $form['404'] = array(
+    '#type' => 'details',
+    '#title' => t('Page not Found -404'),
+    '#group' => 'options',
+  );
+  $form['404']['404_bg'] = array(
+    '#title' => t('Background Image'),
+    '#type' => 'managed_file',
+    '#default_value' => theme_get_setting('404_bg'),
+    '#upload_location' => 'public://',
+    '#required' => FALSE,
+  );
+
+  $form['maintenance'] = array(
+    '#type' => 'details',
+    '#title' => t('Maintenance Page'),
+    '#group' => 'options',
+  );
+  $form['maintenance']['maintenance_bg'] = array(
+    '#title' => t('Background Image'),
+    '#type' => 'managed_file',
+    '#default_value' => theme_get_setting('maintenance_bg'),
+    '#upload_location' => 'public://',
+    '#required' => FALSE,
+  );
+
+  $form['gmap'] = array(
+    '#type' => 'details',
+    '#title' => t('Google Map Settings'),
+    '#group' => 'options',
+  );
+  $form['gmap']['gmap_key'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google Maps API Key'),
+    '#default_value' => theme_get_setting('gmap_key') ? theme_get_setting('gmap_key') : '',
+    '#description' => 'More information: <a href = "https://developers.google.com/maps/documentation/javascript/get-api-key">https://developers.google.com/maps/documentation/javascript/get-api-key</a>'
+  );
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function rhythm_element_info_alter(&$elements)
+{
+  if (isset($_GET['q']) && strpos($_GET['q'], 'ajax') !== FALSE) {
+    return;
+  }
+  foreach ($elements as &$element) {
+    if (!empty($element['#input'])) {
+      $element['#process'][] = '_rhythm_process_input';
+    }
+  }
+}
+
+/**
+ * @param $variables
+ * @return string
+ */
+//function rhythm_fivestar_static($variables) {
+//  $rating  = $variables['rating'] / 20;
+//  $output = '';
+//  for($i = 1; $i <= 5; $i++) {
+//    $output .= $rating >= $i ? '<i class="fa fa-star"></i>' : ($rating + 0.5 >= $i ? '<i class="fa fa-star-half-o"></i>' : '<i class="fa fa-star-o"></i>');
+//  }
+//  return $output;
+//}
+
+/**
+ * @param $element
+ * @param $form_state
+ * @return mixed
+ */
+function _rhythm_process_input(&$element, &$form_state)
+{
+  $types = array(
+    'textarea',
+    'textfield',
+    'email',
+    'webform_email',
+    'webform_number',
+    'select',
+    'password',
+    'password_confirm',
+    'search'
+  );
+  $element['#wrapper_attributes']['class'][] = 'form-group';
+  if (!empty($element['#type']) && (in_array($element['#type'], $types))) {
+    /*if (isset($element['#title']) && $element['#title_display'] != 'none' && $element['#type'] != 'select') {
+      $element['#attributes']['placeholder'] = $element['#title'];
+      $element['#title_display'] = 'none';
+    }*/
+    if (!isset($element['#attributes']['class']) || !is_array($element['#attributes']['class']) || (!in_array('input-lg', $element['#attributes']['class'])) && !in_array('input-sm', $element['#attributes']['class'])) {
+      $element['#attributes']['class'][] = 'input-md';
+    }
+    $element['#attributes']['class'][] = 'form-control round';
+  }
+  if ($element['#type'] == 'submit') {
+    $element['#attributes']['class'] = isset($element['#attributes']['class']) ? $element['#attributes']['class'] : array();
+    $element['#attributes']['class'] = array_merge($element['#attributes']['class'], array('btn-medium', 'btn', 'btn-mod', 'btn-round'));
+  }
+
+  return $element;
+}
+
+/**
+ * @param $variables
+ */
+function rhythm_preprocess_node(&$variables)
+{
+  if ($variables['node']->getType() == 'nd_blog') {
+    $variables['comment_count'] = $variables['node']->get('field_comments')->comment_count;
+
+    if ($variables['elements']['#view_mode'] == 'full') {
+      $query = \Drupal::database()->select('node_revision', 'nr');
+      $query->leftJoin('node', 'n', 'n.nid = nr.nid');
+      $nids = $query->condition('n.type', 'nd_blog')
+        ->fields('n', array('nid'))
+        ->orderBy('nr.revision_timestamp', 'DESC')
+        ->execute()
+        ->fetchAll();
+
+      $nid = $variables['node']->id();
+      $offset = 0;
+      foreach ($nids as $i => $entity) {
+        $offset = $entity->nid == $nid ? $i : $offset;
+      }
+      $next = !$offset ? $nids[count($nids) - 1] : $nids[$offset - 1];
+      $prev = ($offset + 1) == count($nids) ? $nids[0] : $nids[$offset + 1];
+
+      $variables['next'] = Url::fromRoute('entity.node.canonical', array('node' => $next->nid));
+      $variables['prev'] = Url::fromRoute('entity.node.canonical', array('node' => $prev->nid));
+    }
+  }
+}
+
+/**
+ * @param $variables
+ */
+function rhythm_preprocess_breadcrumb(&$variables)
+{
+  global $breadcrumb_page_title;
+  $title = !is_null($breadcrumb_page_title) ? $breadcrumb_page_title : drupal_get_title();
+  $variables['breadcrumb'][] = ['text' => $title];
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function rhythm_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  $form['#attributes']['class'][] = 'form';
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ * @return mixed
+ */
+function rhythm_form_comment_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  $form['author']['#prefix'] = '<div class="row mb-md-10"><div class="col-md-6 mb-md-10">';
+  $form['field_email']['#prefix'] = '</div><div class="col-md-6 mb-md-10">';
+  $form['field_email']['#suffix'] = '</div></div>';
+  return $form;
+}
+
+/**
+ * Implementation of hook_page_attachments_alter().
+ */
+function rhythm_page_attachments_alter(&$page)
+{
+  $page['#attached']['drupalSettings']['base_path'] = base_path();
+  $page['#attached']['drupalSettings']['theme_path'] = \Drupal::service('extension.list.theme')->getPath('rhythm');
+}
+
+/**
+ * Implementation of hook_preprocess_page().
+ */
+function rhythm_preprocess_page(&$variables)
+{
+  // Get all regions for current theme.
+  $current_theme = \Drupal::config('system.theme')->get('default');
+  $theme_settings = $current_theme . '.settings';
+  $layouts = \Drupal::configFactory()->getEditable($theme_settings)->get('nikadevs_cms_layout');
+
+  if (function_exists('nikadevs_cms_page_layout') && $layouts != array()) {
+    $variables['nikadevs_page'] = nikadevs_cms_page_layout(array('page' => $variables['page']));
+    $variables['layout_builder_activated'] = true;
+  } else {
+    $variables['layout_builder_activated'] = false;
+  }
+
+  $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
+  $title = $route->getDefault('_title');
+
+  if (!empty($title) && $title == 'Page not found') {
+    $variables['logo'] = theme_get_setting('logo');
+    $variables['phone'] = theme_get_setting('phone');
+    $variables['mail'] = \Drupal::config('system.site')->get('mail');
+    $bg_404 = theme_get_setting('404_bg');
+    if (!empty($bg_404) && isset($bg_404[0])) {
+      $file = File::load($bg_404[0]);
+      $variables['bg_404'] = !empty($file) ? file_create_url($file->getFileUri()) : '';
+    }
+  }
+  if (!empty($title) && $title == 'Maintenance Page') {
+    $logo = theme_get_setting('logo');
+    $variables['logo'] = $logo['url'];
+    rhythm_preprocess_maintenance_page($variables);
+  }
+}
+
+/**
+ * Implementation of hook_preprocess_page().
+ */
+function rhythm_preprocess_maintenance_page(&$variables)
+{
+  $variables['phone'] = theme_get_setting('phone');
+  $variables['mail'] = \Drupal::config('system.site')->get('mail');
+  $maintenance_bg = theme_get_setting('maintenance_bg');
+  if (!empty($maintenance_bg) && isset($maintenance_bg[0])) {
+    $file = File::load($maintenance_bg[0]);
+    $variables['maintenance_bg'] = !empty($file) ? file_create_url($file->getFileUri()) : '';
+  }
+}
+
+/**
+ * @param array $suggestions
+ * @param array $variables
+ * @return array
+ */
+function rhythm_theme_suggestions_page_alter(array &$suggestions, array $variables)
+{
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof \Drupal\node\NodeInterface) {
+
+    if (!empty($node) && $node->getTitle() == 'User Settings Redirect') {
+      // get current user id
+      $user_id = \Drupal::currentUser()->id();
+      $profile_edit_page = Url::fromRoute('entity.user.edit_form', array('user' => $user_id));
+
+      // redirect to user edit page
+      $response = new \Symfony\Component\HttpFoundation\RedirectResponse($profile_edit_page->toString());
+      $response->send();
+      exit;
+    }
+
+    if (!empty($node) && $node->getTitle() == 'Page not found') {
+      $suggestions[] = 'page__system__404';
+    }
+    if (!empty($node) && $node->getTitle() == 'Maintenance Page') {
+      $suggestions[] = 'maintenance_page';
+    }
+  }
+
+  return $suggestions;
+}
+
+/**
+ * Implementation of hook_preprocess_html().
+ */
+function rhythm_preprocess_html(&$variables)
+{
+  $variables['loader_image'] = theme_get_setting('loader_image');
+  $variables['gmap_key'] = theme_get_setting('gmap_key');
+  $variables['attributes']['class'][] = 'appear-animate';
+}
+
+/**
+ * Prepare variables for tb_megamenu_item.
+ *
+ * @param array $vars variables are declared in theme.
+ */
+function rhythm_preprocess_tb_megamenu_item(&$vars)
+{
+  $level = $vars['level'];
+  //  $item = $vars['item'];
+  $plugin_id = $vars['link']['id'];
+  $item_config = isset($menu_config[$plugin_id]['item_config']) ? $menu_config[$plugin_id]['item_config'] : array();
+
+  if (!empty($item_config['alignsub'])) {
+    $vars['attributes']['class'][] = "align-menu-" . $item_config['alignsub'];
+  }
+  $vars['angle_class'] = $level > 1 ? 'right right' : 'down';
+  if ($vars['submenu']) {
+    $vars['link']['attributes']['class'][] = 'mn-has-sub';
+  }
+}
+
+function rhythm_preprocess_table(&$variables)
+{
+  $variables['attributes']['class'] = !isset($variables['attributes']['class']) ? array() : $variables['attributes']['class'];
+  $variables['attributes']['class'][] = 'table mt-10 mb-10';
+}

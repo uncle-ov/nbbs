@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/35?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "35"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "37259c59-d6c4-4290-8401-cb0b3efd1fb1"
+        }
+    ],
+    "vid": [
+        {
+            "value": "42"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Bar (Progress)",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480458820",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1485602880",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480805652"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_bg different_values=\"0\" banner=\"0\" slider=\"0\" extra_classes=\"page-section\"]\r\n[nd_container different_values=\"0\" extra_classes=\"relative\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" different_values=\"0\" extra_classes=\"col-md-offset-2\"]\r\n[nd_chartpie stroke_color=\"bc1616\" donut=\"0\" different_values=\"0\"]\r\n[nd_chartpieitem title=\"Teach Profile\" value=\"30\" value_color=\"ea052c\" different_values=\"0\"]\r\n[\/nd_chartpieitem]\r\n[nd_chartpieitem title=\"About Blocks\" value=\"30\" value_color=\"8b0202\" different_values=\"0\"]\r\n[\/nd_chartpieitem]\r\n[nd_chartpieitem title=\"About Us 3\" value=\"40\" value_color=\"f42424\" different_values=\"0\"]\r\n[\/nd_chartpieitem]\r\n[\/nd_chartpie]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\" extra_classes=\"col-md-offset-2\"]\r\n[nd_chartpie stroke_color=\"bc1616\" donut=\"1\" different_values=\"0\"]\r\n[nd_chartpieitem title=\"Teach Profile\" value=\"20\" value_color=\"b72425\" different_values=\"0\"]\r\n[\/nd_chartpieitem]\r\n[nd_chartpieitem title=\"About Blocks\" value=\"30\" value_color=\"890000\" different_values=\"0\"]\r\n[\/nd_chartpieitem]\r\n[nd_chartpieitem title=\"About Us 3\" value=\"40\" value_color=\"fb2122\" different_values=\"0\"]\r\n[\/nd_chartpieitem]\r\n[nd_chartpieitem title=\"About Us 3\" value=\"10\" value_color=\"fc0000\" different_values=\"0\"]\r\n[\/nd_chartpieitem]\r\n[\/nd_chartpie]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n[nd_bg different_values=\"0\" banner=\"0\" slider=\"0\" extra_classes=\"page-section\"]\r\n[nd_container different_values=\"0\" extra_classes=\"relative\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"8\" different_values=\"0\" extra_classes=\"col-md-offset-2\"]\r\n[nd_counter title=\"Current Year\" icon=\"fa fa-calendar\" number=\"2017\" different_values=\"0\"]\r\n[\/nd_counter]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n[nd_bg different_values=\"0\" banner=\"0\" slider=\"0\" extra_classes=\"page-section\"]\r\n[nd_container different_values=\"0\" extra_classes=\"relative\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"8\" different_values=\"0\" extra_classes=\"col-md-offset-2\"]\r\n[nd_progress type=\"Thin Line\" different_values=\"0\" frames=\"10\" duration=\"2000\" percent=\"85\" title=\"Brending\"]\r\n[\/nd_progress]\r\n[nd_progress type=\"Thin Line\" title=\"Design\" percent=\"80\" duration=\"2000\" frames=\"10\" different_values=\"0\"]\r\n[\/nd_progress]\r\n[nd_progress type=\"Thin Line\" title=\"Development\" percent=\"85\" duration=\"2000\" frames=\"10\" different_values=\"0\"]\r\n[\/nd_progress]\r\n[nd_progress type=\"Thin Line\" title=\"Photography\" percent=\"75\" duration=\"2000\" frames=\"10\" different_values=\"0\"]\r\n[\/nd_progress]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n[nd_hr different_values=\"0\"]\r\n[\/nd_hr]\r\n[nd_bg different_values=\"0\" extra_classes=\"page-section\" banner=\"0\" slider=\"0\"]\r\n[nd_container different_values=\"0\" extra_classes=\"relative\"]\r\n[col tablet=\"8\" different_values=\"0\" extra_classes=\"col-md-offset-2\"]\r\n[nd_progress type=\"Wide Line\" title=\"Branding\" percent=\"80\" duration=\"2000\" frames=\"10\" different_values=\"0\"]\r\n[\/nd_progress]\r\n[nd_progress type=\"Wide Line\" title=\"Design\" percent=\"85\" duration=\"2000\" frames=\"10\" different_values=\"0\"]\r\n[\/nd_progress]\r\n[nd_progress type=\"Wide Line\" title=\"Development\" percent=\"75\" duration=\"2000\" frames=\"10\" different_values=\"0\"]\r\n[\/nd_progress]\r\n[nd_progress type=\"Wide Line\" title=\"Photography\" percent=\"70\" duration=\"2000\" frames=\"10\" different_values=\"0\"]\r\n[\/nd_progress]\r\n[\/col]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

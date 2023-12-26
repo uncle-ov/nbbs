@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - rhythm_cms
+    - system
+  theme:
+    - rhythm_sub
+id: rhythmproductsfilter
+theme: rhythm_sub
+region: sidebar
+weight: -27
+provider: null
+plugin: nd_rhythm_products_filter
+settings:
+  id: nd_rhythm_products_filter
+  label: 'Filter by Price'
+  provider: rhythm_cms
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: '/shop*'
+    negate: false
+    context_mapping: {  }

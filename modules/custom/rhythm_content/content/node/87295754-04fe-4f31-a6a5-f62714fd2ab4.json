@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/44?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "44"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "87295754-04fe-4f31-a6a5-f62714fd2ab4"
+        }
+    ],
+    "vid": [
+        {
+            "value": "51"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Tabs",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480871683",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480871696",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480871696"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_container different_values=\"0\" extra_classes=\"relative\"]\r\n[nd_title different_values=\"0\" extra_classes=\"section-title mb-70 mb-sm-40\" size=\"h2\" title=\"Standard tabs\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[row different_values=\"0\"]\r\n[col different_values=\"0\" extra_classes=\"col-sm-offset-2\" tablet=\"8\"]\r\n[nd_tabs centered=\"0\" transparent=\"0\" different_values=\"0\"]\r\n[nd_tab title=\"First\" active=\"1\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. Aliquam tortor leo, pharetra non congue sit amet, bibendum sit amet enim. Nullam sit amet malesuada justo.[\/html]\r\n[\/nd_tab]\r\n[nd_tab title=\"Second\" active=\"0\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Nam porta elementum tortor, eget tempor orci ullamcorper eget. Aliquam fermentum sem non vulputate dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at porttitor massa. Aliquam tortor leo, pharetra non congue sit amet, bibendum sit amet enim. Nullam sit amet malesuada justo.[\/html]\r\n[\/nd_tab]\r\n[nd_tab title=\"Third\" active=\"0\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Pellentesque sed vehicula velit, vitae vulputate velit. Morbi nec porta augue, et dignissim enim. Vivamus suscipit, lorem vitae rhoncus pharetra, erat nisl scelerisque magna, ut mollis dui eros eget libero. Vivamus ut ornare tellus. Aliquam tortor leo, pharetra non congue sit amet, bibendum sit amet enim. Nullam sit amet malesuada justo.[\/html]\r\n[\/nd_tab]\r\n[\/nd_tabs]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[nd_hr different_values=\"0\" style_margin_top=\"140\" style_margin_bottom=\"140\"]\r\n[\/nd_hr]\r\n[nd_container different_values=\"0\" extra_classes=\"relative\"]\r\n[nd_title different_values=\"0\" extra_classes=\"section-title mb-70 mb-sm-40\" size=\"h2\" title=\"Minimal tabs\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[row different_values=\"0\"]\r\n[col different_values=\"0\" extra_classes=\"col-sm-offset-2\" tablet=\"8\"]\r\n[nd_tabs type=\"minimal\" centered=\"1\" transparent=\"0\" different_values=\"0\"]\r\n[nd_tab title=\"First\" active=\"1\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. Aliquam tortor leo, pharetra non congue sit amet, bibendum sit amet enim. Nullam sit amet malesuada justo.[\/html]\r\n[\/nd_tab]\r\n[nd_tab title=\"Second\" active=\"0\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Nam porta elementum tortor, eget tempor orci ullamcorper eget. Aliquam fermentum sem non vulputate dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at porttitor massa. Aliquam tortor leo, pharetra non congue sit amet, bibendum sit amet enim. Nullam sit amet malesuada justo.[\/html]\r\n[\/nd_tab]\r\n[nd_tab title=\"Third\" active=\"0\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Pellentesque sed vehicula velit, vitae vulputate velit. Morbi nec porta augue, et dignissim enim. Vivamus suscipit, lorem vitae rhoncus pharetra, erat nisl scelerisque magna, ut mollis dui eros eget libero. Vivamus ut ornare tellus. Aliquam tortor leo, pharetra non congue sit amet, bibendum sit amet enim. Nullam sit amet malesuada justo.[\/html]\r\n[\/nd_tab]\r\n[\/nd_tabs]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

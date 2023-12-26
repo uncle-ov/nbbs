@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - editor
+    - entity_embed
+    - shortcode
+name: CKeditor
+format: ckeditor
+weight: -9
+filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 0
+    settings: {  }
+  entity_embed:
+    id: entity_embed
+    provider: entity_embed
+    status: true
+    weight: 0
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: false
+    weight: -10
+    settings:
+      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <img src alt data-entity-type data-entity-uuid>'
+      filter_html_help: false
+      filter_html_nofollow: false
+  shortcode:
+    id: shortcode
+    provider: shortcode
+    status: false
+    weight: 0
+    settings:
+      button: '1'
+      clear: '1'
+      dropcap: '1'
+      highlight: '1'
+      img: '1'
+      item: '1'
+      link: '1'
+      quote: '1'
+      random: '1'
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: true
+    weight: 9
+    settings: {  }

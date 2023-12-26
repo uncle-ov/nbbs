@@ -1,0 +1,26 @@
+<div class="post-prev-img">
+  <a href="{{ main_image.url }}" class="lightbox-gallery-3 mfp-image">
+    {{ main_image.image }}
+  </a>
+  {% if sale is not empty %}
+    <div class="intro-label">
+      <span class="label label-danger bg-red">
+        {{ sale|t }}
+      </span>
+  </div>
+  {% endif %}
+</div>
+
+<div class="row">
+  {% for small_img in small_images %}
+    <div class="col-xs-{{ col }} post-prev-img">
+      {% if zoom %}
+        <a href="{{ small_img.url }}" class="lightbox-gallery-3 mfp-image">
+          {{ small_img.image }}
+        </a>
+      {% else %}
+        {{ small_img.image }}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

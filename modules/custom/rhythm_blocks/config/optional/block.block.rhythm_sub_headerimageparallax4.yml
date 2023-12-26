@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e9cb56b9-8887-4f6c-9c9f-ff621ad1a410'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_headerimageparallax4
+theme: rhythm_sub
+region: header
+weight: -9
+provider: null
+plugin: 'block_content:e9cb56b9-8887-4f6c-9c9f-ff621ad1a410'
+settings:
+  id: 'block_content:e9cb56b9-8887-4f6c-9c9f-ff621ad1a410'
+  label: 'Header: Image Parallax 4'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /home/4
+    negate: false
+    context_mapping: {  }

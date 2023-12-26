@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: gallery_165x106
+label: 'Gallery (165x106)'
+effects:
+  967cfa4a-fbee-4f6e-9332-1a173cdb81ed:
+    uuid: 967cfa4a-fbee-4f6e-9332-1a173cdb81ed
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 165
+      height: 106

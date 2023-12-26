@@ -1,0 +1,12 @@
+name: 'Shortcode Basic Tags'
+type: module
+description: 'Provides basic shortcode tags like highlight, dropcap, etc.'
+core_version_requirement: ^9.3 || ^10
+dependencies:
+  - shortcode:shortcode
+package: 'Input filters'
+
+# Information added by Drupal.org packaging script on 2023-07-22
+version: '2.0.2'
+project: 'shortcode'
+datestamp: 1690014466

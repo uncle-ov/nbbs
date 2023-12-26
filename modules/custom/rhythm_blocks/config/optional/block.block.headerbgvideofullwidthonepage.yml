@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:105211ef-6551-4e9c-816c-39c118e2b0f2'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headerbgvideofullwidthonepage
+theme: rhythm
+region: header
+weight: -17
+provider: null
+plugin: 'block_content:105211ef-6551-4e9c-816c-39c118e2b0f2'
+settings:
+  id: 'block_content:105211ef-6551-4e9c-816c-39c118e2b0f2'
+  label: 'Header: BG Video Fullwidth - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/13
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/46?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "46"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "9b5afc7a-9da1-4488-98c7-e8d6003b6916"
+        }
+    ],
+    "vid": [
+        {
+            "value": "53"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Video & Sound",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480872062",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480872074",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480872074"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_bg extra_classes=\"page-section\" different_values=\"0\" slider=\"0\" banner=\"0\"]\r\n[nd_container different_values=\"0\" extra_classes=\"relative\"]\r\n[row different_values=\"0\"]\r\n[col different_values=\"0\" tablet=\"6\"]\r\n[nd_video url=\"http:\/\/player.vimeo.com\/video\/79876010?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff\" different_values=\"0\" width=\"1170\" height=\"658\"]\r\n[\/nd_video]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\"]\r\n[nd_video url=\"http:\/\/www.youtube.com\/embed\/JuyB7NO0EYY\" different_values=\"0\" width=\"640\" height=\"360\"]\r\n[\/nd_video]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n[nd_hr different_values=\"0\"]\r\n[\/nd_hr]\r\n[nd_container different_values=\"0\" style_padding_top=\"140\" style_padding_bottom=\"140\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<iframe width=\"100%\" height=\"166\" scrolling=\"no\" frameborder=\"no\" src=\"https:\/\/w.soundcloud.com\/player\/?url=https%3A\/\/api.soundcloud.com\/tracks\/3752929&amp;color=111111&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false\"><\/iframe>[\/html]\r\n[\/nd_container]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

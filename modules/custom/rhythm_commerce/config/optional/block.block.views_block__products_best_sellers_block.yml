@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.products_best_sellers
+  module:
+    - system
+    - views
+  theme:
+    - rhythm_sub
+id: views_block__products_best_sellers_block
+theme: rhythm_sub
+region: sidebar
+weight: -25
+provider: null
+plugin: 'views_block:products_best_sellers-block'
+settings:
+  id: 'views_block:products_best_sellers-block'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '/shop*'
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,33 @@
+name: Commerce
+description: 'Commerce integration with Rhythm Theme'
+type: module
+core_version_requirement: '^8 || ^9 || ^10'
+dependencies:
+  - block
+  - block_content
+  - comment
+  - commerce
+  - commerce_cart
+  - commerce_order
+  - commerce_price
+  - commerce_product
+  - commerce_store
+  - commerce_variation_cart_form
+  - entity_browser
+  - field
+  - field_group
+  - file
+  - fivestar
+  - image
+  - inline_entity_form
+  - language
+  - node
+  - path
+  - rhythm_cms
+  - rhythm_main_features
+  - system
+  - taxonomy
+  - text
+  - views
+version: 8.x-1.0
+package: Rhythm

@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:71affffc-cffa-4790-93df-5f7d6790619a'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headerbgvideofullwidth
+theme: rhythm
+region: header
+weight: -18
+provider: null
+plugin: 'block_content:71affffc-cffa-4790-93df-5f7d6790619a'
+settings:
+  id: 'block_content:71affffc-cffa-4790-93df-5f7d6790619a'
+  label: 'Header: BG Video Fullwidth'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /home/13
+    negate: false
+    context_mapping: {  }

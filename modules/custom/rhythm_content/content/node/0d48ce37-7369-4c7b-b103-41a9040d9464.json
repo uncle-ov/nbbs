@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/34?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "34"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "0d48ce37-7369-4c7b-b103-41a9040d9464"
+        }
+    ],
+    "vid": [
+        {
+            "value": "41"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Accordions",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480453954",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480805639",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480805639"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[row different_values=\"0\"]\r\n[col tablet=\"6\" different_values=\"0\"]\r\n[nd_accordions different_values=\"0\"]\r\n[nd_accordion title=\"First\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"Second\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"Third\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[\/nd_accordions]\r\n[\/col]\r\n[col tablet=\"6\" different_values=\"0\"]\r\n[nd_accordions different_values=\"0\" multiple_active=\"1\"]\r\n[nd_accordion title=\"First\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"Second\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[nd_accordion title=\"Third\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.<\/p>[\/html]\r\n[\/nd_accordion]\r\n[\/nd_accordions]\r\n[\/col]\r\n[\/row]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

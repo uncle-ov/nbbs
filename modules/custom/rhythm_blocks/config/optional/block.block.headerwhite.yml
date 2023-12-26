@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:52a10536-56b5-4eb7-8df9-33230c18ba31'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headerwhite
+theme: rhythm
+region: header
+weight: -26
+provider: null
+plugin: 'block_content:52a10536-56b5-4eb7-8df9-33230c18ba31'
+settings:
+  id: 'block_content:52a10536-56b5-4eb7-8df9-33230c18ba31'
+  label: 'Header White'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/54
+    negate: false
+    context_mapping: {  }

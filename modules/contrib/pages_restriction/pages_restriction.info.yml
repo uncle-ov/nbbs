@@ -1,0 +1,13 @@
+name: Pages Restriction Access
+description: Restrict access from anonymous and regular users to configured pre-defined pages.
+type: module
+core_version_requirement: ^8 || ^9 || ^10
+package: User interface
+configure: pages_restriction.settings
+dependencies:
+  - 'drupal:system (>= 8.5)'
+
+# Information added by Drupal.org packaging script on 2023-04-17
+version: '2.0.0'
+project: 'pages_restriction'
+datestamp: 1681737738

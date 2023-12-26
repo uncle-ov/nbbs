@@ -1,0 +1,21 @@
+{% set cover_image = node.field_cover_image.entity.fileuri|file_url %}
+{% set logo = node.field_image.entity.fileuri|image_style('medium') %}
+{% if logo is empty %}
+  {% set logo = '/aeara/web/sites/default/files/styles/thumbnail/public/default_images/default-company.jpeg?itok=svPyoopD' %}
+{% endif %}
+
+<div
+  class="profile_header"
+   style="background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url({{cover_image}});"
+>
+  <div class="container">
+    <div class="title_area">
+      <img src="{{ logo }}" alt="{{ node.label }}" class="logo img-responsive" style="width: 100px; height: 100px;">
+      {{ title_prefix }}
+      <h1>{{ node.label }}</h1>
+      {{ title_suffix }}
+
+      <p>{{ node.field_category.value }} in <a style="color: inherit" href="http://localhost/aeara/web/businesses?f%5B0%5D=state_province%3A{{ node.field_address.administrative_area }}">{{ node.field_address.locality }}, {{ node.field_address.administrative_area }}</a></p>
+    </div>
+  </div>
+</div>

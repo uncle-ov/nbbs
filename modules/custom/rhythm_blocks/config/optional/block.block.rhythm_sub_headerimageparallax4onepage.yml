@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:7c4c579e-1361-49a3-a6d3-4f5f9529d16d'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_headerimageparallax4onepage
+theme: rhythm_sub
+region: header
+weight: -8
+provider: null
+plugin: 'block_content:7c4c579e-1361-49a3-a6d3-4f5f9529d16d'
+settings:
+  id: 'block_content:7c4c579e-1361-49a3-a6d3-4f5f9529d16d'
+  label: 'Header: Image Parallax 4 - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/4
+    negate: false
+    context_mapping: {  }

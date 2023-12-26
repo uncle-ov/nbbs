@@ -1,0 +1,16 @@
+/* Layout Builder */
+.one_page_view-wrap,
+.background-tab-setting,
+a[href="#animation_tab"]{
+  display: none !important;
+}
+
+#content{
+  clear: none !important;
+}
+.form-item label {
+  display: block;
+}
+.form-type-checkbox label{
+  display: inline-block;
+}

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: portfolio_650xauto_
+label: 'Portfolio (650xauto)'
+effects:
+  8038207a-34bc-4832-bd08-33169ec2e684:
+    uuid: 8038207a-34bc-4832-bd08-33169ec2e684
+    id: image_scale
+    weight: 1
+    data:
+      width: 650
+      height: null
+      upscale: false

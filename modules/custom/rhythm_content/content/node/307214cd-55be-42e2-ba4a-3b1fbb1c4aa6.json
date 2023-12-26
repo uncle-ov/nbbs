@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/45?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "45"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "307214cd-55be-42e2-ba4a-3b1fbb1c4aa6"
+        }
+    ],
+    "vid": [
+        {
+            "value": "52"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Typography",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480871738",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480871749",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480871749"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_container extra_classes=\"relative\" different_values=\"0\"]\r\n[nd_title different_values=\"0\" extra_classes=\"section-title mb-70 mb-sm-40\" size=\"h2\" title=\"Formating\" styled=\"0\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[row different_values=\"0\"]\r\n[col different_values=\"0\" tablet=\"6\"]\r\n[html different_values=\"0\" extra_classes=\"text\" format=\"nd_ckeditor\"]<h5 class=\"uppercase mb-30\">Paragraph<\/h5><p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Consectetur adipiscing elit. Integer posuere erat a ante. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. <\/p>[\/html]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\"]\r\n[nd_quote type=\"footer\" cite=\" Source Title\" different_values=\"0\" footer=\"Someone famous in\" testimonial=\"0\" style_margin_top=\"52\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<\/p>[\/html]\r\n[\/nd_quote]\r\n[\/col]\r\n[\/row]\r\n[nd_hr style_margin_top=\"20\" style_margin_bottom=\"60\" different_values=\"0\"]\r\n[\/nd_hr]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" extra_classes=\"text\" different_values=\"0\"]<h5 class=\"uppercase mb-30\">\tList UL<\/h5><ul><li>First item<\/li><li>Second item<\/li><li>Third item<ul><li>First item<\/li><li>Second item<\/li><li>Third item<\/li><\/ul><\/li><li>Fourth item<\/li><li>Fives item<\/li><\/ul>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" extra_classes=\"text\" different_values=\"0\"]<h5 class=\"uppercase mb-30\">List OL<\/h5><ol><li>First item<\/li><li>Second item<\/li><li>Third item<ol><li>First item<\/li><li>Second item<\/li><li>Third item<\/li><\/ol><\/li><li>Fourth item<\/li><li>Fives item<\/li><\/ol>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" extra_classes=\"text\" different_values=\"0\"]<h5 class=\"uppercase mb-30\">Emphasis<\/h5><p><small> This line of text is meant to be treated as fine print. <\/small><\/p><p><strong>Rendered as bold text<\/strong><\/p><p><em>Rendered as italicized text<\/em><\/p><p><span class=\"serif\">Rendered as italicized text<\/span><\/p>[\/html]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[nd_hr style_margin_top=\"140\" style_margin_bottom=\"140\" different_values=\"0\"]\r\n[\/nd_hr]\r\n[nd_container extra_classes=\"relative\" different_values=\"0\"]\r\n[nd_title different_values=\"0\" extra_classes=\"section-title mb-70 mb-sm-40\" size=\"h2\" title=\"Headings\" styled=\"0\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" extra_classes=\"align-center\" different_values=\"0\"]\r\n[nd_title different_values=\"0\" size=\"h1\" title=\"Heading 1\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h2\" title=\"Heading 2\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h3\" title=\"Heading 3\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h4\" title=\"Heading 4\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h5\" title=\"Heading 5\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h6\" title=\"Heading 6\"]\r\n[\/nd_title]\r\n[\/col]\r\n[col tablet=\"4\" extra_classes=\"align-center\" different_values=\"0\"]\r\n[nd_title different_values=\"0\" size=\"h1\" title=\"Heading 1\" styled=\"0\" uppercase=\"1\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h2\" title=\"Heading 2\" styled=\"0\" uppercase=\"1\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h3\" title=\"Heading 3\" styled=\"0\" uppercase=\"1\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h4\" title=\"Heading 4\" styled=\"0\" uppercase=\"1\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h5\" title=\"Heading 5\" styled=\"0\" uppercase=\"1\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h6\" title=\"Heading 6\" styled=\"0\" uppercase=\"1\"]\r\n[\/nd_title]\r\n[\/col]\r\n[col tablet=\"4\" extra_classes=\"align-center\" different_values=\"0\"]\r\n[nd_title different_values=\"0\" size=\"h1\" title=\"Heading 1\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h2\" title=\"Heading 2\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h3\" title=\"Heading 3\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h4\" title=\"Heading 4\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h5\" title=\"Heading 5\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[nd_title different_values=\"0\" size=\"h6\" title=\"Heading 6\" styled=\"1\" uppercase=\"0\"]\r\n[\/nd_title]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

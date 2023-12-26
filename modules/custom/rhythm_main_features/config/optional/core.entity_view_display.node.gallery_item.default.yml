@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.gallery_item.field_gallery
+    - field.field.node.gallery_item.field_image
+    - node.type.gallery_item
+  module:
+    - image
+    - user
+id: node.gallery_item.default
+targetEntityType: node
+bundle: gallery_item
+mode: default
+content:
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_gallery: true
+  langcode: true

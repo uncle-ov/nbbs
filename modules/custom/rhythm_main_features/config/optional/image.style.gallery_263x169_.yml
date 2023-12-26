@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: gallery_263x169_
+label: 'Gallery (263x169)'
+effects:
+  8af97f08-0766-496f-8932-bcf9873f96e8:
+    uuid: 8af97f08-0766-496f-8932-bcf9873f96e8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 263
+      height: 169

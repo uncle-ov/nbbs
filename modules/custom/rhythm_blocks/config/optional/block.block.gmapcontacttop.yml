@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:7d6a15ef-a32a-4303-b9bd-721ae7fc6e2f'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: gmapcontacttop
+theme: rhythm
+region: header
+weight: -24
+provider: null
+plugin: 'block_content:7d6a15ef-a32a-4303-b9bd-721ae7fc6e2f'
+settings:
+  id: 'block_content:7d6a15ef-a32a-4303-b9bd-721ae7fc6e2f'
+  label: 'Gmap: Contact Top'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/75
+    negate: false
+    context_mapping: {  }

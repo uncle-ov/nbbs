@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:1411a6d8-cbeb-4474-b584-62163cc624d4'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headersliderbackground
+theme: rhythm
+region: header
+weight: -4
+provider: null
+plugin: 'block_content:1411a6d8-cbeb-4474-b584-62163cc624d4'
+settings:
+  id: 'block_content:1411a6d8-cbeb-4474-b584-62163cc624d4'
+  label: 'Header: Slider Background'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /home/11
+    negate: false
+    context_mapping: {  }

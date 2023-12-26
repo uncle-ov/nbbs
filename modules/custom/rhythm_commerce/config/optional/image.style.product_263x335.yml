@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: product_263x335
+label: 'Product (263x335)'
+effects:
+  c5e985d8-26d4-403e-aa2d-928fdbf06707:
+    uuid: c5e985d8-26d4-403e-aa2d-928fdbf06707
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 263
+      height: 335

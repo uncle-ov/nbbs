@@ -1,0 +1,6 @@
+{% if content %}
+  {{ content }}
+  <a href="cart" rel="nofollow" class="view-cart btn btn-mod btn-border btn-small btn-round">{{ 'View cart'|t }}</a>
+{% else %}
+  <div class="cart-empty-block">{{ 'Your shopping cart is empty.'|t }}</div>
+{% endif %}

@@ -1,0 +1,31 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.related_projects
+  module:
+    - node
+    - views
+  theme:
+    - rhythm
+id: views_block__related_projects_block_1
+theme: rhythm
+region: '-1'
+weight: -4
+provider: null
+plugin: 'views_block:related_projects-block_1'
+settings:
+  id: 'views_block:related_projects-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      nd_portfolio: nd_portfolio
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: portfolio_570x367_
+label: 'Portfolio (570x367)'
+effects:
+  48445371-2bb3-490f-bf8f-d4155f8485ff:
+    uuid: 48445371-2bb3-490f-bf8f-d4155f8485ff
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 570
+      height: 367

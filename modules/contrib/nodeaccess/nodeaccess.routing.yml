@@ -1,0 +1,19 @@
+nodeaccess.administration:
+  path: '/admin/config/people/nodeaccess'
+  defaults:
+    _form: '\Drupal\nodeaccess\Form\SettingsForm'
+    _title: 'Nodeaccess settings'
+  requirements:
+    _permission: 'administer nodeaccess'
+entity.node.grants:
+  path: '/node/{node}/grants'
+  defaults:
+    _form: '\Drupal\nodeaccess\Form\GrantsForm'
+    _title: 'Grants'
+  requirements:
+    _custom_access: '\Drupal\nodeaccess\Form\GrantsForm::access'
+  options:
+    _admin_route: TRUE
+    parameters:
+      node:
+        type: entity:node

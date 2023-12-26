@@ -1,0 +1,11 @@
+{% set item_title = node.title.value %}
+{% set field_image = node.field_image.entity.fileuri|file_url %}
+{% set field_image = node.field_image.entity.fileuri|file_url %}
+{% set item_link = url %}
+{% set cover_image = node.field_cover_image.entity.fileuri|file_url %}
+{% set category = node.field_category.value|raw %}
+{% set address = node.field_address %}
+
+<div class="">
+  {% include directory ~ '/templates/parts/card-business.html.twig' %}
+</div>

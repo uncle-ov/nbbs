@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/49?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "49"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "c62e2881-524f-4f04-83fb-2b6d1f21f73d"
+        }
+    ],
+    "vid": [
+        {
+            "value": "56"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Pricing 1",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480890754",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480892886",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480892392"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[row different_values=\"0\" extra_classes=\"mb-70 mb-xs-40\"]\r\n[col extra_classes=\"col-md-offset-2\" different_values=\"0\" desktop=\"8\"]\r\n[html different_values=\"0\" extra_classes=\"section-text align-center\" format=\"nd_ckeditor\"]Curabitur eu adipiscing lacus, a iaculis diam. Nullam placerat blandit auctor. Nulla accumsan ipsum et nibh rhoncus, eget tempus sapien ultricies. Donec mollis lorem vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula porttitor rutrum.[\/html]\r\n[\/col]\r\n[\/row]\r\n[row different_values=\"0\" extra_classes=\"multi-columns-row\"]\r\n[col tablet=\"4\" different_values=\"0\" desktop=\"4\" wide=\"4\"]\r\n[nd_pricing_table different_values=\"0\" button=\"Buy Now\" period=\"per month\" sign=\"$\" price=\"199\" title=\"Start\" icon=\"fa fa-paper-plane-o\" link=\"\/node\/48\" active=\"0\"]\r\n[nd_pricing_item different_values=\"0\" description=\"1 Gb Storage\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"3 Domain Names\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"5 FTP Users\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"Free Support\"]\r\n[\/nd_pricing_item]\r\n[\/nd_pricing_table]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\" desktop=\"4\" wide=\"4\"]\r\n[nd_pricing_table active=\"1\" different_values=\"0\" button=\"Buy Now\" period=\"month\" sign=\"$\" price=\"239\" title=\"Standard\" icon=\"fa fa-gift\"]\r\n[nd_pricing_item different_values=\"0\" description=\"3 Gb Storage\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"5 Domain Names\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"7 FTP Users\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"Free Support\"]\r\n[\/nd_pricing_item]\r\n[\/nd_pricing_table]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\" desktop=\"4\" wide=\"4\"]\r\n[nd_pricing_table different_values=\"0\" button=\"Buy Now\" period=\"month\" sign=\"$\" price=\"399\" title=\"Optima\" icon=\"fa fa-desktop\"]\r\n[nd_pricing_item different_values=\"0\" description=\"5 Gb Storage\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"9 Domain Names\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"15 FTP Users\"]\r\n[\/nd_pricing_item]\r\n[nd_pricing_item different_values=\"0\" description=\"Free Support\"]\r\n[\/nd_pricing_item]\r\n[\/nd_pricing_table]\r\n[\/col]\r\n[\/row]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

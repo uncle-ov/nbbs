@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - rhythm_cms
+  theme:
+    - rhythm
+id: rhythmprojectnextprev
+theme: rhythm
+region: content_full
+weight: -14
+provider: null
+plugin: nd_rhythm_prev_next
+settings:
+  id: nd_rhythm_prev_next
+  label: 'Rhythm: Project Next Prev'
+  provider: rhythm_cms
+  label_display: '0'
+  all_works_link: portfolio-boxed
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      nd_portfolio: nd_portfolio
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

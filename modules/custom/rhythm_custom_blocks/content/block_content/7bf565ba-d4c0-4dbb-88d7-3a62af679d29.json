@@ -1,0 +1,73 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/block\/6?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/basic"
+        }
+    },
+    "id": [
+        {
+            "value": "6"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "7bf565ba-d4c0-4dbb-88d7-3a62af679d29"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "6"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "basic"
+        }
+    ],
+    "info": [
+        {
+            "value": "Related Projects",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1481213604",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1481212870"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[html style_padding_top = \"140\"]<h4 class=\"font-alt mb-sm-40 mb-70 section-title \">Related Projects<\/h4>[\/html]\r\n[nd_block admin_url = \"admin\/structure\/block\/manage\/views_block__related_projects_block_1\" style_padding_bottom = \"60\"][\/nd_block]",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

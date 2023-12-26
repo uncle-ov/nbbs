@@ -1,0 +1,338 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/3?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/nd_blog"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/field_blog_category": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/2?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/9?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/8?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/field_images": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/section-bg-24.jpg"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/section-bg-3.jpg"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/field_tags": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/10?_format=hal_json",
+                "lang": "en"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/12?_format=hal_json",
+                "lang": "en"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/15?_format=hal_json",
+                "lang": "en"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "3"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "e5caf650-5937-495e-b2fd-1012f545a8f1"
+        }
+    ],
+    "vid": [
+        {
+            "value": "3"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "nd_blog"
+        }
+    ],
+    "title": [
+        {
+            "value": "Style in Web Design and Logo",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/field_blog_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/2?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/blog_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "59ea2970-18c9-4e9e-bf22-9a5333644bdd"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/9?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/blog_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "989a8ad2-99de-40b3-928a-22474d2f4dd3"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/8?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/blog_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "78a25b13-722c-4974-a260-7e0c5ca11944"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/field_images": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/section-bg-24.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "725d795a-68f0-4f26-8205-28d7b30eb26c"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/section-bg-24.jpg"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/section-bg-3.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c1e488db-179c-4078-9ed6-f950a44d73b7"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/section-bg-3.jpg"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/field_tags": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/10?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "4cbf4b4c-6554-4161-8b96-6e1d69112203"
+                    }
+                ],
+                "lang": "en"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/12?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e2555647-4703-413d-9810-a33c9cc821a2"
+                    }
+                ],
+                "lang": "en"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/15?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/tags"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "19f096b7-aa03-4a63-ae95-4edd334e3b6a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1479935645",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480024255",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1479935804"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.<\/p>\r\n\r\n<p>Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut&nbsp;dignissim consectetur, nulla erat ultrices purus, ut&nbsp;consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.<\/p>\r\n\r\n<blockquote>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a&nbsp;ante.<\/p>\r\n\r\n<p>&nbsp;SOMEONE FAMOUS IN&nbsp;<cite>SOURCE TITLE<\/cite><\/p>\r\n<\/blockquote>\r\n\r\n<p>Praesent ultricies ut ipsum non laoreet. Nunc ac&nbsp;<a href=\"http:\/\/rhythm.bestlooker.pro\/blog-single-sidebar-left.html#\">ultricies<\/a>&nbsp;leo. Nulla ac ultrices arcu. Nullam adipiscing lacus in consectetur posuere. Nunc malesuada tellus turpis, ac pretium orci molestie vel. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.<\/p>\r\n\r\n<ul>\r\n\t<li>First item of the list<\/li>\r\n\t<li>Second item of the list<\/li>\r\n\t<li>Third item of the list<\/li>\r\n<\/ul>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut&nbsp;dignissim consectetur, nulla erat ultrices purus, ut&nbsp;consequat sem elit non sem.<\/p>\r\n",
+            "format": "basic_html",
+            "summary": "<p>Summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.<\/p>\r\n\r\n<p>Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut&nbsp;dignissim consectetur, nulla erat ultrices purus, ut&nbsp;consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.<\/p>",
+            "lang": "en"
+        }
+    ],
+    "field_comments": [
+        {
+            "status": 2,
+            "cid": "1",
+            "last_comment_timestamp": "1480029712",
+            "last_comment_name": "",
+            "last_comment_uid": "1",
+            "comment_count": "1"
+        }
+    ],
+    "field_lead_text": [
+        {
+            "value": "<p>Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.<\/p>\r\n",
+            "format": "ckeditor"
+        }
+    ],
+    "field_second_title": [
+        {
+            "value": "Here is the big headline for your blog post"
+        }
+    ]
+}

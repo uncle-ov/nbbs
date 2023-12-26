@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d5849bbf-634c-46be-8079-41e31edc2f28'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headerspecialphotographyonepage
+theme: rhythm
+region: header
+weight: 5
+provider: null
+plugin: 'block_content:d5849bbf-634c-46be-8079-41e31edc2f28'
+settings:
+  id: 'block_content:d5849bbf-634c-46be-8079-41e31edc2f28'
+  label: 'Header: Special Photography - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/103
+    negate: false
+    context_mapping: {  }

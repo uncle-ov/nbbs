@@ -1,0 +1,11 @@
+name: 'Rhythm Blocks Step 1'
+description: 'Import Custom blocks content'
+package: NikaDevs
+core_version_requirement: ^8.8 || ^9 || ^10
+dependencies:
+  - default_content
+  - nikadevs_cms
+  - rhythm_main_features
+version: 8.x-1.0
+project: NikaDevs
+type: module

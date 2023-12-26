@@ -1,0 +1,144 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+<article{{ attributes }}>
+  <div>
+    <!-- Product Content -->
+    <div class="row mb-60 mb-xs-30">
+      <!-- Product Images -->
+      <div class="col-md-4 mb-md-30">
+        {{ product.variation_field_images }}
+      </div>
+      <!-- Product Description -->
+      <div class="col-sm-8 col-md-5 mb-xs-40">
+        {{ title_prefix }}
+        <h3 class="mt-0">{{ product.title }}</h3>
+        {{ title_suffix }}
+        <hr class="mt-0 mb-30"/>
+        <div class="row">
+          <div class="col-xs-6 lead mt-0 mb-20">
+            <del class="section-text">
+              {{ product.variation_field_old_price }}
+            </del>
+            {{ product.variation_price }}
+          </div>
+          <div class="col-xs-6 align-right section-text">
+            {{ product.field_rating }}
+            {% set comments = product.field_reviews['#items'].comment_count != NULL ? product.field_reviews['#items'].comment_count : 0 %}
+            ({{ comments }} {{ 'reviews'|t }})
+          </div>
+        </div>
+        <hr class="mt-0 mb-30"/>
+
+        <div class="section-text mb-30">
+          {{ product.variation_field_short_description }}
+        </div>
+        <hr class="mt-0 mb-30"/>
+
+        <div class="mb-30">
+          {{ product.variations }}
+          {% if product.variations is empty %}
+            {{ product.variation_commerce_variation_cart_form }}
+          {% endif %}
+        </div>
+        <hr class="mt-0 mb-30"/>
+
+        <div class="section-text small">
+          {{ product.variation_sku }}
+          {{ product.field_category }}
+          {{ product.field_tags }}
+        </div>
+      </div>
+      <!-- End Product Description -->
+
+      <!-- Features -->
+      <div class="col-sm-4 col-md-3 mb-xs-40">
+        {{ product.field_selling_points }}
+      </div>
+      <!-- End Features -->
+    </div>
+  </div>
+</article>
+
+<ul class="nav nav-tabs tpl-tabs animate">
+  <li class="active">
+    <a href="#one" data-toggle="tab" aria-expanded="true">
+      {{ 'Description'|t }}
+    </a>
+  </li>
+  <li class="none">
+    <a href="#two" data-toggle="tab" aria-expanded="false">
+      {{ 'Parameters'|t }}
+    </a>
+  </li>
+  <li class="none">
+    <a href="#three" data-toggle="tab" aria-expanded="false">
+      {{ 'Reviews'|t }}
+      ({{ comments }})
+    </a>
+  </li>
+</ul>
+
+<div class="tab-content tpl-tabs-cont">
+  <div class="tab-pane fade active in" id="one">
+    {{ product.variation_field_description }}
+  </div>
+  <div class="tab-pane fade" id="two">
+    <table class="table table-bordered table-striped">
+      <tbody>
+        <tr class="bold">
+          <td>{{ 'Parameter'|t }}</td><td>{{ 'Value'|t }}</td>
+        </tr>
+        <tr><td>{{ 'Size'|t }}</td><td>{{ product.variation_attributes.variation_attribute_size }}</td></tr>
+        <tr><td>{{ 'Color'|t }}</td><td>{{ product.variation_attributes.variation_attribute_color }}</td></tr>
+        <tr><td>{{ 'Waist'|t }}</td><td>{{ product.variation_field_waist }}</td></tr>
+        <tr><td>{{ 'Length'|t }}</td><td>{{ product.variation_field_length }}</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane fade" id="three">
+    {{ product.field_reviews }}
+  </div>
+    {{  product|without(
+    'field_reviews',
+    'variation_commerce_variation_cart_form',
+    'variation_field_waist',
+    'variation_field_length',
+    'field_tags',
+    'variation_attributes',
+    'title',
+    'variation_title',
+    'variation_field_images',
+    'field_category',
+    'variation_field_sale_text',
+    'field_rating',
+    'variation_price',
+    'variations',
+    'variation_field_old_price',
+    'variation_sku',
+    'variation_field_description',
+    'variation_field_short_description',
+    'variation_field_right_side_description',
+    'field_categories',
+    'field_selling_points',
+    'field_product_owner',
+    ) }}
+</div>

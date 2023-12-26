@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: blog_360x195_
+label: 'Blog (360x195)'
+effects:
+  0425f547-327a-4282-84c7-1f00b97f4267:
+    uuid: 0425f547-327a-4282-84c7-1f00b97f4267
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 195

@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:ca4e996c-222b-4e10-b248-09930f18481b'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: footer
+theme: rhythm
+region: footer
+weight: -11
+provider: null
+plugin: 'block_content:ca4e996c-222b-4e10-b248-09930f18481b'
+settings:
+  id: 'block_content:ca4e996c-222b-4e10-b248-09930f18481b'
+  label: Footer
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: 'gallery-images*'
+    negate: true
+    context_mapping: {  }

@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:4e4c5a44-2bf9-4b6a-9fc7-c4c77854c4f2'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headerspecialphotography
+theme: rhythm
+region: header
+weight: 4
+provider: null
+plugin: 'block_content:4e4c5a44-2bf9-4b6a-9fc7-c4c77854c4f2'
+settings:
+  id: 'block_content:4e4c5a44-2bf9-4b6a-9fc7-c4c77854c4f2'
+  label: 'Header: Special Photography'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/101
+    negate: false
+    context_mapping: {  }

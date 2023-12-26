@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/66?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "66"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "8390d0b3-44ba-4a3b-b889-fcf5c78d4652"
+        }
+    ],
+    "vid": [
+        {
+            "value": "73"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Services 1",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1481646488",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1485804706",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1481646507"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_container different_values=\"0\"]\r\n[nd_tabs type=\"alt\" centered=\"0\" different_values=\"0\"]\r\n[nd_tab title=\"Branding\" icon=\"icon-strategy\" icon_type=\"big\" active=\"1\" different_values=\"0\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_quote footer=\"JEFF BEZOS\" different_values=\"0\" type=\"footer\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>It doesn\u2019t matter how many times I have to click, as long as each click is a mindless, unambiguous choice.<\/p>[\/html]\r\n[\/nd_quote]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum volutpat nibh, accumsan purus. Lorem ipsum dolor sit semper amet, consectetur adipiscing elit. In maximus ligula metus pellentesque mattis.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Donec vel ultricies purus. Nam dictum sem, ipsum aliquam . Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero.[\/html]\r\n[\/col]\r\n[\/row]\r\n[\/nd_tab]\r\n[nd_tab title=\"WEB DESIGN\" icon=\"icon-desktop\" icon_type=\"big\" active=\"0\" different_values=\"0\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_quote footer=\"JEFF BEZOS\" different_values=\"0\" type=\"footer\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>A brand for a company is like a reputation for a person. You earn reputation by trying to do hard things well.<\/p>[\/html]\r\n[\/nd_quote]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum volutpat nibh, accumsan purus. Lorem ipsum dolor sit semper amet, consectetur adipiscing elit. In maximus ligula metus pellentesque mattis.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Donec vel ultricies purus. Nam dictum sem, ipsum aliquam . Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero.[\/html]\r\n[\/col]\r\n[\/row]\r\n[\/nd_tab]\r\n[nd_tab title=\"graphic design\" icon=\"icon-tools\" icon_type=\"big\" active=\"0\" different_values=\"0\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_quote footer=\"JEFF BEZOS\" different_values=\"0\" type=\"footer\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>A brand for a company is like a reputation for a person. You earn reputation by trying to do hard things well.<\/p>[\/html]\r\n[\/nd_quote]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum volutpat nibh, accumsan purus. Lorem ipsum dolor sit semper amet, consectetur adipiscing elit. In maximus ligula metus pellentesque mattis.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Donec vel ultricies purus. Nam dictum sem, ipsum aliquam . Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero.[\/html]\r\n[\/col]\r\n[\/row]\r\n[\/nd_tab]\r\n[nd_tab title=\"Development\" icon=\"icon-gears\" icon_type=\"big\" active=\"0\" different_values=\"0\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_quote footer=\"JEFF BEZOS\" different_values=\"0\" type=\"footer\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>A brand for a company is like a reputation for a person. You earn reputation by trying to do hard things well.<\/p>[\/html]\r\n[\/nd_quote]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum volutpat nibh, accumsan purus. Lorem ipsum dolor sit semper amet, consectetur adipiscing elit. In maximus ligula metus pellentesque mattis.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Donec vel ultricies purus. Nam dictum sem, ipsum aliquam . Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero.[\/html]\r\n[\/col]\r\n[\/row]\r\n[\/nd_tab]\r\n[nd_tab title=\"Photography\" icon=\"icon-camera\" icon_type=\"big\" active=\"0\" different_values=\"0\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_quote footer=\"JEFF BEZOS\" different_values=\"0\" type=\"footer\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>A brand for a company is like a reputation for a person. You earn reputation by trying to do hard things well.<\/p>[\/html]\r\n[\/nd_quote]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum volutpat nibh, accumsan purus. Lorem ipsum dolor sit semper amet, consectetur adipiscing elit. In maximus ligula metus pellentesque mattis.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]Donec vel ultricies purus. Nam dictum sem, ipsum aliquam . Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero.[\/html]\r\n[\/col]\r\n[\/row]\r\n[\/nd_tab]\r\n[\/nd_tabs]\r\n[\/nd_container]\r\n[nd_bg banner=\"0\" fid=\"44\" color=\"bg-dark\" slider=\"0\" different_values=\"0\" extra_classes=\"page-section\" style_margin_top=\"120\" full_height=\"0\" scroll_icon=\"0\" style_padding_top=\"0\" style_padding_bottom=\"0\" video_sound=\"0\"]\r\n[nd_container extra_classes=\"relative\" different_values=\"0\"]\r\n[row different_values=\"0\"]\r\n[col tablet=\"6\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<div class=\"mt-140 mt-lg-80 mb-140 mb-lg-80\"><div class=\"banner-content\"><h3 class=\"banner-heading font-alt\">Looking for exclusive digital services?<\/h3><div class=\"banner-decription\"> Proin fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Integer non dapibus diam, ac eleifend lectus. <\/div><div class=\"local-scroll\"><a class=\"btn btn-mod btn-w btn-medium btn-round\" href=\"#contact\">Lets talk<\/a><\/div><\/div><\/div>[\/html]\r\n[\/col]\r\n[col extra_style=\"visibility: visible; animation-name: fadeInUp;\" extra_classes=\"banner-image wow fadeInUp animated\" tablet=\"6\" different_values=\"0\"]\r\n[nd_image type=\"0\" different_values=\"0\" border=\"0\" shadow=\"0\" hover=\"None\" fid=\"45\"]\r\n[\/nd_image]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n[nd_container different_values=\"0\" style_padding_top=\"140\"]\r\n[nd_title title=\"WHY CHOOSE US?\" size=\"h4\" alignment=\" align-center\" styled=\"1\" uppercase=\"1\" different_values=\"0\" style_margin_bottom=\"70\"]\r\n[\/nd_title]\r\n[row extra_classes=\"multi-columns-row alt-features-grid\" different_values=\"0\"]\r\n[col different_values=\"0\" wide=\"4\" desktop=\"4\" tablet=\"6\"]\r\n[nd_feature type=\"alt-features\" color=\"black\" icon=\"icon-circle-compass\" text=\"Branding\" different_values=\"0\"]\r\n[html different_values=\"0\" format=\"nd_ckeditor\"]<p>Lorem ipsum dolor sit amet, c-r adipiscing elit. In maximus ligula semper metus pellentesque mattis. Maecenas volutpat, diam enim.<\/p>[\/html]\r\n[\/nd_feature]\r\n[\/col]\r\n[col different_values=\"0\" wide=\"4\" desktop=\"4\" tablet=\"6\"]\r\n[nd_feature type=\"alt-features\" different_values=\"0\" icon=\"icon-presentation\" text=\"Marketing\" color=\"black\"]\r\n[html different_values=\"0\" format=\"nd_ckeditor\"]<p>Proin fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend, lorem fermentum orci sit amet, iaculis libero.<\/p>[\/html]\r\n[\/nd_feature]\r\n[\/col]\r\n[col different_values=\"0\" wide=\"4\" desktop=\"4\" tablet=\"6\"]\r\n[nd_feature type=\"alt-features\" different_values=\"0\" icon=\"icon-browser\" text=\"web design\" color=\"black\"]\r\n[html different_values=\"0\" format=\"nd_ckeditor\"]<p>Curabitur iaculis accumsan augue, nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique porta. Nulla facilisi. Suspendisse ultricies eros blandit.<\/p>[\/html]\r\n[\/nd_feature]\r\n[\/col]\r\n[\/row]\r\n[\/nd_container]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

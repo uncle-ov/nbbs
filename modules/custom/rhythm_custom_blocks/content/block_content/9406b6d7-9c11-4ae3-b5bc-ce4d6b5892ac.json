@@ -1,0 +1,97 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/block\/8?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/basic"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/basic\/revision_user": [
+            {
+                "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "8"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "9406b6d7-9c11-4ae3-b5bc-ce4d6b5892ac"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "8"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "basic"
+        }
+    ],
+    "info": [
+        {
+            "value": "Gmap: Contact",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1481648399",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1481648399"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/basic\/revision_user": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_gmap type=\"roadmap\" overlay=\"1\" address=\"Belt Parkway, Queens, NY, United States\" different_values=\"0\"]\r\n[\/nd_gmap]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: gallery_360x232_
+label: 'Gallery (360x232)'
+effects:
+  1e24023b-d046-4e76-b038-730687af4194:
+    uuid: 1e24023b-d046-4e76-b038-730687af4194
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 232

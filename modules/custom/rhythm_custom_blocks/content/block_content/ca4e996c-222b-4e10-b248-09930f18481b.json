@@ -1,0 +1,97 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/block\/2?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/basic"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/basic\/revision_user": [
+            {
+                "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "id": [
+        {
+            "value": "2"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "ca4e996c-222b-4e10-b248-09930f18481b"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "2"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "basic"
+        }
+    ],
+    "info": [
+        {
+            "value": "Footer",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480889681",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1480889282"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/block_content\/basic\/revision_user": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_bg color=\"bg-gray\" slider=\"0\" banner=\"0\" different_values=\"0\" style_padding_bottom=\"60\" style_padding_top=\"140\"]\r\n[nd_container text_align=\"center\" different_values=\"0\"]\r\n[nd_div different_values=\"0\" style_margin_bottom=\"30\" animation=\"fadeInUp\"]\r\n[nd_image fid=\"22\" type=\"0\" hover=\"None\" shadow=\"0\" border=\"0\" different_values=\"0\" width=\"78\" height=\"30\"]\r\n[\/nd_image]\r\n[\/nd_div]\r\n[nd_icon icon=\"fa fa-facebook\" boxed=\"0\" different_values=\"0\" link=\"https:\/\/www.facebook.com\/nikadevs\" type=\"Bordered\"]\r\n[\/nd_icon]\r\n[nd_icon icon=\"fa fa-twitter\" boxed=\"0\" different_values=\"0\" link=\"https:\/\/www.twitter.com\/nikadevs\" type=\"Bordered\"]\r\n[\/nd_icon]\r\n[nd_icon icon=\"fa fa-behance\" boxed=\"0\" different_values=\"0\" link=\"https:\/\/www.twitter.com\/nikadevs\" type=\"Bordered\"]\r\n[\/nd_icon]\r\n[nd_icon icon=\"fa fa-linkedin\" boxed=\"0\" different_values=\"0\" link=\"https:\/\/www.twitter.com\/nikadevs\" type=\"Bordered\"]\r\n[\/nd_icon]\r\n[nd_icon icon=\"fa fa-pinterest\" boxed=\"0\" different_values=\"0\" link=\"https:\/\/www.twitter.com\/nikadevs\" type=\"Bordered\"]\r\n[\/nd_icon]\r\n[html format=\"nd_ckeditor\" different_values=\"0\" style_padding_top=\"110\"]<div class=\"footer-text footer\"><div class=\"footer-copy font-alt\">\t\t<a href=\"http:\/\/themeforest.net\/user\/NikaDevs\/portfolio\" target=\"_blank\">\u00a9 Rhythm 2016<\/a>.<\/div><div class=\"footer-made\">\t\tMade with love for great people.<\/div><\/div>[\/html]\r\n[\/nd_container]\r\n[\/nd_bg]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

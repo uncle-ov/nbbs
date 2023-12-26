@@ -1,0 +1,195 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/8?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/nd_blog"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/field_blog_category": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/8?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/7?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "8"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "ed1492ca-efca-40cc-b405-0c29e5910428"
+        }
+    ],
+    "vid": [
+        {
+            "value": "8"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "nd_blog"
+        }
+    ],
+    "title": [
+        {
+            "value": "POST WITH TEXT ONLY",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_blog\/field_blog_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/8?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/blog_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "78a25b13-722c-4974-a260-7e0c5ca11944"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/7?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/blog_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "07357e8a-c9a0-485a-8661-b9e99ed5a509"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480288167",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480288187",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480288187"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "<p>Suspendisse accumsan interdum tellus, eu imperdiet lacus consectetur sed. Aliquam in ligula ac lacus blandit commodo vel luctus quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras eu ultrices mauris.<\/p>\r\n",
+            "format": "ckeditor",
+            "summary": "",
+            "lang": "en"
+        }
+    ],
+    "field_comments": [
+        {
+            "status": "2",
+            "cid": "0",
+            "last_comment_timestamp": "1480288187",
+            "last_comment_name": null,
+            "last_comment_uid": "1",
+            "comment_count": "0"
+        }
+    ]
+}

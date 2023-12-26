@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b0bd13b5-c922-4792-945f-15414b01b7c3'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headertextrotatoronepage
+theme: rhythm
+region: header
+weight: 7
+provider: null
+plugin: 'block_content:b0bd13b5-c922-4792-945f-15414b01b7c3'
+settings:
+  id: 'block_content:b0bd13b5-c922-4792-945f-15414b01b7c3'
+  label: 'Header: Text Rotator - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/8
+    negate: false
+    context_mapping: {  }

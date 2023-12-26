@@ -1,0 +1,171 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Link;
+
+
+function drupal_get_title()
+{
+  $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+  $title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+  return $title;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function rhythm_cms_theme()
+{
+  return [
+    'rhythm_project_next_prev' => [
+      'variables' => ['prev' => '', 'next' => '', 'all_works' => ''],
+    ],
+    'rhythm_cms_images_one_main_formatter' => [
+      'variables' => [
+        'main_image' => '',
+        'small_images' => '',
+        'col' => '',
+        'zoom' => '',
+        'sale' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function rhythm_cms_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  // Product page, Shop 2 Columns.
+  if (strpos($form_id, 'commerce_order_item_default_add_to_cart') !== FALSE) {
+    $product = \Drupal::routeMatch()->getParameter('commerce_product');
+    // Alter button only for Product list (view).
+    if (is_null($product)) {
+      $form['actions']['submit']['#attributes']['class'][] = 'hidden';
+      $markup = new FormattableMarkup(
+        '<button class="btn btn-mod btn-gray btn-round"><i class="@icon"></i> @text</button>',
+        ['@icon' => 'fa fa-shopping-cart', '@text' => t('Add to cart')]
+      );
+      $form['add_to_cart'] = [
+        '#type' => 'item',
+        '#markup' => $markup,
+      ];
+    }
+  }
+
+  // Related Products.
+  if (strpos($form_id, 'commerce_order_item_default_variation_cart_form') !== FALSE) {
+    $form['quantity']['#attributes']['class'][] = 'hidden';
+    $form['actions']['submit']['#attributes']['class'][] = 'hidden';
+    $markup = new FormattableMarkup(
+      '<button class="btn btn-mod btn-gray btn-round"><i class="@icon"></i> @text</button>',
+      ['@icon' => 'fa fa-shopping-cart', '@text' => t('Add to cart')]
+    );
+    $form['add_to_cart'] = [
+      '#type' => 'item',
+      '#markup' => $markup,
+    ];
+  }
+
+  if (strpos($form_id, 'views_form_commerce_cart_form_default') !== FALSE) {
+    $form['actions']['submit']['#attributes']['class'] = ['btn-small', 'btn-gray', 'btn', 'btn-mod', 'btn-round', 'form-submit'];
+    $form['actions']['checkout']['#attributes']['class'] = ['btn-small', 'btn-gray', 'btn', 'btn-mod', 'btn-round', 'form-submit'];
+  }
+
+  switch ($form_id) {
+    case 'user_login_form':
+      $form['#prefix'] = '<div class = "row mt-20"><div class = "col-md-4 col-md-offset-4">';
+      $form['#suffix'] = '</div></div>';
+      $form['name']['#attributes']['placeholder'] = t('Username');
+      $form['pass']['#attributes']['placeholder'] = t('E-mail');
+      unset($form['name']['#description'], $form['pass']['#description']);
+      $form['actions']['#prefix'] = '<div class="cf-left-col"><div class="form-tip pt-20">' . Link::createFromRoute(t('Forgot Password?'), 'user.pass')->toString() . '</div></div><div class="cf-right-col"><div class="align-right pt-10">';
+      $form['actions']['#suffix'] = '</div></div>';
+      break;
+    case 'user_pass':
+      $form['#prefix'] = '<div class = "row mt-20"><div class = "col-md-4 col-md-offset-4">';
+      $form['#suffix'] = '</div></div>';
+      $form['actions']['submit']['#attributes']['class'] = array('btn-full');
+      break;
+    case 'user_register_form':
+      $form['#prefix'] = '<div class = "row mt-20"><div class = "col-md-4 col-md-offset-4">';
+      $form['#suffix'] = '</div></div>';
+      unset($form['account']['name']['#description'], $form['account']['mail']['#description']);
+      $form['actions']['submit']['#attributes']['class'] = array('btn-full');
+      break;
+    case 'search_block_form':
+      $form['keys']['#prefix'] = '<div class = "search-wrap"><span class="search-button button-js animate" type="submit" title="' . t('Start Search') . '"><i class="fa fa-search"></i></span>';
+      $form['keys']['#suffix'] = '</div>';
+      $form['actions']['#attributes']['class'] = array('hidden');
+      break;
+    case 'comment_default_reviews_form':
+      $form['actions']['submit']['#value'] = t('Send review');
+      break;
+    case 'commerce_checkout_flow_multistep_default':
+      $form['actions']['next']['#attributes']['class'] = ['btn-small', 'btn-gray', 'btn', 'btn-mod', 'btn-round', 'form-submit'];
+      break;
+  }
+}
+
+/**
+ * @param $variables
+ */
+function template_preprocess_views_view_nd_portfolio_filter(&$variables)
+{
+  $view = $variables['view'];
+  $rows = $variables['rows'];
+  $style = $view->style_plugin;
+  $options = $style->options;
+  $group = $view->storage->id() . '-' . $view->current_display;
+  foreach ($rows as $id => $row) {
+    array_unshift($row['#theme'], 'views_view_fields__nd_portfolio_filter');
+    $rows[$id]['content'] = \Drupal::service('renderer')->render($row);
+  }
+  $variables['rows'] = $rows;
+
+  $taxonomies = array();
+
+  foreach ($variables['view']->result as $id => $result) {
+    if ($taxonomy = $result->_entity->get($options['field_filter'])->getValue()) {
+      $row_taxonomies = '';
+      foreach ($taxonomy as $term) {
+        if (!isset($taxonomies[$term['target_id']])) {
+          $term_entity = \Drupal\taxonomy\Entity\Term::load($term['target_id']);
+          if ($term_entity) {
+            $term_name = $term_entity->get('name')->value;
+            $taxonomies[$term['target_id']] = ['name' => $term_name, 'id' => $group . '-' . $term['target_id']];
+          }
+        }
+        //        else {
+//          $term_name = $taxonomies[$term['target_id']]['name'];
+//        }
+        $row_taxonomies .= $group . '-' . $term['target_id'] . ' ';
+      }
+      $variables['rows'][$id]['taxonomies'] = $row_taxonomies;
+    }
+  }
+  $options['taxonomies'] = $taxonomies;
+  // Update options for twig.
+  $variables['options'] = $options;
+}
+
+/**
+ * Implements hook_views_pre_render().
+ * @param \Drupal\views\ViewExecutable $view
+ */
+//function rhythm_cms_views_pre_render(\Drupal\views\ViewExecutable $view) {
+//  switch ($view->id()) {
+//    case 'product_details_2':
+//      // @todo: title parameter %1 in View not works.
+//      global $breadcrumb_page_title;
+//      foreach($view->result as $value) {
+//        $title = $value->_entity->get('title')->value;
+//        $view->setTitle($title);
+//        $breadcrumb_page_title = $title;
+//      }
+//      break;
+//  }
+//}

@@ -1,0 +1,155 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.product
+    - field.field.commerce_product_variation.product.attribute_color
+    - field.field.commerce_product_variation.product.attribute_size
+    - field.field.commerce_product_variation.product.field_description
+    - field.field.commerce_product_variation.product.field_images
+    - field.field.commerce_product_variation.product.field_length
+    - field.field.commerce_product_variation.product.field_old_price
+    - field.field.commerce_product_variation.product.field_right_side_description
+    - field.field.commerce_product_variation.product.field_sale_text
+    - field.field.commerce_product_variation.product.field_short_description
+    - field.field.commerce_product_variation.product.field_waist
+    - image.style.product_main_360x459
+  module:
+    - commerce_price
+    - commerce_variation_cart_form
+    - rhythm_cms
+    - text
+third_party_settings:
+  commerce_variation_cart_form:
+    combine: '1'
+id: commerce_product_variation.product.default
+targetEntityType: commerce_product_variation
+bundle: product
+mode: default
+content:
+  attribute_color:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  attribute_size:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  commerce_variation_cart_form:
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_description:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_images:
+    weight: 4
+    label: hidden
+    settings:
+      image_style: product_main_360x459
+      image_style_small: product_small_68x86
+      col: '3'
+      zoom: '1'
+      image_link: ''
+    third_party_settings: {  }
+    type: rhythm_cms_images_one_main
+    region: content
+  field_length:
+    weight: 12
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_old_price:
+    weight: 9
+    label: hidden
+    settings:
+      strip_trailing_zeroes: false
+      display_currency_code: false
+    third_party_settings: {  }
+    type: commerce_price_default
+    region: content
+  field_right_side_description:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_sale_text:
+    weight: 8
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_short_description:
+    weight: 10
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_waist:
+    weight: 11
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  price:
+    label: hidden
+    type: commerce_price_default
+    weight: 3
+    region: content
+    settings:
+      strip_trailing_zeroes: false
+      display_currency_code: false
+    third_party_settings: {  }
+  qty_increments:
+    type: number_decimal
+    weight: 13
+    region: content
+    label: inline
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+  sku:
+    label: inline
+    type: string
+    weight: 5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  product_id: true

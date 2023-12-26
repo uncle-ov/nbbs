@@ -1,0 +1,73 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/block\/5?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/basic"
+        }
+    },
+    "id": [
+        {
+            "value": "5"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "653038ca-8c0b-4717-99d5-c3acc664d7af"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "5"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "basic"
+        }
+    ],
+    "info": [
+        {
+            "value": "Header White Transparent",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480966882",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1480942697"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_menu menu=\"main-menu\" type=\"white\" transparent=\"1\" different_values=\"0\" fid=\"24\" search=\"1\" cart=\"0\" language=\"1\"]\r\n[\/nd_menu]\r\n[nd_header fid=\"25\" type=\"bg-light-alfa-30\" breadcrumbs=\"1\" description=\"LOREM IPSUM DOLOR SIT AMET CONSECTETUR\" different_values=\"0\" size=\"home-section parallax-2 fixed-height-small\"]\r\n[\/nd_header]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

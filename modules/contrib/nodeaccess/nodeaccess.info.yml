@@ -1,0 +1,14 @@
+name: Nodeaccess
+description: Provides per node access control.
+package: Access control
+configure: nodeaccess.administration
+type: module
+core_version_requirement: ^8.8 || ^9 || ^10
+
+dependencies:
+  - drupal:node
+
+# Information added by Drupal.org packaging script on 2023-02-11
+version: '2.0.0-alpha2'
+project: 'nodeaccess'
+datestamp: 1676128519

@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:24110089-987a-4a14-a6ed-89553666f7df'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headersliderbackgroundonepage
+theme: rhythm
+region: header
+weight: -3
+provider: null
+plugin: 'block_content:24110089-987a-4a14-a6ed-89553666f7df'
+settings:
+  id: 'block_content:24110089-987a-4a14-a6ed-89553666f7df'
+  label: 'Header: Slider Background - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/11
+    negate: false
+    context_mapping: {  }

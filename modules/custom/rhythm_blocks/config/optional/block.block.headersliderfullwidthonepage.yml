@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d1a11564-3551-4347-b5bc-3a8cd1b894ed'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headersliderfullwidthonepage
+theme: rhythm
+region: header
+weight: 1
+provider: null
+plugin: 'block_content:d1a11564-3551-4347-b5bc-3a8cd1b894ed'
+settings:
+  id: 'block_content:d1a11564-3551-4347-b5bc-3a8cd1b894ed'
+  label: 'Header: Slider Fullwidth - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/10
+    negate: false
+    context_mapping: {  }

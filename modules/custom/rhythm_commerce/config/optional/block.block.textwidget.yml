@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d2b2af3a-4ec7-42e3-86b9-a30492bc3970'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: textwidget
+theme: rhythm_sub
+region: sidebar
+weight: -22
+provider: null
+plugin: 'block_content:d2b2af3a-4ec7-42e3-86b9-a30492bc3970'
+settings:
+  id: 'block_content:d2b2af3a-4ec7-42e3-86b9-a30492bc3970'
+  label: 'Text Widget'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/shop*\r\n/blog-item/new-web-design-trends-2015-year\r\n/blog-item/minimalistic-design-forever\r\n/blog-sidebar-left\r\n/blog-sidebar-right\r\n/blog-2-columns\r\n/blog-masonry-2-columns"
+    negate: false
+    context_mapping: {  }

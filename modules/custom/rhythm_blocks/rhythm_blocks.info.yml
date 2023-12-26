@@ -1,0 +1,20 @@
+name: 'Rhythm Blocks Step 2'
+description: 'Assign blocks to regions'
+type: module
+core_version_requirement: ^8.8 || ^9 || ^10
+dependencies:
+  - block
+  - block_content
+  - help
+  - image
+  - language
+  - node
+  - rhythm_cms
+  - search
+  - system
+  - user
+  - views
+  - rhythm_main_features
+  - rhythm_custom_blocks
+version: 8.x-1.0
+package: NikaDevs

@@ -1,0 +1,145 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.product
+    - entity_browser.browser.browse_files
+    - field.field.commerce_product_variation.product.attribute_color
+    - field.field.commerce_product_variation.product.attribute_size
+    - field.field.commerce_product_variation.product.field_description
+    - field.field.commerce_product_variation.product.field_images
+    - field.field.commerce_product_variation.product.field_length
+    - field.field.commerce_product_variation.product.field_old_price
+    - field.field.commerce_product_variation.product.field_right_side_description
+    - field.field.commerce_product_variation.product.field_sale_text
+    - field.field.commerce_product_variation.product.field_short_description
+    - field.field.commerce_product_variation.product.field_waist
+  module:
+    - commerce_price
+    - entity_browser
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_properties:
+      children:
+        - field_waist
+        - field_length
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: true
+        required_fields: true
+      label: Properties
+id: commerce_product_variation.product.default
+targetEntityType: commerce_product_variation
+bundle: product
+mode: default
+content:
+  attribute_color:
+    type: options_select
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  attribute_size:
+    type: options_select
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_description:
+    weight: 10
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_images:
+    weight: 6
+    settings:
+      entity_browser: browse_files
+      field_widget_remove: true
+      selection_mode: selection_append
+      preview_image_style: thumbnail
+      field_widget_edit: true
+      open: false
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_browser_file
+    region: content
+  field_length:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_old_price:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: commerce_price_default
+    region: content
+  field_right_side_description:
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_sale_text:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_short_description:
+    weight: 9
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_waist:
+    weight: 23
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  price:
+    type: commerce_price_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  sku:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  uid: true

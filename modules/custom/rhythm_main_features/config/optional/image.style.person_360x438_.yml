@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: person_360x438_
+label: 'Person (360x438)'
+effects:
+  54cadb7a-6f20-43b9-b74c-fb9b4f24409c:
+    uuid: 54cadb7a-6f20-43b9-b74c-fb9b4f24409c
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 438

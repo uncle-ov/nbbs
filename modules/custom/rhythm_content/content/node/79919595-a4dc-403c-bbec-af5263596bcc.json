@@ -1,0 +1,144 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/38?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/page"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "38"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "79919595-a4dc-403c-bbec-af5263596bcc"
+        }
+    ],
+    "vid": [
+        {
+            "value": "45"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "page"
+        }
+    ],
+    "title": [
+        {
+            "value": "Grid",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/page\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480845611",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480845629",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480845629"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[row different_values=\"0\"]\r\n[col different_values=\"0\" tablet=\"6\"]\r\n[nd_text_n_tooltip second_text=\" consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" tooltip_popup=\"Title text here\" tooltip=\"tooltip top\" first_text=\"Lorem ipsum dolor sit amet, \" title_size=\"H5\" title=\"One half\" different_values=\"0\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"6\"]\r\n[nd_text_n_tooltip title=\"One half\" title_size=\"H5\" first_text=\"Lorem ipsum dolor \" tooltip=\"tooltip bottom\" tooltip_popup=\"Title text here\" second_text=\" sit amet, consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" different_values=\"0\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[\/row]\r\n[nd_hr different_values=\"0\" style_padding_top=\"40\" style_padding_bottom=\"40\"]\r\n[\/nd_hr]\r\n[row different_values=\"0\"]\r\n[col different_values=\"0\" tablet=\"4\"]\r\n[nd_text_n_tooltip title=\"One third\" title_size=\"H5\" first_text=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" different_values=\"0\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"4\"]\r\n[nd_text_n_tooltip title=\"One third\" title_size=\"H5\" first_text=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" different_values=\"0\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"4\"]\r\n[nd_text_n_tooltip title=\"One third\" title_size=\"H5\" first_text=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" different_values=\"0\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[\/row]\r\n[nd_hr different_values=\"0\" style_padding_top=\"40\" style_padding_bottom=\"40\"]\r\n[\/nd_hr]\r\n[row different_values=\"0\"]\r\n[col different_values=\"0\" tablet=\"3\"]\r\n[nd_text_n_tooltip different_values=\"0\" first_text=\"Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" title_size=\"H5\" title=\"One fourth\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"3\"]\r\n[nd_text_n_tooltip different_values=\"0\" first_text=\"Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" title_size=\"H5\" title=\"One fourth\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"3\"]\r\n[nd_text_n_tooltip different_values=\"0\" first_text=\"Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" title_size=\"H5\" title=\"One fourth\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[col different_values=\"0\" tablet=\"3\"]\r\n[nd_text_n_tooltip different_values=\"0\" first_text=\"Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie, sagittis elit ac, vulputate odio. Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. \" title_size=\"H5\" title=\"One fourth\"]\r\n[\/nd_text_n_tooltip]\r\n[\/col]\r\n[\/row]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

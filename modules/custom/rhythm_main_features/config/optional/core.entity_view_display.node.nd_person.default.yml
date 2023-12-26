@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.nd_person.body
+    - field.field.node.nd_person.field_image
+    - field.field.node.nd_person.field_position
+    - field.field.node.nd_person.field_social_links
+    - image.style.person_360x438_
+    - node.type.nd_person
+  module:
+    - image
+    - rhythm_cms
+    - text
+    - user
+id: node.nd_person.default
+targetEntityType: node
+bundle: nd_person
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: person_360x438_
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_position:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_social_links:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: rhythm_cms_social_link
+hidden:
+  langcode: true
+  links: true

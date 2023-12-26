@@ -1,0 +1,139 @@
+{
+    "name": "drupal/recommended-project",
+    "description": "Project template for Drupal projects with a relocated document root",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/drupal",
+    "support": {
+        "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
+        "chat": "https://www.drupal.org/node/314178"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "composer/installers": "^2.0",
+        "drupal/address": "^1.12",
+        "drupal/admin_toolbar": "^3.4",
+        "drupal/bartik": "^1.0",
+        "drupal/ckeditor": "^1.0",
+        "drupal/classy": "^1.0",
+        "drupal/color": "^1.0",
+        "drupal/commerce": "^2.36",
+        "drupal/commerce_shipping": "^2.6",
+        "drupal/commerce_variation_cart_form": "^1.4",
+        "drupal/context": "^5.0@RC",
+        "drupal/core-composer-scaffold": "^10.1",
+        "drupal/core-project-message": "^10.1",
+        "drupal/core-recommended": "^10.1",
+        "drupal/default_content": "^2.0@alpha",
+        "drupal/dropzonejs": "^2.8",
+        "drupal/entity_browser": "^2.9",
+        "drupal/entity_embed": "^1.4",
+        "drupal/entity_type_clone": "^4.0",
+        "drupal/facets": "^2.0",
+        "drupal/field_group": "^3.4",
+        "drupal/file_browser": "^1.4",
+        "drupal/formblock": "^2.0@beta",
+        "drupal/hal": "^2.0",
+        "drupal/inline_entity_form": "^1.0@RC",
+        "drupal/node_view_permissions": "^1.6",
+        "drupal/nodeaccess": "^2.0@alpha",
+        "drupal/pages_restriction": "^2.0",
+        "drupal/pathauto": "^1.11",
+        "drupal/permissions_by_term_redirect": "^3.0",
+        "drupal/publishcontent": "^1.6",
+        "drupal/quickedit": "^1.0",
+        "drupal/rdf": "^2.0",
+        "drupal/search_api": "^1.29",
+        "drupal/seven": "^1.0",
+        "drupal/shortcode": "^2.0",
+        "drupal/twig_tweak": "^3.2",
+        "drupal/twig_vardumper": "^3.1",
+        "drupal/votingapi": "^3.0@beta",
+        "drupal/webform": "^6.2@beta",
+        "drush/drush": "12.x",
+        "wikimedia/composer-merge-plugin": "^2.1"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "wikimedia/composer-merge-plugin": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "./"
+            }
+        },
+        "installer-paths": {
+            "./core": [
+                "type:drupal-core"
+            ],
+            "./libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "./modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "./profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "./themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "./modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "./profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "./themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        },
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                         </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+                "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Install the site: https://www.drupal.org/docs/installing-drupal",
+                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                "  * Get support: https://www.drupal.org/support",
+                "  * Get involved with the Drupal community:",
+                "      https://www.drupal.org/getting-involved",
+                "  * Remove the plugin that prints this message:",
+                "      composer remove drupal/core-project-message"
+            ]
+        },
+        "merge-plugin": {
+            "include": [
+                "./modules/contrib/webform/composer.libraries.json"
+            ]
+        }
+    }
+}

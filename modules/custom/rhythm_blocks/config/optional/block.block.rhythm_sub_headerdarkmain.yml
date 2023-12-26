@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0b6370a9-be73-4701-bb5b-719f350f0927'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_headerdarkmain
+theme: rhythm_sub
+region: header
+weight: -28
+provider: null
+plugin: 'block_content:0b6370a9-be73-4701-bb5b-719f350f0927'
+settings:
+  id: 'block_content:0b6370a9-be73-4701-bb5b-719f350f0927'
+  label: 'Header Dark MAIN'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/48\r\n/node/54\r\n/node/55\r\n/node/101\r\n/node/103\r\ncontent/contact-1\r\ncontent/contact-2\r\ncontent/landing-page\r\ncontent/main-demo\r\ncontent/all-demos\r\ncontent/about-us-1\r\ncontent/services-1\r\ncontent/services-2\r\ncontent/services-3\r\ncontent/team-1\r\ncontent/faq-1\r\ncontent/faq-2\r\ncontent/pricing-1\r\ngallery*\r\nportfolio-promo\r\nblog*\r\nportfolio-item*\r\n<front>\r\n/home/*\r\n/onepage/*\r\n/node/102"
+    negate: true
+    context_mapping: {  }

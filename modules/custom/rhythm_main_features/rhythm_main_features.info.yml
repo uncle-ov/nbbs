@@ -1,0 +1,32 @@
+name: 'Main Features'
+description: "Node types, views, image styles and other elements for Rhythm theme.\r\n"
+type: module
+core_version_requirement: ^8.8 || ^9 || ^10
+dependencies:
+  - block
+  - block_content
+  - comment
+  - editor
+  - entity_browser
+  - entity_embed
+  - field
+  - file
+  - file_browser
+  - filter
+  - image
+  - language
+  - link
+  - menu_ui
+  - node
+  - path
+  - rhythm_cms
+  - shortcode
+  - system
+  - taxonomy
+  - text
+  - user
+  - views
+  - webform
+  - webform_node
+version: 8.x-1.1
+package: Rhythm

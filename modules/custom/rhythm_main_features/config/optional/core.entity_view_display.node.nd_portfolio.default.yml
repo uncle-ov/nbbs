@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.nd_portfolio.body
+    - field.field.node.nd_portfolio.field_category
+    - field.field.node.nd_portfolio.field_description
+    - field.field.node.nd_portfolio.field_images
+    - field.field.node.nd_portfolio.field_portfolio_category
+    - field.field.node.nd_portfolio.field_project
+    - field.field.node.nd_portfolio.field_project_link
+    - image.style.portfolio_952x_613
+    - node.type.nd_portfolio
+  module:
+    - rhythm_cms
+    - text
+    - user
+id: node.nd_portfolio.default
+targetEntityType: node
+bundle: nd_portfolio
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_description:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_images:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: portfolio_952x_613
+      image_link: ''
+    third_party_settings: {  }
+    type: rhythm_cms_images_slider
+hidden:
+  field_category: true
+  field_portfolio_category: true
+  field_project: true
+  field_project_link: true
+  langcode: true
+  links: true

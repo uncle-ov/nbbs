@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: gallery_555x357
+label: 'Gallery (555x357)'
+effects:
+  173db059-ca6a-46d7-84fc-3e15ad7f6e2b:
+    uuid: 173db059-ca6a-46d7-84fc-3e15ad7f6e2b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 555
+      height: 357

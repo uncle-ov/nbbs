@@ -1,0 +1,73 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/rhythm.nikadevs.com\/d8\/rhythm\/block\/9?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/block_content\/basic"
+        }
+    },
+    "id": [
+        {
+            "value": "9"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "7d6a15ef-a32a-4303-b9bd-721ae7fc6e2f"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": "9"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "basic"
+        }
+    ],
+    "info": [
+        {
+            "value": "Gmap: Contact Top",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1481648537",
+            "lang": "en"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "1481648537"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[nd_gmap type=\"roadmap\" overlay=\"0\" address=\"Belt Parkway, Queens, NY, United States\" different_values=\"0\"]\r\n[\/nd_gmap]\r\n ",
+            "format": "shortcodes",
+            "summary": "",
+            "lang": "en"
+        }
+    ]
+}

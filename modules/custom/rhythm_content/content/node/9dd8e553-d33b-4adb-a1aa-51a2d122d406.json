@@ -1,0 +1,384 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/d8.rhythm.nikadevs.com\/node\/13?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/nd_portfolio"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/revision_uid": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/field_category": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/28?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/29?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/field_images": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-9.jpg",
+                "lang": "en"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-9.jpg",
+                "lang": "en"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-10.jpg",
+                "lang": "en"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-10.jpg",
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/field_portfolio_category": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/25?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/24?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/field_project": [
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/17?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/19?_format=hal_json"
+            }
+        ]
+    },
+    "nid": [
+        {
+            "value": "13"
+        }
+    ],
+    "uuid": [
+        {
+            "value": "9dd8e553-d33b-4adb-a1aa-51a2d122d406"
+        }
+    ],
+    "vid": [
+        {
+            "value": "13"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "nd_portfolio"
+        }
+    ],
+    "title": [
+        {
+            "value": "Portrait",
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/revision_uid": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/user\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "cd4ab506-5336-4ccc-bc2b-1fd970c6686a"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/field_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/28?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "7b09da11-dad7-4754-ada1-5978b747d1ce"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/29?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "0e2447fb-30e7-4363-b081-4163a11b1e8e"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/field_images": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-9.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f6c2dc39-eb02-4d57-b866-910303d7019d"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-9.jpg"
+                    }
+                ],
+                "lang": "en"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-9.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "f6c2dc39-eb02-4d57-b866-910303d7019d"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-9.jpg"
+                    }
+                ],
+                "lang": "en"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-10.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "92a4f677-a72d-4962-93a6-77dadedaaabf"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-10.jpg"
+                    }
+                ],
+                "lang": "en"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-10.jpg"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "92a4f677-a72d-4962-93a6-77dadedaaabf"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/d8.rhythm.nikadevs.com\/sites\/rhythm.nikadevs.com\/files\/projects-10.jpg"
+                    }
+                ],
+                "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/field_portfolio_category": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/25?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/portfolio_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "34f0b551-25e6-430f-8c05-3676757569eb"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/24?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/portfolio_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "5cb59063-f2bc-4940-b830-0b98a802faf8"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/nd_portfolio\/field_project": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/17?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/project"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "5482971c-b169-4587-9690-b1a0bf0e66bd"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/d8.rhythm.nikadevs.com\/taxonomy\/term\/19?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/project"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "16bfca8c-a21d-4306-98a1-63129443f678"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "created": [
+        {
+            "value": "1480370156",
+            "lang": "en"
+        }
+    ],
+    "changed": [
+        {
+            "value": "1480371854",
+            "lang": "en"
+        }
+    ],
+    "promote": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "sticky": [
+        {
+            "value": "0",
+            "lang": "en"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "1480370373"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": "1",
+            "lang": "en"
+        }
+    ],
+    "body": [
+        {
+            "value": "[row different_values=\"0\" style_padding_top=\"60\"]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_title title=\"1. Case Study\" size=\"h5\" alignment=\" align-center\" styled=\"1\" uppercase=\"1\" color=\"black\" different_values=\"0\" spacing=\"ls-04\"]\r\n[\/nd_title]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, c-r adipiscing elit. In maximus ligula semper metus pellentesque mattis. Maecenas volutpat, diam enim.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_title title=\"2. RESULT\" size=\"h5\" alignment=\" align-center\" styled=\"1\" uppercase=\"1\" color=\"black\" different_values=\"0\" spacing=\"ls-04\"]\r\n[\/nd_title]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Proin fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend, lorem fermentum orci sit amet, iaculis libero.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_title title=\"3. EXPERIENCE\" size=\"h5\" alignment=\" align-center\" styled=\"1\" uppercase=\"1\" color=\"black\" different_values=\"0\" spacing=\"ls-04\"]\r\n[\/nd_title]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Curabitur iaculis accumsan augue, nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique porta. Nulla facilisi. Suspendisse ultricies eros blandit.<\/p>[\/html]\r\n[\/col]\r\n[\/row]\r\n[nd_hr style_margin_top=\"70\" style_margin_bottom=\"70\" different_values=\"0\"]\r\n[\/nd_hr]\r\n[row different_values=\"0\"]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[nd_title title=\"PROJECT DETAILS\" size=\"h5\" alignment=\" align-left\" styled=\"1\" uppercase=\"1\" color=\"gray\" different_values=\"0\" spacing=\"ls-02\" style_margin_top=\"0\"]\r\n[\/nd_title]\r\n[html format=\"nd_ckeditor\" different_values=\"0\" extra_classes=\"work-full-detail\"]<p><strong>CLIENT: <\/strong>ENVATO USERS<\/p><p><strong>DATE: <\/strong>1TH FEBRUERY, 2014<\/p><p><strong>ONLINE: <\/strong>WWW.RHYTHM.BESTLOOKER.PRO<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus ligula semper metus pellentesque mattis. Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum nibh volutpat, accumsan purus.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"4\" different_values=\"0\"]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero. Donec vel ultricies purus. Nam dictum sem, eu aliquam.<\/p>[\/html]\r\n[\/col]\r\n[\/row]\r\n ",
+            "format": "shortcodes",
+            "summary": "<p>Phasellus facilisis mauris vel velit molestie pellentesque. Donec rutrum, tortor ut elementum venenatis, purus magna bibendum nisl, ut accumsan ipsum erat eu sapien.<\/p>",
+            "lang": "en"
+        }
+    ],
+    "field_description": [
+        {
+            "value": "[row different_values=\"0\" style_padding_bottom=\"60\"]\r\n[col tablet=\"3\" different_values=\"0\"]\r\n[nd_title title=\"about\" size=\"h4\" alignment=\" align-left\" styled=\"1\" uppercase=\"1\" color=\"black\" different_values=\"0\"]\r\n[\/nd_title]\r\n[html format=\"nd_ckeditor\" different_values=\"0\"]<p>Lorem ipsum dolor sit amet, c-r adipiscing elit. In maximus ligula semper metus pellentesque mattis. Maecenas volutpat, diam enim.<\/p>[\/html]\r\n[\/col]\r\n[col tablet=\"3\" different_values=\"0\"]\r\n[nd_feature text=\"1. Discuss\" icon=\"icon-chat\" type=\"alt-features\" different_values=\"0\"]\r\n[\/nd_feature]\r\n[\/col]\r\n[col tablet=\"3\" different_values=\"0\"]\r\n[nd_feature text=\"2. Make\" icon=\"icon-browser\" type=\"alt-features\" different_values=\"0\"]\r\n[\/nd_feature]\r\n[\/col]\r\n[col tablet=\"3\" different_values=\"0\"]\r\n[nd_feature text=\"3. Product\" icon=\"icon-heart\" type=\"alt-features\" different_values=\"0\"]\r\n[\/nd_feature]\r\n[\/col]\r\n[\/row]\r\n ",
+            "format": "shortcodes"
+        }
+    ],
+    "field_project_link": [
+        {
+            "uri": "http:\/\/google.com",
+            "title": "View project",
+            "options": [
+
+            ]
+        }
+    ]
+}

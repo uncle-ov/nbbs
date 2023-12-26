@@ -1,0 +1,64 @@
+<?php
+
+function rhythm_sub_preprocess_html(&$variables)
+{
+  $node = \Drupal::request()->get('node');
+
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    $variables['node'] = $node;
+
+    $content_type = $node->getType();
+
+    if ($content_type == 'onboarding' && \Drupal::currentUser()->isAuthenticated()) {
+      $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/account');
+      $response->send();
+    }
+
+    if ($content_type == 'user_account' && !\Drupal::currentUser()->isAuthenticated()) {
+      $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/login');
+      $response->send();
+    }
+
+    if (strpos(\Drupal::request()->getRequestUri(), 'delivery-addresses') !== false) {
+      $user_id = \Drupal::currentUser()->id();
+      $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/user/' . $user_id . '/address-book');
+      $response->send();
+    }
+
+    if (strpos(\Drupal::request()->getRequestUri(), 'edit-my-profile') !== false) {
+      $user_id = \Drupal::currentUser()->id();
+      $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/user/' . $user_id . '/edit');
+      $response->send();
+    }
+  }
+
+  return $variables;
+}
+
+function rhythm_sub_preprocess_block(&$vars)
+{
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    $vars['node'] = $node;
+  }
+
+  return $vars;
+}
+
+function rhythm_sub_preprocess_views_view_table(&$vars)
+{
+  $vars['attributes']['class'][] = 'table table-striped shopping-cart-table';
+}
+
+function rhythm_sub_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  $form['revision_information']['#access'] = FALSE;
+}
+
+function rhythm_sub_user_login($account)
+{
+  // We want to redirect user on login.
+  $response = new RedirectResponse("/account");
+  $response->send();
+  return;
+}

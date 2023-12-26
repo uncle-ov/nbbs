@@ -1,0 +1,169 @@
+<?php
+
+use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function rhythm_shortcodes_theme() {
+  return [
+    'rhythm_cms_menu' => [
+      'variables' => [
+        'menu' => '',
+        'logo' => '',
+        'color' => 'dark fixed',
+        'search' => '',
+        'cart' => '',
+        'cart_count' => '',
+        'language' => FALSE,
+        'lang_code' => '',
+        'site_name' => '',
+      ],
+    ],
+    'rhythm_cms_menu_popup' => [
+      'variables' => [
+        'menu' => '',
+        'logo' => '',
+      ],
+    ]
+  ];
+}
+
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function rhythm_theme_registry_alter(&$theme_registry) {
+  $theme_registry['menu']['variables']['sub_class'] = '';
+}
+
+function render_menu($menu_name, $class) {
+  $menu_tree = \Drupal::menuTree();
+
+  // Build the typical default set of menu tree parameters.
+  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
+
+  // Load the tree based on this set of parameters.
+  $tree = $menu_tree->load($menu_name, $parameters);
+
+  // Transform the tree using the manipulators you want.
+  $manipulators = array(
+    // Only show links that are accessible for the current user.
+    array('callable' => 'menu.default_tree_manipulators:checkAccess'),
+    // Use the default sorting of menu links.
+    array('callable' => 'menu.default_tree_manipulators:generateIndexAndSort'),
+  );
+  $tree = $menu_tree->transform($tree, $manipulators);
+
+  // Finally, build a renderable array from the transformed tree.
+  $menu = $menu_tree->build($tree);
+  $menu['#sub_class'] = $class;
+
+  $menu = array('#markup' => \Drupal::service('renderer')->render($menu));
+
+  return \Drupal::service('renderer')->renderPlain($menu);
+}
+
+function _rhythm_shortcodes_shortcode_attributes($attrs) {
+  if(empty($attrs)) {
+    return '';
+  }
+  $allowed_attributes = ['class' => 'class', 'href' => 'href', 'id' => 'id', 'animation' => 'class', 'animation_delay' => 'data-wow-delay', 'data-background' => 'data-background', 'data-uri' => 'data-uri', 'style' => 'style', 'extra_style' => 'style', 'align' => 'align', 'target' => 'target'];
+  $attrs['class'] = isset($attrs['class']) ? $attrs['class'] : '';
+  if (isset($attrs['link']) && $attrs['link'] == \Drupal::service('path.current')->getPath()) {
+    $attrs['class'] .= ' active';
+  }
+  if (isset($attrs['animation']) && $attrs['animation']) {
+    $attrs['class'] .= ' wow';
+  }
+  if (isset($attrs['animation_delay']) && $attrs['animation_delay']) {
+    $attrs['animation_delay'] = number_format($attrs['animation_delay'] / 1000, 2) . 's';
+  }
+
+  $attrs['class'] .= isset($attrs['extra_classes']) ? ' ' . $attrs['extra_classes'] : '';
+  $output = '';
+  $attrs_array = ['class' => ''];
+  foreach($attrs as $name => $value) {
+    $value = trim($value);
+    if(strpos($name, 'style_') === 0) {
+      $value_style = str_replace(array('style_', '_'), array('', '-'), $name);
+      if(strpos($value_style, '-radius') !== FALSE) {
+        $value = strpos($value, '%') !== FALSE ? $value : (int)$value . 'px;';
+        $value = '-webkit-' . $value_style. ': ' . $value . '; -moz-' . $value_style. ': ' . $value . '; ' . $value_style. ': ' . $value . '';
+      }
+      elseif(strpos($name, 'margin') !== FALSE || strpos($name, 'padding') !== FALSE || strpos($name, 'width') !== FALSE || strpos($name, 'height') !== FALSE) {
+        $value = strpos($value, '%') !== FALSE ? $value : (int)$value . 'px;';
+        $value =  $value_style . ': ' . $value;
+      }
+      elseif(strpos($name, 'color') !== FALSE) {
+        $value =  $value_style . ': #' . trim($value, '#') . ';';
+      }
+      elseif(strpos($value_style, 'image') !== FALSE) {
+        $file = \Drupal\file\Entity\File::load($value);
+        $filename = isset($file->uri) ? \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri()) : '';
+        $value =  $value_style . ': url("' . $filename . '");';
+        $attrs_array['class'] .= ' bg-cover';
+      }
+      else {
+        $value = $value_style . ': ' . $value . ';';
+      }
+      $name = 'style';
+    }
+    if(isset($allowed_attributes[$name])) {
+      $name = $allowed_attributes[$name];
+      if ($value !== '') {
+        $attrs_array[$name] = (isset($attrs_array[$name]) ? $attrs_array[$name] . ' ' : '') . $value;
+      }
+    }
+    elseif(strpos($name, 'data-') === 0) {
+      if ($value !== '') {
+        $attrs_array[$name] = (isset($attrs_array[$name]) ? $attrs_array[$name] . ' ' : '') . $value;
+      }
+    }
+  }
+  if(isset($attrs['style_background_color']) && strtolower(trim($attrs['style_background_color'], '#')) == '000000') {
+    $attrs_array['class'] .= ' text-white';
+  }
+  if(isset($attrs['style_background_color']) && strtolower(trim($attrs['style_background_color'], '#')) == 'ffffff') {
+    $attrs_array['class'] .= ' text-black';
+  }
+  if(isset($attrs['text_align']) && $attrs['text_align']) {
+    $attrs_array['style'] = (isset($attrs_array['style']) ? $attrs_array['style'] : '') . ' text-align:'. $attrs['text_align'] . ';';
+    $attrs_array['class'] .= ' pi-text-center';
+  }
+
+  foreach($attrs_array as $name => $value) {
+    if($value) {
+      $output .= " $name = '$value'";
+    }
+  }
+  return $output;
+}
+
+function _rhythm_shortcodes_shortcode_slider_pager_image($image = '', $collect = 0) {
+  static $pager;
+  if(!$pager) {
+    $pager = array();
+  }
+  if($image) {
+    $pager[] = $image;
+  }
+  else {
+    $return = $pager;
+    $pager = array();
+    return $return;
+  }
+}
+
+function _rhythm_cart_count() {
+  global $user;
+  $quantity = 0;
+  $order = commerce_cart_order_load($user->uid);
+  if ($order) {
+    $wrapper = entity_metadata_wrapper('commerce_order', $order);
+    $line_items = $wrapper->commerce_line_items;
+    $quantity = commerce_line_items_quantity($line_items, commerce_product_line_item_types());
+  }
+  return $quantity;
+}

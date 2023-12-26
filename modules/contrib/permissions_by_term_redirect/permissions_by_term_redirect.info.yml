@@ -1,0 +1,12 @@
+name: 'Permissions by Term Redirect'
+type: module
+description: 'Sends users requesting term-restricted content to the login form and back to the requested content in case of a successful login.'
+core_version_requirement: ^9 || ^10
+package: 'Permissions by Term'
+dependencies:
+  - 'permissions_by_term:permissions_by_term'
+
+# Information added by Drupal.org packaging script on 2023-08-10
+version: '3.0.3'
+project: 'permissions_by_term_redirect'
+datestamp: 1691671811

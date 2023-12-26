@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:ac670683-9f00-4dc6-b4d4-4ff3497e48d0'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_headerfullwidthimageonepage
+theme: rhythm_sub
+region: header
+weight: -14
+provider: null
+plugin: 'block_content:ac670683-9f00-4dc6-b4d4-4ff3497e48d0'
+settings:
+  id: 'block_content:ac670683-9f00-4dc6-b4d4-4ff3497e48d0'
+  label: 'Header: Fullwidth Image - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/7
+    negate: false
+    context_mapping: {  }

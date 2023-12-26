@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the system module.
+ */
+
+use Drupal\Component\Utility\Crypt;
+use Drupal\Component\Utility\Environment;
+use Drupal\Component\FileSystem\FileSystem;
+use Drupal\Component\Utility\OpCodeCache;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Path\AliasStorage;
+use Drupal\Core\Url;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Entity\ContentEntityTypeInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\DrupalKernel;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Site\Settings;
+use Drupal\Core\StreamWrapper\PrivateStream;
+use Drupal\Core\StreamWrapper\PublicStream;
+use Drupal\system\SystemRequirements;
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Add the 'revision_default' field to all relevant entity types.
+ */
+function rhythm_cms_update_8500() {
+  // Used as a test function
+}

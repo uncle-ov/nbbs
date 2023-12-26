@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:8379ba0a-99cf-4d6c-92bc-b0713eabb68a'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm
+id: headerwithplaybuttononepage
+theme: rhythm
+region: header
+weight: 9
+provider: null
+plugin: 'block_content:8379ba0a-99cf-4d6c-92bc-b0713eabb68a'
+settings:
+  id: 'block_content:8379ba0a-99cf-4d6c-92bc-b0713eabb68a'
+  label: 'Header: With Play Button - OnePage'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /onepage/12
+    negate: false
+    context_mapping: {  }

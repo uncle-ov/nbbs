@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:6a9dbf83-77b0-4d60-81e6-4ae5da969bce'
+  module:
+    - block_content
+    - system
+  theme:
+    - rhythm_sub
+id: rhythm_sub_headerdarktransparent
+theme: rhythm_sub
+region: header
+weight: -27
+provider: null
+plugin: 'block_content:6a9dbf83-77b0-4d60-81e6-4ae5da969bce'
+settings:
+  id: 'block_content:6a9dbf83-77b0-4d60-81e6-4ae5da969bce'
+  label: 'Header Dark Transparent'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/48
+    negate: false
+    context_mapping: {  }

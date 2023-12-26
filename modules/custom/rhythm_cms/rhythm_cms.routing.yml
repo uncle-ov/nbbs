@@ -1,0 +1,14 @@
+rhythm_cms_home:
+  path: 'home/{type}'
+  defaults:
+    _controller: '\Drupal\rhythm_cms\Controller\RhythmCMSController::home_variants'
+    _title: 'Homepage'
+  requirements:
+    _permission: 'access content'
+rhythm_cms_onepage:
+  path: 'onepage/{type}'
+  defaults:
+    _controller: '\Drupal\rhythm_cms\Controller\RhythmCMSController::onepage_variants'
+    _title: 'Onepage'
+  requirements:
+    _permission: 'access content'

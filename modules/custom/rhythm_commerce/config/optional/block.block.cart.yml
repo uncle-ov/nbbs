@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cart
+    - system
+  theme:
+    - rhythm_sub
+id: cart
+theme: rhythm_sub
+region: sidebar
+weight: -28
+provider: null
+plugin: commerce_cart
+settings:
+  id: commerce_cart
+  label: 'Shopping cart'
+  provider: commerce_cart
+  label_display: visible
+  dropdown: true
+visibility:
+  request_path:
+    id: request_path
+    pages: '/shop*'
+    negate: false
+    context_mapping: {  }
