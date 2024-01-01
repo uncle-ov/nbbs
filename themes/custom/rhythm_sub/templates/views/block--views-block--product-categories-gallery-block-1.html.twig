@@ -1,16 +1,23 @@
 <div class="works-filter font-alt align-center">
   <a href="#" class="filter active" data-filter="*">{{ 'All categories'|t }}</a>
   {% for taxonomy in content['#view'].result %}
+  {% set parent = taxonomy._entity.fields.parent.value[0].target_id ? taxonomy._entity.fields.parent.value[0].target_id : 0 %}
+    {% if parent == 0 %}
     <a href="#" class="filter" data-filter=".parent_category-{{ taxonomy._entity.fields.tid.value }}">
       {{ taxonomy._entity.name[0].value }}
     </a>
+    {% endif %}
   {% endfor %}
 </div>
 
 <ul class="works-grid work-grid-{{ options.columns }} clearfix font-alt {{ options.classes }} {{ options.type }} {{ options.hover }} {{ options.title_show }} {{ options.grid_type }}" id="work-grid">
   {% for row in content['#view'].result %}
+  {% set parent = row._entity.fields.parent.value[0].target_id ? row._entity.fields.parent.value[0].target_id : 0 %}
+
+  {% if parent != 0 %}
     <li class="work-item mix parent_category-{{ 1 }}">
       {{ row._entity.name[0].value }}
     </li>
+  {% endif %}
   {% endfor %}
 </ul>
