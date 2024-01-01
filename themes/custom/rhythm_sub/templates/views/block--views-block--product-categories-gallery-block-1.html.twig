@@ -15,7 +15,7 @@
   {% set parent = row._entity.fields.parent.value[0].target_id ? row._entity.fields.parent.value[0].target_id : 0 %}
 
   {% if parent != 0 %}
-    <li class="work-item mix parent_category-{{ 1 }}">
+    <li class="work-item mix parent_category-{{ parent }}">
       {{ row._entity.name[0].value }}
     </li>
   {% endif %}
