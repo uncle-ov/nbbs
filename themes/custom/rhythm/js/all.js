@@ -979,10 +979,11 @@ function initPageSliders(){
 
 // Projects filtering
 var fselector = 0;
-var work_grid = $("#work-grid, #isotope");
 
 function initWorkFilter(){
     (function($){
+     var work_grid = $("#work-grid, #isotope");
+
      "use strict";
      var isotope_mode;
      if (work_grid.hasClass("masonry")){

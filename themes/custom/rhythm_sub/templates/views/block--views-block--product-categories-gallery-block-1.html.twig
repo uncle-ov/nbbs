@@ -1,4 +1,4 @@
-{% set shop_page = url('<front>')|render ~ '/shop' %}
+{% set shop_page = url('<front>')|render ~ 'shop' %}
 
 <div class="works-filter font-alt align-center">
   <a href="#" class="filter active" data-filter="*">{{ 'All categories'|t }}</a>
@@ -15,8 +15,7 @@
 <ul class="works-grid work-grid-5 clearfix font-alt   work-grid-gut  hide-titles " id="work-grid">
   {% for row in content['#view'].result %}
   {% set parent = row._entity.fields.parent.value[0].target_id ? row._entity.fields.parent.value[0].target_id : 0 %}
-  {% set query_structure = 'f[0]=categories:' ~ row._entity.fields.tid.value %}
-  {% set encoded_string = query_structure | rawurlencode %}
+  {% set encoded_string = 'f[0]' | rawurlencode ~ '=' ~ ('categories:' ~ row._entity.fields.tid.value) | rawurlencode %}
   {% set cat_url = shop_page ~ '?' ~ encoded_string %}
 
   {% if parent != 0 %}
@@ -30,9 +29,6 @@
           <h3 class="work-title">
             {{ row._entity.name[0].value }}
           </h3>
-          <div class="work-descr">
-            Select
-          </div>
         </div>
       </a>
     </li>
