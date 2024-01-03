@@ -11,6 +11,7 @@ class DawihFilters extends \Twig\Extension\AbstractExtension
       new \Twig\TwigFilter('add_http', array($this, 'addHttp')),
       new \Twig\TwigFilter('dawih_embed_video', array($this, 'dawihEmbedVideo')),
       new \Twig\TwigFilter('rawurlencode', array($this, 'dawihRawUrlEncode')),
+      new \Twig\TwigFilter('get_image_url', array($this, 'dawihGetImageUrl')),
     ];
   }
 
@@ -114,5 +115,15 @@ class DawihFilters extends \Twig\Extension\AbstractExtension
   public function dawihRawUrlEncode($string)
   {
     return rawurlencode($string);
+  }
+
+  public function dawihGetImageUrl($image)
+  {
+    // Get image url if available or return default url if default is set before returning null
+    if (!empty($image)) {
+      return $image->entity->url();
+    } else {
+      return null;
+    }
   }
 }
