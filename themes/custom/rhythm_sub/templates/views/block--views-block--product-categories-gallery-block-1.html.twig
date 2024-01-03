@@ -15,11 +15,14 @@
 <ul class="works-grid work-grid-5 clearfix font-alt   work-grid-gut  hide-titles " id="work-grid">
   {% for row in content['#view'].result %}
   {% set parent = row._entity.fields.parent.value[0].target_id ? row._entity.fields.parent.value[0].target_id : 0 %}
+  {% set query_structure = 'f[0]=categories:' ~ row._entity.fields.tid.value %}
+  {% set encoded_string = query_structure | rawurlencode %}
+  {% set cat_url = shop_page %}
 
   {% if parent != 0 %}
     <li class="work-item mix parent_category-{{ parent }}">
 
-      <a href="{{ shop_page ~ rawurlencode('f[0]=categories:' ~ row._entity.fields.tid.value ) }}" class="work-ext-link">
+      <a href="{{ cat_url }}" class="work-ext-link">
         <div class="work-img">
           <img loading="lazy" src="/sites/default/files/styles/portfolio_570x367_/public/2021-07/placeholder-5.jpg?itok=9-3lrm_G" width="570" height="367" alt="hippocampus" typeof="foaf:Image" />
         </div>
