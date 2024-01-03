@@ -117,13 +117,22 @@ class DawihFilters extends \Twig\Extension\AbstractExtension
     return rawurlencode($string);
   }
 
-  public function dawihGetImageUrl($image)
+  public function dawihGetImageUrl($image_field)
   {
-    // Get image url if available or return default url if default is set before returning null
-    if (!empty($image)) {
-      return $image->entity->url();
-    } else {
-      return null;
+    // Check if image exists and return it
+    if (!empty($image_field->entity)) {
+      return $image_field->entity->createFileUrl(false);
     }
+
+    // Check if default image exists and return it
+    $default_image = $image_field->getSetting('default_image');
+    if (!empty($default_image)) {
+      $image_uuid = $default_image['uuid'];
+      $image = \Drupal::service('entity.repository')->loadEntityByUuid('file', $image_uuid);
+
+      return $image->createFileUrl(false);
+    }
+
+    return null;
   }
 }

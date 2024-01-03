@@ -18,7 +18,7 @@
   {% set parent = row._entity.fields.parent.value[0].target_id ? row._entity.fields.parent.value[0].target_id : 0 %}
   {% set encoded_string = 'f[0]' | rawurlencode ~ '=' ~ ('categories:' ~ row._entity.fields.tid.value) | rawurlencode %}
   {% set cat_url = shop_page ~ '?' ~ encoded_string %}
-  {% set image_url = row._entity.field_image.entity|get_image_url %}
+  {% set image_url = row._entity.field_image|get_image_url %}
   {% set term_name = row._entity.name[0].value %}
 
   {% if parent != 0 %}
