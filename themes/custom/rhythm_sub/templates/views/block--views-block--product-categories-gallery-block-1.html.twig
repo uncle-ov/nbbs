@@ -10,7 +10,7 @@
   {% endfor %}
 </div>
 
-<ul class="works-grid work-grid-{{ options.columns }} clearfix font-alt {{ options.classes }} {{ options.type }} {{ options.hover }} {{ options.title_show }} {{ options.grid_type }}" id="work-grid">
+<ul class="works-grid work-grid-5 clearfix font-alt   work-grid-gut  hide-titles " id="work-grid">
   {% for row in content['#view'].result %}
   {% set parent = row._entity.fields.parent.value[0].target_id ? row._entity.fields.parent.value[0].target_id : 0 %}
 
