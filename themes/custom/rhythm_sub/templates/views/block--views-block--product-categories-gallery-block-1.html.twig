@@ -17,7 +17,7 @@
   {% set parent = row._entity.fields.parent.value[0].target_id ? row._entity.fields.parent.value[0].target_id : 0 %}
   {% set query_structure = 'f[0]=categories:' ~ row._entity.fields.tid.value %}
   {% set encoded_string = query_structure | rawurlencode %}
-  {% set cat_url = shop_page %}
+  {% set cat_url = shop_page ~ encoded_string %}
 
   {% if parent != 0 %}
     <li class="work-item mix parent_category-{{ parent }}">
