@@ -10,6 +10,7 @@ class DawihFilters extends \Twig\Extension\AbstractExtension
       new \Twig\TwigFilter('to_array_by_newline', array($this, 'toArrayByNewline')),
       new \Twig\TwigFilter('add_http', array($this, 'addHttp')),
       new \Twig\TwigFilter('dawih_embed_video', array($this, 'dawihEmbedVideo')),
+      new \Twig\TwigFilter('rawurlencode', array($this, 'dawihRawUrlEncode')),
     ];
   }
 
@@ -108,5 +109,10 @@ class DawihFilters extends \Twig\Extension\AbstractExtension
   public function dawihEmbedVideo($video_url)
   {
     return $this->embedVideo($video_url);
+  }
+
+  public function dawihRawUrlEncode($string)
+  {
+    return rawurlencode($string);
   }
 }
