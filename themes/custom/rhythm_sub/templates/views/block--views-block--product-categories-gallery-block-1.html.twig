@@ -1,4 +1,4 @@
-{% set shop_page = url('shop') %}
+{% set shop_page = url('<front>')|render ~ '/shop' %}
 
 <div class="works-filter font-alt align-center">
   <a href="#" class="filter active" data-filter="*">{{ 'All categories'|t }}</a>
