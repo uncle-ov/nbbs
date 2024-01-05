@@ -51,17 +51,44 @@
       $(this).hide();
     });
 
-    $('.user-login-form .form-item-pass').append('<span class="password__reveal"><i class="fa fa-eye-slash"></i></span>');
+    var show_password_markup = '<span class="password__reveal"><i class="fa fa-eye-slash"></i></span>';
+    var generate_password_markup = '<a href="#" class="generate_strong_password">Generate password</a>';
+
+    $('.user-register-form .js-form-item-pass-pass1').append(show_password_markup + generate_password_markup);
+    $('.user-login-form .form-item-pass').append(show_password_markup);
 
     $('.password__reveal').on('click', function(){
       var $pwd = $(this).prev('input');
-      if ($pwd.attr('type') === 'password') {
+      revealPassword($pwd);
+    });
+
+    $('.generate_strong_password').on('click', function(e){
+      e.preventDefault();
+      var password = generatePassword();
+      $pwd = $(this).prev('input');
+      
+      $pwd.val(password);
+      revealPassword($pwd, true);
+    });
+
+    function revealPassword($pwd, forceOpen = false) {
+      if ($pwd.attr('type') === 'password' || forceOpen) {
         $pwd.attr('type', 'text');
         $(this).html('<i class="fa fa-eye"></i>');
       } else {
         $pwd.attr('type', 'password');
         $(this).html('<i class="fa fa-eye-slash"></i>');
       }
-    });
+    }
+
+    function generatePassword() {
+      var length = 12,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()",
+        retVal = "";
+      for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+      }
+      return retVal;
+    }
   });
 })(jQuery);

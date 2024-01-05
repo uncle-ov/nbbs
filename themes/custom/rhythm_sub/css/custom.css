@@ -1259,5 +1259,17 @@ div.form-item .password__reveal {
 	line-height: 36px;
 	text-align: center;
 	cursor: pointer;
-	opacity: 0.7;
+	opacity: 0.5;
+}
+
+div.form-item .password__reveal:hover {
+	opacity: 1;
+}
+
+div.form-item .generate_strong_password {
+	position: absolute;
+	right: 0;
+	top: 6px;
+	font-size: 12px;
+	text-decoration: underline;
 }
