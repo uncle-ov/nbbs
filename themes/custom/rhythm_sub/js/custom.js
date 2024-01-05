@@ -72,12 +72,14 @@
     });
 
     function revealPassword($pwd, forceOpen = false) {
+      var passwordEye = $pwd.parent().find('.password__reveal');
+
       if ($pwd.attr('type') === 'password' || forceOpen) {
         $pwd.attr('type', 'text');
-        $(this).html('<i class="fa fa-eye"></i>');
+        passwordEye.html('<i class="fa fa-eye"></i>');
       } else {
         $pwd.attr('type', 'password');
-        $(this).html('<i class="fa fa-eye-slash"></i>');
+        passwordEye.html('<i class="fa fa-eye-slash"></i>');
       }
     }
 
