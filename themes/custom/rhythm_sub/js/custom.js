@@ -51,7 +51,7 @@
       $(this).hide();
     });
 
-    $('.form-item-pass').append('<span class="password__reveal"><i class="fa fa-eye-slash"></i></span>');
+    $('.user-login-form .form-item-pass').append('<span class="password__reveal"><i class="fa fa-eye-slash"></i></span>');
 
     $('.password__reveal').on('click', function(){
       var $pwd = $(this).prev('input');
