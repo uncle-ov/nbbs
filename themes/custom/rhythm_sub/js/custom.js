@@ -63,12 +63,12 @@
     });
 
     $('.generate_strong_password').on('click', function(e){
-      e.preventDefault();
       var password = generatePassword();
-      $pwd = $(this).prev('input');
+      $pwd = $(this).parent().find('input');
       
       $pwd.val(password);
       revealPassword($pwd, true);
+      e.preventDefault();
     });
 
     function revealPassword($pwd, forceOpen = false) {
