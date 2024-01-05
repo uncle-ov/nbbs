@@ -79,8 +79,8 @@ function rhythm_cms_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     case 'user_login_form':
       $form['#prefix'] = '<div class = "row mt-20"><div class = "col-md-4 col-md-offset-4">';
       $form['#suffix'] = '</div></div>';
-      $form['name']['#attributes']['placeholder'] = t('Username');
-      $form['pass']['#attributes']['placeholder'] = t('E-mail');
+      $form['name']['#attributes']['placeholder'] = t('Enter your username');
+      $form['pass']['#attributes']['placeholder'] = t('Enter your password');
       unset($form['name']['#description'], $form['pass']['#description']);
       $form['actions']['#prefix'] = '<div class="cf-left-col"><div class="form-tip pt-20">' . Link::createFromRoute(t('Forgot Password?'), 'user.pass')->toString() . '</div></div><div class="cf-right-col"><div class="align-right pt-10">';
       $form['actions']['#suffix'] = '</div></div>';

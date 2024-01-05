@@ -50,5 +50,18 @@
     $('.messages--error').click(function(){
       $(this).hide();
     });
+
+    $('.form-item-pass').append('<span class="password__reveal"><i class="fa fa-eye-slash"></i></span>');
+
+    $('.password__reveal').on('click', function(){
+      var $pwd = $(this).prev('input');
+      if ($pwd.attr('type') === 'password') {
+        $pwd.attr('type', 'text');
+        $(this).html('<i class="fa fa-eye"></i>');
+      } else {
+        $pwd.attr('type', 'password');
+        $(this).html('<i class="fa fa-eye-slash"></i>');
+      }
+    });
   });
 })(jQuery);
