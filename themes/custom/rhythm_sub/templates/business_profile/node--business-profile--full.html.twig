@@ -3,25 +3,25 @@
 
   <ul class="nav nav-tabs tpl-tabs animate">
     <li class="active">
-      <a href="#one" data-toggle="tab" aria-expanded="true">
+      <a id="openDetailsTab" href="#details" data-toggle="tab" aria-expanded="true">
         {{ 'Details'|t }}
       </a>
     </li>
     <li class="none">
-      <a href="#two" data-toggle="tab" aria-expanded="false">
+      <a id="openShopTab" href="#shop" data-toggle="tab" aria-expanded="false">
         {{ 'Shop'|t }}
       </a>
     </li>
     <li class="none">
-      <a href="#three" data-toggle="tab" aria-expanded="false">
-        {{ 'Reviews'|t }}
+      <a id="openReviewsTab" href="#reviews" data-toggle="tab" aria-expanded="false">
+        {{ 'Reviewss'|t }}
         ({{ content.comment['#items'].comment_count }})
       </a>
     </li>
   </ul>
 
   <div class="tab-content tpl-tabs-cont">
-    <div class="tab-pane fade active in" id="one">
+    <div class="tab-pane fade active in" id="details">
       {% if node.field_video_url.value %}
         <div class="row">
           <div class="col-md-12">
@@ -37,14 +37,12 @@
           </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="two">
+    <div class="tab-pane fade" id="shop">
       {{ drupal_block('views_block:business_products-block_1') }}
     </div>
-    <div class="tab-pane fade" id="three">
+    <div class="tab-pane fade" id="reviews">
       {{ content.comment }}
     </div>
   </div>
 
 </section>
-
-{# {{ vardumper(social_media) }} #}

@@ -92,5 +92,14 @@
       }
       return retVal;
     }
+
+    // Show the correct tab based on the hash in the URL on business profile page.
+    var hash = window.location.hash;
+    if (hash === '#shop') {
+      $('#openShopTab').click();
+    } else if (hash === '#reviews') {
+      $('#openReviewsTab').click();
+    }
+
   });
 })(jQuery);
