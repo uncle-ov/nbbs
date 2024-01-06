@@ -1,7 +1,7 @@
 {% set shop_page = url('<front>')|render ~ 'shop' %}
 
 <div class="works-filter font-alt align-center">
-  <a href="#" class="filter active" data-filter="*">{{ 'All categories'|t }}</a>
+  <a href="#" class="filter active" data-filter="*">{{ 'All items'|t }}</a>
   {% for taxonomy in content['#view'].result %}
   {% set parent = taxonomy._entity.fields.parent.value[0].target_id ? taxonomy._entity.fields.parent.value[0].target_id : 0 %}
     {% if parent == 0 %}

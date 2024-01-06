@@ -1121,6 +1121,11 @@ margin: 0;
 	top: 10px;
 }
 
+.messages__wrapper .messages--status a, .messages__wrapper .messages--error a {
+	text-decoration: underline;
+	opacity: .7;
+}
+
 #edit-comment-body-0-format {
 	display: none;
 }
