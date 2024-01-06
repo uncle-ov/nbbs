@@ -2,7 +2,7 @@
 {% set field_image = node.field_image.entity.fileuri|file_url %}
 {% set field_image = node.field_image.entity.fileuri|file_url %}
 {% set item_link = url %}
-{% set cover_image = node.field_cover_image.entity.fileuri|file_url %}
+{% set cover_image = node.field_cover_image|get_image_url %}
 {% set category = node.field_category.value|raw %}
 {% set address = node.field_address %}
 

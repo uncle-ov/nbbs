@@ -1,8 +1,5 @@
-{% set cover_image = node.field_cover_image.entity.fileuri|file_url %}
-{% set logo = node.field_image.entity.fileuri|image_style('medium') %}
-{% if logo is empty %}
-  {% set logo = '/aeara/web/sites/default/files/styles/thumbnail/public/default_images/default-company.jpeg?itok=svPyoopD' %}
-{% endif %}
+{% set cover_image = node.field_cover_image|get_image_url %}
+{% set logo = node.field_image|get_image_url %}
 
 <div
   class="profile_header"
