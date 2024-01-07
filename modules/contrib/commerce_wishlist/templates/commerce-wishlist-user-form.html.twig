@@ -12,7 +12,8 @@
 <div class="wishlist-user-form clearfix">
   {{ form.header }}
   <div class="wishlist-items">
-    {% for key, item in form.items if key|first != '#' %}
+    {% for key, item in form.items %}
+    {% if key|first != '#' %}
       <div class="wishlist-item">
         <div class="wishlist-item__entity">
           {{ item.entity }}
@@ -25,6 +26,7 @@
           {{ item.actions }}
         </div>
       </div>
+    {% endif %}
     {% endfor %}
   </div>
   {{ form|without('header', 'items') }}
