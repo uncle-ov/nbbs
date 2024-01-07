@@ -1,7 +1,8 @@
 /sites/default/settings.php
 .gitattributes
 .htaccess
-composer.lock
+error_log
+sites/default/files/*
 
 *.DS_Store*
 *.bak
