@@ -30,6 +30,12 @@ function rhythm_sub_preprocess_html(&$variables)
       $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/user/' . $user_id . '/edit');
       $response->send();
     }
+
+    if (strpos(\Drupal::request()->getRequestUri(), 'my-wishlist') !== false) {
+      $user_id = \Drupal::currentUser()->id();
+      $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/user/' . $user_id . '/wishlist');
+      $response->send();
+    }
   }
 
   return $variables;

@@ -1278,3 +1278,12 @@ div.form-item .generate_strong_password {
 	font-size: 12px;
 	text-decoration: underline;
 }
+
+.commerce-order-item-add-to-cart-form .form-submit {
+	width: auto !important;
+	margin: 0 0 10px !important;
+}
+
+.commerce-order-item-add-to-cart-form .form-number {
+	padding: 15px !important;
+}
