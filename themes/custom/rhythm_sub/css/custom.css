@@ -1287,3 +1287,7 @@ div.form-item .generate_strong_password {
 .commerce-order-item-add-to-cart-form .form-number {
 	padding: 15px !important;
 }
+
+.b24-widget-button-icon-animation svg {
+	width: unset;
+}
