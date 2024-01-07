@@ -1,5 +1,5 @@
 global-styling:
-  version: 1.1.7
+  version: 1.1.8
   css:
     theme:
       css/custom.css: {}
@@ -9,7 +9,7 @@ global-styling:
       https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css: { type: external }
 
 global-scripts:
-  version: 1.1.7
+  version: 1.1.8
   dependencies:
     - core/jquery
     - core/drupalSettings
