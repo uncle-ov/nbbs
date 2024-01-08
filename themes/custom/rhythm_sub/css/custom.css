@@ -1291,3 +1291,10 @@ div.form-item .generate_strong_password {
 .b24-widget-button-icon-animation svg {
 	width: unset;
 }
+
+.block-views-blockproducts-you-may-like-block-1 .widget-title {
+	border: none;
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 50px;
+}
