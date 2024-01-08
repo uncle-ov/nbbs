@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * @file
+ * The commerce_stripe_checkout module.
+ */
+
+use Drupal\commerce_order\Entity\OrderInterface;
+use Drupal\commerce_payment\Entity\PaymentInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * @file
+ * Contains commerce_stripe_checkout.module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function commerce_stripe_checkout_help($route_name, RouteMatchInterface $arg) {
+
+  switch ($route_name) {
+    case 'help.page.commerce_stripe_checkout':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A custom module for Drupal 9/10 Commerce Stripe Checkout that extends the functionality of Drupal Commerce and integrates it with the Stripe Checkout payment gateway. It allows you to handle transactions securely using the Stripe payment platform which will redirect users to a pre-built Stripe form.') . '</p>';
+
+      return $output;
+  }
+}
+
+/**
+ * Custom function to change the payment status to "completed".
+ *
+ * @param \Drupal\commerce_payment\Entity\PaymentInterface $payment
+ *   The payment entity to update.
+ */
+function commerce_stripe_checkout_change_payment_status_completed(PaymentInterface $payment, OrderInterface $order) {
+  $payment->setState('completed');
+  $payment->save();
+
+  // Set the order status to "completed".
+  $order->set('state', 'completed');
+
+  // Save the order entity.
+  $order->save();
+}
+
+/**
+ * Custom function to change the payment status to "completed".
+ *
+ * @param \Drupal\commerce_payment\Entity\OrderInterface $order
+ *   The order entity to update.
+ */
+function commerce_stripe_checkout_change_payment_status_cancelled(OrderInterface $order) {
+  // Set the order status to "cancelled".
+  $order->set('state', 'cancelled');
+
+  // Save the order entity.
+  $order->save();
+}
+
+/**
+ * Logs messages related to the Commerce Stripe Checkout system.
+ *
+ * @param string $log_type
+ *   Type of the log message (e.g., 'alert', 'warning', 'debug').
+ * @param string $message
+ *   The log message body.
+ *
+ * @return void
+ *   Logs message
+ */
+function commerce_stripe_checkout_log_messages($log_type, $message) {
+  $logger = \Drupal::logger('paypal_plus');
+
+  switch ($log_type) {
+    case 'alert':
+      $logger->alert($message);
+      break;
+
+    case 'warning':
+      $logger->warning($message);
+      break;
+
+    case 'debug':
+      $logger->debug($message);
+      break;
+
+    default:
+      $logger->info($message);
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function commerce_stripe_checkout_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'commerce_payment_gateway_edit_form' || $form_id == 'commerce_payment_gateway_add_form') {
+    $form['configuration']['form']['live_secret_key']['#states'] = [
+      'visible' => [
+        'input[name="configuration[commerce_stripe_checkout_checkout][mode]"]' => ['value' => 'live'],
+      ],
+    ];
+    $form['configuration']['form']['secret_key']['#states'] = [
+      'visible' => [
+        'input[name="configuration[commerce_stripe_checkout_checkout][mode]"]' => ['value' => 'test'],
+      ],
+    ];
+  }
+}

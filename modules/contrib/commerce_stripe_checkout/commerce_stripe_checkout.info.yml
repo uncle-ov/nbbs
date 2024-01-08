@@ -1,0 +1,16 @@
+name: Commerce Stripe Checkout
+type: module
+description: 'Provides Commerce Payment integration for Stripe Checkout.'
+package: Commerce
+core_version_requirement: ^9 || ^10
+configure: entity.commerce_payment_gateway.collection
+dependencies:
+  - commerce:commerce (>=2.3)
+  - commerce:commerce_order
+  - commerce:commerce_cart
+  - commerce:commerce_payment
+
+# Information added by Drupal.org packaging script on 2024-01-06
+version: '1.2.2'
+project: 'commerce_stripe_checkout'
+datestamp: 1704550664

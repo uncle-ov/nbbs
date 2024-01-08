@@ -1,0 +1,17 @@
+commerce_stripe_checkout.paymentSuccess:
+  path: '/stripe-pay/success'
+  defaults:
+    _controller: '\Drupal\commerce_stripe_checkout\Controller\StripeController::paymentSuccess'
+    _title: ""
+  requirements:
+    # Allow access, because anybody is allowed to access payment success
+    _access: 'TRUE'
+
+commerce_stripe_checkout.paymentCancel:
+  path: '/stripe-pay/cancel'
+  defaults:
+    _controller: '\Drupal\commerce_stripe_checkout\Controller\StripeController::paymentCancel'
+    _title: ""
+  requirements:
+    # Allow access, because anybody is allowed to access payment cancel
+    _access: 'TRUE'
