@@ -11,7 +11,7 @@
     {# Loop throgh items starting from the second item #}
     {% for item in items|slice(1) %}
         {% set image_uri = file_url(item.content['#item'].entity.uri.value) %}
-        <div class="col-md-3">
+        <div class="col-xs-3">
             <div class="post-prev-title mb-2">
                 <a href="{{ image_uri }}" class="lightbox-gallery-3 mfp-image"><img src="{{ image_uri }}" alt=""></a>
             </div>
