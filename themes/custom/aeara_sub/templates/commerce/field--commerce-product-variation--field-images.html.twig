@@ -1,0 +1,21 @@
+{% set image_uri = file_url(items[0].content['#item'].entity.uri.value) %}
+
+<div class="post-prev-img">
+    <a href="{{ image_uri }}" class="lightbox-gallery-3 mfp-image"><img src="{{ image_uri }}" alt=""></a>
+    {# <div class="intro-label">
+        <span class="badge badge-danger bg-red">Sale</span>
+    </div> #}
+</div>
+
+<div class="row">
+    {# Loop throgh items starting from the second item #}
+    {% for item in items|slice(1) %}
+        {% set image_uri = file_url(item.content['#item'].entity.uri.value) %}
+        <div class="col-xs-3">
+            <div class="post-prev-title mb-2">
+                <a href="{{ image_uri }}" class="lightbox-gallery-3 mfp-image"><img src="{{ image_uri }}" alt=""></a>
+            </div>
+        </div>
+    {% endfor %}
+    
+</div>

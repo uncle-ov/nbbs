@@ -1,0 +1,21 @@
+<div class="article_card">
+  <a href="{{ item_link }}" class="clean">
+    <img src="{{ item_image }}" class="img-responsive" />
+  </a>
+  <h3>
+    {{ title_prefix }}
+    <a href="{{ item_link }}" class="clean">
+      {{ item_title }}
+    </a>
+    {{ title_suffix }}
+  </h3>
+  <p>{{ item_summary }}</p>
+  
+  {% if mini is empty %}
+  <div class="cta">
+    <a href="{{ item_link }}" class="btn btn-primary icon_btn">
+      <i class="fa-solid fa-chevron-right"></i>
+    </a>
+  </div>
+  {% endif %}
+</div>

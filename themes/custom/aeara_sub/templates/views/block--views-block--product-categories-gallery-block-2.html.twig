@@ -1,0 +1,40 @@
+{% set shop_page = url('<front>')|render ~ 'shop' %}
+
+<div class="works-filter font-alt align-center">
+  <a href="#" class="filter active" data-filter="*">{{ 'All items'|t }}</a>
+  {% for taxonomy in content['#view'].result %}
+  {% set parent = taxonomy._entity.fields.parent.value[0].target_id ? taxonomy._entity.fields.parent.value[0].target_id : 0 %}
+    {% if parent == 0 %}
+    <a href="#" class="filter" data-filter=".parent_category-{{ taxonomy._entity.fields.tid.value }}">
+      {{ taxonomy._entity.name[0].value }}
+    </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<ul class="works-grid work-grid-5 clearfix font-alt   work-grid-gut  hide-titles " id="work-grid">
+
+  {% for row in content['#view'].result %}
+  {% set parent = row._entity.fields.parent.value[0].target_id ? row._entity.fields.parent.value[0].target_id : 0 %}
+  {% set encoded_string = 'f[0]' | rawurlencode ~ '=' ~ ('categories:' ~ row._entity.fields.tid.value) | rawurlencode %}
+  {% set cat_url = shop_page ~ '?' ~ encoded_string %}
+  {% set image_url = row._entity.field_image|get_image_url %}
+  {% set term_name = row._entity.name[0].value %}
+
+  {% if parent != 0 %}
+    <li class="work-item mix parent_category-{{ parent }}">
+
+      <a href="{{ cat_url }}" class="work-ext-link">
+        <div class="work-img">
+          <img loading="lazy" src="{{ image_url }}" width="570" height="367" alt="{{ term_name }}" typeof="foaf:Image" />
+        </div>
+        <div class="work-intro">
+          <h3 class="work-title">
+            {{ term_name }}
+          </h3>
+        </div>
+      </a>
+    </li>
+  {% endif %}
+  {% endfor %}
+</ul>
