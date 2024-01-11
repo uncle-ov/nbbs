@@ -1,0 +1,1131 @@
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 0
+  path: 'public://website-logo-dark.png'
+favicon:
+  use_default: 0
+  path: 'public://favicon_0.png'
+  mimetype: image/png
+retina: 1
+loader_image: 0
+phone: 0307-567-890
+404_bg: {  }
+maintenance_bg: {  }
+gmap_key: ''
+nikadevs_cms_layout:
+  layout-default:
+    name: Default
+    pages: ''
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+          padding_bottom: '30'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+            - visible-xs
+            - visible-sm
+            - visible-md
+            - visible-lg
+      page_top:
+        row_id: id-2
+        name: 'Page Top'
+        attributes:
+          id: page_top
+          class:
+            - col-md-12
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-12
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-12
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-right-sidebar:
+    name: 'Right Sidebar'
+    pages: blog-2-columns
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+      page_top:
+        row_id: id-2
+        name: 'Page Top'
+        attributes:
+          id: page_top
+          class:
+            - col-md-12
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-8
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-3
+            - col-md-offset-1
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-content-8-columns-width:
+    name: 'Content 8 Columns Width'
+    pages: ''
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+      page_top:
+        row_id: id-2
+        name: 'Page Top'
+        attributes:
+          id: page_top
+          class:
+            - col-md-12
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-8
+            - col-md-offset-2
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-12
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-content-10-columns-width:
+    name: 'Content 10 Columns Width'
+    pages: blog-fullwidth
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+      page_top:
+        row_id: id-2
+        name: 'Page Top'
+        attributes:
+          id: page_top
+          class:
+            - col-md-12
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            2: col-md-10
+            3: col-md-offset-1
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-12
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-full-width:
+    name: 'Full Width'
+    pages: |
+      portfolio-promo
+      portfolio-parallax
+      *wide
+      /node/102
+      /onepage/*
+      /home/*
+      /node/66
+      node/104
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+          padding_bottom: '140'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+          full_width: '1'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-12
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-12
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-full-width-paddingtop0:
+    name: 'Full Width Padding-Top-0'
+    pages: |-
+      gallery-images/*
+      /login
+      /register
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+          full_width: '1'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+      page_top:
+        row_id: id-2
+        name: 'Page Top'
+        attributes:
+          id: page_top
+          class:
+            - col-md-12
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-12
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-12
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-blaqapp-layout:
+    name: 'Blaqapp layout'
+    pages: |-
+      /home
+      /landing
+      /landing/*
+      /news
+      /news/*
+      /events
+      /events/*
+      /employment
+      /employment/*
+      /wellness
+      /wellness/*
+      /store
+      /store/*
+      /contact
+      /about
+      <front>
+    rows:
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+            - row-setting-open
+        settings:
+          tag: div
+          bg_image_type: '0'
+          full_width: '1'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-12
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-12
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-blog-posts:
+    name: 'Blog posts'
+    pages: |-
+      /education/post/*
+      /wellness/post/*
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+      page_top:
+        row_id: id-2
+        name: 'Page Top'
+        attributes:
+          id: page_top
+          class:
+            - col-md-12
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-10
+            - col-md-offset-1
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-12
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-aeara:
+    name: AEARA
+    pages: |-
+      /african-women-studies
+      /african-women-studies/*
+      /biology
+      /biology/*
+      /chemistry
+      /chemistry/*
+      /computer-studies
+      /computer-studies/*
+      /education
+      /grades
+      /grades/*
+      /marketplace
+      /marketplace/*
+      /math
+      /math/*
+      /media-arts-film
+      /media-arts-film/*
+      /english-language-arts
+      /english-language-arts/*
+      /entertainment
+      /entertainment/*
+      /jobs
+      /jobs/*
+      /physics
+      /physics/*
+      /marketplace-gallery
+    rows:
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+          full_width: '1'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-12
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-12
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-left-sidebar:
+    name: 'Left Sidebar'
+    pages: |-
+      /account
+      /account/*
+      /node/*/edit
+      /node/add/business_profile
+      /shop
+      /user/*/address-book
+      /user/*/address-book/*
+      /businesses
+      /user/*/edit
+      /user/*/wishlist
+      /user/*/wishlist/*
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+      page_top:
+        row_id: id-2
+        name: 'Page Top'
+        attributes:
+          id: page_top
+          class:
+            - col-md-12
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-3
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-9
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+  layout-left-sidebar-48:
+    name: 'Left sidebar (4/8)'
+    pages: '/businesses/*'
+    rows:
+      id-1:
+        name: Header
+        attributes:
+          id: id-1
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-2:
+        name: Content
+        attributes:
+          id: id-2
+          class:
+            - row
+        settings:
+          tag: div
+          bg_image_type: '0'
+          padding_top: '30'
+      id-3:
+        name: 'Content Full Width'
+        attributes:
+          id: id-3
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-4:
+        name: Footer
+        attributes:
+          id: id-4
+          class:
+            - row
+        settings:
+          tag: div
+          full_width: '1'
+          bg_image_type: '0'
+      id-0:
+        name: Hidden
+        attributes:
+          id: id-0
+          class:
+            - row
+            - sortable-parent
+    regions:
+      header:
+        row_id: id-1
+        name: Header
+        attributes:
+          id: header
+          class:
+            - col-md-12
+      page_top:
+        row_id: id-2
+        name: 'Page Top'
+        attributes:
+          id: page_top
+          class:
+            - col-md-12
+      sidebar:
+        row_id: id-2
+        name: Sidebar
+        attributes:
+          id: sidebar
+          class:
+            - col-md-4
+      content:
+        row_id: id-2
+        name: Content
+        attributes:
+          id: content
+          class:
+            - col-md-8
+      page_bottom:
+        row_id: id-2
+        name: 'Page Bottom'
+        attributes:
+          id: page_bottom
+          class:
+            - col-md-12
+      content_full:
+        row_id: id-3
+        name: 'Content Full Width'
+        attributes:
+          id: content_full
+          class:
+            - col-md-12
+      footer:
+        row_id: id-4
+        name: Footer
+        attributes:
+          id: footer
+          class:
+            - col-md-12
+_core:
+  default_config_hash: Cjv9cXEPey1bzu00zFynvDUHd7nrIsGi9psCH7jp5tM

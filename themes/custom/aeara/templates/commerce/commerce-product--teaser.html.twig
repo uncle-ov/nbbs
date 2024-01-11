@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+<article{{ attributes }}>
+  <div class="view-teaser product-teaser col-default col-md-3 col-lg-3 mb-60">
+    <div class="post-prev-img">
+      <a href = "{{ product_url }}"> 
+      {{ product['variation_field_images'][0] }}
+      </a>
+    </div>
+
+    <div class="post-prev-title font-alt align-center">
+      <a href = "{{ product_url }}"> 
+        {% if product.title %}
+          {{ product['title'][0] }}
+        {% endif %}
+      </a>
+    </div>
+
+    <div class="post-prev-text align-center">
+      <del class="section-text">
+        {{ product['variation_field_old_price'][0] }}
+      </del>
+      <div class="commerce-product-field-commerce-price">
+        {{ product['variation_price'][0] }}
+      </div>
+    </div>
+
+    <div class="post-prev-more align-center">
+      {{- product|without(
+      'title',
+      'variation_title',
+      'variation_attributes',
+      'variation_field_images',
+      'variation_field_sale_text',
+      'variation_price',
+      'variation_field_waist',
+      'variation_field_length',
+      'variation_sku',
+      'variation_field_old_price',
+      'variation_field_description',
+      'variation_field_short_description',
+      'variation_field_right_side_description',
+      ) -}}
+    </div>
+    <div style="padding: 15px;"></div>
+  </div>
+</article>

@@ -130,7 +130,7 @@ class DawihFilters extends \Twig\Extension\AbstractExtension
       $image_uuid = $default_image['uuid'];
       $image = \Drupal::service('entity.repository')->loadEntityByUuid('file', $image_uuid);
 
-      return $image->createFileUrl(false);
+      return !empty($image) ? $image->createFileUrl(false) : null;
     }
 
     return null;

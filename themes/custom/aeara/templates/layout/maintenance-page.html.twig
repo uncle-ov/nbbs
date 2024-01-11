@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Theme override to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ * Some may be blank but they are provided for consistency.
+ *
+ * @see template_preprocess_maintenance_page()
+ */
+#}
+<div style = "background-image: url({{ maintenance_bg }})" class = "bg-dark-alfa-30 bg-image">
+  <div class="page" id="top">
+
+    <div class="js-height-full">
+      <div class="home-content container">
+          <div class="home-text">
+              <div class="hs-cont">
+
+                  <div class="hs-wrap">
+
+                      <div class="hs-line-12 font-alt mb-10">
+                        {{ 'Sorry'|t }}
+                      </div>
+
+                      <div class="hs-line-6 no-transp font-alt mb-40">
+                        {{ 'We are currently under construction!'|t }}
+                      </div>
+
+                      <p>{{ page.content }}</p>
+                      
+                  </div>
+
+                  
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <nav class="main-nav dark transparent stick-fixed js-transparent">
+      <div class="full-wrapper relative clearfix">
+          <div class="nav-logo-wrap local-scroll">
+              <a href="{{ front_page }}" class="logo">
+                  <img src="{{ logo }}" alt="">
+              </a>
+          </div>
+          <div class="mobile-nav" style="height: 75px; line-height: 75px; width: 75px;">
+              <i class="fa fa-bars"></i>
+          </div>
+          <!-- Main Menu -->
+          <div class="inner-nav desktop-nav">
+              <ul class="clearlist scroll-nav local-scroll" style="max-height: 437px;">
+                <li class="active"><a href="mailto:{{ mail }}" style="height: 78px; line-height: 75px;"><i class="fa fa-envelope"></i> {{ mail }}</a></li>
+                <li><a href="#" style="height: 78px; line-height: 75px;"><i class="fa fa-phone"></i> {{ phone }}</a></li>                
+            </ul>
+          </div>
+      </div>
+    </nav>
+  
+  </div>
+</div>

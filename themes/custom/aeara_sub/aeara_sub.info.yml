@@ -1,0 +1,16 @@
+name: Aeara Sub-Theme
+type: theme
+description: Aeara sub-theme
+core_version_requirement: ^10
+base theme: aeara
+regions:
+  header: Header
+  page_top: 'Page Top'
+  content: Content
+  sidebar: Sidebar
+  content_full: 'Content Full Width'
+  page_bottom: 'Page Bottom'
+  footer: Footer
+libraries:
+  - aeara_sub/global-styling
+  - aeara_sub/global-scripts

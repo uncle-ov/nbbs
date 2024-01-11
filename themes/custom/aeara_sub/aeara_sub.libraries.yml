@@ -1,0 +1,20 @@
+global-styling:
+  version: 1.1.9
+  css:
+    theme:
+      css/custom.css: {}
+      //cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css: { type: external }
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css: { type: external }
+      https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css: { type: external }
+      https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css: { type: external }
+
+global-scripts:
+  version: 1.1.9
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+  js:
+    js/custom.js: {}
+    //cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js: { type: external }
+    https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js: { type: external }
+    https://platform-api.sharethis.com/js/sharethis.js#property=659a45ab3cf4bf001a617518&product=sop: { type: external }

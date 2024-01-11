@@ -1,0 +1,12 @@
+{%
+  set classes = [
+    'mn-sub',
+    'mn-has-multi',
+  ]
+%}
+
+<ul {{ attributes.addClass(classes) }}>
+  {% for row in rows %}
+    {{ row }}
+  {% endfor %}
+</ul>

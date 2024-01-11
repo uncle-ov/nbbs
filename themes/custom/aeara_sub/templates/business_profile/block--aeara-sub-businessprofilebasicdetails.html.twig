@@ -1,0 +1,120 @@
+{% set photo_gallery = node.field_photo_gallery.entity.fileuri|file_url %}
+{% set social_media = node.field_social_media.value|to_array_by_newline %}
+{% set phone =  node.field_phone.value %}
+{% set email = node.field_email.value %}
+
+<div class="profile_card">
+  <h2>Contact</h2>
+  <hr>
+  {%if phone %}
+  <div class="row data_table">
+    <div class="col-xs-4">
+      <strong>Phone</strong>
+    </div>
+    <div class="col-xs-8">
+      <a href="tel:{{ phone }}">{{ phone }}</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="row data_table">
+    <div class="col-xs-4">
+      <strong>Email</strong>
+    </div>
+    <div class="col-xs-8">
+      <a class="ellipsize" href="mailto:{{ email }}">{{ email }}</a>
+    </div>
+  </div>
+  <div class="row data_table">
+    <div class="col-xs-4">
+      <strong>Address</strong>
+    </div>
+    <div class="col-xs-8">
+      {{ node.field_address.address_line1 }},
+      {% if node.field_address.address_line2|trim %}
+        {{ node.field_address.address_line2 }},
+      {% endif %}
+      {{ node.field_address.postal_code }},
+      {{ node.field_address.locality }}
+    </div>
+  </div>
+
+  {% if node.field_website.value %}
+  <div class="row data_table">
+    <div class="col-xs-4">
+      <strong>Website</strong>
+    </div>
+    <div class="col-xs-8">
+      <a class="ellipsize" target="_blank" href="{{ node.field_website.value|add_http }}">
+        {{ node.field_website.value }}
+      </a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<div class="profile_card">
+  <h2>Share</h2>
+  <hr>
+  <div class="row data_table">
+    <div class="col-xs-12">
+      <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
+    </div>
+  </div>
+</div>
+
+{% if node.field_hours.value %}
+<div class="profile_card">
+  <h2>Open Hours</h2>
+  <hr>
+  <div class="row data_table">
+    <div class="col-xs-12">
+      {{ node.field_hours.value|raw|nl2br }}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if node.field_photo_gallery.value %}
+<div class="profile_card">
+  <h2>Photo Gallery</h2>
+  <hr>
+  <div class="row data_table">
+    <div class="col-xs-12">
+      <div class="row gallery row-no-padding">
+      {% for image in node.field_photo_gallery %}
+        {% if loop.first %}
+          <div class="col-xs-3">
+            <a href="{{ file_url(image.entity.fileuri) }}" class="lightbox-gallery-3 mfp-image" rel="ligthbox">
+              <img src="{{ image.entity.fileuri|image_style('thumbnail') }}" />
+            </a>
+          </div>
+        {% else %}
+          <div class="col-xs-3">
+            <a href="{{ file_url(image.entity.fileuri) }}" class="lightbox-gallery-3 mfp-image" rel="ligthbox">
+              <img src="{{ image.entity.fileuri|image_style('thumbnail') }}" />
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if social_media %}
+<div class="profile_card">
+  <h2>Connect on socials</h2>
+  <hr>
+  <div class="row data_table">
+    <div class="col-xs-12">
+      {% for sm_link in social_media %}
+      <a href="{{ sm_link }}" target="_blank" class="social_media_link">
+        <i class="{{ sm_link|extract_social_platform_from_link }}"></i>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,16 @@
+{% if options.taxonomies %}
+  <div class="works-filter font-alt align-center">
+    <a href="#" class="filter active" data-filter="*">{{ 'All works'|t }}</a>
+    {% for taxonomy in options.taxonomies %}
+      <a href="#" class="filter" data-filter=".{{ taxonomy.id }}">{{ taxonomy.name }}</a>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<ul class="works-grid work-grid-{{ options.columns }} clearfix font-alt {{ options.classes }} {{ options.type }} {{ options.hover }} {{ options.title_show }} {{ options.grid_type }}" id="work-grid">
+  {% for row in rows %}
+    <li class="work-item mix {{ row.taxonomies }}">
+      {{ row.content }}
+    </li>
+  {% endfor %}
+</ul>

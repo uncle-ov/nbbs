@@ -1,8 +1,8 @@
-name: Rhythm
+name: AEARA Main Theme
 type: theme
-description: Rhythm is Responsive Drupal 9 Theme.
-core_version_requirement: ^8.8 || ^9 || ^10
-base theme: false
+description: 'Custom theme for NB Black Summit'
+core_version_requirement: ^10
+'base theme': false
 starterkit: true
 version: 1.0
 regions:
@@ -14,7 +14,8 @@ regions:
   page_bottom: 'Page Bottom'
   footer: Footer
 libraries:
-  - rhythm/global-styling
-  - rhythm/global-scripts
+  - aeara/global-styling
+  - aeara/global-scripts
 stylesheets-remove:
   - core/themes/stable/css/system/components/align.module.css
+generator: 'rhythm:1'
