@@ -1298,3 +1298,7 @@ div.form-item .generate_strong_password {
 	text-align: center;
 	margin-bottom: 50px;
 }
+
+.b24-widget-button-pulse-animate {
+	display: none !important;
+}
