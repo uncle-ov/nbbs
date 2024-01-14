@@ -69,6 +69,11 @@ function aeara_sub_user_login($account)
   return;
 }
 
+function aeara_sub_password_redirect(&$form, &$form_state)
+{
+  $form_state['redirect'] = 'user/reset/confirm';
+}
+
 // Remove login and register menus when user is logged in
 function aeara_sub_preprocess_menu(&$variables, $hook)
 {
