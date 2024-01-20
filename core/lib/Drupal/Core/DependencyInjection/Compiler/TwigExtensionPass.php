@@ -12,14 +12,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  * Parameter twig_extension_hash is a crc32 hash of all extensions for Twig
  * template invalidation.
  */
-class TwigExtensionPass implements CompilerPassInterface
-{
+class TwigExtensionPass implements CompilerPassInterface {
 
   /**
    * {@inheritdoc}
    */
-  public function process(ContainerBuilder $container)
-  {
+  public function process(ContainerBuilder $container) {
     $twig_extension_hash = '';
     foreach (array_keys($container->findTaggedServiceIds('twig.extension')) as $service_id) {
       $class_name = $container->getDefinition($service_id)->getClass();

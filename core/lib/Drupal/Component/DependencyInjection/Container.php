@@ -43,8 +43,7 @@ use Symfony\Contracts\Service\ResetInterface;
  *
  * @ingroup container
  */
-class Container implements ContainerInterface, ResetInterface
-{
+class Container implements ContainerInterface, ResetInterface {
 
   use ServiceIdHashTrait;
 
@@ -112,8 +111,7 @@ class Container implements ContainerInterface, ResetInterface
    *   - machine_format: Whether this container definition uses the optimized
    *     machine-readable container format.
    */
-  public function __construct(array $container_definition = [])
-  {
+  public function __construct(array $container_definition = []) {
     if (!empty($container_definition) && (!isset($container_definition['machine_format']) || $container_definition['machine_format'] !== TRUE)) {
       throw new InvalidArgumentException('The non-optimized format is not supported by this class. Use an optimized machine-readable format instead, e.g. as produced by \Drupal\Component\DependencyInjection\Dumper\OptimizedPhpArrayDumper.');
     }
@@ -130,8 +128,7 @@ class Container implements ContainerInterface, ResetInterface
   /**
    * {@inheritdoc}
    */
-  public function get($id, $invalid_behavior = ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE): ?object
-  {
+  public function get($id, $invalid_behavior = ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE): ?object {
     if ($this->hasParameter('_deprecated_service_list')) {
       if ($deprecation = $this->getParameter('_deprecated_service_list')[$id] ?? '') {
         @trigger_error($deprecation, E_USER_DEPRECATED);
@@ -178,7 +175,8 @@ class Container implements ContainerInterface, ResetInterface
 
     try {
       $service = $this->createService($definition, $id);
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       unset($this->loading[$id]);
       unset($this->services[$id]);
 
@@ -202,8 +200,7 @@ class Container implements ContainerInterface, ResetInterface
    * ref-counting. A subsequent call to ContainerInterface::get() will recreate
    * a new instance of the shared service.
    */
-  public function reset()
-  {
+  public function reset() {
     $this->services = [];
   }
 
@@ -227,8 +224,7 @@ class Container implements ContainerInterface, ResetInterface
    *   Thrown when the service class takes more than 10 parameters to construct,
    *   and cannot be instantiated.
    */
-  protected function createService(array $definition, $id)
-  {
+  protected function createService(array $definition, $id) {
     if (isset($definition['synthetic']) && $definition['synthetic'] === TRUE) {
       throw new RuntimeException(sprintf('You have requested a synthetic service ("%s"). The service container does not know how to construct this service. The service will need to be set before it is first used.', $id));
     }
@@ -251,12 +247,14 @@ class Container implements ContainerInterface, ResetInterface
       $factory = $definition['factory'];
       if (is_array($factory)) {
         $factory = $this->resolveServicesAndParameters([$factory[0], $factory[1]]);
-      } elseif (!is_string($factory)) {
+      }
+      elseif (!is_string($factory)) {
         throw new RuntimeException(sprintf('Cannot create service "%s" because of invalid factory', $id));
       }
 
       $service = call_user_func_array($factory, $arguments);
-    } else {
+    }
+    else {
       $class = $this->frozen ? $definition['class'] : current($this->resolveServicesAndParameters([$definition['class']]));
       $service = new $class(...$arguments);
     }
@@ -310,24 +308,21 @@ class Container implements ContainerInterface, ResetInterface
    * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
    * @return void
    */
-  public function set($id, $service)
-  {
+  public function set($id, $service) {
     $this->services[$id] = $service;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function has($id): bool
-  {
+  public function has($id): bool {
     return isset($this->aliases[$id]) || isset($this->services[$id]) || isset($this->serviceDefinitions[$id]);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getParameter($name): array|bool|string|int|float|null
-  {
+  public function getParameter($name): array|bool|string|int|float|NULL {
     if (!\array_key_exists($name, $this->parameters)) {
       if (!$name) {
         throw new ParameterNotFoundException('');
@@ -342,8 +337,7 @@ class Container implements ContainerInterface, ResetInterface
   /**
    * {@inheritdoc}
    */
-  public function hasParameter($name): bool
-  {
+  public function hasParameter($name): bool {
     return \array_key_exists($name, $this->parameters);
   }
 
@@ -353,8 +347,7 @@ class Container implements ContainerInterface, ResetInterface
    * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
    * @return void
    */
-  public function setParameter($name, $value)
-  {
+  public function setParameter($name, $value) {
     if ($this->frozen) {
       throw new LogicException('Impossible to call set() on a frozen ParameterBag.');
     }
@@ -365,8 +358,7 @@ class Container implements ContainerInterface, ResetInterface
   /**
    * {@inheritdoc}
    */
-  public function initialized($id): bool
-  {
+  public function initialized($id): bool {
     if (isset($this->aliases[$id])) {
       $id = $this->aliases[$id];
     }
@@ -388,8 +380,7 @@ class Container implements ContainerInterface, ResetInterface
    * @throws \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
    *   If an unknown type is met while resolving parameters and services.
    */
-  protected function resolveServicesAndParameters($arguments)
-  {
+  protected function resolveServicesAndParameters($arguments) {
     // Check if this collection needs to be resolved.
     if ($arguments instanceof \stdClass) {
       if ($arguments->type !== 'collection') {
@@ -468,6 +459,13 @@ class Container implements ContainerInterface, ResetInterface
 
           continue;
         }
+        elseif ($type == 'service_closure') {
+          $arguments[$key] = function () use ($argument) {
+            return $this->get($argument->id, $argument->invalidBehavior);
+          };
+
+          continue;
+        }
         // Check for collection.
         elseif ($type == 'collection') {
           $value = $argument->value;
@@ -475,12 +473,14 @@ class Container implements ContainerInterface, ResetInterface
           // Does this collection need resolving?
           if ($argument->resolve) {
             $arguments[$key] = $this->resolveServicesAndParameters($value);
-          } else {
+          }
+          else {
             $arguments[$key] = $value;
           }
 
           continue;
-        } elseif ($type == 'raw') {
+        }
+        elseif ($type == 'raw') {
           $arguments[$key] = $argument->value;
 
           continue;
@@ -506,8 +506,7 @@ class Container implements ContainerInterface, ResetInterface
    * @return string[]
    *   An array of strings with suitable alternatives.
    */
-  protected function getAlternatives($search_key, array $keys)
-  {
+  protected function getAlternatives($search_key, array $keys) {
     $alternatives = [];
     foreach ($keys as $key) {
       $lev = levenshtein($search_key, $key);
@@ -528,8 +527,7 @@ class Container implements ContainerInterface, ResetInterface
    * @return string[]
    *   An array of strings with suitable alternatives.
    */
-  protected function getServiceAlternatives($id)
-  {
+  protected function getServiceAlternatives($id) {
     $all_service_keys = array_unique(array_merge(array_keys($this->services), array_keys($this->serviceDefinitions)));
     return $this->getAlternatives($id, $all_service_keys);
   }
@@ -543,24 +541,21 @@ class Container implements ContainerInterface, ResetInterface
    * @return string[]
    *   An array of strings with suitable alternatives.
    */
-  protected function getParameterAlternatives($name)
-  {
+  protected function getParameterAlternatives($name) {
     return $this->getAlternatives($name, array_keys($this->parameters));
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getServiceIds()
-  {
+  public function getServiceIds() {
     return array_keys($this->serviceDefinitions + $this->services);
   }
 
   /**
    * Ensure that cloning doesn't work.
    */
-  private function __clone()
-  {
+  private function __clone() {
   }
 
 }

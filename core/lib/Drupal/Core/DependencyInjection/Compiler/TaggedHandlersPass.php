@@ -36,8 +36,7 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * @see \Drupal\Core\DependencyInjection\Compiler\TaggedHandlersPass::process()
  */
-class TaggedHandlersPass implements CompilerPassInterface
-{
+class TaggedHandlersPass implements CompilerPassInterface {
 
   /**
    * Service tag information keyed by tag name.
@@ -105,8 +104,7 @@ class TaggedHandlersPass implements CompilerPassInterface
    * phpcs:ignore Drupal.Commenting.FunctionComment.VoidReturn
    * @return void
    */
-  public function process(ContainerBuilder $container)
-  {
+  public function process(ContainerBuilder $container) {
     // Avoid using ContainerBuilder::findTaggedServiceIds() as that results in
     // additional iterations around all the service definitions.
     foreach ($container->getDefinitions() as $id => $definition) {
@@ -137,8 +135,7 @@ class TaggedHandlersPass implements CompilerPassInterface
    * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
    *   The service container.
    */
-  protected function processServiceCollectorPass(array $pass, $consumer_id, ContainerBuilder $container)
-  {
+  protected function processServiceCollectorPass(array $pass, $consumer_id, ContainerBuilder $container) {
     $tag = $pass['tag'] ?? $consumer_id;
     $method_name = $pass['call'] ?? 'addHandler';
     $required = $pass['required'] ?? FALSE;
@@ -156,11 +153,14 @@ class TaggedHandlersPass implements CompilerPassInterface
       $class = Reflection::getParameterClassName($param);
       if ($class !== NULL) {
         $interface = $class;
-      } elseif ($param->getName() === 'id') {
+      }
+      elseif ($param->getName() === 'id') {
         $id_pos = $pos;
-      } elseif ($param->getName() === 'priority') {
+      }
+      elseif ($param->getName() === 'priority') {
         $priority_pos = $pos;
-      } else {
+      }
+      else {
         $extra_params[$param->getName()] = $pos;
       }
     }
@@ -229,8 +229,7 @@ class TaggedHandlersPass implements CompilerPassInterface
    * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
    *   The service container.
    */
-  protected function processServiceIdCollectorPass(array $pass, $consumer_id, ContainerBuilder $container)
-  {
+  protected function processServiceIdCollectorPass(array $pass, $consumer_id, ContainerBuilder $container) {
     $tag = $pass['tag'] ?? $consumer_id;
     $required = $pass['required'] ?? FALSE;
 
