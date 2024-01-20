@@ -1,9 +1,6 @@
 langcode: en
 status: true
 dependencies:
-  module:
-    - entity_browser_example
-    - menu_ui
   enforced:
     module:
       - entity_browser_example
