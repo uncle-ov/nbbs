@@ -2,8 +2,9 @@
 
 namespace Drupal\commerce_order\Form;
 
-use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\commerce_order\Entity\OrderItemType;
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
@@ -59,6 +60,16 @@ class OrderForm extends ContentEntityForm {
     /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
     $order = $this->entity;
     $form = parent::form($form, $form_state);
+
+    // Narrow down order item types for the complex IEF widget.
+    if (isset($form['order_items']['widget']['actions'], $form['order_items']['widget']['actions']['bundle']) && !empty($form['order_items']['widget']['actions']['bundle']['#options'])) {
+      foreach ($form['order_items']['widget']['actions']['bundle']['#options'] as $order_item_type_id => $label) {
+        $order_item_type = OrderItemType::load($order_item_type_id);
+        if ($order_item_type->getOrderTypeId() !== $order->bundle()) {
+          unset($form['order_items']['widget']['actions']['bundle']['#options'][$order_item_type_id]);
+        }
+      }
+    }
 
     $form['#tree'] = TRUE;
     $form['#theme'] = 'commerce_order_edit_form';

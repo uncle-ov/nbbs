@@ -18,16 +18,16 @@ screen and (min-width: 780px),
   .layout-region-store-main,
   .layout-region-store-footer {
     float: left; /* LTR */
+    box-sizing: border-box;
     width: 65%;
     padding-right: 2em; /* LTR */
-    box-sizing: border-box;
   }
 
   [dir="rtl"] .layout-region-store-main,
   [dir="rtl"] .layout-region-store-footer {
     float: right;
-    padding-left: 2em;
     padding-right: 0;
+    padding-left: 2em;
   }
 
   .layout-region-store-secondary {

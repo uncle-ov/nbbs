@@ -67,7 +67,7 @@
         <tr>
           <td>
             {% if (billing_information or shipping_information) %}
-            <table style="width: 100%; padding-top:15px; padding-bottom: 15px; text-align: left; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc">
+            <table style="width: 100%; padding-top:15px; padding-bottom: 15px; text-align: left; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;">
               <tbody>
               <tr>
                 {% if shipping_information %}
@@ -77,7 +77,7 @@
                   <td style="padding-top: 5px; font-weight: bold;">{{ 'Billing Information'|t }}</td>
                 {% endif %}
               </tr>
-              <tr>
+              <tr style="vertical-align: top;">
                 {% if shipping_information %}
                   <td>
                     {% block shipping_information %}

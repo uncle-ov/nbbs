@@ -470,13 +470,13 @@ class PromotionTest extends CommerceWebDriverTestBase {
     $this->getSession()->getPage()->selectFieldOption('offer[0][target_plugin_configuration][combination_offer][offers][0][target_plugin_id]', 'order_item_percentage_off');
     $this->assertSession()->assertWaitOnAjaxRequest();
     $this->assertSession()->buttonNotExists('remove_offer0');
-    $this->getSession()->getPage()->fillField('offer[0][target_plugin_configuration][combination_offer][offers][0][target_plugin_configuration][order_item_percentage_off][percentage]', 10);
+    $this->getSession()->getPage()->fillField('offer[0][target_plugin_configuration][combination_offer][offers][0][target_plugin_configuration][order_item_percentage_off][percentage]', '10');
     $this->getSession()->getPage()->pressButton('Add another offer');
     $this->assertSession()->assertWaitOnAjaxRequest();
     $this->assertSession()->buttonExists('remove_offer1');
     $this->getSession()->getPage()->selectFieldOption('offer[0][target_plugin_configuration][combination_offer][offers][1][target_plugin_id]', 'order_percentage_off');
     $this->assertSession()->assertWaitOnAjaxRequest();
-    $this->getSession()->getPage()->fillField('offer[0][target_plugin_configuration][combination_offer][offers][1][target_plugin_configuration][order_percentage_off][percentage]', 10);
+    $this->getSession()->getPage()->fillField('offer[0][target_plugin_configuration][combination_offer][offers][1][target_plugin_configuration][order_percentage_off][percentage]', '10');
     $this->getSession()->getPage()->pressButton('Add another offer');
     $this->assertSession()->assertWaitOnAjaxRequest();
     $this->assertSession()->fieldExists('offer[0][target_plugin_configuration][combination_offer][offers][2][target_plugin_id]');

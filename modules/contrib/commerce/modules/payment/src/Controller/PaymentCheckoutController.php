@@ -3,8 +3,11 @@
 namespace Drupal\commerce_payment\Controller;
 
 use Drupal\commerce\Response\NeedsRedirectException;
+use Drupal\commerce\Utility\Error;
 use Drupal\commerce_checkout\CheckoutOrderManagerInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
+use Drupal\commerce_payment\Event\FailedPaymentEvent;
+use Drupal\commerce_payment\Event\PaymentEvents;
 use Drupal\commerce_payment\Exception\PaymentGatewayException;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OffsitePaymentGatewayInterface;
 use Drupal\Core\Access\AccessException;
@@ -15,6 +18,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -51,6 +55,13 @@ class PaymentCheckoutController implements ContainerInjectionInterface {
   protected EntityTypeManagerInterface $entityTypeManager;
 
   /**
+   * The event dispatcher.
+   *
+   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
+   */
+  protected EventDispatcherInterface $eventDispatcher;
+
+  /**
    * Constructs a new PaymentCheckoutController object.
    *
    * @param \Drupal\commerce_checkout\CheckoutOrderManagerInterface $checkout_order_manager
@@ -61,12 +72,15 @@ class PaymentCheckoutController implements ContainerInjectionInterface {
    *   The logger.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
+   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
+   *   The event dispatcher.
    */
-  public function __construct(CheckoutOrderManagerInterface $checkout_order_manager, MessengerInterface $messenger, LoggerInterface $logger, EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(CheckoutOrderManagerInterface $checkout_order_manager, MessengerInterface $messenger, LoggerInterface $logger, EntityTypeManagerInterface $entity_type_manager, EventDispatcherInterface $event_dispatcher) {
     $this->checkoutOrderManager = $checkout_order_manager;
     $this->messenger = $messenger;
     $this->logger = $logger;
     $this->entityTypeManager = $entity_type_manager;
+    $this->eventDispatcher = $event_dispatcher;
   }
 
   /**
@@ -77,7 +91,8 @@ class PaymentCheckoutController implements ContainerInjectionInterface {
       $container->get('commerce_checkout.checkout_order_manager'),
       $container->get('messenger'),
       $container->get('logger.channel.commerce_payment'),
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('event_dispatcher')
     );
   }
 
@@ -123,8 +138,15 @@ class PaymentCheckoutController implements ContainerInjectionInterface {
       $redirect_step_id = $checkout_flow_plugin->getNextStepId($step_id);
     }
     catch (PaymentGatewayException $e) {
-      $this->logger->error($e->getMessage());
+      $event = new FailedPaymentEvent($order, $payment_gateway, $e);
+      $this->eventDispatcher->dispatch($event, PaymentEvents::PAYMENT_FAILURE);
+      Error::logException($this->logger, $e);
       $this->messenger->addError(t('Payment failed at the payment server. Please review your information and try again.'));
+      $redirect_step_id = $checkout_flow_plugin->getPreviousStepId($step_id);
+    }
+    catch (\Exception $e) {
+      Error::logException($this->logger, $e);
+      $this->messenger->addError(t('We encountered an issue recording your payment. Please contact customer service to resolve the issue.'));
       $redirect_step_id = $checkout_flow_plugin->getPreviousStepId($step_id);
     }
     $checkout_flow_plugin->redirectToStep($redirect_step_id);

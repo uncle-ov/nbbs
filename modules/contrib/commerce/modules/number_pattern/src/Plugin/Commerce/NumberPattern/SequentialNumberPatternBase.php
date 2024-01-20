@@ -10,6 +10,7 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Lock\LockBackendInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Utility\Token;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -188,7 +189,7 @@ abstract class SequentialNumberPatternBase extends NumberPatternBase implements 
     $number = $this->token->replace($this->configuration['pattern'], [
       'pattern' => ['number' => $number],
       $entity->getEntityTypeId() => $entity,
-    ]);
+    ], [], new BubbleableMetadata());
 
     return $number;
   }

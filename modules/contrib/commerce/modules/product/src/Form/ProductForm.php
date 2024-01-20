@@ -2,8 +2,8 @@
 
 namespace Drupal\commerce_product\Form;
 
-use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
@@ -234,7 +234,7 @@ class ProductForm extends ContentEntityForm {
   public function save(array $form, FormStateInterface $form_state) {
     /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
     $product = $this->getEntity();
-    $product->save();
+    $save_return = $product->save();
     $this->messenger()->addMessage($this->t('The product %label has been successfully saved.', ['%label' => $product->label()]));
 
     if (!empty($form_state->getTriggeringElement()['#continue'])) {
@@ -243,6 +243,8 @@ class ProductForm extends ContentEntityForm {
     else {
       $form_state->setRedirect('entity.commerce_product.canonical', ['commerce_product' => $product->id()]);
     }
+
+    return $save_return;
   }
 
 }

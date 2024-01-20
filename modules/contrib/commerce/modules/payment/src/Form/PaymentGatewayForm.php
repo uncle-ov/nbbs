@@ -3,6 +3,7 @@
 namespace Drupal\commerce_payment\Form;
 
 use Drupal\commerce\InlineFormManager;
+use Drupal\commerce_payment\Entity\PaymentGateway;
 use Drupal\commerce_payment\PaymentGatewayManager;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityForm;
@@ -102,7 +103,7 @@ class PaymentGatewayForm extends EntityForm {
       '#type' => 'machine_name',
       '#default_value' => $gateway->id(),
       '#machine_name' => [
-        'exists' => '\Drupal\commerce_payment\Entity\PaymentGateway::load',
+        'exists' => [PaymentGateway::class, 'load'],
       ],
       '#disabled' => !$gateway->isNew(),
     ];
@@ -114,7 +115,7 @@ class PaymentGatewayForm extends EntityForm {
       '#required' => TRUE,
       '#disabled' => !$gateway->isNew(),
       '#ajax' => [
-        'callback' => '::ajaxRefresh',
+        'callback' => [static::class, 'ajaxRefresh'],
         'wrapper' => $wrapper_id,
       ],
     ];

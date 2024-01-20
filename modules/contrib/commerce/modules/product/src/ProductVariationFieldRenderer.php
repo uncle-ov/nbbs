@@ -5,8 +5,8 @@ namespace Drupal\commerce_product;
 use Drupal\commerce_product\Entity\ProductVariationInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
-use Drupal\Core\Render\Element;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Render\Element;
 
 class ProductVariationFieldRenderer implements ProductVariationFieldRendererInterface {
 

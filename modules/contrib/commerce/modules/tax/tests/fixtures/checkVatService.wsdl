@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="urn:ec.europa.eu:taxud:vies:services:checkVat" xmlns:tns1="urn:ec.europa.eu:taxud:vies:services:checkVat:types" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:impl="urn:ec.europa.eu:taxud:vies:services:checkVat" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:definitions targetNamespace="urn:ec.europa.eu:taxud:vies:services:checkVat"
+                  xmlns:tns1="urn:ec.europa.eu:taxud:vies:services:checkVat:types"
+                  xmlns:impl="urn:ec.europa.eu:taxud:vies:services:checkVat"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
     <xsd:documentation>
         The objective of this Internet site is to allow persons involved in the intra-Community supply of goods or of services to obtain confirmation of the validity of the VAT identification number of any specified person, in accordance to article 31 of Council Regulation (EC) No. 904/2010 of 7 October 2010. \n
         Any other use and any extraction and use of the data which is not in conformity with the objective of this site is strictly forbidden.

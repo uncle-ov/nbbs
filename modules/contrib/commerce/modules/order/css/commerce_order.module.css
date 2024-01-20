@@ -20,16 +20,16 @@
   .layout-region-order-main,
   .layout-region-order-footer {
     float: left; /* LTR */
+    box-sizing: border-box;
     width: 65%;
     padding-right: 2em; /* LTR */
-    box-sizing: border-box;
   }
 
   [dir="rtl"] .layout-region-order-main,
   [dir="rtl"] .layout-region-order-footer {
     float: right;
-    padding-left: 2em;
     padding-right: 0;
+    padding-left: 2em;
   }
 
   .layout-region-order-secondary {

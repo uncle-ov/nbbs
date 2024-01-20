@@ -73,6 +73,10 @@ abstract class CustomerAddressBase extends ConditionBase {
       'label' => 'N/A',
     ] + $this->configuration['zone']);
     $address = $profile->get('address')->first();
+    if (!$address) {
+      // The conditions can't be applied without address.
+      return FALSE;
+    }
 
     return $zone->match($address);
   }

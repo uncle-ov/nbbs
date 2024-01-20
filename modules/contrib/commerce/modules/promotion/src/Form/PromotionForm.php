@@ -164,7 +164,7 @@ class PromotionForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
-    $this->entity->save();
+    $save_result = $this->entity->save();
     $this->postSave($this->entity, $this->operation);
     $this->messenger()->addMessage($this->t('Saved the %label promotion.', ['%label' => $this->entity->label()]));
 
@@ -174,6 +174,8 @@ class PromotionForm extends ContentEntityForm {
     else {
       $form_state->setRedirect('entity.commerce_promotion.collection');
     }
+
+    return $save_result;
   }
 
 }

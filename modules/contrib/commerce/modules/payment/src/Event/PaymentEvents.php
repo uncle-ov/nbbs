@@ -78,4 +78,13 @@ final class PaymentEvents {
    */
   const PAYMENT_DELETE = 'commerce_payment.commerce_payment.delete';
 
+  /**
+   * Name of the event fired when payment is failed.
+   *
+   * @Event
+   *
+   * @see \Drupal\commerce_payment\Event\FailedPaymentEvent
+   */
+  const PAYMENT_FAILURE = 'commerce_payment.commerce_payment.failure';
+
 }

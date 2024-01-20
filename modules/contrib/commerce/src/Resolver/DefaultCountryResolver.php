@@ -2,8 +2,8 @@
 
 namespace Drupal\commerce\Resolver;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\commerce\Country;
+use Drupal\Core\Config\ConfigFactoryInterface;
 
 /**
  * Returns the site's default country.

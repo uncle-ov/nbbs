@@ -96,9 +96,11 @@ class OrderStorage extends CommerceContentEntityStorage implements OrderStorageI
     if (!$order->isNew() && !isset($this->updateLocks[$order->id()]) && !$this->lockBackend->lockMayBeAvailable($this->getLockId($order->id()))) {
       // This is updating an order that someone else has locked.
       $mismatch_exception = new OrderLockedSaveException('Attempted to save order ' . $order->id() . ' that is locked for updating. Use OrderStorage::loadForUpdate().');
-      $log_only = $this->getEntityType()->get('log_version_mismatch');
+      $log_only = $order->getEntityType()->get('log_version_mismatch');
       if ($log_only) {
-        watchdog_exception('commerce_order', $mismatch_exception);
+        \Drupal::logger('commerce_order')->error('<pre>%excepiton</pre>', [
+          '%exception' => $mismatch_exception->__toString(),
+        ]);
       }
       else {
         throw $mismatch_exception;

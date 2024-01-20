@@ -3,8 +3,8 @@
 namespace Drupal\Tests\commerce\Functional;
 
 use Drupal\commerce\EntityHelper;
-use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\node\Entity\Node;
 
 /**

@@ -170,4 +170,46 @@ class ProductTranslationTest extends ProductBrowserTestBase {
     $this->assertTrue($variation->hasTranslation('fr'));
   }
 
+  /**
+   * Test variation unpublishing when translation enabled.
+   */
+  public function testVariationTranslationUnpublishing() {
+    /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
+    $product = $this->createEntity('commerce_product', [
+      'type' => 'default',
+      'title' => 'Translation test product',
+      'stores' => $this->stores,
+    ]);
+    $this->createEntity('commerce_product_variation', [
+      'type' => 'default',
+      'product_id' => $product->id(),
+      'sku' => $this->randomMachineName(),
+      'price' => new Price('9.99', 'USD'),
+    ]);
+
+    $this->drupalGet(Url::fromRoute('entity.commerce_product_variation.collection', [
+      'commerce_product' => $product->id(),
+    ]));
+    $variation = $product->getVariations()[0];
+    $translation_overview_url = $variation->toUrl('drupal:content-translation-overview');
+    $this->assertSession()->linkByHrefExists($translation_overview_url->toString());
+    $this->drupalGet($translation_overview_url);
+    $this->assertSession()->linkByHrefExists('/fr/product/1/variations/1/translations/add/en/fr');
+    $this->getSession()->getPage()->clickLink('Add');
+    $this->getSession()->getPage()->pressButton('Save');
+    $this->assertSession()->pageTextContains('Saved the Translation test product variation.');
+
+    $this->drupalGet($translation_overview_url);
+
+    $edit_url = $variation->toUrl('edit-form')->toString();
+    $this->assertSession()->linkByHrefExists($edit_url);
+    $this->getSession()->getPage()->clickLink('Edit');
+    $this->getSession()->getPage()->uncheckField('Published');
+    $this->getSession()->getPage()->pressButton('Save (this translation)');
+
+    /** @var \Drupal\commerce_product\Entity\ProductVariationInterface $variation */
+    $variation = $this->reloadEntity($variation);
+    $this->assertFalse($variation->isPublished());
+  }
+
 }

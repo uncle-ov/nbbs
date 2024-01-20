@@ -2,8 +2,8 @@
 
 namespace Drupal\Tests\commerce_log\Kernel;
 
-use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_log\Entity\Log;
+use Drupal\commerce_order\Entity\Order;
 use Drupal\Tests\commerce_order\Kernel\OrderKernelTestBase;
 
 /**

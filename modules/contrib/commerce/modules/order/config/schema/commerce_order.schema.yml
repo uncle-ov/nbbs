@@ -116,7 +116,7 @@ commerce_order.commerce_order_type.*:
       type: string
       label: 'The receipt BCC email'
     receiptSubject:
-      type: string
+      type: label
       label: 'The receipt subject'
 
 commerce_order.commerce_order_item_type.*:

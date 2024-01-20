@@ -14,16 +14,16 @@
   .layout-region-checkout-main,
   .layout-region-checkout-footer {
     float: left; /* LTR */
+    box-sizing: border-box;
     width: 65%;
     padding-right: 2em; /* LTR */
-    box-sizing: border-box;
   }
 
   [dir="rtl"] .layout-region-checkout-main,
   [dir="rtl"] .layout-region-checkout-footer {
     float: right;
-    padding-left: 2em;
     padding-right: 0;
+    padding-left: 2em;
   }
 
   .layout-region-checkout-secondary {

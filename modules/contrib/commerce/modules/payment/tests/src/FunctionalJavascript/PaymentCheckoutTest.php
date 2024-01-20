@@ -3,6 +3,7 @@
 namespace Drupal\Tests\commerce_payment\FunctionalJavascript;
 
 use Drupal\commerce_checkout\Entity\CheckoutFlow;
+use Drupal\commerce_event_recorder_test\CommerceEventRecorder;
 use Drupal\commerce_order\Adjustment;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_payment\Entity\Payment;
@@ -80,6 +81,7 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     'commerce_checkout',
     'commerce_payment',
     'commerce_payment_example',
+    'commerce_event_recorder_test',
   ];
 
   /**
@@ -643,10 +645,23 @@ class PaymentCheckoutTest extends CommerceWebDriverTestBase {
     $this->assertSession()->pageTextContains('Example');
     $this->assertSession()->pageTextContains('Bryan FAIL');
     $this->assertSession()->pageTextContains('9 Drupal Ave');
+    $this->assertNull(\Drupal::state()->get(CommerceEventRecorder::STATE_KEY_PREFIX . 'onPaymentFailure'), 'No payment failure events have been recorded');
     $this->submitForm([], 'Pay and complete purchase');
     $this->assertSession()->pageTextNotContains('Your order number is 1. You can view your order on your account page when logged in.');
+
     $this->assertSession()->pageTextContains('We encountered an unexpected error processing your payment. Please try again later.');
     $this->assertSession()->addressEquals('checkout/1/order_information');
+
+    // Ensure the expected payment failure event has been recorded.
+    $expected = [
+      [
+        'order_id' => '1',
+        'payment_type' => 'Default',
+        'payment_gateway' => 'Off-site',
+        'payment_method' => '',
+      ],
+    ];
+    $this->assertSame($expected, \Drupal::state()->get(CommerceEventRecorder::STATE_KEY_PREFIX . 'onPaymentFailure'));
 
     $order = Order::load(1);
     $this->assertFalse($order->isLocked());

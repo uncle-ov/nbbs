@@ -3,9 +3,9 @@
 namespace Drupal\Tests\commerce_price\Unit;
 
 use CommerceGuys\Intl\Exception\UnknownCurrencyException;
-use Drupal\commerce_price\Repository\CurrencyRepository;
 use Drupal\commerce_price\MinorUnitsConverter;
 use Drupal\commerce_price\Price;
+use Drupal\commerce_price\Repository\CurrencyRepository;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Tests\UnitTestCase;

@@ -11,9 +11,9 @@
 }
 
 .layout-region-product-footer__content {
-  border-top: 1px solid #bebfb9;
-  padding-top: 0.5em;
   margin-top: 1.5em;
+  padding-top: 0.5em;
+  border-top: 1px solid #bebfb9;
 }
 
 /* Wide screens */
@@ -24,9 +24,9 @@
   .layout-region-product-main,
   .layout-region-product-footer {
     float: left; /* LTR */
+    box-sizing: border-box;
     width: 65%;
     padding-right: 2em; /* LTR */
-    box-sizing: border-box;
   }
 
   .layout-region-product-footer__content {
@@ -36,8 +36,8 @@
   [dir="rtl"] .layout-region-product-main,
   [dir="rtl"] .layout-region-product-footer {
     float: right;
-    padding-left: 2em;
     padding-right: 0;
+    padding-left: 2em;
   }
 
   .layout-region-product-secondary {

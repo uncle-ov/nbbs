@@ -19,6 +19,7 @@ use Drupal\Core\TypedData\MapDataDefinition;
  * @FieldType(
  *   id = "commerce_tax_number",
  *   label = @Translation("Tax number"),
+ *   description = @Translation("Stores a tax number"),
  *   category = @Translation("Commerce"),
  *   default_formatter = "commerce_tax_number_default",
  *   default_widget = "commerce_tax_number_default",
@@ -319,6 +320,8 @@ class TaxNumberItem extends FieldItemBase implements TaxNumberItemInterface {
       $tax_number_type_manager = $this->getTaxNumberTypeManager();
       return $tax_number_type_manager->createInstance($this->type);
     }
+
+    return NULL;
   }
 
   /**

@@ -5,9 +5,12 @@
  * Install, update and uninstall functions for the Order module.
  */
 
+use CommerceGuys\Addressing\AddressFormat\AddressField;
+use CommerceGuys\Addressing\AddressFormat\FieldOverride;
 use Drupal\commerce\CommerceContentEntityStorageSchema;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\field\Entity\FieldConfig;
 
 /**
  * Implements hook_install().
@@ -154,7 +157,7 @@ function commerce_order_update_8208() {
   }
   $configuration_to_delete[] = 'field.storage.commerce_order.order_items';
 
-  $dependents = $config_manager->findConfigEntityDependents('config', $configuration_to_delete);
+  $dependents = $config_manager->findConfigEntityDependencies('config', $configuration_to_delete);
   /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $config_entity */
   foreach ($dependents as $config_name => $config_entity) {
     $config_entity = $config_factory->getEditable($config_name);
@@ -320,5 +323,22 @@ function commerce_order_update_8216() {
       $form_display->set('content', $content);
       $form_display->save();
     }
+  }
+}
+
+/**
+ * Migrate to Address 2.x.
+ */
+function commerce_order_update_8217() {
+  $field_map = \Drupal::service('entity_field.manager')->getFieldMap();
+  foreach ($field_map['profile']['address']['bundles'] as $bundle) {
+    $field_config = FieldConfig::loadByName('profile', $bundle, 'address');
+    if (!$field_config) {
+      continue;
+    }
+    $field_config->setSetting('field_overrides', [
+      AddressField::ADDRESS_LINE3 => ['override' => FieldOverride::HIDDEN],
+    ]);
+    $field_config->save();
   }
 }

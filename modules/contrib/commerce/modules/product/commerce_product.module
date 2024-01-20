@@ -5,20 +5,20 @@
  * Defines the Product entity and associated features.
  */
 
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\commerce_product\Plugin\Block\VariationFieldBlock;
-use Drupal\Component\Plugin\PluginBase;
-use Drupal\entity\BundleFieldDefinition;
 use Drupal\commerce\EntityHelper;
 use Drupal\commerce_product\Entity\ProductTypeInterface;
+use Drupal\commerce_product\Plugin\Block\VariationFieldBlock;
+use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Cache\Cache;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\entity\BundleFieldDefinition;
 
 /**
  * Implements hook_config_translation_info_alter().
@@ -175,7 +175,7 @@ function template_preprocess_commerce_product_variation(array &$variables) {
  *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_commerce_product_attribute_value(array &$variables) {
-  /** @var Drupal\commerce_product\Entity\ProductAttributeValueInterface $product */
+  /** @var Drupal\commerce_product\Entity\ProductAttributeValueInterface $attribute_value */
   $attribute_value = $variables['elements']['#commerce_product_attribute_value'];
 
   $variables['product_attribute_value_entity'] = $attribute_value;

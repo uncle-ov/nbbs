@@ -37,6 +37,7 @@ class ProductLayoutBuilderIntegrationTest extends ProductWebDriverTestBase {
       'access contextual links',
       'configure any layout',
       'administer commerce_product display',
+      'administer commerce_product_attribute',
     ], parent::getAdministratorPermissions());
   }
 
@@ -254,6 +255,19 @@ class ProductLayoutBuilderIntegrationTest extends ProductWebDriverTestBase {
     $this->getSession()->getPage()->selectFieldOption('purchased_entity[0][variation]', $first_variation->id());
     $this->assertSession()->assertWaitOnAjaxRequest();
     $this->assertSession()->elementTextContains('css', '.field--type-commerce-price', '$10');
+  }
+
+  /**
+   * Make sure attribute without an options do not crash.
+   */
+  public function testProductWithoutAttributesOptionsDoesNotCrash() {
+    $this->drupalGet('admin/commerce/product-attributes/add');
+    $this->getSession()->getPage()->fillField('edit-label', 'Default');
+    $this->getSession()->getPage()->checkField('variation_types[default]');
+    $this->getSession()->getPage()->pressButton('Save');
+
+    $this->enableLayoutsForBundle('default');
+    $this->configureDefaultLayout();
   }
 
   /**

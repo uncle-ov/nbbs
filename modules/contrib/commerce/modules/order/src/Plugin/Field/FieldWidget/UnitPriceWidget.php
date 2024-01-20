@@ -175,17 +175,11 @@ class UnitPriceWidget extends WidgetBase implements ContainerFactoryPluginInterf
     elseif ($order_item->isNew() && !$order_item->getUnitPrice()) {
       $purchased_entity = $order_item->getPurchasedEntity();
       if ($purchased_entity !== NULL) {
-        $order = $order_item->getOrder();
-        if ($order === NULL) {
-          $form_object = $form_state->getFormObject();
-          if ($form_object instanceof OrderForm) {
-            $order = $form_object->getEntity();
-            if ($order instanceof OrderInterface) {
-              $context = new Context($order->getCustomer(), $order->getStore());
-              $unit_price = $this->chainPriceResolver->resolve($purchased_entity, $order_item->getQuantity(), $context);
-              $order_item->setUnitPrice($unit_price, FALSE);
-            }
-          }
+        $order = $this->extractOrder($order_item, $form_state);
+        if ($order instanceof OrderInterface) {
+          $context = new Context($order->getCustomer(), $order->getStore());
+          $unit_price = $this->chainPriceResolver->resolve($purchased_entity, $order_item->getQuantity(), $context);
+          $order_item->setUnitPrice($unit_price, FALSE);
         }
       }
     }
@@ -204,6 +198,29 @@ class UnitPriceWidget extends WidgetBase implements ContainerFactoryPluginInterf
     $entity_type = $field_definition->getTargetEntityTypeId();
     $field_name = $field_definition->getName();
     return $entity_type === 'commerce_order_item' && $field_name === 'unit_price';
+  }
+
+  /**
+   * Extracts the order entity from the order item or the form context.
+   *
+   * @param \Drupal\commerce_order\Entity\OrderItemInterface $order_item
+   *   The order item entity the widget belongs to.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   *
+   * @return \Drupal\commerce_order\Entity\OrderInterface|null
+   *   The order if available. NULL otherwise.
+   */
+  protected function extractOrder(OrderItemInterface $order_item, FormStateInterface $form_state) {
+    if ($order = $order_item->getOrder()) {
+      return $order;
+    }
+
+    $form_object = $form_state->getFormObject();
+    if ($form_object instanceof OrderForm) {
+      return $form_object->getEntity();
+    }
+    return NULL;
   }
 
 }

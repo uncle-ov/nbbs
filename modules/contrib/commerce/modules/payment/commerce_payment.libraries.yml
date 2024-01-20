@@ -23,4 +23,9 @@ offsite_redirect:
   dependencies:
     - core/jquery
     - core/drupal
-    - core/drupalSettings
+
+payment_messages:
+  version: VERSION
+  css:
+    theme:
+      css/commerce_payment.payment_messages.css: {}

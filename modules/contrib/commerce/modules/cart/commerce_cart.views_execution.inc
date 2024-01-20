@@ -5,8 +5,8 @@
  * Provides views execution hooks for Cart.
  */
 
-use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_views_query_alter().
