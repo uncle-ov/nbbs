@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9dfe11ea143e555b51663dc55cdf8f19",
+    "content-hash": "a1af3efbab86650f139c3bfa446bdf28",
     "packages": [
         {
             "name": "algolia/places",
@@ -5122,17 +5122,17 @@
         },
         {
             "name": "drupal/state_machine",
-            "version": "1.8.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/state_machine.git",
-                "reference": "8.x-1.8"
+                "reference": "8.x-1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/state_machine-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "dd59939a0f91f413c4f98e3f2966f8ea7a4a74ee"
+                "url": "https://ftp.drupal.org/files/projects/state_machine-8.x-1.10.zip",
+                "reference": "8.x-1.10",
+                "shasum": "b381307066dd5370ba22d4f1b91f4f182882db76"
             },
             "require": {
                 "drupal/core": "^9.2 || ^10",
@@ -5141,8 +5141,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1684226801",
+                    "version": "8.x-1.10",
+                    "datestamp": "1701253627",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5219,17 +5219,17 @@
         },
         {
             "name": "drupal/token",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/token.git",
-                "reference": "8.x-1.12"
+                "reference": "8.x-1.13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.12.zip",
-                "reference": "8.x-1.12",
-                "shasum": "cefe1b203b793682f74ea43e18d0a814cf768763"
+                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.13.zip",
+                "reference": "8.x-1.13",
+                "shasum": "f2a074b51726de3727c1d900237d6d471806a4d2"
             },
             "require": {
                 "drupal/core": "^9.2 || ^10"
@@ -5237,8 +5237,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.12",
-                    "datestamp": "1688015262",
+                    "version": "8.x-1.13",
+                    "datestamp": "1697885927",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5246,7 +5246,7 @@
                 },
                 "drush": {
                     "services": {
-                        "drush.services.yml": "^9 || ^10"
+                        "drush.services.yml": ">=9"
                     }
                 }
             },
@@ -5349,17 +5349,17 @@
         },
         {
             "name": "drupal/twig_vardumper",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/twig_vardumper.git",
-                "reference": "3.1.0"
+                "reference": "3.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/twig_vardumper-3.1.0.zip",
-                "reference": "3.1.0",
-                "shasum": "f573450d1792967cf2cea831b9a47b49f53a4162"
+                "url": "https://ftp.drupal.org/files/projects/twig_vardumper-3.1.1.zip",
+                "reference": "3.1.1",
+                "shasum": "59af4b4aefbe1972ae2a3769e60deaf9ba691693"
             },
             "require": {
                 "drupal/core": "^9 || ^10",
@@ -5368,8 +5368,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.1.0",
-                    "datestamp": "1663153696",
+                    "version": "3.1.1",
+                    "datestamp": "1705585527",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

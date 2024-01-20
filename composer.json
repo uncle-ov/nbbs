@@ -56,6 +56,8 @@
         "drupal/search_api": "^1.29",
         "drupal/seven": "^1.0",
         "drupal/shortcode": "^2.0",
+        "drupal/state_machine": "^1.10",
+        "drupal/token": "^1.13",
         "drupal/twig_tweak": "^3.2",
         "drupal/twig_vardumper": "^3.1",
         "drupal/votingapi": "^3.0@beta",
