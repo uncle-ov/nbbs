@@ -61,7 +61,7 @@
         "drupal/twig_tweak": "^3.2",
         "drupal/twig_vardumper": "^3.1",
         "drupal/votingapi": "^3.0@beta",
-        "drupal/webform": "^6.2@beta",
+        "drupal/webform": "^6.2",
         "drush/drush": "12.x",
         "wikimedia/composer-merge-plugin": "^2.1"
     },

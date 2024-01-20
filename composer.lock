@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1af3efbab86650f139c3bfa446bdf28",
+    "content-hash": "036bcdd498490ca187a940cbc84026f7",
     "packages": [
         {
             "name": "algolia/places",
@@ -4093,17 +4093,17 @@
         },
         {
             "name": "drupal/inline_entity_form",
-            "version": "1.0.0-rc15",
+            "version": "1.0.0-rc17",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/inline_entity_form.git",
-                "reference": "8.x-1.0-rc15"
+                "reference": "8.x-1.0-rc17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-rc15.zip",
-                "reference": "8.x-1.0-rc15",
-                "shasum": "7702801f7e599956fc3d10cff8257809f53ac3ec"
+                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-rc17.zip",
+                "reference": "8.x-1.0-rc17",
+                "shasum": "626622e01cf7a2d2977fdc06ae09afd5a814e09b"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9 || ^10",
@@ -4115,8 +4115,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc15",
-                    "datestamp": "1678126675",
+                    "version": "8.x-1.0-rc17",
+                    "datestamp": "1703020130",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -4155,10 +4155,6 @@
                 {
                     "name": "oknate",
                     "homepage": "https://www.drupal.org/user/471638"
-                },
-                {
-                    "name": "podarok",
-                    "homepage": "https://www.drupal.org/user/116002"
                 },
                 {
                     "name": "ram4nd",
@@ -5473,20 +5469,21 @@
         },
         {
             "name": "drupal/webform",
-            "version": "6.2.0-beta6",
+            "version": "6.2.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "6.2.0-beta6"
+                "reference": "6.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-6.2.0-beta6.zip",
-                "reference": "6.2.0-beta6",
-                "shasum": "b466ad3629c58f45994cbca55ab6bd8baaa4b838"
+                "url": "https://ftp.drupal.org/files/projects/webform-6.2.2.zip",
+                "reference": "6.2.2",
+                "shasum": "cfd766802232dfdf39edd5a1acf7c738d14dc6eb"
             },
             "require": {
-                "drupal/core": "^9.4 || ^10"
+                "drupal/core": "^9.4 || ^10",
+                "php": ">=8.1"
             },
             "require-dev": {
                 "drupal/address": "1.x-dev",
@@ -5494,16 +5491,16 @@
                 "drupal/captcha": "^1 || ^2",
                 "drupal/chosen": "3.0.x-dev",
                 "drupal/ckeditor": "1.0.x-dev",
-                "drupal/clientside_validation": "*",
+                "drupal/clientside_validation": "^3 || ^4",
                 "drupal/clientside_validation_jquery": "*",
-                "drupal/devel": "*",
+                "drupal/devel": "5.x-dev",
                 "drupal/entity": "1.x-dev",
-                "drupal/entity_print": "*",
+                "drupal/entity_print": "2.x-dev",
                 "drupal/group": "1.x-dev",
                 "drupal/hal": "1 - 2",
                 "drupal/jquery_ui": "1.x-dev",
-                "drupal/jquery_ui_checkboxradio": "*",
-                "drupal/jquery_ui_datepicker": "*",
+                "drupal/jquery_ui_checkboxradio": "2.x-dev",
+                "drupal/jquery_ui_datepicker": "2.x-dev",
                 "drupal/mailsystem": "4.x-dev",
                 "drupal/metatag": "1.x-dev",
                 "drupal/paragraphs": "1.x-dev",
@@ -5511,7 +5508,7 @@
                 "drupal/smtp": "1.x-dev",
                 "drupal/styleguide": "^1 || ^2",
                 "drupal/telephone_validation": "2.x-dev",
-                "drupal/token": "*",
+                "drupal/token": "1.x-dev",
                 "drupal/variationcache": "1.x-dev",
                 "drupal/webform_access": "*",
                 "drupal/webform_attachment": "*",
@@ -5531,11 +5528,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.2.0-beta6",
-                    "datestamp": "1686598812",
+                    "version": "6.2.2",
+                    "datestamp": "1701948363",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "drush": {
@@ -10709,8 +10706,7 @@
         "drupal/formblock": 10,
         "drupal/inline_entity_form": 5,
         "drupal/nodeaccess": 15,
-        "drupal/votingapi": 10,
-        "drupal/webform": 10
+        "drupal/votingapi": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,

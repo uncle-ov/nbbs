@@ -5,12 +5,12 @@
  * Theme hooks, preprocessor, and suggestions.
  */
 
-use Drupal\Core\Render\Element;
-use Drupal\file\Entity\File;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
-use Drupal\Core\Template\Attribute;
+use Drupal\Core\Render\Element;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Template\Attribute;
+use Drupal\file\Entity\File;
 use Drupal\webform\Element\WebformSelectOther;
 use Drupal\webform\Plugin\WebformElement\Radios as WebformRadios;
 use Drupal\webform\Plugin\WebformElement\WebformEntityRadios;
@@ -401,7 +401,7 @@ function webform_preprocess_datetime_form(&$variables) {
 
   // Add .container-inline to datetime form wrapper which is missing from the
   // stable base theme.
-  // @see themes/contrib/classy/templates/form/datetime-form.html.twig
+  // @see core/themes/classy/templates/form/datetime-form.html.twig
   // @see core/themes/stable/templates/form/datetime-form.html.twig
   $variables['attributes']['class'][] = 'container-inline';
 }
@@ -692,7 +692,9 @@ function webform_preprocess_file_link(&$variables) {
   }
 
   // Add file size variable to Claro theme.
-  if (empty($variables['file_size']) && \Drupal::service('webform.theme_manager')->isActiveTheme('claro')) {
+  if (empty($variables['file_size'])
+    && $file->getSize()
+    && \Drupal::service('webform.theme_manager')->isActiveTheme('claro')) {
     $variables['file_size'] = format_size($file->getSize(), \Drupal::languageManager()->getCurrentLanguage()->getId());
   }
 }
