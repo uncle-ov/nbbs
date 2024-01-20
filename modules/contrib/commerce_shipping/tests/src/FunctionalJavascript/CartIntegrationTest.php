@@ -198,7 +198,7 @@ class CartIntegrationTest extends CommerceWebDriverTestBase {
 
     // Test whether the shipping amount gets updated.
     $this->drupalGet('/cart');
-    $this->getSession()->getPage()->fillField('edit_quantity[0]', 5);
+    $this->getSession()->getPage()->fillField('edit_quantity[0]', '5');
     $this->getSession()->getPage()->findButton('Update cart')->click();
     $this->assertSession()->pageTextContains('Shipping $50.00');
 
@@ -278,7 +278,7 @@ class CartIntegrationTest extends CommerceWebDriverTestBase {
 
     // Test whether the shipping amount gets updated.
     $this->drupalGet('/cart');
-    $this->getSession()->getPage()->fillField('edit_quantity[0]', 10);
+    $this->getSession()->getPage()->fillField('edit_quantity[0]', '10');
     $this->getSession()->getPage()->findButton('Update cart')->click();
     $this->assertSession()->pageTextContains('Shipping $0.00');
 
@@ -295,7 +295,7 @@ class CartIntegrationTest extends CommerceWebDriverTestBase {
 
     // Test whether the shipping amount is cleared if there is no valid methods.
     $this->drupalGet('/cart');
-    $this->getSession()->getPage()->fillField('edit_quantity[0]', 6);
+    $this->getSession()->getPage()->fillField('edit_quantity[0]', '6');
     $this->getSession()->getPage()->findButton('Update cart')->click();
     $this->assertSession()->pageTextNotContains('Shipping $0.00');
 

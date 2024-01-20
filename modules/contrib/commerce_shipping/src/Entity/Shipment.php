@@ -2,12 +2,12 @@
 
 namespace Drupal\commerce_shipping\Entity;
 
+use Drupal\commerce_order\Adjustment;
 use Drupal\commerce_price\Calculator;
+use Drupal\commerce_price\Price;
 use Drupal\commerce_shipping\Plugin\Commerce\PackageType\PackageTypeInterface as PackageTypePluginInterface;
 use Drupal\commerce_shipping\ProposedShipment;
 use Drupal\commerce_shipping\ShipmentItem;
-use Drupal\commerce_order\Adjustment;
-use Drupal\commerce_price\Price;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityMalformedException;

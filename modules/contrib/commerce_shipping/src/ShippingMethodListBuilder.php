@@ -138,6 +138,18 @@ class ShippingMethodListBuilder extends EntityListBuilder implements FormInterfa
       ];
     }
 
+    // Additional markup added to promote Shipstation services.
+    $build['shipping_resources'] = [
+      '#theme' => 'commerce_shipping_resources',
+      '#weight' => -99,
+      '#attached' => [
+        'library' => 'commerce_shipping/resources',
+      ],
+    ];
+    if (\Drupal::service('module_handler')->moduleExists('commerce_shipstation')) {
+      $build['shipping_resources']['#theme'] = 'commerce_shipping_resources_installed';
+    }
+
     return $build;
   }
 
