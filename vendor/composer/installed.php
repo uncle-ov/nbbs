@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '9a112251cc49cecea0a5875ca5846bd6c9b1f863',
+        'reference' => '9a117ad5438c08399efc3e3fec952f7b6769ddeb',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -694,6 +694,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/fivestar' => array(
+            'pretty_version' => '1.0.0-alpha5',
+            'version' => '1.0.0.0-alpha5',
+            'reference' => '8.x-1.0-alpha5',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/fivestar',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/formblock' => array(
             'pretty_version' => '2.0.0-beta3',
             'version' => '2.0.0.0-beta3',
@@ -823,7 +832,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '9a112251cc49cecea0a5875ca5846bd6c9b1f863',
+            'reference' => '9a117ad5438c08399efc3e3fec952f7b6769ddeb',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

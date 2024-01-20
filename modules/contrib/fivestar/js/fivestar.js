@@ -11,7 +11,7 @@
  * Originally based on the Star Rating jQuery plugin by Wil Stuckey:
  * http://sandbox.wilstuckey.com/jquery-ratings/
  */
-(function ($, once) {
+(function($) {
   Drupal.behaviors.fivestar = {
     attach: function(context) {
       $('.vote').on('change', function() {
@@ -20,7 +20,7 @@
         }
       });
 
-      $(once('fivestar', 'div.fivestar-form-item', context)).find('div.fivestar-form-item').each(function() {
+      $(once('fivestar', 'div.fivestar-form-item', context)).each(function() {
         var $cancel, $container, $options, $select, $this, index;
         $this = $(this);
         $container = $('<div class="fivestar-widget clearfix"></div>');
@@ -90,20 +90,3 @@
     }
   };
 })(jQuery, once);
-
-
-/**
- * @file
- *
- * Fivestar AJAX for updating fivestar widgets.
- */
-
-/**
- * Create a degradeable star rating interface out of a simple form structure.
- */
-(function($) {
-  Drupal.AjaxCommands.prototype.fivestarUpdate = function(ajax, response, status) {
-    response.selector = $('.fivestar-form-item', ajax.element.form);
-    ajax.commands.insert(ajax, response, status);
-  };
-})(jQuery);

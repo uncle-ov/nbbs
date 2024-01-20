@@ -1306,3 +1306,7 @@ div.form-item .generate_strong_password {
 #block-rhythm-sub-userlogin ul {
 	display: none !important;
 }
+
+label[for="edit-field-rating-0"] {
+	display: none !important;
+}

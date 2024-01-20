@@ -11,14 +11,12 @@ use Drupal\Core\Template\Attribute;
  *
  * @FormElement("fivestar")
  */
-class Fivestar extends FormElement
-{
+class Fivestar extends FormElement {
 
   /**
    * {@inheritdoc}
    */
-  public function getInfo()
-  {
+  public function getInfo() {
     $class = get_class($this);
 
     return [
@@ -50,10 +48,9 @@ class Fivestar extends FormElement
   }
 
   /**
-   * Process callback: process fivestar element.
+   * Process handler for the fivestar form element.
    */
-  public static function process(array &$element, FormStateInterface $form_state, &$complete_form)
-  {
+  public static function process(array &$element, FormStateInterface $form_state, &$complete_form) {
     $settings = $element['#settings'];
     $values = $element['#values'];
     $class[] = 'clearfix';
@@ -65,7 +62,8 @@ class Fivestar extends FormElement
       $entity_manager = \Drupal::entityTypeManager();
       $entity = $entity_manager->getStorage($entity_type)->load($entity_id);
       $title = $entity->label();
-    } elseif (isset($complete_form['#node'])) {
+    }
+    elseif (isset($complete_form['#node'])) {
       $title = $complete_form['#node']->title;
     }
 
@@ -95,7 +93,7 @@ class Fivestar extends FormElement
         '#default_value' => self::getElementDefaultValue($element),
         '#weight' => -2,
         '#ajax' => $element['#ajax'],
-        '#parents' => isset($element['#parents']) ? $element['#parents'] : [],
+        '#parents' => $element['#parents'] ?? [],
       ];
     }
 
@@ -151,11 +149,12 @@ class Fivestar extends FormElement
         if ($settings['text_format'] != 'none') {
           $static_description = [
             '#type' => 'fivestar_summary',
-            '#average_rating' => $settings['text_format'] == 'user' ? NULL : (isset($values['vote_average']) ? $values['vote_average'] : 0),
-            '#votes' => isset($values['vote_count']) ? $values['vote_count'] : 0,
+            '#average_rating' => $settings['text_format'] == 'user' ? NULL : ($values['vote_average'] ?? 0),
+            '#votes' => $values['vote_count'] ?? 0,
             '#stars' => $settings['stars'],
           ];
-        } else {
+        }
+        else {
           $static_description = '&nbsp;';
         }
         $element_static = [
@@ -191,15 +190,22 @@ class Fivestar extends FormElement
   }
 
   /**
-   * Return rating description.
+   * Creates a fivestar_summary theme render array for an Element.
    *
    * @param array $element
-   *   Fivestar element data.
+   *   Fivestar element data, containing at least #stars, #values and
+   *   #text_format keys. Other keys include #microdata, #display_format.
    *
    * @return array
+   *   A Drupal render array containing a 'fivestar_summary' element suitable
+   *   for describing this element.
+   *   If the setting format is present and not 'none', and there are values,
+   *   it will contain:
+   *     #theme, #stars, #microdata, #votes, and one or both of #average_rating
+   *     and #user_rating.
+   *   Otherwise, it returns an empty array.
    */
-  public static function getElementDescription(array $element)
-  {
+  public static function getElementDescription(array $element) {
     if (empty($element['#settings']['text_format']) || empty($element['#values'])) {
       return [];
     }
@@ -210,7 +216,7 @@ class Fivestar extends FormElement
     $base_element_data = [
       '#theme' => 'fivestar_summary',
       '#stars' => $element['#stars'],
-      '#microdata' => isset($settings['microdata']) ? $settings['microdata'] : NULL,
+      '#microdata' => $settings['microdata'] ?? NULL,
     ];
 
     switch ($settings['text_format']) {
@@ -252,9 +258,9 @@ class Fivestar extends FormElement
    *   Fivestar element data.
    *
    * @return bool
+   *   TRUE if the user can vote, FALSE otherwise.
    */
-  public static function userCanVote(array $element)
-  {
+  public static function userCanVote(array $element) {
     if ($element['#show_static_result']) {
       return FALSE;
     }
@@ -265,20 +271,23 @@ class Fivestar extends FormElement
     // Check if user have votes in current entity type.
     $vote_ids = [];
     $current_user = \Drupal::currentUser();
-    $entity_type = isset($element['#settings']['content_type']) ? $element['#settings']['content_type'] : NULL;
-    $entity_id = isset($element['#settings']['content_id']) ? $element['#settings']['content_id'] : NULL;
+    $entity_type_id = $element['#settings']['entity_type_id'] ?? NULL;
+    $entity_id = $element['#settings']['entity_id'] ?? NULL;
 
-    if (!$entity_type || !$entity_id) {
-      $vote_ids = \Drupal::entityQuery('vote')
-        ->accessCheck(FALSE)
-        ->condition('entity_type', $entity_type)
-        ->condition('entity_id', $entity_id)
-        ->condition('user_id', $current_user->id())
-        ->execute();
+    // Check that we have entity details, allow if not.
+    if (empty($entity_type_id) || empty($entity_id)) {
+      return TRUE;
     }
 
+    $vote_ids = \Drupal::entityQuery('vote')
+      ->accessCheck(TRUE)
+      ->condition('entity_type', $entity_type_id)
+      ->condition('entity_id', $entity_id)
+      ->condition('user_id', $current_user->id())
+      ->execute();
+
     // If user voted before, return FALSE.
-    if (empty($vote_ids)) {
+    if (!empty($vote_ids)) {
       return FALSE;
     }
 
@@ -286,19 +295,15 @@ class Fivestar extends FormElement
     if ($element['#allow_ownvote']) {
       return TRUE;
     }
-    // Check that we have entity details, allow if not.
-    if (!$entity_type || !$entity_id) {
-      return TRUE;
-    }
 
-    $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($entity_id);
+    $entity = \Drupal::entityTypeManager()->getStorage($entity_type_id)->load($entity_id);
     $owner_uid = $entity->getOwner()->id();
 
-    return $owner_uid != $current_user->id();
+    return $owner_uid !== $current_user->id();
   }
 
   /**
-   * Provides the correct default value for a fivestar element.
+   * Determines the correct initial widget value for a fivestar Element.
    *
    * @param array $element
    *   The fivestar element.
@@ -306,8 +311,7 @@ class Fivestar extends FormElement
    * @return float
    *   The default value for the element.
    */
-  public static function getElementDefaultValue(array $element)
-  {
+  public static function getElementDefaultValue(array $element) {
     switch ($element['#settings']['display_format']) {
       case 'average':
         $widget_is_average = ($element['#settings']['display_format'] == 'average');
@@ -316,16 +320,13 @@ class Fivestar extends FormElement
           $element['#default_value'];
         break;
 
+      case 'dual':
       case 'user':
         $default_value = $element['#values']['vote_user'];
         break;
 
       case 'smart':
-        $default_value = (!empty($element['#values']['vote_user']) ? $element['#values']['vote_user'] : $element['#values']['vote_average']);
-        break;
-
-      case 'dual':
-        $default_value = $element['#values']['vote_user'];
+        $default_value = $element['#values']['vote_user'] ?? $element['#values']['vote_average'];
         break;
 
       default:
@@ -348,8 +349,7 @@ class Fivestar extends FormElement
   /**
    * {@inheritdoc}
    */
-  public static function valueCallback(&$element, $input, FormStateInterface $form_state)
-  {
+  public static function valueCallback(&$element, $input, FormStateInterface $form_state) {
     return $input;
   }
 
