@@ -15,6 +15,7 @@
         }
     ],
     "require": {
+        "commerceguys/addressing": "^1.4",
         "composer/installers": "^2.0",
         "drupal/address": "^1.12",
         "drupal/admin_toolbar": "^3.4",
@@ -22,7 +23,7 @@
         "drupal/ckeditor": "^1.0",
         "drupal/classy": "^1.0",
         "drupal/color": "^1.0",
-        "drupal/commerce": "^2.36",
+        "drupal/commerce": "^2.37",
         "drupal/commerce_paypal": "^1.7",
         "drupal/commerce_shipping": "^2.7",
         "drupal/commerce_stripe_checkout": "^1.2",

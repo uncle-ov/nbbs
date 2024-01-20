@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14779b1d5944c164f70d10930674854e",
+    "content-hash": "b6314db9c98acd7d11d74d45effdadbf",
     "packages": [
         {
             "name": "algolia/places",
@@ -1794,7 +1794,7 @@
         },
         {
             "name": "drupal/commerce",
-            "version": "2.36.0",
+            "version": "2.37.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce.git",

@@ -1875,8 +1875,8 @@
         },
         {
             "name": "drupal/commerce",
-            "version": "2.36.0",
-            "version_normalized": "2.36.0.0",
+            "version": "2.37.0",
+            "version_normalized": "2.37.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce.git",

@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '2e8a8b3c5e39b4dd55236f4ec1cc2fa5375c5c22',
+        'reference' => '257d0615d3437c6a830366fe0ce663164d9d84fd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -272,8 +272,8 @@
             'dev_requirement' => false,
         ),
         'drupal/commerce' => array(
-            'pretty_version' => '2.36.0',
-            'version' => '2.36.0.0',
+            'pretty_version' => '2.37.0',
+            'version' => '2.37.0.0',
             'reference' => '8.x-2.36',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../modules/contrib/commerce',
@@ -832,7 +832,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '2e8a8b3c5e39b4dd55236f4ec1cc2fa5375c5c22',
+            'reference' => '257d0615d3437c6a830366fe0ce663164d9d84fd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
