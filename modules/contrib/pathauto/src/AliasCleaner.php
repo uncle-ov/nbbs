@@ -15,8 +15,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 /**
  * Provides an alias cleaner.
  */
-class AliasCleaner implements AliasCleanerInterface
-{
+class AliasCleaner implements AliasCleanerInterface {
 
   use StringTranslationTrait;
 
@@ -71,7 +70,12 @@ class AliasCleaner implements AliasCleanerInterface
    */
   protected $moduleHandler;
 
-  public $punctuationCharacters = [];
+  /**
+   * An array of arrays for punctuation values.
+   *
+   * @var array
+   */
+  protected $punctuationCharacters = [];
 
   /**
    * Creates a new AliasCleaner.
@@ -89,22 +93,19 @@ class AliasCleaner implements AliasCleanerInterface
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, AliasStorageHelperInterface $alias_storage_helper, LanguageManagerInterface $language_manager, CacheBackendInterface $cache_backend, TransliterationInterface $transliteration, ModuleHandlerInterface $module_handler)
-  {
+  public function __construct(ConfigFactoryInterface $config_factory, AliasStorageHelperInterface $alias_storage_helper, LanguageManagerInterface $language_manager, CacheBackendInterface $cache_backend, TransliterationInterface $transliteration, ModuleHandlerInterface $module_handler) {
     $this->configFactory = $config_factory;
     $this->aliasStorageHelper = $alias_storage_helper;
     $this->languageManager = $language_manager;
     $this->cacheBackend = $cache_backend;
     $this->transliteration = $transliteration;
     $this->moduleHandler = $module_handler;
-    $this->punctuationCharacters = $this->getPunctuationCharacters();
   }
 
   /**
    * {@inheritdoc}
    */
-  public function cleanAlias($alias)
-  {
+  public function cleanAlias($alias) {
     $config = $this->configFactory->get('pathauto.settings');
     $alias_max_length = min($config->get('max_length'), $this->aliasStorageHelper->getAliasSchemaMaxLength());
 
@@ -128,8 +129,7 @@ class AliasCleaner implements AliasCleanerInterface
   /**
    * {@inheritdoc}
    */
-  public function getCleanSeparators($string, $separator = NULL)
-  {
+  public function getCleanSeparators($string, $separator = NULL) {
     $config = $this->configFactory->get('pathauto.settings');
 
     if (!isset($separator)) {
@@ -151,7 +151,8 @@ class AliasCleaner implements AliasCleanerInterface
       // Replace trailing separators around slashes.
       if ($separator !== '/') {
         $output = preg_replace("/\/+$seppattern\/+|$seppattern\/+|\/+$seppattern/", "/", $output);
-      } else {
+      }
+      else {
         // If the separator is a slash, we need to re-add the leading slash
         // dropped by the trim function.
         $output = '/' . $output;
@@ -164,8 +165,7 @@ class AliasCleaner implements AliasCleanerInterface
   /**
    * {@inheritdoc}
    */
-  public function cleanString($string, array $options = [])
-  {
+  public function cleanString($string, array $options = []) {
     if (empty($this->cleanStringCache)) {
       // Generate and cache variables used in this method.
       $config = $this->configFactory->get('pathauto.settings');
@@ -207,7 +207,8 @@ class AliasCleaner implements AliasCleanerInterface
         if (function_exists('mb_eregi_replace')) {
           mb_regex_encoding('UTF-8');
           $this->cleanStringCache['ignore_words_callback'] = 'mb_eregi_replace';
-        } else {
+        }
+        else {
           $this->cleanStringCache['ignore_words_callback'] = 'preg_replace';
           $this->cleanStringCache['ignore_words_regex'] = '/' . $this->cleanStringCache['ignore_words_regex'] . '/i';
         }
@@ -222,7 +223,8 @@ class AliasCleaner implements AliasCleanerInterface
     $langcode = 'en';
     if (!empty($options['language'])) {
       $langcode = $options['language']->getId();
-    } elseif (!empty($options['langcode'])) {
+    }
+    elseif (!empty($options['langcode'])) {
       $langcode = $options['langcode'];
     }
 
@@ -288,48 +290,48 @@ class AliasCleaner implements AliasCleanerInterface
   /**
    * {@inheritdoc}
    */
-  public function getPunctuationCharacters()
-  {
+  public function getPunctuationCharacters() {
     if (empty($this->punctuationCharacters)) {
       $langcode = $this->languageManager->getCurrentLanguage()->getId();
 
       $cid = 'pathauto:punctuation:' . $langcode;
       if ($cache = $this->cacheBackend->get($cid)) {
         $this->punctuationCharacters = $cache->data;
-      } else {
-        $punctuation = [];
-        $punctuation['double_quotes'] = ['value' => '"', 'name' => $this->t('Double quotation marks')];
-        $punctuation['quotes'] = ['value' => '\'', 'name' => $this->t("Single quotation marks (apostrophe)")];
-        $punctuation['backtick'] = ['value' => '`', 'name' => $this->t('Back tick')];
-        $punctuation['comma'] = ['value' => ',', 'name' => $this->t('Comma')];
-        $punctuation['period'] = ['value' => '.', 'name' => $this->t('Period')];
-        $punctuation['hyphen'] = ['value' => '-', 'name' => $this->t('Hyphen')];
-        $punctuation['underscore'] = ['value' => '_', 'name' => $this->t('Underscore')];
-        $punctuation['colon'] = ['value' => ':', 'name' => $this->t('Colon')];
-        $punctuation['semicolon'] = ['value' => ';', 'name' => $this->t('Semicolon')];
-        $punctuation['pipe'] = ['value' => '|', 'name' => $this->t('Vertical bar (pipe)')];
-        $punctuation['left_curly'] = ['value' => '{', 'name' => $this->t('Left curly bracket')];
-        $punctuation['left_square'] = ['value' => '[', 'name' => $this->t('Left square bracket')];
-        $punctuation['right_curly'] = ['value' => '}', 'name' => $this->t('Right curly bracket')];
-        $punctuation['right_square'] = ['value' => ']', 'name' => $this->t('Right square bracket')];
-        $punctuation['plus'] = ['value' => '+', 'name' => $this->t('Plus sign')];
-        $punctuation['equal'] = ['value' => '=', 'name' => $this->t('Equal sign')];
-        $punctuation['asterisk'] = ['value' => '*', 'name' => $this->t('Asterisk')];
-        $punctuation['ampersand'] = ['value' => '&', 'name' => $this->t('Ampersand')];
-        $punctuation['percent'] = ['value' => '%', 'name' => $this->t('Percent sign')];
-        $punctuation['caret'] = ['value' => '^', 'name' => $this->t('Caret')];
-        $punctuation['dollar'] = ['value' => '$', 'name' => $this->t('Dollar sign')];
-        $punctuation['hash'] = ['value' => '#', 'name' => $this->t('Number sign (pound sign, hash)')];
-        $punctuation['at'] = ['value' => '@', 'name' => $this->t('At sign')];
-        $punctuation['exclamation'] = ['value' => '!', 'name' => $this->t('Exclamation mark')];
-        $punctuation['tilde'] = ['value' => '~', 'name' => $this->t('Tilde')];
-        $punctuation['left_parenthesis'] = ['value' => '(', 'name' => $this->t('Left parenthesis')];
+      }
+      else {
+        $punctuation                      = [];
+        $punctuation['double_quotes']     = ['value' => '"', 'name' => $this->t('Double quotation marks')];
+        $punctuation['quotes']            = ['value' => '\'', 'name' => $this->t("Single quotation marks (apostrophe)")];
+        $punctuation['backtick']          = ['value' => '`', 'name' => $this->t('Back tick')];
+        $punctuation['comma']             = ['value' => ',', 'name' => $this->t('Comma')];
+        $punctuation['period']            = ['value' => '.', 'name' => $this->t('Period')];
+        $punctuation['hyphen']            = ['value' => '-', 'name' => $this->t('Hyphen')];
+        $punctuation['underscore']        = ['value' => '_', 'name' => $this->t('Underscore')];
+        $punctuation['colon']             = ['value' => ':', 'name' => $this->t('Colon')];
+        $punctuation['semicolon']         = ['value' => ';', 'name' => $this->t('Semicolon')];
+        $punctuation['pipe']              = ['value' => '|', 'name' => $this->t('Vertical bar (pipe)')];
+        $punctuation['left_curly']        = ['value' => '{', 'name' => $this->t('Left curly bracket')];
+        $punctuation['left_square']       = ['value' => '[', 'name' => $this->t('Left square bracket')];
+        $punctuation['right_curly']       = ['value' => '}', 'name' => $this->t('Right curly bracket')];
+        $punctuation['right_square']      = ['value' => ']', 'name' => $this->t('Right square bracket')];
+        $punctuation['plus']              = ['value' => '+', 'name' => $this->t('Plus sign')];
+        $punctuation['equal']             = ['value' => '=', 'name' => $this->t('Equal sign')];
+        $punctuation['asterisk']          = ['value' => '*', 'name' => $this->t('Asterisk')];
+        $punctuation['ampersand']         = ['value' => '&', 'name' => $this->t('Ampersand')];
+        $punctuation['percent']           = ['value' => '%', 'name' => $this->t('Percent sign')];
+        $punctuation['caret']             = ['value' => '^', 'name' => $this->t('Caret')];
+        $punctuation['dollar']            = ['value' => '$', 'name' => $this->t('Dollar sign')];
+        $punctuation['hash']              = ['value' => '#', 'name' => $this->t('Number sign (pound sign, hash)')];
+        $punctuation['at']                = ['value' => '@', 'name' => $this->t('At sign')];
+        $punctuation['exclamation']       = ['value' => '!', 'name' => $this->t('Exclamation mark')];
+        $punctuation['tilde']             = ['value' => '~', 'name' => $this->t('Tilde')];
+        $punctuation['left_parenthesis']  = ['value' => '(', 'name' => $this->t('Left parenthesis')];
         $punctuation['right_parenthesis'] = ['value' => ')', 'name' => $this->t('Right parenthesis')];
-        $punctuation['question_mark'] = ['value' => '?', 'name' => $this->t('Question mark')];
-        $punctuation['less_than'] = ['value' => '<', 'name' => $this->t('Less-than sign')];
-        $punctuation['greater_than'] = ['value' => '>', 'name' => $this->t('Greater-than sign')];
-        $punctuation['slash'] = ['value' => '/', 'name' => $this->t('Slash')];
-        $punctuation['back_slash'] = ['value' => '\\', 'name' => $this->t('Backslash')];
+        $punctuation['question_mark']     = ['value' => '?', 'name' => $this->t('Question mark')];
+        $punctuation['less_than']         = ['value' => '<', 'name' => $this->t('Less-than sign')];
+        $punctuation['greater_than']      = ['value' => '>', 'name' => $this->t('Greater-than sign')];
+        $punctuation['slash']             = ['value' => '/', 'name' => $this->t('Slash')];
+        $punctuation['back_slash']        = ['value' => '\\', 'name' => $this->t('Backslash')];
 
         // Allow modules to alter the punctuation list and cache the result.
         $this->moduleHandler->alter('pathauto_punctuation_chars', $punctuation);
@@ -344,8 +346,7 @@ class AliasCleaner implements AliasCleanerInterface
   /**
    * {@inheritdoc}
    */
-  public function cleanTokenValues(&$replacements, $data = [], $options = [])
-  {
+  public function cleanTokenValues(&$replacements, $data = [], $options = []) {
     foreach ($replacements as $token => $value) {
       // Only clean non-path tokens.
       $config = $this->configFactory->get('pathauto.settings');
@@ -359,8 +360,7 @@ class AliasCleaner implements AliasCleanerInterface
   /**
    * {@inheritdoc}
    */
-  public function resetCaches()
-  {
+  public function resetCaches() {
     $this->cleanStringCache = [];
   }
 
