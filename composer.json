@@ -36,6 +36,7 @@
         "drupal/dropzonejs": "^2.8",
         "drupal/entity_browser": "^2.10",
         "drupal/entity_embed": "^1.5",
+        "drupal/entity_reference_revisions": "^1.11",
         "drupal/entity_type_clone": "^4.0",
         "drupal/facets": "^2.0",
         "drupal/field_group": "^3.4",
