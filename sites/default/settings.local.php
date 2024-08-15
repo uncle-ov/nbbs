@@ -116,8 +116,13 @@ $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
  * be gained by generating a query string from rebuild_token_calculator.sh and
  * using these parameters in a request to rebuild.php.
  */
-$settings['rebuild_access'] = TRUE;
+$settings['rebuild_access'] = FALSE;
 
+// Trusted host configuration.
+$settings['trusted_host_patterns'] = [
+  '^www\.nbblacksummit\.com$',
+  '^www\.nbblacksummit\.ca$',
+];
 /**
  * Skip file system permissions hardening.
  *
