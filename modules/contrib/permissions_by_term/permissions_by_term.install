@@ -1,12 +1,11 @@
 <?php
 
-use Drupal\Core\Database\Connection;
-use Drupal\taxonomy\Entity\Term;
-
 /**
  * @file
  * Install, update and uninstall functions for the permissions_by_term module.
  */
+
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_schema().
@@ -156,12 +155,12 @@ function permissions_by_term_update_8145() {
 }
 
 /**
- * Add langcode to each permission restriction dataset. Cleanup dangling datasets, with no relation to any taxonomy term.
+ * Add langcode to each permission restriction dataset.
+ *
+ * Cleanup dangling datasets, with no relation to any taxonomy term.
  */
 function permissions_by_term_update_8152() {
-  /**
-   * @var Connection $database
-   */
+  /** @var \Drupal\Core\Database\Connection $database */
   $database = \Drupal::service('database');
   $userTerms = $database->query("SELECT tid FROM {permissions_by_term_user} WHERE langcode = '' OR langcode IS NULL")->fetchAll();
   $roleTerms = $database->query("SELECT tid FROM {permissions_by_term_role} WHERE langcode = '' OR langcode IS NULL")->fetchAll();
@@ -175,7 +174,8 @@ function permissions_by_term_update_8152() {
           ':tid'      => $roleTerm->tid,
         ]);
       }
-    } else {
+    }
+    else {
       $database->query("DELETE FROM {permissions_by_term_role} WHERE tid = :tid", [
         ':tid' => $roleTerm->tid,
       ]);
@@ -188,10 +188,11 @@ function permissions_by_term_update_8152() {
       if (!empty($termLangcode)) {
         $database->query("UPDATE {permissions_by_term_user} SET langcode = :langcode WHERE tid = :tid", [
           ':langcode' => $termLangcode,
-          ':tid'      => $userTerm->tid
+          ':tid'      => $userTerm->tid,
         ]);
       }
-    } else {
+    }
+    else {
       $database->query("DELETE FROM {permissions_by_term_user} WHERE tid = :tid", [
         ':tid' => $userTerm->tid,
       ]);

@@ -20,14 +20,14 @@ Feature: Menu Item Restriction
     And Node access records are rebuild
     And I create main menu item for node with title "Only admin can access"
     And I am on "/"
-    Then I should see menu item text matching "Only admin can access"
+    Then I should see text matching "Only admin can access"
 
   Scenario: Anonymous users do not see menu item with enabled node access records
     Given node access records are enabled
     And Node access records are rebuild
     And I create main menu item for node with title "Only admin can access"
     And I am on "/"
-    Then I should not see menu item text matching "Only admin can access"
+    Then I should not see text matching "Only admin can access"
 
   Scenario: Admin users see menu item with enabled node access records
     Given node access records are enabled
@@ -35,4 +35,4 @@ Feature: Menu Item Restriction
     And I am logged in as a user with the "administrator" role
     And I create main menu item for node with title "Only admin can access"
     And I am on "/"
-    Then I should see menu item text matching "Only admin can access"
+    Then I should see text matching "Only admin can access"

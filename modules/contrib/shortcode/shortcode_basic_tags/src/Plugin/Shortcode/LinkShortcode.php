@@ -74,7 +74,7 @@ class LinkShortcode extends ShortcodeBase {
     $output[] = '<p><strong>' . $this->t('[link path="the drupal path" (title="link title"|class="additional class"|id="item id"|style="css style rules")]text[/link]') . '</strong>';
     if ($long) {
       $output[] = $this->t('Inserts an aliased drupal path around the text. You can omit the text and the closing [/link], you get back the url only.') . '</p>';
-      $output[] = '<p>' . $this->t('Additional class names can be added by the <em>class</em> parameter. The id parameter gives the html an unique css id. In the <em>style</em> parameter you can use your own css definition.') . '</p>';
+      $output[] = '<p>' . $this->t('Additional class names can be added by the <em>class</em> parameter. The id parameter gives the html an unique css id. In the <em>style</em> parameter you can use your own css definition.  The media entity links converted to the direct media urls if you add the <em>media_file_url=true</em> parameter.') . '</p>';
     }
     else {
       $output[] = $this->t('Inserts an aliased drupal path around the text. You can omit the text and the closing [/link], you get back the url only.') . '</p>';

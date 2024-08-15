@@ -2,14 +2,8 @@
 
 namespace Drupal\commerce_wishlist\Plugin\views\field;
 
-use Drupal\commerce_cart\CartManagerInterface;
-use Drupal\commerce_cart\CartProviderInterface;
-use Drupal\commerce_order\Resolver\OrderTypeResolverInterface;
-use Drupal\commerce_product\Entity\ProductVariationInterface;
-use Drupal\commerce_store\CurrentStoreInterface;
 use Drupal\commerce_store\SelectStoreTrait;
 use Drupal\commerce_wishlist\Entity\WishlistItemInterface;
-use Drupal\commerce_wishlist\WishlistManagerInterface;
 use Drupal\Core\Entity\EntityPublishedInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
@@ -64,49 +58,16 @@ class MoveToCart extends FieldPluginBase {
   protected $wishlistManager;
 
   /**
-   * Constructs a new MoveToCart object.
-   *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin ID for the plugin instance.
-   * @param mixed $plugin_definition
-   *   The plugin implementation definition.
-   * @param \Drupal\commerce_wishlist\WishlistManagerInterface $wishlist_manager
-   *   The wishlist manager.
-   * @param \Drupal\commerce_cart\CartManagerInterface $cart_manager
-   *   The cart manager.
-   * @param \Drupal\commerce_cart\CartProviderInterface $cart_provider
-   *   The cart provider.
-   * @param \Drupal\commerce_order\Resolver\OrderTypeResolverInterface $order_type_resolver
-   *   The order type resolver.
-   * @param \Drupal\commerce_store\CurrentStoreInterface $current_store
-   *   The current store.
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, WishlistManagerInterface $wishlist_manager, CartManagerInterface $cart_manager, CartProviderInterface $cart_provider, OrderTypeResolverInterface $order_type_resolver, CurrentStoreInterface $current_store) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-
-    $this->wishlistManager = $wishlist_manager;
-    $this->cartManager = $cart_manager;
-    $this->cartProvider = $cart_provider;
-    $this->orderTypeResolver = $order_type_resolver;
-    $this->currentStore = $current_store;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('commerce_wishlist.wishlist_manager'),
-      $container->get('commerce_cart.cart_manager'),
-      $container->get('commerce_cart.cart_provider'),
-      $container->get('commerce_order.chain_order_type_resolver'),
-      $container->get('commerce_store.current_store')
-    );
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    $instance->wishlistManager = $container->get('commerce_wishlist.wishlist_manager');
+    $instance->cartManager = $container->get('commerce_cart.cart_manager');
+    $instance->cartProvider = $container->get('commerce_cart.cart_provider');
+    $instance->orderTypeResolver = $container->get('commerce_order.chain_order_type_resolver');
+    $instance->currentStore = $container->get('commerce_store.current_store');
+    return $instance;
   }
 
   /**
@@ -255,11 +216,7 @@ class MoveToCart extends FieldPluginBase {
   protected function isValid(WishlistItemInterface $wishlist_item) {
     $purchasable_entity = $wishlist_item->getPurchasableEntity();
     $valid = FALSE;
-    // Check the deprecated ::isActive method.
-    if ($purchasable_entity instanceof ProductVariationInterface) {
-      $valid = $purchasable_entity->isActive();
-    }
-    elseif ($purchasable_entity instanceof EntityPublishedInterface) {
+    if ($purchasable_entity instanceof EntityPublishedInterface) {
       $valid = $purchasable_entity->isPublished();
     }
     if ($valid) {

@@ -16,10 +16,12 @@ interface WishlistShareMailInterface {
    *   The wishlist.
    * @param string $to
    *   The address the email will be sent to.
+   * @param string $anonymous_sender
+   *   The anonymous sender.
    *
    * @return bool
    *   TRUE if the email was sent successfully, FALSE otherwise.
    */
-  public function send(WishlistInterface $wishlist, $to);
+  public function send(WishlistInterface $wishlist, $to, $anonymous_sender);
 
 }

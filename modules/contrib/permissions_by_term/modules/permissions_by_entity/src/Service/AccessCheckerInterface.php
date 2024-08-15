@@ -5,7 +5,7 @@ namespace Drupal\permissions_by_entity\Service;
 use Drupal\Core\Entity\FieldableEntityInterface;
 
 /**
- * Interface AccessCheckerInterface.
+ * AccessChecker interface.
  *
  * @package Drupal\permissions_by_entity\Service
  */

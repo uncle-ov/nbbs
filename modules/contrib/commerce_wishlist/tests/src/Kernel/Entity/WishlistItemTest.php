@@ -2,10 +2,10 @@
 
 namespace Drupal\Tests\commerce_wishlist\Kernel\Entity;
 
-use Drupal\commerce_wishlist\Entity\Wishlist;
-use Drupal\commerce_wishlist\WishlistPurchase;
 use Drupal\commerce_product\Entity\Product;
 use Drupal\commerce_product\Entity\ProductVariation;
+use Drupal\commerce_wishlist\Entity\Wishlist;
+use Drupal\commerce_wishlist\WishlistPurchase;
 use Drupal\Tests\commerce_cart\Kernel\CartKernelTestBase;
 
 /**

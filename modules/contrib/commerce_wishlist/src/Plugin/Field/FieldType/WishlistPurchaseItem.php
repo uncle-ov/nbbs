@@ -19,6 +19,10 @@ use Drupal\Core\TypedData\DataReferenceTargetDefinition;
  *   list_class = "\Drupal\commerce_wishlist\Plugin\Field\FieldType\WishlistPurchaseItemList",
  *   default_formatter = "commerce_wishlist_purchase_default",
  * )
+ *
+ * @property integer $order_id
+ * @property string $quantity
+ * @property integer $purchased
  */
 class WishlistPurchaseItem extends FieldItemBase {
 

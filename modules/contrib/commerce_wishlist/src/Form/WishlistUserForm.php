@@ -5,24 +5,12 @@ namespace Drupal\commerce_wishlist\Form;
 use Drupal\commerce\AjaxFormTrait;
 use Drupal\commerce\Context;
 use Drupal\commerce\PurchasableEntityInterface;
-use Drupal\commerce_cart\CartManagerInterface;
-use Drupal\commerce_cart\CartProviderInterface;
-use Drupal\commerce_order\Resolver\OrderTypeResolverInterface;
-use Drupal\commerce_price\Resolver\ChainPriceResolverInterface;
-use Drupal\commerce_store\CurrentStoreInterface;
 use Drupal\commerce_wishlist\Entity\WishlistInterface;
 use Drupal\commerce_wishlist\Entity\WishlistItemInterface;
-use Drupal\commerce_wishlist\WishlistManagerInterface;
-use Drupal\commerce_wishlist\WishlistSessionInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\EntityForm;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Session\AccountInterface;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\EntityForm;
+use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -113,66 +101,23 @@ class WishlistUserForm extends EntityForm {
   protected $languageManager;
 
   /**
-   * Constructs a new WishlistUserForm object.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The config factory.
-   * @param \Drupal\commerce_cart\CartManagerInterface $cart_manager
-   *   The cart manager.
-   * @param \Drupal\commerce_cart\CartProviderInterface $cart_provider
-   *   The cart provider.
-   * @param \Drupal\commerce_store\CurrentStoreInterface $current_store
-   *   The current store.
-   * @param \Drupal\Core\Session\AccountInterface $current_user
-   *   The current user.
-   * @param \Drupal\commerce_order\Resolver\OrderTypeResolverInterface $order_type_resolver
-   *   The order type resolver.
-   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
-   *   The route match.
-   * @param \Drupal\commerce_price\Resolver\ChainPriceResolverInterface $chain_price_resolver
-   *   The price resolver.
-   * @param \Drupal\commerce_wishlist\WishlistManagerInterface $wishlist_manager
-   *   The wishlist manager.
-   * @param \Drupal\commerce_wishlist\WishlistSessionInterface $wishlist_session
-   *   The wishlist session.
-   * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
-   *   The language manager.
-   */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, CartManagerInterface $cart_manager, CartProviderInterface $cart_provider, CurrentStoreInterface $current_store, AccountInterface $current_user, OrderTypeResolverInterface $order_type_resolver, RouteMatchInterface $route_match, ChainPriceResolverInterface $chain_price_resolver, WishlistManagerInterface $wishlist_manager, WishlistSessionInterface $wishlist_session, LanguageManagerInterface $language_manager) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->cartManager = $cart_manager;
-    $this->cartProvider = $cart_provider;
-    $this->currentStore = $current_store;
-    $this->currentUser = $current_user;
-    $this->orderTypeResolver = $order_type_resolver;
-    $this->routeMatch = $route_match;
-    $this->settings = $config_factory->get('commerce_wishlist.settings');
-    $this->chainPriceResolver = $chain_price_resolver;
-    $this->wishlistManager = $wishlist_manager;
-    $this->wishlistSession = $wishlist_session;
-    $this->languageManager = $language_manager;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('entity_type.manager'),
-      $container->get('config.factory'),
-      $container->get('commerce_cart.cart_manager'),
-      $container->get('commerce_cart.cart_provider'),
-      $container->get('commerce_store.current_store'),
-      $container->get('current_user'),
-      $container->get('commerce_order.chain_order_type_resolver'),
-      $container->get('current_route_match'),
-      $container->get('commerce_price.chain_price_resolver'),
-      $container->get('commerce_wishlist.wishlist_manager'),
-      $container->get('commerce_wishlist.wishlist_session'),
-      $container->get('language_manager')
-    );
+    $instance = parent::create($container);
+    $instance->entityTypeManager = $container->get('entity_type.manager');
+    $instance->settings = $container->get('config.factory')->get('commerce_wishlist.settings');
+    $instance->cartManager = $container->get('commerce_cart.cart_manager');
+    $instance->cartProvider = $container->get('commerce_cart.cart_provider');
+    $instance->currentStore = $container->get('commerce_store.current_store');
+    $instance->currentUser = $container->get('current_user');
+    $instance->orderTypeResolver = $container->get('commerce_order.chain_order_type_resolver');
+    $instance->routeMatch = $container->get('current_route_match');
+    $instance->chainPriceResolver = $container->get('commerce_price.chain_price_resolver');
+    $instance->wishlistManager = $container->get('commerce_wishlist.wishlist_manager');
+    $instance->wishlistSession = $container->get('commerce_wishlist.wishlist_session');
+    $instance->languageManager = $container->get('language_manager');
+    return $instance;
   }
 
   /**
@@ -182,6 +127,7 @@ class WishlistUserForm extends EntityForm {
     /** @var \Drupal\commerce_wishlist\Entity\WishlistInterface $wishlist */
     $wishlist = $this->entity;
     $owner_access = $this->ownerAccess($wishlist);
+    $anonymous_sharing = $this->settings->get('allow_anonymous_sharing');
     $wishlist_has_items = $wishlist->hasItems();
 
     $form['#tree'] = TRUE;
@@ -229,6 +175,9 @@ class WishlistUserForm extends EntityForm {
       ],
       '#access' => $owner_access && $wishlist_has_items,
     ];
+    if ($wishlist->getOwner()->isAnonymous() && !$anonymous_sharing) {
+      $form['header']['share']['#access'] = FALSE;
+    }
 
     $form['items'] = [];
     foreach ($wishlist->getItems() as $item) {
@@ -277,6 +226,7 @@ class WishlistUserForm extends EntityForm {
         ],
         '#name' => 'add-to-cart-' . $item->id(),
         '#item_id' => $item->id(),
+        '#combine' => TRUE,
       ];
       $item_form['actions']['remove'] = [
         '#type' => 'submit',
@@ -292,6 +242,7 @@ class WishlistUserForm extends EntityForm {
         '#item_id' => $item->id(),
       ];
     }
+    $form['#cache']['tags'][] = 'config:commerce_wishlist.settings';
 
     return $form;
   }
@@ -311,7 +262,7 @@ class WishlistUserForm extends EntityForm {
     $wishlist_item_storage = $this->entityTypeManager->getStorage('commerce_wishlist_item');
     /** @var \Drupal\commerce_wishlist\Entity\WishlistItemInterface $wishlist_item */
     $wishlist_item = $wishlist_item_storage->load($triggering_element['#item_id']);
-    $this->addItemToCart($wishlist_item);
+    $this->addItemToCart($wishlist_item, $triggering_element['#combine']);
   }
 
   /**
@@ -336,10 +287,12 @@ class WishlistUserForm extends EntityForm {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $complete_form = $form_state->getCompleteForm();
     /** @var \Drupal\commerce_wishlist\Entity\WishlistInterface $wishlist */
     $wishlist = $this->entity;
     foreach ($wishlist->getItems() as $wishlist_item) {
-      $this->addItemToCart($wishlist_item);
+      $combine = $complete_form['items'][$wishlist_item->id()]['actions']['add_to_cart']['#combine'];
+      $this->addItemToCart($wishlist_item, $combine);
     }
   }
 
@@ -395,8 +348,10 @@ class WishlistUserForm extends EntityForm {
    *
    * @param \Drupal\commerce_wishlist\Entity\WishlistItemInterface $wishlist_item
    *   The wishlist item to move to the cart.
+   * @param bool $combine
+   *   The combine value.
    */
-  protected function addItemToCart(WishlistItemInterface $wishlist_item) {
+  protected function addItemToCart(WishlistItemInterface $wishlist_item, $combine = TRUE) {
     $purchasable_entity = $wishlist_item->getPurchasableEntity();
     /** @var \Drupal\commerce_order\OrderItemStorageInterface $order_item_storage */
     $order_item_storage = $this->entityTypeManager->getStorage('commerce_order_item');
@@ -415,7 +370,7 @@ class WishlistUserForm extends EntityForm {
     if (!$cart) {
       $cart = $this->cartProvider->createCart($order_type_id, $store);
     }
-    $this->cartManager->addOrderItem($cart, $order_item, TRUE);
+    $this->cartManager->addOrderItem($cart, $order_item, $combine);
   }
 
   /**

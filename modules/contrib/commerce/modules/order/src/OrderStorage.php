@@ -46,12 +46,20 @@ class OrderStorage extends CommerceContentEntityStorage implements OrderStorageI
   protected $lockBackend;
 
   /**
+   * The logger.
+   *
+   * @var \Psr\Log\LoggerInterface
+   */
+  protected $logger;
+
+  /**
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
     $instance = parent::createInstance($container, $entity_type);
     $instance->orderRefresh = $container->get('commerce_order.order_refresh');
     $instance->lockBackend = $container->get('lock');
+    $instance->logger = $container->get('logger.channel.commerce_order');
     return $instance;
   }
 
@@ -98,7 +106,7 @@ class OrderStorage extends CommerceContentEntityStorage implements OrderStorageI
       $mismatch_exception = new OrderLockedSaveException('Attempted to save order ' . $order->id() . ' that is locked for updating. Use OrderStorage::loadForUpdate().');
       $log_only = $order->getEntityType()->get('log_version_mismatch');
       if ($log_only) {
-        \Drupal::logger('commerce_order')->error('<pre>%excepiton</pre>', [
+        $this->logger->error('<pre>%exception</pre>', [
           '%exception' => $mismatch_exception->__toString(),
         ]);
       }

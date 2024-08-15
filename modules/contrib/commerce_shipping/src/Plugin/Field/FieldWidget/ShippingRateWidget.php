@@ -130,12 +130,12 @@ class ShippingRateWidget extends WidgetBase implements ContainerFactoryPluginInt
     $element['#default_value'] = $default_rate->getId();
     $element['#options'] = [];
     foreach ($rates as $rate_id => $rate) {
-      $original_amount = $rate->getOriginalAmount();
       $amount = $rate->getAmount();
-      if ($original_amount->greaterThan($amount)) {
+      $pre_promotion_amount = $rate->getPrePromotionAmount();
+      if ($pre_promotion_amount && $pre_promotion_amount->greaterThan($amount)) {
         $rate_label = new FormattableMarkup('@service: <s>@original_amount</s> @amount', [
           '@service' => $rate->getService()->getLabel(),
-          '@original_amount' => $this->currencyFormatter->format($original_amount->getNumber(), $original_amount->getCurrencyCode()),
+          '@original_amount' => $this->currencyFormatter->format($pre_promotion_amount->getNumber(), $pre_promotion_amount->getCurrencyCode()),
           '@amount' => $this->currencyFormatter->format($amount->getNumber(), $amount->getCurrencyCode()),
         ]);
       }

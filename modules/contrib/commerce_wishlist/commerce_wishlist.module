@@ -8,18 +8,18 @@
 use Drupal\commerce\PurchasableEntityInterface;
 use Drupal\commerce_wishlist\Entity\WishlistInterface;
 use Drupal\commerce_wishlist\Entity\WishlistType;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\PrependCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FormatterInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AnonymousUserSession;
-use Drupal\Component\Utility\Html;
 
 /**
  * Implements hook_user_login().

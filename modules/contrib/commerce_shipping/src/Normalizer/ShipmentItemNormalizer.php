@@ -15,7 +15,7 @@ class ShipmentItemNormalizer extends NormalizerBase {
   /**
    * {@inheritdoc}
    */
-  public function normalize($object, $format = NULL, array $context = []) {
+  public function normalize($object, $format = NULL, array $context = []): array|bool|string|int|float|null|\ArrayObject {
     assert($object instanceof ShipmentItemDataType);
     return $object->toArray();
   }

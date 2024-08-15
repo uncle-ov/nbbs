@@ -3,10 +3,12 @@
 namespace Drupal\permissions_by_term\Service;
 
 use Drupal\Component\Utility\Tags;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\Entity\Node;
 use Drupal\permissions_by_term\Cache\KeyValueCache;
@@ -14,7 +16,7 @@ use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
 
 /**
- * Class AccessStorage.
+ * A storage helper class for access info.
  *
  * @package Drupal\permissions_by_term
  */
@@ -23,12 +25,12 @@ class AccessStorage {
   /**
    * The database connection.
    *
-   * @var Connection
+   * @var \Drupal\Core\Database\Connection
    */
   protected $database;
 
   /**
-   * @var TermHandler
+   * @var \Drupal\permissions_by_term\Service\TermHandler
    */
   protected $term;
 
@@ -38,27 +40,48 @@ class AccessStorage {
   public const NODE_ACCESS_REALM = 'permissions_by_term';
 
   /**
-   * @var AccessCheck
+   * @var \Drupal\permissions_by_term\Service\AccessCheck
    */
   protected $accessCheck;
 
   /**
-   * @var KeyValueCache
+   * @var \Drupal\permissions_by_term\Cache\KeyValueCache
    */
   private $keyValueCache;
 
   /**
-   * @var LoggerChannelInterface
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
    */
   private $logger;
+
+  /**
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  private EntityTypeManagerInterface $entityTypeManager;
+
+  /**
+   * @var \Drupal\Core\Language\LanguageManagerInterface
+   */
+  private LanguageManagerInterface $languageManager;
+
+  /**
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  private ConfigFactoryInterface $configFactory;
 
   /**
    * @var array
    */
   private $grantsCache;
 
-  public function __construct(Connection $database, TermHandler $term, AccessCheck $accessCheck, KeyValueCache $keyValueCache) {
-    $this->database  = $database;
+  /**
+   * Constructs a new AccessStorage.
+   */
+  public function __construct(Connection $database, EntityTypeManagerInterface $entityTypeManager, LanguageManagerInterface $languageManager, ConfigFactoryInterface $configFactory, TermHandler $term, AccessCheck $accessCheck, KeyValueCache $keyValueCache) {
+    $this->database = $database;
+    $this->entityTypeManager = $entityTypeManager;
+    $this->languageManager = $languageManager;
+    $this->configFactory = $configFactory;
     $this->term = $term;
     $this->accessCheck = $accessCheck;
     $this->keyValueCache = $keyValueCache;
@@ -89,7 +112,7 @@ class AccessStorage {
     $sAllowedUsers = $form_state->getValue('access')['user'];
     $aAllowedUsers = Tags::explode($sAllowedUsers);
     foreach ($aAllowedUsers as $sUserId) {
-      $aUserId = \Drupal::entityQuery('user')
+      $aUserId = $this->entityTypeManager->getStorage('user')->getQuery()
         ->condition('uid', $sUserId)
         ->accessCheck(FALSE)
         ->execute();
@@ -309,7 +332,7 @@ class AccessStorage {
   }
 
   public function addTermPermissionsByUserIds(array $aUserIdsGrantedAccess, int $term_id, string $langcode = ''): void {
-    $langcode = ($langcode === '') ? \Drupal::languageManager()->getCurrentLanguage()->getId() : $langcode;
+    $langcode = ($langcode === '') ? $this->languageManager->getCurrentLanguage()->getId() : $langcode;
 
     foreach ($aUserIdsGrantedAccess as $iUserIdGrantedAccess) {
       $queryResult = $this->database->query("SELECT uid FROM {permissions_by_term_user} WHERE tid = :tid AND uid = :uid AND langcode = :langcode",
@@ -334,7 +357,7 @@ class AccessStorage {
    * @throws \Exception
    */
   public function addTermPermissionsByRoleIds($aRoleIdsGrantedAccess, $term_id, $langcode = '') {
-    $langcode = ($langcode === '') ? \Drupal::languageManager()->getCurrentLanguage()->getId() : $langcode;
+    $langcode = ($langcode === '') ? $this->languageManager->getCurrentLanguage()->getId() : $langcode;
 
     $roles = Role::loadMultiple();
     foreach ($roles as $role => $roleObj) {
@@ -396,7 +419,7 @@ class AccessStorage {
    * @throws \Exception
    */
   public function saveTermPermissions(FormStateInterface $formState, $term_id) {
-    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $langcode = $this->languageManager->getCurrentLanguage()->getId();
     if (!empty($formState->getValue('langcode'))) {
       $langcode = $formState->getValue('langcode')['0']['value'];
     }
@@ -587,9 +610,8 @@ class AccessStorage {
   /**
    * @return array
    */
-  public function getAllUids()
-  {
-    $nodes = \Drupal::entityQuery('user')
+  public function getAllUids() {
+    $nodes = $this->entityTypeManager->getStorage('user')->getQuery()
       ->accessCheck(FALSE)
       ->execute();
 
@@ -601,8 +623,7 @@ class AccessStorage {
    *
    * @return array
    */
-  public function getNodeType($nid)
-  {
+  public function getNodeType($nid) {
     $query = $this->database->select('node', 'n')
       ->fields('n', ['type'])
       ->condition('n.nid', $nid);
@@ -616,8 +637,7 @@ class AccessStorage {
    *
    * @return array
    */
-  public function getLangCode($nid)
-  {
+  public function getLangCode($nid) {
     $query = $this->database->select('node', 'n')
       ->fields('n', ['langcode'])
       ->condition('n.nid', $nid);
@@ -631,8 +651,7 @@ class AccessStorage {
    *
    * @return array
    */
-  public function getGids(AccountInterface $user)
-  {
+  public function getGids(AccountInterface $user) {
     $grants = null;
 
     if (!empty($this->grantsCache[$user->id()])) {
@@ -657,12 +676,11 @@ class AccessStorage {
     return $grants;
   }
 
-  private function computePermittedTids(AccountInterface $user)
-  {
+  private function computePermittedTids(AccountInterface $user) {
     $nidsWithNoTidRestriction = $this->getUnrestrictedNids();
     $nidsByTids = $this->term->getNidsByTidsForPublishedNodes($this->getPermittedTids($user->id(), $user->getRoles()));
 
-    if (\Drupal::config('permissions_by_term.settings')->get('require_all_terms_granted')) {
+    if ($this->configFactory->get('permissions_by_term.settings')->get('require_all_terms_granted')) {
       $permittedNids = [];
       foreach ($nidsByTids as $nid) {
         if($this->accessCheck->canUserAccessByNode(Node::load($nid), $user->id(), $this->getLangCode($nid))) {

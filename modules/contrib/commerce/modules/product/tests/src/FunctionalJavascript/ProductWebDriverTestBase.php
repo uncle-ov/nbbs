@@ -3,14 +3,11 @@
 namespace Drupal\Tests\commerce_product\FunctionalJavascript;
 
 use Drupal\Tests\commerce\FunctionalJavascript\CommerceWebDriverTestBase;
-use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
 
 /**
  * Defines base class for product test cases.
  */
 abstract class ProductWebDriverTestBase extends CommerceWebDriverTestBase {
-
-  use EntityReferenceTestTrait;
 
   /**
    * Modules to enable.

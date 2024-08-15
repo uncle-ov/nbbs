@@ -14,6 +14,7 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Site\Settings;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -79,6 +80,7 @@ class DashboardMetricsForm extends FormBase {
     $instance->dateFormatter = $container->get('date.formatter');
     $instance->entityTypeManager = $container->get('entity_type.manager');
     $instance->moduleHandler = $container->get('module_handler');
+    $instance->configFactory = $container->get('config.factory');
     return $instance;
   }
 
@@ -124,20 +126,17 @@ class DashboardMetricsForm extends FormBase {
       return $form;
     }
     $values = $form_state->getValues();
-    if (!$form_state->has('period')) {
-      $form_state->set('period', 'day');
-    }
-    $active_period = $form_state->get('period');
     /** @var \Drupal\commerce_store\StoreStorageInterface $store_storage */
     $store_storage = $this->entityTypeManager->getStorage('commerce_store');
     $active_store = NULL;
     if (!empty($values['store_id'])) {
       $active_store = $store_storage->load($values['store_id']);
     }
+
+    $first_day_of_week = $this->getFirstDayOfWeek();
     $periods = [
       'day' => new DrupalDateTime('now'),
-      // @todo get the first day from the regional settings.
-      'week' => new DrupalDateTime('monday this week'),
+      'week' => new DrupalDateTime(sprintf('%s this week', $first_day_of_week)),
       'month' => new DrupalDateTime('first day of this month'),
       'year' => new DrupalDateTime('first day of january this year'),
     ];
@@ -151,10 +150,12 @@ class DashboardMetricsForm extends FormBase {
       }
       return $date;
     }, $periods);
-    $current_period_timestamp = $periods[$active_period]->getTimestamp();
-    $form_state->set('current_period_timestamp', $current_period_timestamp);
     $now_formatted = $this->dateFormatter->format(time(), 'short');
     foreach ($periods as $key => $date) {
+      // Skip disabled periods.
+      if (!Settings::get('commerce_dashboard_show_sales_this_' . $key, TRUE)) {
+        continue;
+      }
       $form['periods'][$key] = [
         '#type' => 'submit',
         '#value' => match($key) {
@@ -181,34 +182,47 @@ class DashboardMetricsForm extends FormBase {
           [static::class, 'switchPeriodSubmit'],
         ],
         '#period' => $key,
-        '#disabled' => $key === $active_period,
       ];
     }
-    $store_ids = $store_storage->getQuery()->accessCheck(TRUE)->execute();
-    $stores_count = count($store_ids);
-    // If there's more than one store, display a store selector if there are
-    // less than 20 stores.
-    if ($stores_count > 1) {
-      if ($stores_count < 20) {
-        $stores = $store_storage->loadMultiple($store_ids);
-        $form['filters']['store_id'] = [
-          '#type' => 'select',
-          '#title' => $this->t('Store'),
-          '#title_display' => 'invisible',
-          '#options' => EntityHelper::extractLabels($stores),
-          '#empty_option' => $this->t('All stores'),
-          '#ajax' => [
-            'callback' => $ajax_callback,
-          ],
-          '#attributes' => [
-            'class' => ['form-element--extrasmall'],
-          ],
-        ];
-      }
-      else {
-        $form['filters']['store_id'] = [
-          '#markup' => $this->t('All stores'),
-        ];
+    // All periods are disabled, stop here.
+    if (!isset($form['periods'])) {
+      return $form;
+    }
+    // Use the first period available by default, if no period is set.
+    if (!$form_state->has('period')) {
+      $form_state->set('period', key($form['periods']));
+    }
+    $active_period = $form_state->get('period');
+    $form['periods'][$active_period]['#disabled'] = TRUE;
+    $current_period_timestamp = $periods[$active_period]->getTimestamp();
+    $form_state->set('current_period_timestamp', $current_period_timestamp);
+    if (Settings::get('commerce_dashboard_show_store_selector', TRUE)) {
+      $store_ids = $store_storage->getQuery()->accessCheck(TRUE)->execute();
+      $stores_count = count($store_ids);
+      // If there's more than one store, display a store selector if there are
+      // less than 20 stores.
+      if ($stores_count > 1) {
+        if ($stores_count < 20) {
+          $stores = $store_storage->loadMultiple($store_ids);
+          $form['filters']['store_id'] = [
+            '#type' => 'select',
+            '#title' => $this->t('Store'),
+            '#title_display' => 'invisible',
+            '#options' => EntityHelper::extractLabels($stores),
+            '#empty_option' => $this->t('All stores'),
+            '#ajax' => [
+              'callback' => $ajax_callback,
+            ],
+            '#attributes' => [
+              'class' => ['form-element--extrasmall'],
+            ],
+          ];
+        }
+        else {
+          $form['filters']['store_id'] = [
+            '#markup' => $this->t('All stores'),
+          ];
+        }
       }
     }
 
@@ -219,8 +233,8 @@ class DashboardMetricsForm extends FormBase {
       '#ajax' => [
         'callback' => $ajax_callback,
       ],
+      '#access' => Settings::get('commerce_dashboard_show_prior_period_comparison', TRUE),
     ];
-    $current_period_carts_count = $this->getCartsCountForPeriod($current_period_timestamp, $active_store?->id());
     $results = $this->getOrderMetricsForPeriod($current_period_timestamp, $active_store?->id());
     $count_placed_orders = 0;
     // Sum the number of orders placed for all currencies.
@@ -232,7 +246,7 @@ class DashboardMetricsForm extends FormBase {
     if ($comparison_enabled) {
       $prior_period = match ($active_period) {
         'day' => 'yesterday',
-        'week' => sprintf('%s last week', strtolower($periods['week']->format('l'))),
+        'week' => sprintf('%s last week', $first_day_of_week),
         'month' => 'first day of last month',
         'year' => 'first day of last year',
       };
@@ -244,16 +258,7 @@ class DashboardMetricsForm extends FormBase {
       // from the current period timestamp, so we get orders placed until
       // 23:59:59 the previous day instead of midnight.
       $period_range = [$prior_period_timestamp, ($periods[$active_period]->getTimestamp() - 1)];
-      $prior_period_carts_count = $this->getCartsCountForPeriod($period_range, $active_store?->id());
       $prior_period_metrics = $this->getOrderMetricsForPeriod($period_range, $active_store?->id());
-      $carts_diff = $current_period_carts_count - $prior_period_carts_count;
-      if ($carts_diff !== 0 && $prior_period_carts_count !== 0) {
-        $carts_metric_classes[] = $carts_diff > 0 ? 'metrics-item__value--up' : 'metrics-item__value--down';
-        $current_period_carts_count = sprintf('%d (%+d)', $current_period_carts_count, $carts_diff);
-      }
-      else {
-        $current_period_carts_count = sprintf('%d (-)', $current_period_carts_count);
-      }
       $prior_period_orders_count = 0;
       if ($prior_period_metrics) {
         foreach ($prior_period_metrics as $result) {
@@ -271,17 +276,31 @@ class DashboardMetricsForm extends FormBase {
         $count_placed_orders = sprintf('%d (-)', $count_placed_orders);
       }
     }
-    $form['metrics']['new_carts'] = [
-      '#theme' => 'commerce_dashboard_metrics_item',
-      '#title' => $this->t('New carts'),
-      '#values' => [$current_period_carts_count],
-      '#attributes' => [
-        'class' => ['metrics-item--carts'],
-      ],
-      '#metric_value_attributes' => [
-        'class' => $carts_metric_classes ?? [],
-      ],
-    ];
+    if ($this->moduleHandler->moduleExists('commerce_cart')) {
+      $current_period_carts_count = $this->getCartsCountForPeriod($current_period_timestamp, $active_store?->id());
+      if ($comparison_enabled) {
+        $prior_period_carts_count = $this->getCartsCountForPeriod($period_range, $active_store?->id());
+        $carts_diff = $current_period_carts_count - $prior_period_carts_count;
+        if ($carts_diff !== 0 && $prior_period_carts_count !== 0) {
+          $carts_metric_classes[] = $carts_diff > 0 ? 'metrics-item__value--up' : 'metrics-item__value--down';
+          $current_period_carts_count = sprintf('%d (%+d)', $current_period_carts_count, $carts_diff);
+        }
+        else {
+          $current_period_carts_count = sprintf('%d (-)', $current_period_carts_count);
+        }
+      }
+      $form['metrics']['new_carts'] = [
+        '#theme' => 'commerce_dashboard_metrics_item',
+        '#title' => $this->t('New carts'),
+        '#values' => [$current_period_carts_count],
+        '#attributes' => [
+          'class' => ['metrics-item--carts'],
+        ],
+        '#metric_value_attributes' => [
+          'class' => $carts_metric_classes ?? [],
+        ],
+      ];
+    }
     $form['metrics']['placed_orders'] = [
       '#theme' => 'commerce_dashboard_metrics_item',
       '#title' => $this->t('Placed orders'),
@@ -361,7 +380,8 @@ class DashboardMetricsForm extends FormBase {
 
     // If the product module is enabled, build the "best-selling products"
     // table.
-    if ($this->moduleHandler->moduleExists('commerce_product')) {
+    if (Settings::get('commerce_dashboard_show_product_report', TRUE) &&
+      $this->moduleHandler->moduleExists('commerce_product')) {
       $best_selling_product_ids = $this->getBestSellingProductIds($current_period_timestamp, $active_store?->id());
       $form['best_selling_products'] = [
         '#type' => 'table',
@@ -384,7 +404,8 @@ class DashboardMetricsForm extends FormBase {
         }
       }
     }
-    if ($this->moduleHandler->moduleExists('commerce_promotion')) {
+    if (Settings::get('commerce_dashboard_show_promotion_report', TRUE) &&
+      $this->moduleHandler->moduleExists('commerce_promotion')) {
       $most_used_promotion_ids = $this->getMostUsedPromotionIds($current_period_timestamp, $active_store?->id());
       $form['most_used_promotions'] = [
         '#type' => 'table',
@@ -551,9 +572,9 @@ class DashboardMetricsForm extends FormBase {
     $query = $this->connection->select('commerce_order_item', 'coi');
     $query->addField('cpv', 'entity_id', 'product_id');
     $query->addExpression('SUM(coi.quantity)', 'count_sold');
-    $query->innerJoin('commerce_order__order_items', 'cooi', 'cooi.order_items_target_id = coi.order_item_id');
+    $query->innerJoin('commerce_order__order_items', 'commerce_order__order_items', 'commerce_order__order_items.order_items_target_id = coi.order_item_id');
     // Exclude canceled orders.
-    $query->innerJoin('commerce_order', 'co', 'co.order_id = cooi.entity_id AND co.state != :state', [
+    $query->innerJoin('commerce_order', 'co', 'co.order_id = commerce_order__order_items.entity_id AND co.state != :state', [
       ':state' => 'canceled',
     ]);
     $query->innerJoin('commerce_product__variations', 'cpv', 'cpv.variations_target_id = coi.purchased_entity');
@@ -618,6 +639,24 @@ class DashboardMetricsForm extends FormBase {
     }
 
     return $cid;
+  }
+
+  /**
+   * Gets the first day of the week configured.
+   *
+   * @return string
+   *   The first day of the week.
+   */
+  protected function getFirstDayOfWeek(): string {
+    return match ($this->config('system.date')->get('first_day')) {
+      0 => 'sunday',
+      2 => 'tuesday',
+      3 => 'wednesday',
+      4 => 'thursday',
+      5 => 'friday',
+      6 => 'saturday',
+      default => 'monday',
+    };
   }
 
 }

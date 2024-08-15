@@ -2,8 +2,8 @@
 
 namespace Drupal\Tests\commerce_wishlist\Unit;
 
-use Drupal\Tests\UnitTestCase;
 use Drupal\commerce_wishlist\WishlistPurchase;
+use Drupal\Tests\UnitTestCase;
 
 /**
  * Tests the WishlistPurchase class.

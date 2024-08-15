@@ -282,10 +282,10 @@ class CheckoutOrderTest extends CommerceBrowserTestBase {
 
     $this->drupalLogout();
     $this->drupalGet('/fr/product/' . $this->product->id());
-    $this->submitForm([], 'Add to cart');
+    $this->submitForm([], (string) $this->t('Add to cart'));
     $cart_link = $this->getSession()->getPage()->findLink('your cart');
     $cart_link->click();
-    $this->submitForm([], 'Checkout');
+    $this->submitForm([], (string) $this->t('Checkout'));
     $this->assertSession()->pageTextContains('New Customer');
     $this->submitForm([
       'login[register][name]' => 'User name',
@@ -737,7 +737,7 @@ class CheckoutOrderTest extends CommerceBrowserTestBase {
   }
 
   /**
-   * Tests checkout behaviour after a cart update.
+   * Tests checkout behavior after a cart update.
    */
   public function testCheckoutFlowOnCartUpdate() {
     $this->drupalGet($this->product->toUrl());
@@ -883,7 +883,7 @@ class CheckoutOrderTest extends CommerceBrowserTestBase {
       'commerce_order' => 1,
       'user' => 0,
     ], ['absolute' => TRUE]);
-    // We have text seperated by <h1> and <p> tags, so they appear individually.
+    // We have text separated by <h1> and <p> tags, so they appear individually.
     $this->assertSession()->pageTextNotContains("Your order number is 1. Click here you view your order: {$expected_order_url->toString()}.");
     $this->assertSession()->pageTextContains('Your order number is 1.');
     $this->assertSession()->pageTextContains("Click here you view your order: {$expected_order_url->toString()}.");

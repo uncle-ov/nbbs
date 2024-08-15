@@ -3,7 +3,6 @@
 namespace Drupal\commerce_wishlist;
 
 use Drupal\Core\Entity\EntityHandlerInterface;
-use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\entity\EntityPermissionProviderInterface;
@@ -24,22 +23,12 @@ class WishlistItemPermissionProvider implements EntityPermissionProviderInterfac
   protected $entityTypeBundleInfo;
 
   /**
-   * Constructs a new WishlistItemPermissionProvider object.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
-   *   The entity type bundle info.
-   */
-  public function __construct(EntityTypeBundleInfoInterface $entity_type_bundle_info) {
-    $this->entityTypeBundleInfo = $entity_type_bundle_info;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-    return new static(
-      $container->get('entity_type.bundle.info')
-    );
+    $instance = new static();
+    $instance->entityTypeBundleInfo = $container->get('entity_type.bundle.info');
+    return $instance;
   }
 
   /**

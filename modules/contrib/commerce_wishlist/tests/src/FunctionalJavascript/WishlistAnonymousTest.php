@@ -143,7 +143,7 @@ class WishlistAnonymousTest extends CommerceWebDriverTestBase {
 
     $this->drupalGet('wishlist');
     $this->assertSession()->elementExists('css', 'input[data-drupal-selector="edit-header-add-all-to-cart"]');
-    $this->assertSession()->elementExists('css', 'a[data-drupal-selector="edit-header-share"]');
+    $this->assertSession()->elementNotExists('css', 'a[data-drupal-selector="edit-header-share"]');
 
     $this->assertSession()->pageTextContains('First variation');
     $this->assertSession()->pageTextContains('Quantity: 1');

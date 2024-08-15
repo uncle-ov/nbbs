@@ -33,9 +33,9 @@ class RandomShortcode extends ShortcodeBase {
     $length = min($length, 99);
 
     $text = '';
+    // Limit to alphanumeric characters so the length is accurate when rendered.
     for ($i = 0; $i < $length; ++$i) {
-      // Limit to alphanumeric characters so the length is accurate when rendered.
-      $text .= chr(rand(48, 122));
+      $text .= chr(random_int(48, 122));
     }
 
     return $text;

@@ -4,10 +4,8 @@ namespace Drupal\commerce_wishlist\Form;
 
 use Drupal\commerce\EntityHelper;
 use Drupal\commerce_wishlist\Entity\WishlistType;
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\ConfigFormBase;
+use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -23,27 +21,12 @@ class SettingsForm extends ConfigFormBase {
   protected $entityDisplayRepository;
 
   /**
-   * Constructs a new SettingsForm object.
-   *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The config factory.
-   * @param \Drupal\Core\Entity\EntityDisplayRepositoryInterface $entity_display_repository
-   *   The entity display repository.
-   */
-  public function __construct(ConfigFactoryInterface $config_factory, EntityDisplayRepositoryInterface $entity_display_repository) {
-    parent::__construct($config_factory);
-
-    $this->entityDisplayRepository = $entity_display_repository;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('config.factory'),
-      $container->get('entity_display.repository')
-    );
+    $instance = parent::create($container);
+    $instance->entityDisplayRepository = $container->get('entity_display.repository');
+    return $instance;
   }
 
   /**
@@ -77,6 +60,29 @@ class SettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('allow_multiple'),
       '#title' => $this->t('Allow multiple wishlists'),
       '#description' => $this->t('Determines whether multiple wishlists are allowed.'),
+    ];
+
+    $form['anonymous_sharing'] = [
+      '#type' => 'details',
+      '#title' => 'Anonymous sharing',
+      '#open' => TRUE,
+    ];
+    $form['anonymous_sharing']['allow_anonymous_sharing'] = [
+      '#type' => 'checkbox',
+      '#default_value' => $config->get('allow_anonymous_sharing'),
+      '#title' => $this->t('Allow anonymous sharing of wishlists'),
+      '#description' => $this->t('Determines whether anonymous wishlists can be shared.'),
+    ];
+    $form['anonymous_sharing']['duplicate'] = [
+      '#type' => 'checkbox',
+      '#default_value' => $config->get('duplicate'),
+      '#title' => $this->t('Duplicate anonymous wishlist'),
+      '#description' => $this->t('Determines if an anonymous wishlist is duplicated when shared by email.'),
+      '#states' => [
+        'visible' => [
+          ':input[name="allow_anonymous_sharing"]' => ['checked' => TRUE],
+        ],
+      ],
     ];
 
     $wishlist_types = WishlistType::loadMultiple();
@@ -124,7 +130,13 @@ class SettingsForm extends ConfigFormBase {
 
     $config = $this->config('commerce_wishlist.settings');
     $values = $form_state->getValues();
-    foreach (['allow_multiple', 'default_type', 'view_modes'] as $key) {
+    foreach ([
+      'allow_multiple',
+      'allow_anonymous_sharing',
+      'duplicate',
+      'default_type',
+      'view_modes',
+    ] as $key) {
       if (!isset($values[$key])) {
         continue;
       }

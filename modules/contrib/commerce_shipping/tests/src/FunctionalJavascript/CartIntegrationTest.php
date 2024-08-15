@@ -7,6 +7,7 @@ use Drupal\commerce_order\Entity\OrderType;
 use Drupal\commerce_payment\Entity\PaymentGateway;
 use Drupal\commerce_product\Entity\ProductVariationType;
 use Drupal\Tests\commerce\FunctionalJavascript\CommerceWebDriverTestBase;
+use Drupal\Tests\commerce_shipping\Traits\ShippingTestHelperTrait;
 
 /**
  * Tests integration with the Cart module.
@@ -14,6 +15,8 @@ use Drupal\Tests\commerce\FunctionalJavascript\CommerceWebDriverTestBase;
  * @group commerce_shipping
  */
 class CartIntegrationTest extends CommerceWebDriverTestBase {
+
+  use ShippingTestHelperTrait;
 
   /**
    * First sample product.
@@ -174,7 +177,6 @@ class CartIntegrationTest extends CommerceWebDriverTestBase {
     ];
     $address_prefix = 'shipping_information[shipping_profile][address][0][address]';
     $this->getSession()->getPage()->fillField($address_prefix . '[country_code]', 'US');
-    $this->assertSession()->assertWaitOnAjaxRequest();
     foreach ($address as $property => $value) {
       $this->getSession()->getPage()->fillField($address_prefix . '[' . $property . ']', $value);
     }
@@ -185,7 +187,7 @@ class CartIntegrationTest extends CommerceWebDriverTestBase {
     $this->submitForm([
       'payment_information[add_payment_method][payment_details][number]' => '4111111111111111',
       'payment_information[add_payment_method][payment_details][expiration][month]' => '02',
-      'payment_information[add_payment_method][payment_details][expiration][year]' => '2023',
+      'payment_information[add_payment_method][payment_details][expiration][year]' => $this->getCardExpirationYear(),
       'payment_information[add_payment_method][payment_details][security_code]' => '123',
       'payment_information[add_payment_method][billing_information][address][0][address][given_name]' => 'Johnny',
       'payment_information[add_payment_method][billing_information][address][0][address][family_name]' => 'Appleseed',
@@ -261,7 +263,6 @@ class CartIntegrationTest extends CommerceWebDriverTestBase {
     ];
     $address_prefix = 'shipping_information[shipping_profile][address][0][address]';
     $this->getSession()->getPage()->fillField($address_prefix . '[country_code]', 'US');
-    $this->assertSession()->assertWaitOnAjaxRequest();
     foreach ($address as $property => $value) {
       $this->getSession()->getPage()->fillField($address_prefix . '[' . $property . ']', $value);
     }
@@ -270,7 +271,7 @@ class CartIntegrationTest extends CommerceWebDriverTestBase {
     $this->submitForm([
       'payment_information[add_payment_method][payment_details][number]' => '4111111111111111',
       'payment_information[add_payment_method][payment_details][expiration][month]' => '02',
-      'payment_information[add_payment_method][payment_details][expiration][year]' => '2023',
+      'payment_information[add_payment_method][payment_details][expiration][year]' => $this->getCardExpirationYear(),
       'payment_information[add_payment_method][payment_details][security_code]' => '123',
     ], 'Continue to review');
 

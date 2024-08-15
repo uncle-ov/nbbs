@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Class EntityAccessCheckTest
+ * Contains general test cases for the access checker service.
  *
  * @group permissions_by_term
  */
@@ -73,12 +73,18 @@ class EntityAccessCheckTest extends KernelTestBase {
   public function setUp(): void {
     parent::setUp();
     $this->installEntitySchema('user');
-    $this->installSchema('system', ['sequences']);
     $this->installEntitySchema('taxonomy_term');
     $this->installEntitySchema('test_entity');
     $this->installConfig(['language', 'permissions_by_term']);
     $this->installSchema('permissions_by_term', 'permissions_by_term_user');
     $this->installSchema('permissions_by_term', 'permissions_by_term_role');
+
+    \Drupal::configFactory()
+      ->getEditable('permissions_by_term.settings')
+      ->set('target_bundles', [
+        'test' => 'test',
+      ])
+      ->save();
 
     $this->accessStorage = $this->container->get('permissions_by_term.access_storage');
     $this->accessChecker = $this->container->get('permissions_by_entity.access_checker');
@@ -168,7 +174,7 @@ class EntityAccessCheckTest extends KernelTestBase {
       'vid' => 'test',
     ])->save();
 
-    # First user.
+    // First user.
     $term_array['term_user_a']['user'] = User::create([
       'name' => 'term_user_a',
       'mail' => 'term_user_a@example.com',
@@ -183,7 +189,7 @@ class EntityAccessCheckTest extends KernelTestBase {
 
     $this->accessStorage->addTermPermissionsByUserIds([$term_array['term_user_a']['user']->id()], $term_array['term_user_a']['term']->id());
 
-    # Second user.
+    // Second user.
     $term_array['term_user_b']['user'] = User::create([
       'name' => 'term_user_b',
       'mail' => 'term_user_b@example.com',
@@ -205,6 +211,7 @@ class EntityAccessCheckTest extends KernelTestBase {
    * Gets a populated dispatcher.
    *
    * @return \Symfony\Component\EventDispatcher\EventDispatcher
+   *   The populated event dispatcher.
    */
   private function getPopulatedDispatcher(): EventDispatcher {
     $dispatcher = new EventDispatcher();
@@ -220,6 +227,7 @@ class EntityAccessCheckTest extends KernelTestBase {
    * Gets a request response event for term A.
    *
    * @return \Symfony\Component\HttpKernel\Event\RequestEvent
+   *   The request event.
    */
   private function getRequestEvent(): RequestEvent {
     $request = new Request();
@@ -233,6 +241,7 @@ class EntityAccessCheckTest extends KernelTestBase {
    * Gets a cacheable filter response for term "a".
    *
    * @return \Symfony\Component\HttpKernel\Event\ResponseEvent
+   *   The response event.
    */
   private function getCacheableResponseEvent(): ResponseEvent {
     $response = new CacheableResponse();
@@ -242,4 +251,5 @@ class EntityAccessCheckTest extends KernelTestBase {
 
     return new ResponseEvent($kernel, $request, HttpKernelInterface::SUB_REQUEST, $response);
   }
+
 }

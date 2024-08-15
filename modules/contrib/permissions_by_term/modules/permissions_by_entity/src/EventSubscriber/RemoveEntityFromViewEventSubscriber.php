@@ -7,7 +7,7 @@ use Drupal\permissions_by_entity\Event\PermissionsByEntityEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Class RemoveEntityFromViewEventSubscriber.
+ * Subscriber reacting to the access to field entities being denied.
  *
  * @package Drupal\permissions_by_entity\EventSubscriber
  */

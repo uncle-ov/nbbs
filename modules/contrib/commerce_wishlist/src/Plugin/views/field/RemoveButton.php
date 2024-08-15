@@ -2,7 +2,6 @@
 
 namespace Drupal\commerce_wishlist\Plugin\views\field;
 
-use Drupal\commerce_wishlist\WishlistManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\Plugin\views\field\UncacheableFieldHandlerTrait;
@@ -26,33 +25,12 @@ class RemoveButton extends FieldPluginBase {
   protected $wishlistManager;
 
   /**
-   * Constructs a new EditRemove object.
-   *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin ID for the plugin instance.
-   * @param mixed $plugin_definition
-   *   The plugin implementation definition.
-   * @param \Drupal\commerce_wishlist\WishlistManagerInterface $wishlist_manager
-   *   The wishlist manager.
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, WishlistManagerInterface $wishlist_manager) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-
-    $this->wishlistManager = $wishlist_manager;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('commerce_wishlist.wishlist_manager')
-    );
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    $instance->wishlistManager = $container->get('commerce_wishlist.wishlist_manager');
+    return $instance;
   }
 
   /**

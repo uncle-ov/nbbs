@@ -1,2 +1,3 @@
 allow_multiple: false
+duplicate: false
 default_type: default

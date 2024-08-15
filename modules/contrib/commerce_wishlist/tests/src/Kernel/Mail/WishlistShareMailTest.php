@@ -84,7 +84,7 @@ class WishlistShareMailTest extends WishlistKernelTestBase {
    * @covers ::send
    */
   public function testSend() {
-    $this->mail->send($this->wishlist, 'test-recipient@example.com');
+    $this->mail->send($this->wishlist, 'test-recipient@example.com', '');
 
     $emails = $this->getMails();
     $this->assertEquals(1, count($emails));
@@ -96,8 +96,8 @@ class WishlistShareMailTest extends WishlistKernelTestBase {
     $this->assertEquals($this->wishlist->getOwner()->getEmail(), $email['from']);
     $this->assertEquals('Check out my Drupal wishlist', $email['subject']);
     $wishlist_url = $this->wishlist->toUrl('canonical', ['absolute' => TRUE]);
-    $this->assertContains($wishlist_url->toString(), $email['body']);
-    $this->assertContains('Thanks for having a look!', $email['body']);
+    $this->assertStringContainsString($wishlist_url->toString(), $email['body']);
+    $this->assertStringContainsString('Thanks for having a look!', $email['body']);
   }
 
 }

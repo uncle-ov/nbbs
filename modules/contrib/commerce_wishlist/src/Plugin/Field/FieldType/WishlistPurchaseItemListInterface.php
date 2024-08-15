@@ -23,8 +23,6 @@ interface WishlistPurchaseItemListInterface extends FieldItemListInterface {
    *
    * @param \Drupal\commerce_wishlist\WishlistPurchase $purchase
    *   The purchase.
-   *
-   * @return $this
    */
   public function removePurchase(WishlistPurchase $purchase);
 

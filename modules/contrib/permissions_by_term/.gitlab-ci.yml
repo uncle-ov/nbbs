@@ -1,55 +1,110 @@
-stages:
-  - build
-  - deploy
+################
+# DrupalCI GitLabCI template
+#
+# Gitlab-ci.yml to replicate DrupalCI testing for Contrib
+#
+# With thanks to:
+#   * The GitLab Acceleration Initiative participants
+#   * DrupalSpoons
+################
 
-.cache_strategy:
-  cache:
-    paths:
-      - project/vendor
+################
+# Guidelines
+#
+# This template is designed to give any Contrib maintainer everything they need to test, without requiring modification. It is also designed to keep up to date with Core Development automatically through the use of include files that can be centrally maintained.
+#
+# However, you can modify this template if you have additional needs for your project.
+################
 
+################
+# Includes
+#
+# Additional configuration can be provided through includes.
+# One advantage of include files is that if they are updated upstream, the changes affect all pipelines using that include.
+#
+# Includes can be overridden by re-declaring anything provided in an include, here in gitlab-ci.yml
+# https://docs.gitlab.com/ee/ci/yaml/includes.html#override-included-configuration-values
+################
+
+include:
+  ################
+  # DrupalCI includes:
+  # As long as you include this, any future includes added by the Drupal Association will be accessible to your pipelines automatically.
+  # View these include files at https://git.drupalcode.org/project/gitlab_templates/
+  ################
+  - project: $_GITLAB_TEMPLATES_REPO
+    # "ref" value can be:
+    # - Recommended (default) - `ref: $_GITLAB_TEMPLATES_REF` - The Drupal Association will update this value to the recommended tag for contrib.
+    # - Latest - `ref: main` - Get the latest additions and bug fixes as they are merged into the templates.
+    # - Minor or Major latests - `ref: 1.x-latest` or `ref: 1.0.x-latest` - Get the latest additions within a minor (mostly bugfixes) or major (bugs and new features).
+    # - Fixed tag - `ref: 1.0.1` - Set the value to a known tag. This will not get any updates.
+    # If you change the default value of ref, you should set the _CURL_TEMPLATES_REF variable in the variables section to be the same as set here.
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - "/includes/include.drupalci.main.yml"
+      # For Drupal 7, remove the above line and uncomment the below.
+      # - "/includes/include.drupalci.main-d7.yml"
+      - "/includes/include.drupalci.variables.yml"
+      - "/includes/include.drupalci.workflows.yml"
+#
+################
+# Pipeline configuration variables
+#
+# These are the variables provided to the Run Pipeline form that a user may want to override.
+#
+# Docs at https://git.drupalcode.org/project/gitlab_templates/-/blob/main/includes/include.drupalci.variables.yml
+################
 variables:
-  MARIADB_ROOT_PASSWORD: testing
-  MARIADB_DATABASE: testing
+  SKIP_ESLINT: '1'
+  SKIP_STYLELINT: '1'
+  OPT_IN_TEST_NEXT_MINOR: '1'
+  OPT_IN_TEST_NEXT_MAJOR: '1'
+  OPT_IN_TEST_PREVIOUS_MINOR: '1'
+  OPT_IN_TEST_PREVIOUS_MAJOR: '1'
+  OPT_IN_TEST_MAX_PHP: '1'
 
-drupalci:build:
-  extends: .cache_strategy
-  image: jepster/drupal-dev:php7.4-fpm-buster-1.0.4
-  stage: build
-  services:
-    - mariadb:10.3
-    - darksolar/selenium-chrome-headless:latest
-  script:
-    - set -o errexit
-    - apt-get update
-    - apt-get install -y screen
-    - curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh -o install_nvm.sh
-    - bash install_nvm.sh
-    - source ~/.profile
-    - nvm install 9.11.1
-    - export PATH="$HOME/.composer/vendor/bin:$PATH"
-    - pwd
-    - cd ..
-    - mv permissions_by_term /tmp
-    - (cd /tmp && ls -la)
-    - composer config -g --no-plugins allow-plugins.composer/installers true
-    - composer config -g --no-plugins allow-plugins.drupal-composer/drupal-scaffold true
-    - composer config -g --no-plugins allow-plugins.drupal/core-project-message true
-    - composer config -g --no-plugins allow-plugins.phpstan/extension-installer true
-    - composer config -g --no-plugins allow-plugins.drupal/core-composer-scaffold true
-    - composer create-project drupal/recommended-project:~9.0.0 drupal --no-interaction
-    - (cd drupal && ls -la)
-    - (cd drupal && composer require behat/behat:^3.0 behat/mink-extension:^2.2 drupal/drupal-extension:^4.1 phpunit/phpunit:^7.0 mikey179/vfsstream:^1.6 drush/drush:^10.0 phpstan/phpstan:~1.8.5 phpstan/extension-installer:~1.1.0 mglaman/phpstan-drupal:~1.1.25 --dev)
-    - ls -la
-    - (cd drupal/web && ls -la)
-    - (mkdir drupal/web/modules/permissions_by_term)
-    - mv /tmp/permissions_by_term/* drupal/web/modules/permissions_by_term
-    - (cd drupal/web/modules/permissions_by_term && ls -la)
-    - (cd drupal && cp web/modules/permissions_by_term/tests/phpstan* . && vendor/bin/phpstan analyse web/modules/permissions_by_term/)
-    - (cd drupal/web/modules/permissions_by_term/tests/ && ../../../../vendor/bin/phpunit --testdox)
-    - (cd drupal/web/modules/permissions_by_term/js/ && npm install && npm run bat)
-    - (cd drupal/web && ../vendor/drush/drush/drush si standard --db-url=mysql://root:testing@127.0.01/testing -y && ../vendor/drush/drush/drush en permissions_by_term -y)
-    - (cd drupal/web && screen -dmS php-server php -S localhost:80 .ht.router.php)
-    - (cd drupal/web && ../vendor/drush/drush/drush pm:uninstall page_cache -y && ../vendor/drush/drush/drush en dynamic_page_cache -y)
-    - (cd drupal/web && cp modules/permissions_by_term/tests/src/Behat/behat.yml.dist behat.yml && ../vendor/bin/behat --strict)
-    - echo "Move everything to initial folder for having the artifacts"
-    - mv drupal permissions_by_term
+###################################################################################
+#
+#                                        *
+#                                       /(
+#                                      ((((,
+#                                    /(((((((
+#                                   ((((((((((*
+#                                ,(((((((((((((((
+#                              ,(((((((((((((((((((
+#                            ((((((((((((((((((((((((*
+#                         *(((((((((((((((((((((((((((((
+#                       ((((((((((((((((((((((((((((((((((*
+#                    *((((((((((((((((((  .((((((((((((((((((
+#                  ((((((((((((((((((.       /(((((((((((((((((*
+#                /(((((((((((((((((            .(((((((((((((((((,
+#             ,((((((((((((((((((                 ((((((((((((((((((
+#           .((((((((((((((((((((                   .(((((((((((((((((
+#          (((((((((((((((((((((((                     ((((((((((((((((/
+#        (((((((((((((((((((((((((((/                    ,(((((((((((((((*
+#      .((((((((((((((/  /(((((((((((((.                   ,(((((((((((((((
+#     *((((((((((((((      ,(((((((((((((/                   *((((((((((((((.
+#    ((((((((((((((,          /(((((((((((((.                  ((((((((((((((,
+#   (((((((((((((/              ,(((((((((((((*                 ,(((((((((((((,
+#  *(((((((((((((                .(((((((((((((((                ,(((((((((((((
+#  ((((((((((((/                /((((((((((((((((((.              ,((((((((((((/
+# (((((((((((((              *(((((((((((((((((((((((*             *((((((((((((
+# (((((((((((((            ,(((((((((((((..(((((((((((((           *((((((((((((
+# ((((((((((((,          /((((((((((((*      /((((((((((((/         ((((((((((((
+# (((((((((((((        /((((((((((((/          (((((((((((((*       ((((((((((((
+# (((((((((((((/     /((((((((((((               ,((((((((((((,    *((((((((((((
+#  ((((((((((((((  *(((((((((((/                   *((((((((((((.  ((((((((((((/
+#  *((((((((((((((((((((((((((,                      /(((((((((((((((((((((((((
+#   (((((((((((((((((((((((((                         ((((((((((((((((((((((((,
+#   .(((((((((((((((((((((((/                         ,(((((((((((((((((((((((
+#     ((((((((((((((((((((((/                         ,(((((((((((((((((((((/
+#      *(((((((((((((((((((((                         (((((((((((((((((((((,
+#       ,(((((((((((((((((((((,                      ((((((((((((((((((((/
+#         ,(((((((((((((((((((((*                  /((((((((((((((((((((
+#            ((((((((((((((((((((((,           ,/((((((((((((((((((((,
+#              ,(((((((((((((((((((((((((((((((((((((((((((((((((((
+#                 .(((((((((((((((((((((((((((((((((((((((((((((
+#                     .((((((((((((((((((((((((((((((((((((,.
+#                          .,(((((((((((((((((((((((((.
+#
+###################################################################################

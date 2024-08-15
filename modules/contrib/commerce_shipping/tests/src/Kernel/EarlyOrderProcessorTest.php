@@ -109,6 +109,7 @@ class EarlyOrderProcessorTest extends ShippingKernelTestBase {
     /** @var \Drupal\commerce_shipping\Entity\ShipmentInterface $shipment */
     $shipment = reset($shipments);
     $shipment->setOriginalAmount(new Price('4', 'USD'));
+    $shipment->setData('pre_promotion_amount', new Price('4', 'USD'));
     $shipment->setAmount(new Price('6', 'USD'));
     $shipment->addAdjustment(new Adjustment([
       'type' => 'fee',

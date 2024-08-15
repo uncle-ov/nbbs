@@ -181,17 +181,22 @@ function template_preprocess_commerce_order(array &$variables) {
   }
 
   if ($billing_profile = $order->getBillingProfile()) {
-    $profile_view_bulder = \Drupal::entityTypeManager()->getViewBuilder('profile');
-    $variables['order']['billing_information'] = $profile_view_bulder->view($billing_profile, $view_mode);
+    $profile_view_builder = \Drupal::entityTypeManager()->getViewBuilder('profile');
+    $variables['order']['billing_information'] = $profile_view_builder->view($billing_profile, $view_mode);
   }
 
   $route_name = \Drupal::routeMatch()->getRouteName();
   if ($route_name === 'entity.commerce_order.canonical' &&
     $order->isLocked() &&
     $order->access('unlock')) {
+    $options = [
+      'query' => [
+        'destination' => $order->toUrl()->toString(),
+      ],
+    ];
     $order_unlock_link = Url::fromRoute('entity.commerce_order.unlock_form', [
       'commerce_order' => $order->id(),
-    ])->toString();
+    ], $options)->toString();
     $messenger = \Drupal::messenger();
     $messenger->addStatus(t('This order is locked and cannot be edited or deleted. You can <a href=":link">unlock it here</a>.', [':link' => $order_unlock_link]));
     $messenger->addStatus(t('Orders are typically locked during the payment step in checkout to ensure prices on it do not change during a payment attempt. If the customer is currently paying for this order on a hosted payment page, editing this order could result in a mismatch between the order total and payment amount.'));
@@ -491,6 +496,10 @@ function commerce_order_address_field_after_build(array $element, FormStateInter
  * Implements hook_commerce_dashboard_page_build_alter().
  */
 function commerce_order_commerce_dashboard_page_build_alter(&$build) {
-  $build['metrics_form'] = \Drupal::formBuilder()
+  $form = \Drupal::formBuilder()
     ->getForm(DashboardMetricsForm::class);
+  // If all periods are disabled, skip rendering the form.
+  if (isset($form['periods'])) {
+    $build['metrics_form'] = $form;
+  }
 }

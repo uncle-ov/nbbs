@@ -144,7 +144,7 @@ class OrderTypeForm extends CommerceBundleEntityFormBase {
       '#tree' => FALSE,
     ];
     $form['emails']['notice'] = [
-      '#markup' => '<p>' . $this->t('Emails are sent in the HTML format. You will need a module such as <a href="https://www.drupal.org/project/swiftmailer">Swiftmailer</a> to send HTML emails.') . '</p>',
+      '#markup' => '<p>' . $this->t('Emails are sent in the HTML format. You will need a module such as <a href="https://www.drupal.org/project/symfony_mailer">Drupal Symfony Mailer</a> to send HTML emails.') . '</p>',
     ];
     $form['emails']['sendReceipt'] = [
       '#type' => 'checkbox',

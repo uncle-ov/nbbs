@@ -13,7 +13,10 @@
         if (event.keyCode === 13) {
           // Prevent the browser default ("Remove") from being triggered.
           event.preventDefault();
-          $(':input#edit-submit', $(this).parents('form')).click();
+          $(
+            ':input#edit-submit',
+            $(event.currentTarget).parents('form'),
+          ).click();
         }
       });
     },

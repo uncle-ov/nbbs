@@ -92,7 +92,7 @@ services:
 
   commerce.inbox_message_fetcher:
     class: Drupal\commerce\InboxMessageFetcher
-    arguments: ['@http_client', '@commerce.logger', '@module_handler', '@commerce.inbox_message_storage', '@date.formatter']
+    arguments: ['@http_client', '@commerce.logger', '@module_handler', '@commerce.inbox_message_storage', '@date.formatter', '@state', '@datetime.time']
 
   commerce.logger:
     class: Drupal\Core\Logger\LoggerChannel

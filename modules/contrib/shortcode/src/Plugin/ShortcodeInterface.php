@@ -2,11 +2,11 @@
 
 namespace Drupal\shortcode\Plugin;
 
-use Drupal\Core\Language\Language;
-use Drupal\Component\Plugin\PluginInspectionInterface;
 use Drupal\Component\Plugin\ConfigurableInterface;
 use Drupal\Component\Plugin\DependentPluginInterface;
+use Drupal\Component\Plugin\PluginInspectionInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 /**
@@ -63,7 +63,7 @@ interface ShortcodeInterface extends ConfigurableInterface, DependentPluginInter
    * @return string
    *   The processed text.
    */
-  public function process(array $attributes, $text, $langcode = Language::LANGCODE_NOT_SPECIFIED);
+  public function process(array $attributes, string $text, string $langcode = LanguageInterface::LANGCODE_NOT_SPECIFIED);
 
   /**
    * Generates a filter's tip.

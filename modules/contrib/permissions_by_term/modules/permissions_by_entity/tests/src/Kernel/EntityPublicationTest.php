@@ -9,7 +9,7 @@ use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
 
 /**
- * Class EntityPublicationTest.
+ * Tests entity access based on the publication status.
  *
  * @package Drupal\Tests\permissions_by_entity\Kernel
  */
@@ -49,7 +49,13 @@ class EntityPublicationTest extends KernelTestBase {
     parent::setUp();
     $this->installEntitySchema('test_entity');
     $this->installEntitySchema('user');
-    $this->installSchema('system', ['sequences']);
+
+    \Drupal::configFactory()
+      ->getEditable('permissions_by_term.settings')
+      ->set('target_bundles', [
+        'test' => 'test',
+      ])
+      ->save();
 
     $this->nodes['node_unpublished'] = TestEntity::create(['langcode' => 'en']);
     $this->nodes['node_unpublished']->setUnpublished()->save();
@@ -81,8 +87,7 @@ class EntityPublicationTest extends KernelTestBase {
   }
 
   /**
-   * Unpublished nodes without restrictions should not be visible to anonymous
-   * users.
+   * Unpublished nodes without restrictions should not be visible to anon users.
    */
   public function testAnonymousCannotViewUnpublishedNodesWithoutTermPermissions(): void {
     $this->assertFalse($this->nodes['node_unpublished']->isPublished());

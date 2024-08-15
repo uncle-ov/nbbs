@@ -2,13 +2,8 @@
 
 namespace Drupal\commerce_wishlist\Form;
 
-use Drupal\commerce_wishlist\WishlistProvider;
-use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\ContentEntityForm;
-use Drupal\Core\Entity\EntityRepositoryInterface;
-use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\entity\Form\EntityDuplicateFormTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -35,37 +30,13 @@ class WishlistForm extends ContentEntityForm {
   protected $wishlistProvider;
 
   /**
-   * Constructs a new WishlistForm object.
-   *
-   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
-   *   The entity repository service.
-   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
-   *   The entity type bundle service.
-   * @param \Drupal\Component\Datetime\TimeInterface $time
-   *   The time service.
-   * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
-   *   The date formatter.
-   * @param \Drupal\commerce_wishlist\WishlistProvider $wishlist_provider
-   *   The wishlist provider.
-   */
-  public function __construct(EntityRepositoryInterface $entity_repository, EntityTypeBundleInfoInterface $entity_type_bundle_info, TimeInterface $time, DateFormatterInterface $date_formatter, WishlistProvider $wishlist_provider) {
-    parent::__construct($entity_repository, $entity_type_bundle_info, $time);
-
-    $this->dateFormatter = $date_formatter;
-    $this->wishlistProvider = $wishlist_provider;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('entity.repository'),
-      $container->get('entity_type.bundle.info'),
-      $container->get('datetime.time'),
-      $container->get('date.formatter'),
-      $container->get('commerce_wishlist.wishlist_provider')
-    );
+    $instance = parent::create($container);
+    $instance->dateFormatter = $container->get('date.formatter');
+    $instance->wishlistProvider = $container->get('commerce_wishlist.wishlist_provider');
+    return $instance;
   }
 
   /**
@@ -188,7 +159,7 @@ class WishlistForm extends ContentEntityForm {
    * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
-    $this->entity->save();
+    $save = $this->entity->save();
     $this->messenger()->addStatus($this->t('The wishlist %label has been successfully saved.', ['%label' => $this->entity->label()]));
     if (!empty($form_state->getTriggeringElement()['#continue'])) {
       $form_state->setRedirect('entity.commerce_wishlist_item.collection', ['commerce_wishlist' => $this->entity->id()]);
@@ -196,6 +167,7 @@ class WishlistForm extends ContentEntityForm {
     else {
       $form_state->setRedirect('entity.commerce_wishlist.collection');
     }
+    return $save;
   }
 
 }

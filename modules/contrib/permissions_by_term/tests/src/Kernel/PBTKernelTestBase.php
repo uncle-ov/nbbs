@@ -65,7 +65,6 @@ abstract class PBTKernelTestBase extends KernelTestBase {
     parent::setUp();
 
     $this->installEntitySchema('user');
-    $this->installSchema('system', ['sequences']);
     $this->installEntitySchema('node');
     $this->installEntitySchema('taxonomy_term');
     $this->installConfig(['permissions_by_term', 'language']);
@@ -363,10 +362,10 @@ abstract class PBTKernelTestBase extends KernelTestBase {
   }
 
   /**
-   * @param int $nidNoRestiction
+   * @param int $nidNoRestriction
    */
-  protected function setNidNoRestriction(int $nidNoRestiction) {
-    $this->nidNoRestriction = $nidNoRestiction;
+  protected function setNidNoRestriction(int $nidNoRestriction) {
+    $this->nidNoRestriction = $nidNoRestriction;
   }
 
 }

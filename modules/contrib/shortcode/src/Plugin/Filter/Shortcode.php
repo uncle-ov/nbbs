@@ -3,8 +3,12 @@
 namespace Drupal\shortcode\Plugin\Filter;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\filter\FilterProcessResult;
 use Drupal\filter\Plugin\FilterBase;
+use Drupal\shortcode\ShortcodePluginManager;
+use Drupal\shortcode\ShortcodeService;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a filter for insert view.
@@ -17,16 +21,50 @@ use Drupal\filter\Plugin\FilterBase;
  *   type = Drupal\filter\Plugin\FilterInterface::TYPE_TRANSFORM_IRREVERSIBLE,
  * )
  */
-class Shortcode extends FilterBase {
+class Shortcode extends FilterBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Constructs a \Drupal\shortcode\Plugin\Filter\Shortcode object.
+   *
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin_id for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
+   * @param \Drupal\shortcode\ShortcodeService $shortCodeService
+   *   The shortcode service to load shortcodes.
+   * @param \Drupal\shortcode\ShortcodePluginManager $shortcodePluginManager
+   *   The shortcode plugin manager.
+   */
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    protected ShortcodeService $shortCodeService,
+    protected ShortcodePluginManager $shortcodePluginManager,
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('shortcode'),
+      $container->get('plugin.manager.shortcode')
+    );
+  }
 
   /**
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-
-    /** @var \Drupal\shortcode\ShortcodeService $shortcodeService */
-    $shortcodeService = \Drupal::service('shortcode');
-    $shortcodes = $shortcodeService->loadShortcodePlugins();
+    $shortcodes = $this->shortCodeService->loadShortcodePlugins();
 
     $shortcodes_by_provider = [];
 
@@ -42,16 +80,19 @@ class Shortcode extends FilterBase {
     // Generate form elements.
     $settings = [];
     foreach ($shortcodes_by_provider as $provider_id => $shortcodes) {
-
       // Add section header.
-      // todo: add Translate markup.
       $settings['header-' . $provider_id] = [
-        '#markup' => '<b class="shortcodeSectionHeader">Shortcodes provided by ' . $provider_id . '</b>',
+        '#type' => 'html_tag',
+        '#tag' => 'h4',
+        '#attributes' => [
+          'class' => 'shortcodeSectionHeader',
+        ],
+        '#value' => $this->t('Shortcodes provided by @provider', ['@provider' => $provider_id]),
       ];
 
       // Sort definitions by weight property.
       $sorted_shortcodes = $shortcodes;
-      uasort($sorted_shortcodes, function ($a, $b) {
+      uasort($sorted_shortcodes, static function ($a, $b) {
         return $b['weight'] - $a['weight'];
       });
 
@@ -60,8 +101,8 @@ class Shortcode extends FilterBase {
         $settings[$shortcode_id] = [
           '#type' => 'checkbox',
           '#title' => $this->t('Enable %name shortcode', ['%name' => $shortcode_info['title']]),
-          '#default_value' => isset($this->settings[$shortcode_id]) ? $this->settings[$shortcode_id] : TRUE,
-          '#description' => isset($shortcode_info['description']) ? $shortcode_info['description'] : $this->t('Enable or disable this shortcode in this input format'),
+          '#default_value' => $this->settings[$shortcode_id] ?? TRUE,
+          '#description' => $shortcode_info['description'] ?? $this->t('Enable or disable this shortcode in this input format'),
         ];
       }
     }
@@ -71,11 +112,9 @@ class Shortcode extends FilterBase {
   /**
    * {@inheritdoc}
    */
-  public function process($text, $langcode) {
+  public function process($text, $langcode): FilterProcessResult {
     if (!empty($text)) {
-      /** @var \Drupal\shortcode\ShortcodeService $shortcodeEngine */
-      $shortcodeEngine = \Drupal::service('shortcode');
-      $text = $shortcodeEngine->process($text, $langcode, $this);
+      $text = $this->shortCodeService->process($text, $langcode, $this);
     }
 
     return new FilterProcessResult($text);
@@ -85,21 +124,13 @@ class Shortcode extends FilterBase {
    * {@inheritdoc}
    */
   public function tips($long = FALSE) {
-
-    /** @var \Drupal\shortcode\ShortcodeService $type */
-    $type = \Drupal::service('shortcode');
-
-    // todo: it duplicates the tips section.
     // Get enabled shortcodes for this text format.
-    $shortcodes = $type->getShortcodePlugins($this);
-    /** @var \Drupal\shortcode\ShortcodePluginManager $type */
-    $type = \Drupal::service('plugin.manager.shortcode');
-
+    $shortcodes = $this->shortCodeService->getShortcodePlugins($this);
     // Gather tips defined in all enabled plugins.
     $tips = [];
     foreach ($shortcodes as $shortcode_info) {
       /** @var \Drupal\shortcode\Plugin\ShortcodeInterface $shortcode */
-      $shortcode = $type->createInstance($shortcode_info['id']);
+      $shortcode = $this->shortcodePluginManager->createInstance($shortcode_info['id']);
       $tips[] = $shortcode->tips($long);
     }
 
@@ -107,9 +138,8 @@ class Shortcode extends FilterBase {
     foreach ($tips as $tip) {
       $output .= '<li>' . $tip . '</li>';
     }
-    // todo: add render array instead of li/ul markup.
-    // todo: add Translate markup.
-    return '<p>You can use wp-like shortcodes such as: </p><ul>' . $output . '</ul>';
+    return $this->t('<p>You can use wp-like shortcodes such as:</p>') .
+      '<ul>' . $output . '</ul>';
   }
 
 }

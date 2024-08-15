@@ -6,8 +6,6 @@ use Drupal\commerce_price\Calculator;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -30,31 +28,13 @@ class WishlistItemListBuilder extends EntityListBuilder {
   protected $routeMatch;
 
   /**
-   * Constructs a new WishlistItemListBuilder object.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
-   *   The entity type definition.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity storage.
-   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
-   *   The current route match.
-   */
-  public function __construct(EntityTypeInterface $entity_type, EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $route_match) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->routeMatch = $route_match;
-
-    parent::__construct($entity_type, $entity_type_manager->getStorage('commerce_wishlist_item'));
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-    return new static(
-      $entity_type,
-      $container->get('entity_type.manager'),
-      $container->get('current_route_match')
-    );
+    $instance = parent::createInstance($container, $entity_type);
+    $instance->entityTypeManager = $container->get('entity_type.manager');
+    $instance->routeMatch = $container->get('current_route_match');
+    return $instance;
   }
 
   /**

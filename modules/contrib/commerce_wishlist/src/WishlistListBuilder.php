@@ -2,11 +2,9 @@
 
 namespace Drupal\commerce_wishlist;
 
-use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -30,31 +28,12 @@ class WishlistListBuilder extends EntityListBuilder {
   protected $entityTypeManager;
 
   /**
-   * Constructs a new WishlistListBuilder object.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
-   *   The entity type definition.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
-   * @param \Drupal\Core\Datetime\DateFormatter $date_formatter
-   *   The date service.
-   */
-  public function __construct(EntityTypeInterface $entity_type, EntityTypeManagerInterface $entity_type_manager, DateFormatter $date_formatter) {
-    parent::__construct($entity_type, $entity_type_manager->getStorage($entity_type->id()));
-
-    $this->entityTypeManager = $entity_type_manager;
-    $this->dateFormatter = $date_formatter;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-    return new static(
-      $entity_type,
-      $container->get('entity_type.manager'),
-      $container->get('date.formatter')
-    );
+    $instance = parent::createInstance($container, $entity_type);
+    $instance->entityTypeManager = $container->get('entity_type.manager');
+    return $instance;
   }
 
   /**

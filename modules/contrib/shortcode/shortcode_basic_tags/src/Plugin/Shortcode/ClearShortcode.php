@@ -35,8 +35,8 @@ class ClearShortcode extends ShortcodeBase {
     $class = $this->addClass($attributes['class'], 'clearfix');
 
     // Only allow allowed types, and replace common shorthands.
-    // TODO: Use map.
-    // TODO: Allow any type the user enters?
+    // @todo Use map.
+    // @todo Allow any type the user enters?
     switch ($attributes['type']) {
       case 's':
       case 'span':

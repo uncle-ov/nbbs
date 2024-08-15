@@ -1,6 +1,6 @@
 @api @drupal @access
 Feature: Access
-  Several automated tests for the Permissions by Term Drupal 8 module.
+  Several automated tests for the Permissions by Term Drupal 10 module.
 
   Background:
     Given I am installing the module named "permissions_by_term"

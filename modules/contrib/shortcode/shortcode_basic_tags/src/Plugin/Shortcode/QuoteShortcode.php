@@ -2,16 +2,16 @@
 
 namespace Drupal\shortcode_basic_tags\Plugin\Shortcode;
 
-use Drupal\Core\Language\Language;
+use Drupal\Core\Language\LanguageInterface;
 use Drupal\shortcode\Plugin\ShortcodeBase;
 
 /**
- * Replace the given text formatted like as a quote.
+ * Replace the given text formatted as a quote.
  *
  * @Shortcode(
  *   id = "quote",
  *   title = @Translation("Quote"),
- *   description = @Translation("Replace the given text formatted like as a quote.")
+ *   description = @Translation("Replace the given text formatted as a quote.")
  * )
  */
 class QuoteShortcode extends ShortcodeBase {
@@ -19,7 +19,7 @@ class QuoteShortcode extends ShortcodeBase {
   /**
    * {@inheritdoc}
    */
-  public function process(array $attributes, $text, $langcode = Language::LANGCODE_NOT_SPECIFIED) {
+  public function process(array $attributes, $text, $langcode = LanguageInterface::LANGCODE_NOT_SPECIFIED) {
 
     // Merge with default attributes.
     $attributes = $this->getAttributes([
@@ -47,7 +47,7 @@ class QuoteShortcode extends ShortcodeBase {
     $output = [];
     $output[] = '<p><strong>' . $this->t('[quote (class="additional class" | author="author name")]text[/quote]') . '</strong>';
     if ($long) {
-      $output[] = $this->t('Formats the text like as a quote.') . '</p>';
+      $output[] = $this->t('Formats the text as a quote.') . '</p>';
       $output[] = '<p>' . $this->t('Sample css:') . '</p>';
       $output[] = '
         <code>
@@ -60,7 +60,7 @@ class QuoteShortcode extends ShortcodeBase {
              padding:5px 0 5px 20px;
              font-style:italic;
              border-left:3px solid #E8E8E8;
-             line-heigh:1.5em;
+             line-height:1.5em;
              font-size:14px;
              letter-spacing: 1px;
              word-spacing: 2px;
@@ -74,7 +74,7 @@ class QuoteShortcode extends ShortcodeBase {
         </code><p></p>';
     }
     else {
-      $output[] = $this->t('Formats the text like as a quote. Additional class names can be added by the <em>class</em> parameter.') . '</p>';
+      $output[] = $this->t('Formats the text as a quote. Additional class names can be added by the <em>class</em> parameter.') . '</p>';
     }
 
     return implode(' ', $output);

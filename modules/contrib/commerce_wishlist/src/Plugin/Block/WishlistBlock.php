@@ -2,7 +2,6 @@
 
 namespace Drupal\commerce_wishlist\Plugin\Block;
 
-use Drupal\commerce_wishlist\WishlistProviderInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -28,33 +27,12 @@ class WishlistBlock extends BlockBase implements ContainerFactoryPluginInterface
   protected $wishlistProvider;
 
   /**
-   * Constructs a new WishlistBlock.
-   *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin ID for the plugin instance.
-   * @param mixed $plugin_definition
-   *   The plugin implementation definition.
-   * @param \Drupal\commerce_wishlist\WishlistProviderInterface $wishlist_provider
-   *   The wishlist provider.
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, WishlistProviderInterface $wishlist_provider) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-
-    $this->wishlistProvider = $wishlist_provider;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('commerce_wishlist.wishlist_provider')
-    );
+    $instance = new static($configuration, $plugin_id, $plugin_definition);
+    $instance->wishlistProvider = $container->get('commerce_wishlist.wishlist_provider');
+    return $instance;
   }
 
   /**

@@ -2,12 +2,11 @@
 
 namespace Drupal\commerce_wishlist\Form;
 
-use Drupal\commerce_wishlist\Mail\WishlistShareMailInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Ajax\AjaxFormHelperTrait;
 use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\PrependCommand;
 use Drupal\Core\Ajax\CloseDialogCommand;
+use Drupal\Core\Ajax\PrependCommand;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -27,33 +26,33 @@ class WishlistShareForm extends EntityForm {
   protected $wishlistShareMail;
 
   /**
-   * Constructs a new WishlistUserForm object.
-   *
-   * @param \Drupal\commerce_wishlist\Mail\WishlistShareMailInterface $wishlist_share_mail
-   *   The wishlist share mail.
-   */
-  public function __construct(WishlistShareMailInterface $wishlist_share_mail) {
-    $this->wishlistShareMail = $wishlist_share_mail;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('commerce_wishlist.wishlist_share_mail')
-    );
+    $instance = parent::create($container);
+    $instance->wishlistShareMail = $container->get('commerce_wishlist.wishlist_share_mail');
+    return $instance;
   }
 
   /**
    * {@inheritdoc}
    */
   public function form(array $form, FormStateInterface $form_state) {
+    /** @var \Drupal\commerce_wishlist\Entity\WishlistInterface $wishlist */
+    $wishlist = $this->entity;
     $form['#tree'] = TRUE;
     $form['#attached']['library'][] = 'core/drupal.dialog.ajax';
     // Workaround for core bug #2897377.
     $form['#id'] = Html::getId($form_state->getBuildInfo()['form_id']);
 
+    $owner = $wishlist->getOwner();
+    if ($owner->isAnonymous()) {
+      $form['from'] = [
+        '#type' => 'textfield',
+        '#title' => $this->t('Your name'),
+        '#required' => TRUE,
+      ];
+    }
     $form['to'] = [
       '#type' => 'email',
       '#title' => $this->t('Recipient'),
@@ -86,7 +85,11 @@ class WishlistShareForm extends EntityForm {
     /** @var \Drupal\commerce_wishlist\Entity\WishlistInterface $wishlist */
     $wishlist = $this->entity;
     $to = $form_state->getValue('to');
-    $this->wishlistShareMail->send($wishlist, $to);
+    $owner = $wishlist->getOwner();
+    if ($owner->isAnonymous()) {
+      $anonymous_sender = $form_state->getValue('from');
+    }
+    $this->wishlistShareMail->send($wishlist, $to, $anonymous_sender ?? '');
 
     $this->messenger()->addStatus($this->t('Shared the wishlist to @recipient.', [
       '@recipient' => $to,

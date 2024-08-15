@@ -139,7 +139,7 @@ class WishlistAssignmentTest extends WishlistKernelTestBase {
     $this->wishlistAssignment->assign($wishlist, $this->authenticatedUser);
     $this->reloadEntity($wishlist);
 
-    $this->assertEqual($wishlist->getOwnerId(), $this->authenticatedUser->id());
+    $this->assertEquals($wishlist->getOwnerId(), $this->authenticatedUser->id());
 
   }
 
@@ -193,8 +193,8 @@ class WishlistAssignmentTest extends WishlistKernelTestBase {
     $this->reloadEntity($wishlist_1);
     $this->reloadEntity($wishlist_2);
 
-    $this->assertEqual($wishlist_1->getOwnerId(), $this->authenticatedUser->id());
-    $this->assertEqual($wishlist_2->getOwnerId(), $this->authenticatedUser->id());
+    $this->assertEquals($wishlist_1->getOwnerId(), $this->authenticatedUser->id());
+    $this->assertEquals($wishlist_2->getOwnerId(), $this->authenticatedUser->id());
 
     $this->config('commerce_wishlist.settings')->set('allow_multiple', 0)->save();
     $another_user = $this->createUser();
@@ -237,7 +237,7 @@ class WishlistAssignmentTest extends WishlistKernelTestBase {
     $anonymous_wishlist->save();
     $this->wishlistAssignment->assignMultiple([$anonymous_wishlist], $another_user);
     $anonymous_wishlist = $this->reloadEntity($anonymous_wishlist);
-    $this->assertEqual($anonymous_wishlist->getOwnerId(), $another_user->id());
+    $this->assertEquals($anonymous_wishlist->getOwnerId(), $another_user->id());
   }
 
 }

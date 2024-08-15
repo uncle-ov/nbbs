@@ -37,7 +37,7 @@ use Drupal\profile\Entity\ProfileInterface;
  *     "storage" = "Drupal\commerce_shipping\ShipmentStorage",
  *     "access" = "Drupal\commerce_shipping\ShipmentAccessControlHandler",
  *     "permission_provider" = "Drupal\commerce_shipping\ShipmentPermissionProvider",
- *     "views_data" = "Drupal\commerce\CommerceEntityViewsData",
+ *     "views_data" = "Drupal\commerce_shipping\ShipmentViewsData",
  *     "form" = {
  *       "default" = "Drupal\commerce_shipping\Form\ShipmentForm",
  *       "add" = "Drupal\commerce_shipping\Form\ShipmentForm",
@@ -458,6 +458,18 @@ class Shipment extends ContentEntityBase implements ShipmentInterface {
    */
   public function setData($key, $value) {
     $this->get('data')->__set($key, $value);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function unsetData($key) {
+    if (!$this->get('data')->isEmpty()) {
+      $data = $this->get('data')->first()->getValue();
+      unset($data[$key]);
+      $this->set('data', $data);
+    }
     return $this;
   }
 

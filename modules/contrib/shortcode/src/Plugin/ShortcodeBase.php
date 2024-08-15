@@ -4,9 +4,9 @@ namespace Drupal\shortcode\Plugin;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
-use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Url;
 use Drupal\media\Entity\Media;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -213,7 +213,6 @@ abstract class ShortcodeBase extends PluginBase implements ShortcodeInterface {
    *   The proper classes string.
    */
   public function addClass($classes = '', $new_class = '') {
-    $return = [];
     if (is_array($classes)) {
       $return = $classes;
     }
@@ -244,8 +243,7 @@ abstract class ShortcodeBase extends PluginBase implements ShortcodeInterface {
     if ($path === '<front>') {
       $path = '/';
     }
-
-    // Path validator. Return the path if an absolute url is detected.
+    // Path validator. Return the path if an absolute URL is detected.
     if (UrlHelper::isValid($path, TRUE)) {
       return $path;
     }
@@ -259,16 +257,11 @@ abstract class ShortcodeBase extends PluginBase implements ShortcodeInterface {
         return $this->getMediaFileUrl($mid);
       }
     }
-    else {
-      /** @var \Drupal\Core\Path\AliasManager $alias_manager */
-      $alias_manager = \Drupal::service('path_alias.manager');
-      $alias = $alias_manager->getAliasByPath($path);
-    }
 
     // Convert relative URL to absolute.
-    $url = Url::fromUserInput($alias, ['absolute' => TRUE])->toString();
+    $url = Url::fromUserInput($path, ['absolute' => TRUE]);
 
-    return $url;
+    return $url->toString();
   }
 
   /**
@@ -407,7 +400,7 @@ abstract class ShortcodeBase extends PluginBase implements ShortcodeInterface {
    *   Element stripped of any bubbleable metadata.
    */
   public function render(array &$elements) {
-    return $this->renderer->renderPlain($elements);
+    return $this->renderer->renderInIsolation($elements);
   }
 
 }

@@ -583,9 +583,10 @@ class ShippingInformation extends CheckoutPaneBase implements ContainerFactoryPl
       return FALSE;
     }
 
+
     // Loop over the shipments input to see if a shipping rate was selected.
     foreach ($user_input['shipments'] as $values) {
-      if (!empty(array_filter($values['shipping_method']))) {
+      if (!empty(array_filter((array) $values['shipping_method']))) {
         return TRUE;
       }
     }

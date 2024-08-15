@@ -79,74 +79,70 @@ TESTING
 
 Behat testing:
 
- * composer.json config - Make sure that the dependencies for Behat testing are
-   installed. Check your drupal's `composer.json` file for the following
-   contents:
-   ```"require": {
-        "composer/installers": "^1.0.24",
-        "wikimedia/composer-merge-plugin": "~1.4",
-        "drupal/drupal-extension": "~3.0",
-        "guzzlehttp/guzzle" : "^6.0@dev",
-        "drupal/drupal-driver": "~1.0",
-        "behat/behat": "^3.1",
-        "behat/mink": "^1.7",
-        "behat/mink-extension": "^2.2",
-        "behat/mink-selenium2-driver": "^1.3",
-        "behat/mink-goutte-driver": "^1.2"
-    },
+* composer.json config - Make sure that the dependencies for Behat testing are
+  installed. Check your drupal's `composer.json` file for the following
+  contents:
+```
+   "require-dev": {
+       "behat/behat": "^3.13",
+       "behat/mink": "^1.11",
+       "behat/mink-browserkit-driver": "^2.2",
+       "drupal/drupal-extension": "^5.0",
+       "wikimedia/composer-merge-plugin": "^2.1.0"
+   },
 
-    ...
+  ...
 
-    "merge-plugin": {
-        "include": [
-            "core/composer.json",
-            "modules/permissions_by_term/composer.json"
-        ],
-        "recurse": false,
-        "replace": false,
-        "merge-extra": false
-    },
+   "merge-plugin": {
+       "include": [
+           "web/core/composer.json",
+           "web/modules/contrib/permissions_by_term/composer.json"
+       ],
+       "recurse": false,
+       "replace": false,
+       "merge-extra": false
+   },
 
-    ...
+  ...
+   "autoload-dev": {
+       "psr-4": {
+           "Drupal\\Tests\\permissions_by_term\\Behat\\": "web/modules/contrib/permissions_by_term/tests/src/Behat/"
+       }
+   }
+   ```
 
-    "autoload": {
-        "psr-4": {
-            "Drupal\\Core\\Composer\\": "core/lib/Drupal/Core/Composer",
-            "Drupal\\Tests\\permissions_by_term\\Behat\\Context\\": "modules/permissions_by_term/tests/src/Behat/Context"
-        }
-    },
-    ```
+ * allow composer-merge-plugin:
 
- * behat.yml file: Use the file at `tests/src/Behat/behat.yml.dist` as a
+  ```
+    composer config --no-plugins allow-plugins.wikimedia/composer-merge-plugin true
+  ```
+
+ * behat.yml file: Use the file at `tests/src/behat.yml.dist` as a
    template for your needs. Copy and name it to `behat.yml` and change it's
    paths according to your needs.
 
- * Chromedriver: It is recommended to use the
-   [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/) as the
-   driver between your Google Chrome browser and Behat. Make sure, that the
-   Chromedriver version matches your operating system and your Google Chrome
-   browser version.
+ * using Ddev, it's required to add .ddev/docker-compose.selenium-chrome.yaml and run `ddev restart`.
+   Remember to update `base_url` and `wd_host` according to your environment setup.
 
- * Quick testing with a SQlite database: In
-   `permissions_by_term/tests/src/Behat/fixtures/db.sqlite` you can find a
-   SQLite database to test from. It is a standard Drupal 8 installation with PbT
-   module installed. That way each test run proceeds quicker, because it is one
-   file instead an entire relational database.
+  ```
+version: '3.6'
+services:
+  selenium-chrome:
+    image: selenium/standalone-chrome:88.0
+    container_name: ddev-${DDEV_SITENAME}-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "4444:4444"
+    external_links:
+      - ddev-router:${DDEV_HOSTNAME}
+  ```
 
-Make sure that the path to the SQLite database is contained in your
-`settings.php` file. PbT awaits that the path is
-`/sites/default/db.sqlite`. E.g.:
-``` $databases['default']['default'] = array (
-      'database' => '/Users/peter/Dev/mamp/permissions-by-term/sites/default/db.sqlite',
-      'prefix' => '',
-      'namespace' => 'Drupal\\Core\\Database\\Driver\\sqlite',
-      'driver' => 'sqlite',
-    );
-```
+  * run Behat tests
 
-The database file location is fixed, because the DB gets wiped after each Behat
-test suite run.
-
+  ```
+  bin/behat --config=behat.yml --colors --stop-on-failure ./web/modules/contrib/permissions_by_term/tests/src/Behat/Features
+  ```
 
 SUPPORTING ORGANIZATION:
 ------------------------

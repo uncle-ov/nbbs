@@ -6,9 +6,9 @@ use Drupal\commerce\PurchasableEntityInterface;
 use Drupal\commerce_price\Calculator;
 use Drupal\commerce_wishlist\Entity\WishlistInterface;
 use Drupal\commerce_wishlist\Entity\WishlistItemInterface;
-use Drupal\commerce_wishlist\Event\WishlistEvents;
 use Drupal\commerce_wishlist\Event\WishlistEmptyEvent;
 use Drupal\commerce_wishlist\Event\WishlistEntityAddEvent;
+use Drupal\commerce_wishlist\Event\WishlistEvents;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 

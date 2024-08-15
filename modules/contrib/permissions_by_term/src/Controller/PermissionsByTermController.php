@@ -14,7 +14,7 @@ class PermissionsByTermController extends ControllerBase {
   /**
    * Returns JSON response for user's autocomplete field in permissions form.
    *
-   * @return JsonResponse
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
    *   The response as JSON.
    */
   public function autoCompleteMultiple() {
@@ -27,7 +27,7 @@ class PermissionsByTermController extends ControllerBase {
 
     $matches = [];
 
-    $aUserIds = \Drupal::entityQuery('user')
+    $aUserIds = $this->entityTypeManager()->getStorage('user')->getQuery()
       ->condition('name', $last_string, 'CONTAINS')
       ->accessCheck(FALSE)
       ->execute();
@@ -35,7 +35,7 @@ class PermissionsByTermController extends ControllerBase {
     $prefix = count($array) ? implode(', ', $array) . ', ' : '';
 
     foreach ($aUserIds as $iUserId) {
-      $oUser = \Drupal::service('entity_type.manager')->getStorage('user')->load($iUserId);
+      $oUser = $this->entityTypeManager()->getStorage('user')->load($iUserId);
       $matches[$prefix . $oUser->getDisplayName()] = $oUser->getDisplayName();
     }
 

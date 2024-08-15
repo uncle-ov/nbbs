@@ -16,3 +16,6 @@ permissions_by_term.settings:
       label: 'Limit by taxonomy vocabularies'
       sequence:
         type: string
+    show_terms_in_user_form:
+      type: boolean
+      label: 'Show term selection in the user form'

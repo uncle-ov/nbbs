@@ -70,7 +70,7 @@ class PromotionForm extends ContentEntityForm {
         $coupon_code = '';
         if ($coupons_count === 1) {
           $coupons = $promotion->getCoupons();
-          $coupon_code = $coupons[0]->getCode();
+          $coupon_code = $coupons[0]?->getCode() ?? '';
         }
         $description = $this->formatPlural($coupons_count, 'There is one coupon defined for this promotion: @coupon_code.', 'There are @count coupons defined for this promotion.', ['@coupon_code' => $coupon_code]);
         // When the promotion references coupons, regardless of the setting
@@ -82,7 +82,6 @@ class PromotionForm extends ContentEntityForm {
     }
 
     $form['#theme'] = ['commerce_promotion_form'];
-    $form['#attached']['library'][] = 'commerce_promotion/form';
     $form['advanced'] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['entity-meta']],

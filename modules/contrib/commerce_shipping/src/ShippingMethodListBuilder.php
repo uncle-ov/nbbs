@@ -4,11 +4,10 @@ namespace Drupal\commerce_shipping;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
-use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Site\Settings;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -45,30 +44,20 @@ class ShippingMethodListBuilder extends EntityListBuilder implements FormInterfa
   protected $formBuilder;
 
   /**
-   * Constructs a new ShippingMethodListBuilder object.
+   * The module handler.
    *
-   * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
-   *   The entity type definition.
-   * @param \Drupal\Core\Entity\EntityStorageInterface $storage
-   *   The entity storage.
-   * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
-   *   The form builder.
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityStorageInterface $storage, FormBuilderInterface $form_builder) {
-    parent::__construct($entity_type, $storage);
-
-    $this->formBuilder = $form_builder;
-  }
+  protected $moduleHandler;
 
   /**
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-    return new static(
-      $entity_type,
-      $container->get('entity_type.manager')->getStorage($entity_type->id()),
-      $container->get('form_builder')
-    );
+    $instance = parent::createInstance($container, $entity_type);
+    $instance->formBuilder = $container->get('form_builder');
+    $instance->moduleHandler = $container->get('module_handler');
+    return $instance;
   }
 
   /**
@@ -138,6 +127,10 @@ class ShippingMethodListBuilder extends EntityListBuilder implements FormInterfa
       ];
     }
 
+    if (!Settings::get('commerce_show_partner_banners', TRUE)) {
+      return $build;
+    }
+
     // Additional markup added to promote Shipstation services.
     $build['shipping_resources'] = [
       '#theme' => 'commerce_shipping_resources',
@@ -146,7 +139,7 @@ class ShippingMethodListBuilder extends EntityListBuilder implements FormInterfa
         'library' => 'commerce_shipping/resources',
       ],
     ];
-    if (\Drupal::service('module_handler')->moduleExists('commerce_shipstation')) {
+    if ($this->moduleHandler->moduleExists('commerce_shipstation')) {
       $build['shipping_resources']['#theme'] = 'commerce_shipping_resources_installed';
     }
 

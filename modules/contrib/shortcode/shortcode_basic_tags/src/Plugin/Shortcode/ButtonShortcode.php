@@ -72,7 +72,7 @@ class ButtonShortcode extends ShortcodeBase {
     if ($long) {
       $output[] = $this->t('Inserts a link formatted like as a button. The <em>path</em> parameter provides the link target (the default is the front page).
     The <em>title</em> will be formatted as a link title (small tooltip over the link - helps for SEO).
-    Additional class names can be added by the <em>class</em> parameter.') . '</p>';
+    Additional class names can be added by the <em>class</em> parameter. The media entity links converted to the direct media urls if you add the <em>media_file_url=true</em> parameter.') . '</p>';
     }
     else {
       $output[] = $this->t('Inserts a link formatted as a button. Use the url parameter for the link.') . '</p>';

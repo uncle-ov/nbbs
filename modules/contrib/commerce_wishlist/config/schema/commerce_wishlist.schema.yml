@@ -5,6 +5,12 @@ commerce_wishlist.settings:
     allow_multiple:
       type: boolean
       label: 'Allow multiple wishlists'
+    allow_anonymous_sharing:
+      type: boolean
+      label: 'Allow anonymous wishlist sharing'
+    duplicate:
+      type: boolean
+      label: 'duplicate anonymous wishlist'
     default_type:
       type: string
       label: 'Default wishlist type'

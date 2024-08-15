@@ -2,8 +2,8 @@
 
 namespace Drupal\shortcode_basic_tags\Plugin\Shortcode;
 
-use Drupal\image\Entity\ImageStyle;
 use Drupal\Core\Language\Language;
+use Drupal\image\Entity\ImageStyle;
 use Drupal\shortcode\Plugin\ShortcodeBase;
 
 /**
@@ -63,7 +63,7 @@ class ImageShortcode extends ShortcodeBase {
   /**
    * {@inheritdoc}
    */
-  public function tips($long = FALSE) {
+  public function tips($long = FALSE): null|string {
     $output = [];
     $output[] = '<p><strong>' . $this->t('[img (src="image.jpg"|mid="1") (class="additional class"|alt="alt text"|imagestyle="medium")/]') . '</strong> ';
     $output[] = $this->t('Inserts an image based on the given image url or media id. If media id is supplied with no alt text, the alt text from the media object will be applied.') . '</p>';

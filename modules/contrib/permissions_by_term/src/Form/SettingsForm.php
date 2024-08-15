@@ -6,7 +6,9 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-
+/**
+ * The settings form for Permissions by Term.
+ */
 class SettingsForm extends ConfigFormBase {
 
   /**
@@ -50,26 +52,26 @@ class SettingsForm extends ConfigFormBase {
 
     $form['require_all_terms_granted'] = [
       '#type'          => 'checkbox',
-      '#title'         => t('Require all terms granted'),
-      '#description'   => t('By default users are granted access content, as long they have access to a <strong>single</strong>
+      '#title'         => $this->t('Require all terms granted'),
+      '#description'   => $this->t('By default users are granted access content, as long they have access to a <strong>single</strong>
 related taxonomy term. If the <strong>require all terms granted</strong> option is checked, they must
 have access to <strong>all</strong> related taxonomy terms to access an node.'),
-      '#default_value' => \Drupal::config('permissions_by_term.settings')->get('require_all_terms_granted'),
+      '#default_value' =>  $this->config('permissions_by_term.settings')->get('require_all_terms_granted'),
     ];
 
     $form['permission_mode'] = [
       '#type'          => 'checkbox',
-      '#title'         => t('Permission mode'),
-      '#description'   => t('This mode makes nodes accessible (view and edit) only, if editors have been explicitly granted the permission to them. Users won\'t have access to nodes matching any of the following conditions:
+      '#title'         => $this->t('Permission mode'),
+      '#description'   => $this->t('This mode makes nodes accessible (view and edit) only, if editors have been explicitly granted the permission to them. Users won\'t have access to nodes matching any of the following conditions:
 <br />- nodes without any terms
 <br />- nodes without any terms which grant them permission'),
-      '#default_value' => \Drupal::config('permissions_by_term.settings')->get('permission_mode'),
+      '#default_value' => $this->config('permissions_by_term.settings')->get('permission_mode'),
     ];
 
     $form['disable_node_access_records'] = [
       '#type'          => 'checkbox',
-      '#title'         => t('Disable node access records'),
-      '#description'   => t('By disabling node access records, nodes won\'t be hidden in:
+      '#title'         => $this->t('Disable node access records'),
+      '#description'   => $this->t('By disabling node access records, nodes won\'t be hidden in:
 <br />- listings made by the Views module (e.g. search result pages)
 <br />- menus
 <br />- other Drupal core systems, which are based on <a href="https://www.drupal.org/docs/8/modules/permissions-by-term#s-node-access-records" target="_blank" title="Node Access records documentation">Node Access records</a><br />
@@ -79,14 +81,28 @@ moderation workflow. Disabling node access records will save you some time on
 node save and taxonomy save, since the node access records must not be rebuild. Also it will provide major performance
 benefit on large, non-cached content listings like the "/admin/content" page. If you want to restrict nodes on your
 overall website and you are using a warmed page cache, then it is recommended to leave this setting disabled.'),
-      '#default_value' => \Drupal::config('permissions_by_term.settings')->get('disable_node_access_records'),
+      '#default_value' => $this->config('permissions_by_term.settings')->get('disable_node_access_records'),
+    ];
+
+    $form['only_parents'] = [
+      '#type'          => 'checkbox',
+      '#title'         => $this->t('Show only parent terms in user form'),
+      '#description'   => $this->t('If you check this, the list of terms shown in the user form is limited to only parent terms.'),
+      '#default_value' => $this->config('permissions_by_term.settings')->get('only_parents') ?? false
+    ];
+
+    $form['show_terms_in_user_form'] = [
+      '#type'          => 'checkbox',
+      '#title'         => $this->t('Show term selection in the user form'),
+      '#description'   => $this->t('When enabled, PbT will show a multi-select field for term assignment on the user edit form.'),
+      '#default_value' => $this->config('permissions_by_term.settings')->get('show_terms_in_user_form') ?? TRUE,
     ];
 
     $form['target_bundles'] = [
-      '#type' => 'checkboxes',
-      '#title' => $this->t('Limit by taxonomy vocabularies'),
-      '#description' => $this->t('Whether to limit permissions management and search by selected taxonomy vocabularies. If left empty, all taxonomy vocabularies are allowed.'),
-      '#options' => $this->getTaxonomyVocabularyOptions(),
+      '#type'          => 'checkboxes',
+      '#title'         => $this->t('Limit by taxonomy vocabularies'),
+      '#description'   => $this->t('Whether to limit permissions management and search by selected taxonomy vocabularies. If left empty, all taxonomy vocabularies are allowed.'),
+      '#options'       => $this->getTaxonomyVocabularyOptions(),
       '#default_value' => $this->config('permissions_by_term.settings')->get('target_bundles') ?? [],
     ];
 
@@ -109,29 +125,29 @@ overall website and you are using a warmed page cache, then it is recommended to
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    \Drupal::configFactory()
+    $this->configFactory
       ->getEditable('permissions_by_term.settings')
       ->set('require_all_terms_granted', $form_state->getValue('require_all_terms_granted'))
       ->save();
 
-    \Drupal::configFactory()
+    $this->configFactory
       ->getEditable('permissions_by_term.settings')
       ->set('permission_mode', $form_state->getValue('permission_mode'))
       ->save();
 
-    if ($form_state->getValue('disable_node_access_records') && !\Drupal::configFactory()
+    if ($form_state->getValue('disable_node_access_records') && !$this->configFactory
         ->getEditable('permissions_by_term.settings')
         ->get('disable_node_access_records')) {
       node_access_rebuild(true);
     }
 
-    if (!$form_state->getValue('disable_node_access_records') && \Drupal::configFactory()
+    if (!$form_state->getValue('disable_node_access_records') && $this->configFactory
         ->getEditable('permissions_by_term.settings')
         ->get('disable_node_access_records')) {
       node_access_rebuild(true);
     }
 
-    \Drupal::configFactory()
+    $this->configFactory
       ->getEditable('permissions_by_term.settings')
       ->set('disable_node_access_records', $form_state->getValue('disable_node_access_records'))
       ->save();
@@ -140,6 +156,16 @@ overall website and you are using a warmed page cache, then it is recommended to
     $this->configFactory
       ->getEditable('permissions_by_term.settings')
       ->set('target_bundles', array_values($bundles))
+      ->save();
+
+    $this->configFactory
+      ->getEditable('permissions_by_term.settings')
+      ->set('only_parents', $form_state->getValue('only_parents'))
+      ->save();
+
+    $this->configFactory
+      ->getEditable('permissions_by_term.settings')
+      ->set('show_terms_in_user_form', $form_state->getValue('show_terms_in_user_form'))
       ->save();
 
     parent::submitForm($form, $form_state);

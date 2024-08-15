@@ -2,10 +2,9 @@
 
 namespace Drupal\Tests\commerce_wishlist\Kernel\QueueWorker;
 
+use Drupal\commerce_product\Entity\ProductVariation;
 use Drupal\commerce_wishlist\Entity\Wishlist;
 use Drupal\commerce_wishlist\Entity\WishlistItem;
-use Drupal\commerce_product\Entity\ProductVariation;
-use Drupal\Tests\commerce_cart\Traits\CartManagerTestTrait;
 use Drupal\Tests\commerce_wishlist\Kernel\WishlistKernelTestBase;
 
 /**
@@ -15,8 +14,6 @@ use Drupal\Tests\commerce_wishlist\Kernel\WishlistKernelTestBase;
  * @group commerce_wishlist
  */
 class WishlistItemDeleteTest extends WishlistKernelTestBase {
-
-  use CartManagerTestTrait;
 
   /**
    * A sample user.
@@ -30,8 +27,6 @@ class WishlistItemDeleteTest extends WishlistKernelTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
-
-    $this->installCommerceCart();
 
     $user = $this->createUser();
     $this->user = $this->reloadEntity($user);

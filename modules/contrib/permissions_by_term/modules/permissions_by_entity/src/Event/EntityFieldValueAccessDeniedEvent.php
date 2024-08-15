@@ -7,7 +7,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
 /**
- * Class EntityFieldValueAccessDeniedEvent.
+ * Event dispatched if the access to a referenced entity is denied.
  *
  * @package Drupal\permissions_by_entity\Event
  */

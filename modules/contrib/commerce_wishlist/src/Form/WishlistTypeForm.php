@@ -3,8 +3,8 @@
 namespace Drupal\commerce_wishlist\Form;
 
 use Drupal\Core\Entity\BundleEntityFormBase;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides an wishlist type form.
@@ -56,6 +56,7 @@ class WishlistTypeForm extends BundleEntityFormBase {
     $status = $wishlist_type->save();
     $this->messenger()->addStatus($this->t('Saved the %label wishlist type.', ['%label' => $wishlist_type->label()]));
     $form_state->setRedirect('entity.commerce_wishlist_type.collection');
+    return $status;
   }
 
 }

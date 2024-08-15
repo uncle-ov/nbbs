@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Class PermissionsByEntityKernelEventSubscriber.
+ * Subscriber performing access control checks on entity requests.
  *
  * @package Drupal\permissions_by_entity\EventSubscriber
  */
@@ -81,7 +81,7 @@ class PermissionsByEntityKernelEventSubscriber implements EventSubscriberInterfa
    *   The event instance.
    */
   public function onKernelRequest(RequestEvent $event) {
-     // Only act on the master request.
+    // Only act on the master request.
     if ($event->getRequestType() !== HttpKernelInterface::MASTER_REQUEST) {
       return;
     }

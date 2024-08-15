@@ -10,7 +10,7 @@ core_version_requirement: '^9.1 || ^10'
 package: 'Permissions by Term'
 configure: permissions_by_term.settings
 
-# Information added by Drupal.org packaging script on 2023-08-24
-version: '3.1.26'
+# Information added by Drupal.org packaging script on 2024-04-10
+version: '3.1.33'
 project: 'permissions_by_term'
-datestamp: 1692873348
+datestamp: 1712753251

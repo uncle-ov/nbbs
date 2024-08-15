@@ -43,7 +43,12 @@ class TestEntity extends ContentEntityBase implements EntityPublishedInterface {
     $fields['terms'] = BaseFieldDefinition::create('entity_reference')
       ->setSetting('target_type', 'taxonomy_term')
       ->setSetting('handler', 'default')
-      ->setLabel(t('terms'));
+      ->setSetting('handler_settings', [
+        'target_bundles' => [
+          'test' => 'test',
+        ],
+      ])
+      ->setLabel(\Drupal::translation()->translate('terms'));
 
     $fields += static::publishedBaseFieldDefinitions($entity_type);
 

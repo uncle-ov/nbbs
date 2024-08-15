@@ -121,14 +121,12 @@ class WishlistItemTest extends WishlistBrowserTestBase {
       'quantity[0][value]' => '5',
       'comment[0][value]' => 'My updated comment',
     ], 'Save');
-    $this->assertSession()->pageTextNotContains('The item Regular desk has been successfully saved.');
 
     \Drupal::service('entity_type.manager')->getStorage('commerce_wishlist_item')->resetCache([$wishlist_item->id()]);
     $wishlist_item = WishlistItem::load(1);
 
     // It is not possible to change product variation on edit.
-    $this->assertNotEquals($this->secondVariation->id(), $wishlist_item->getPurchasableEntityId());
-    $this->assertEqual($wishlist_item->getComment(), 'My updated comment');
+    $this->assertEquals($wishlist_item->getComment(), 'My updated comment');
     $this->assertEquals('5', $wishlist_item->getQuantity());
   }
 
@@ -165,7 +163,7 @@ class WishlistItemTest extends WishlistBrowserTestBase {
     $this->assertEquals($this->secondVariation->id(), $wishlist_item_2->getPurchasableEntityId());
     $this->assertEquals('5', $wishlist_item_2->getQuantity());
     $this->assertNotEmpty($wishlist_item_2->getComment());
-    $this->assertEqual($wishlist_item_2->getComment(), 'Still regular is cheaper');
+    $this->assertEquals($wishlist_item_2->getComment(), 'Still regular is cheaper');
   }
 
   /**
@@ -182,7 +180,7 @@ class WishlistItemTest extends WishlistBrowserTestBase {
     $this->drupalGet($wishlist_item->toUrl('delete-form'));
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->pageTextContains('This action cannot be undone.');
-    $this->submitForm([], t('Delete'));
+    $this->submitForm([], 'Delete');
 
     \Drupal::service('entity_type.manager')->getStorage('commerce_wishlist_item')->resetCache([$wishlist_item->id()]);
     $wishlist_item_exists = (bool) WishlistItem::load($wishlist_item->id());

@@ -8,8 +8,7 @@ use Drupal\facets\FacetInterface;
 /**
  * The default implementation of the result interfaces.
  */
-class Result implements ResultInterface
-{
+class Result implements ResultInterface {
 
   /**
    * The facet related to the result.
@@ -74,6 +73,18 @@ class Result implements ResultInterface
    */
   protected $children = [];
 
+  /**
+   * The facet transliterate display value.
+   *
+   * @var string
+   */
+  public $transliterateDisplayValue;
+
+  /**
+   * The term weight.
+   *
+   * @var int
+   */
   public $termWeight;
 
   /**
@@ -88,8 +99,7 @@ class Result implements ResultInterface
    * @param int $count
    *   The amount of items.
    */
-  public function __construct(FacetInterface $facet, $raw_value, $display_value, $count)
-  {
+  public function __construct(FacetInterface $facet, $raw_value, $display_value, $count) {
     $this->facet = $facet;
     $this->rawValue = $raw_value;
     $this->displayValue = $display_value;
@@ -99,64 +109,56 @@ class Result implements ResultInterface
   /**
    * {@inheritdoc}
    */
-  public function getDisplayValue()
-  {
+  public function getDisplayValue() {
     return $this->displayValue;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getRawValue()
-  {
+  public function getRawValue() {
     return $this->rawValue;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getCount()
-  {
+  public function getCount() {
     return $this->count;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setCount($count)
-  {
+  public function setCount($count) {
     $this->count = (int) $count;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function isMissing(): bool
-  {
+  public function isMissing(): bool {
     return $this->missing;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setMissing(bool $missing)
-  {
+  public function setMissing(bool $missing) {
     $this->missing = $missing;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getMissingFilters(): array
-  {
+  public function getMissingFilters(): array {
     return $this->missingFilters;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setMissingFilters(array $filters)
-  {
+  public function setMissingFilters(array $filters) {
     $this->missingFilters = array_filter($filters, static function ($filter) {
       return $filter !== '!';
     });
@@ -165,56 +167,49 @@ class Result implements ResultInterface
   /**
    * {@inheritdoc}
    */
-  public function getUrl()
-  {
+  public function getUrl() {
     return $this->url;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setUrl(Url $url)
-  {
+  public function setUrl(Url $url) {
     $this->url = $url;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setActiveState($active)
-  {
+  public function setActiveState($active) {
     $this->active = $active;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function isActive()
-  {
+  public function isActive() {
     return $this->active;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setDisplayValue($display_value)
-  {
+  public function setDisplayValue($display_value) {
     $this->displayValue = $display_value;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setChildren(array $children)
-  {
+  public function setChildren(array $children) {
     $this->children = $children;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getChildren()
-  {
+  public function getChildren() {
     return $this->children;
   }
 
@@ -224,8 +219,7 @@ class Result implements ResultInterface
    * @return bool
    *   A boolean indicating the active state of children.
    */
-  public function hasActiveChildren()
-  {
+  public function hasActiveChildren() {
     foreach ($this->getChildren() as $child) {
       if ($child->isActive() || $child->hasActiveChildren()) {
         return TRUE;
@@ -237,8 +231,7 @@ class Result implements ResultInterface
   /**
    * {@inheritdoc}
    */
-  public function getFacet()
-  {
+  public function getFacet() {
     return $this->facet;
   }
 

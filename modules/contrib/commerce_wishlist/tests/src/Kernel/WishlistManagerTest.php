@@ -167,7 +167,7 @@ class WishlistManagerTest extends WishlistKernelTestBase {
     ]);
     $source->save();
     $this->reloadEntity($source);
-    $this->assertEqual($source->id(), $this->authenticatedUser->id());
+    $this->assertEquals($source->id(), $this->authenticatedUser->id());
 
     $wishlist_item_2 = WishlistItem::create([
       'type' => 'commerce_product_variation',
@@ -183,7 +183,7 @@ class WishlistManagerTest extends WishlistKernelTestBase {
       'uid' => 1,
     ]);
     $target->save();
-    $this->assertEqual(count($target->getItems()), 1);
+    $this->assertEquals(count($target->getItems()), 1);
     $this->assertInstanceOf(WishlistInterface::class, $target);
 
     $this->wishlistManager->merge($source, $target);
@@ -194,7 +194,7 @@ class WishlistManagerTest extends WishlistKernelTestBase {
     $this->assertInstanceOf(WishlistInterface::class, $target);
     $this->assertNotInstanceOf(WishlistInterface::class, $source);
 
-    $this->assertEqual(count($target->getItems()), 2);
+    $this->assertEquals(count($target->getItems()), 2);
   }
 
   /**

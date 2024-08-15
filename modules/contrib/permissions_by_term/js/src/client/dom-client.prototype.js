@@ -122,21 +122,22 @@ DomClient.prototype._getInputType = function(formElementCssClass) {
     formElement = 'input';
   }
 
-  if (formElement === 'input') {
-    if (get(this.documentAdapter.document.querySelector(formElementCssClass + ' input.form-autocomplete'), 'type') && this.documentAdapter.document.querySelector(formElementCssClass + ' input.form-autocomplete').type === "text") {
-      return 'text';
+  if (!isEmpty(formElement)) {
+    if (formElement === 'input') {
+      if (get(this.documentAdapter.document.querySelector(formElementCssClass + ' input.form-autocomplete'), 'type') && this.documentAdapter.document.querySelector(formElementCssClass + ' input.form-autocomplete').type === "text") {
+        return 'text';
+      }
+      if (this.documentAdapter.document.querySelector(formElementCssClass + ' input').type === "checkbox") {
+        return 'checkbox';
+      }
+      if (this.documentAdapter.document.querySelector(formElementCssClass + ' input').type === "radio") {
+        return 'radio';
+      }
     }
-    if (this.documentAdapter.document.querySelector(formElementCssClass + ' input').type === "checkbox") {
-      return 'checkbox';
-    }
-    if (this.documentAdapter.document.querySelector(formElementCssClass + ' input').type === "radio") {
-      return 'radio';
+    if (formElement === 'select' && this.documentAdapter.document.querySelector(formElementCssClass + ' select').tagName === "SELECT") {
+      return 'select';
     }
   }
-  if (!isEmpty(formElement) && this.documentAdapter.document.querySelector(formElementCssClass + ' select').tagName === "SELECT") {
-    return 'select';
-  }
-
 }
 
 export default DomClient;

@@ -24,7 +24,7 @@ class WishlistUserAccessCheck {
    */
   public function checkAccess(RouteMatchInterface $route_match, AccountInterface $account) {
     if ($account->hasPermission('administer commerce_wishlist')) {
-      // Administrators can modify anyone's wishlst.
+      // Administrators can modify anyone's wishlist.
       $access = AccessResult::allowed()->cachePerPermissions();
     }
     else {

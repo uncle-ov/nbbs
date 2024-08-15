@@ -42,7 +42,7 @@ parameters:
 
 		-
 			message: "#^\\\\Drupal calls should be avoided in classes, use dependency injection instead$#"
-			count: 2
+			count: 3
 			path: modules/checkout/src/Plugin/Commerce/CheckoutPane/Login.php
 
 		-
@@ -132,11 +132,6 @@ parameters:
 			message: "#^Method Drupal\\\\commerce_order\\\\Form\\\\ProfileAddressBookForm\\:\\:save\\(\\) should return int but return statement is missing\\.$#"
 			count: 1
 			path: modules/order/src/Form/ProfileAddressBookForm.php
-
-		-
-			message: "#^\\\\Drupal calls should be avoided in classes, use dependency injection instead$#"
-			count: 1
-			path: modules/order/src/OrderStorage.php
 
 		-
 			message: "#^Access to an undefined property Drupal\\\\commerce_order\\\\Plugin\\\\Field\\\\FieldType\\\\AdjustmentItem\\:\\:\\$value\\.$#"

@@ -25,8 +25,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class TermWeightWidgetOrderProcessor extends SortProcessorPluginBase implements ContainerFactoryPluginInterface
-{
+class TermWeightWidgetOrderProcessor extends SortProcessorPluginBase implements ContainerFactoryPluginInterface {
 
   use UnchangingCacheableDependencyTrait;
 
@@ -49,8 +48,7 @@ class TermWeightWidgetOrderProcessor extends SortProcessorPluginBase implements 
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager)
-  {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->entityTypeManager = $entity_type_manager;
@@ -59,8 +57,7 @@ class TermWeightWidgetOrderProcessor extends SortProcessorPluginBase implements 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition)
-  {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
       $plugin_id,
@@ -72,8 +69,7 @@ class TermWeightWidgetOrderProcessor extends SortProcessorPluginBase implements 
   /**
    * {@inheritdoc}
    */
-  public function sortResults(Result $a, Result $b)
-  {
+  public function sortResults(Result $a, Result $b) {
     // Get the term weight once.
     if (!isset($a->termWeight) || !isset($b->termWeight)) {
       $ids = [];
@@ -112,8 +108,7 @@ class TermWeightWidgetOrderProcessor extends SortProcessorPluginBase implements 
   /**
    * {@inheritdoc}
    */
-  public function supportsFacet(FacetInterface $facet)
-  {
+  public function supportsFacet(FacetInterface $facet) {
     $data_definition = $facet->getDataDefinition();
     if ($data_definition->getDataType() === 'entity_reference') {
       return TRUE;
@@ -125,8 +120,7 @@ class TermWeightWidgetOrderProcessor extends SortProcessorPluginBase implements 
     $data_definition = $facet->getDataDefinition();
     $property_definitions = $data_definition->getPropertyDefinitions();
     foreach ($property_definitions as $definition) {
-      if (
-        $definition instanceof DataReferenceDefinitionInterface
+      if ($definition instanceof DataReferenceDefinitionInterface
         && $definition->getDataType() === 'entity_reference'
         && $definition->getConstraint('EntityType') === 'taxonomy_term'
       ) {
@@ -139,8 +133,7 @@ class TermWeightWidgetOrderProcessor extends SortProcessorPluginBase implements 
   /**
    * {@inheritdoc}
    */
-  public function getCacheTags()
-  {
+  public function getCacheTags() {
     return Cache::mergeTags(parent::getCacheTags(), ['taxonomy_term_list']);
   }
 

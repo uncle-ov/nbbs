@@ -3,6 +3,8 @@
 namespace Drupal\commerce_checkout\Plugin\Commerce\CheckoutPane;
 
 use Drupal\commerce\CredentialsCheckFloodInterface;
+use Drupal\commerce_checkout\Event\CheckoutEvents;
+use Drupal\commerce_checkout\Event\CheckoutRegisterEvent;
 use Drupal\commerce_checkout\Plugin\Commerce\CheckoutFlow\CheckoutFlowInterface;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
@@ -15,6 +17,7 @@ use Drupal\Core\Url;
 use Drupal\user\UserAuthInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -71,6 +74,13 @@ class Login extends CheckoutPaneBase implements CheckoutPaneInterface, Container
   protected $entityDisplayRepository;
 
   /**
+   * The event dispatcher.
+   *
+   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
+   */
+  protected $eventDispatcher;
+
+  /**
    * Constructs a new Login object.
    *
    * @param array $configuration
@@ -95,8 +105,10 @@ class Login extends CheckoutPaneBase implements CheckoutPaneInterface, Container
    *   The language manager.
    * @param \Drupal\Core\Entity\EntityDisplayRepositoryInterface|null $entity_display_repository
    *   The entity display repository.
+   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface|null $event_dispatcher
+   *   The event dispatcher.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, CheckoutFlowInterface $checkout_flow, EntityTypeManagerInterface $entity_type_manager, CredentialsCheckFloodInterface $credentials_check_flood, AccountInterface $current_user, UserAuthInterface $user_auth, RequestStack $request_stack, LanguageManagerInterface $language_manager = NULL, EntityDisplayRepositoryInterface $entity_display_repository = NULL) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, CheckoutFlowInterface $checkout_flow, EntityTypeManagerInterface $entity_type_manager, CredentialsCheckFloodInterface $credentials_check_flood, AccountInterface $current_user, UserAuthInterface $user_auth, RequestStack $request_stack, LanguageManagerInterface $language_manager = NULL, EntityDisplayRepositoryInterface $entity_display_repository = NULL, EventDispatcherInterface $event_dispatcher = NULL) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $checkout_flow, $entity_type_manager);
 
     $this->credentialsCheckFlood = $credentials_check_flood;
@@ -111,8 +123,13 @@ class Login extends CheckoutPaneBase implements CheckoutPaneInterface, Container
       @trigger_error('Calling ' . __METHOD__ . '() without the $entity_display_repository argument is deprecated in commerce:8.x-2.33 and is removed from commerce:3.x.');
       $entity_display_repository = \Drupal::service('entity_display.repository');
     }
+    if (!$event_dispatcher) {
+      @trigger_error('Calling ' . __METHOD__ . '() without the $event_dispatcher argument is deprecated in commerce:8.x-2.38 and is removed from commerce:3.x.');
+      $event_dispatcher = \Drupal::service('event_dispatcher');
+    }
     $this->languageManager = $language_manager;
     $this->entityDisplayRepository = $entity_display_repository;
+    $this->eventDispatcher = $event_dispatcher;
   }
 
   /**
@@ -130,7 +147,8 @@ class Login extends CheckoutPaneBase implements CheckoutPaneInterface, Container
       $container->get('user.auth'),
       $container->get('request_stack'),
       $container->get('language_manager'),
-      $container->get('entity_display.repository')
+      $container->get('entity_display.repository'),
+      $container->get('event_dispatcher')
     );
   }
 
@@ -463,6 +481,11 @@ class Login extends CheckoutPaneBase implements CheckoutPaneInterface, Container
         user_login_finalize($account);
         $this->order->setCustomer($account);
         $this->credentialsCheckFlood->clearAccount($this->clientIp, $account->getAccountName());
+        if ($trigger === 'register') {
+          // Notify other modules.
+          $event = new CheckoutRegisterEvent($account, $this->order);
+          $this->eventDispatcher->dispatch($event, CheckoutEvents::CHECKOUT_REGISTER);
+        }
         break;
     }
 

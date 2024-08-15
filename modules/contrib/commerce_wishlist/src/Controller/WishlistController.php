@@ -2,17 +2,10 @@
 
 namespace Drupal\commerce_wishlist\Controller;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\Core\Session\AccountInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Drupal\commerce_wishlist\WishlistProviderInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormState;
-use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -70,46 +63,18 @@ class WishlistController implements ContainerInjectionInterface {
   protected $languageManager;
 
   /**
-   * Constructs a new WishlistController object.
-   *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The config factory.
-   * @param \Drupal\Core\Session\AccountInterface $current_user
-   *   The current user.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
-   * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
-   *   The form builder.
-   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
-   *   The route match.
-   * @param \Drupal\commerce_wishlist\WishlistProviderInterface $wishlist_provider
-   *   The wishlist provider.
-   * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
-   *   The language manager.
-   */
-  public function __construct(ConfigFactoryInterface $config_factory, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, FormBuilderInterface $form_builder, RouteMatchInterface $route_match, WishlistProviderInterface $wishlist_provider, LanguageManagerInterface $language_manager) {
-    $this->configFactory = $config_factory;
-    $this->currentUser = $current_user;
-    $this->entityTypeManager = $entity_type_manager;
-    $this->formBuilder = $form_builder;
-    $this->routeMatch = $route_match;
-    $this->wishlistProvider = $wishlist_provider;
-    $this->languageManager = $language_manager;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('config.factory'),
-      $container->get('current_user'),
-      $container->get('entity_type.manager'),
-      $container->get('form_builder'),
-      $container->get('current_route_match'),
-      $container->get('commerce_wishlist.wishlist_provider'),
-      $container->get('language_manager')
-    );
+    $instance = new static();
+    $instance->configFactory = $container->get('config.factory');
+    $instance->currentUser = $container->get('current_user');
+    $instance->entityTypeManager = $container->get('entity_type.manager');
+    $instance->formBuilder = $container->get('form_builder');
+    $instance->routeMatch = $container->get('current_route_match');
+    $instance->wishlistProvider = $container->get('commerce_wishlist.wishlist_provider');
+    $instance->languageManager = $container->get('language_manager');
+    return $instance;
   }
 
   /**

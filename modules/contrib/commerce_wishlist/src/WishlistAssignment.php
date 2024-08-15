@@ -2,9 +2,9 @@
 
 namespace Drupal\commerce_wishlist;
 
+use Drupal\commerce_wishlist\Entity\WishlistInterface;
 use Drupal\commerce_wishlist\Event\WishlistAssignEvent;
 use Drupal\commerce_wishlist\Event\WishlistEvents;
-use Drupal\commerce_wishlist\Entity\WishlistInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\UserInterface;

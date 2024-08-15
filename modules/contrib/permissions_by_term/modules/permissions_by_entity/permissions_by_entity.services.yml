@@ -9,6 +9,9 @@ services:
       - '@permissions_by_entity.checked_entity_cache'
       - '@entity_field.manager'
       - '@database'
+      - '@config.factory'
+      - '@language_manager'
+      - '@current_user'
 
   permissions_by_entity.access_result_cache:
     class: Drupal\permissions_by_entity\Cache\AccessResultCache

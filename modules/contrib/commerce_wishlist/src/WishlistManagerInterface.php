@@ -2,8 +2,8 @@
 
 namespace Drupal\commerce_wishlist;
 
-use Drupal\commerce_wishlist\Entity\WishlistInterface;
 use Drupal\commerce\PurchasableEntityInterface;
+use Drupal\commerce_wishlist\Entity\WishlistInterface;
 use Drupal\commerce_wishlist\Entity\WishlistItemInterface;
 
 /**

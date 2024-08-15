@@ -12,7 +12,7 @@ classes and interfaces with dedicated functions. So we now have dedicated
 Wishlist and Wishlist Item entities.
 
 The data model and implementation of those entities however is still very close
-to Commere Order (with reduced complexity of not needing to have adjustments,
+to Commerce Order (with reduced complexity of not needing to have adjustments,
 totals, etc). Also the services responsible for providing and managing wishlists
 are very similar to the ones that Commerce Cart has. So, if you are already
 familiar with Commerce Order and Cart, you'll find yourself comfortable working
@@ -40,7 +40,7 @@ and the features and use cases we'll want to support.
   * As a **customer**, I can add a product to a wishlist.
   * As a **customer**, I can remove a product from a wishlist.
   * As a **customer**, I can change the quantity of a product on a wishlist.
-  * As a **customer**, I can add a product to my cart from my wislist.
+  * As a **customer**, I can add a product to my cart from my wishlist.
   * As a **customer**, I can move a product from my cart to my wishlist.
   * As a **customer**, I can view my wishlist.
     * A wishlist MAY be accessed by clicking a link from the user's account
@@ -65,7 +65,7 @@ and the features and use cases we'll want to support.
   * As an **anonymous user**, I can remove a product from a wishlist.
   * As an **anonymous user**, I can change the quantity of a product on a
       wishlist.
-  * As an **anonymous user**, I can add a product to my cart from my wislist.
+  * As an **anonymous user**, I can add a product to my cart from my wishlist.
   * As an **anonymous user**, I can move items from my cart to my wishlist.
   * As an **anonymous user**, I can register and my wishlist will be saved to my
       account.

@@ -2,8 +2,9 @@
 
 namespace Drupal\shortcode;
 
-use Drupal\filter\Plugin\FilterInterface;
 use Drupal\Core\Language\Language;
+use Drupal\filter\Plugin\FilterInterface;
+use Drupal\shortcode\Plugin\ShortcodeInterface;
 
 /**
  * Provide the ShortCode service.
@@ -11,20 +12,12 @@ use Drupal\Core\Language\Language;
 class ShortcodeService {
 
   /**
-   * The devel dumper plugin manager.
-   *
-   * @var \Drupal\shortcode\ShortcodePluginManager
-   */
-  protected $shortCodePluginManager;
-
-  /**
    * Constructs a ShortcodeService object.
    *
    * @param \Drupal\shortcode\ShortcodePluginManager $shortCodePluginManager
    *   The config factory service.
    */
-  public function __construct(ShortcodePluginManager $shortCodePluginManager) {
-    $this->shortCodePluginManager = $shortCodePluginManager;
+  public function __construct(protected ShortcodePluginManager $shortCodePluginManager) {
   }
 
   /**
@@ -33,7 +26,7 @@ class ShortcodeService {
    * @return array
    *   Array of ShortCode plugin definitions.
    */
-  public function loadShortcodePlugins() {
+  public function loadShortcodePlugins(): array {
 
     /** @var \Drupal\Component\Plugin\PluginManagerInterface $type */
     $definitions_raw = $this->shortCodePluginManager->getDefinitions();
@@ -47,7 +40,7 @@ class ShortcodeService {
       }
 
       // Default token to id.
-      $token = strtolower(isset($definition['token']) ? $definition['token'] : $shortcode_id);
+      $token = strtolower($definition['token'] ?? $shortcode_id);
       $definition['token'] = $token;
 
       $definitions[$shortcode_id] = $definition;
@@ -65,7 +58,7 @@ class ShortcodeService {
    * @return array
    *   Array of shortcode plugin definitions.
    */
-  public function getShortcodePluginTokens($reset = FALSE) {
+  public function getShortcodePluginTokens(bool $reset = FALSE): array {
     $shortcode_tokens = &drupal_static(__FUNCTION__);
 
     // Prime plugin cache.
@@ -93,7 +86,7 @@ class ShortcodeService {
    * @return array
    *   Array of shortcode plugin definitions, keyed by token, not id.
    */
-  public function getShortcodePlugins(FilterInterface $filter = NULL, $reset = FALSE) {
+  public function getShortcodePlugins(FilterInterface $filter = NULL, bool $reset = FALSE): array {
     $shortcodes = &drupal_static(__FUNCTION__);
 
     // Prime plugin cache.
@@ -150,19 +143,15 @@ class ShortcodeService {
    * Creates ShortCode plugin instance or loads from static cache.
    *
    * @param string $shortcode_id
-   *   The shorShortCodetcode plugin id.
+   *   The ShortCode plugin id.
    *
    * @return \Drupal\shortcode\Plugin\ShortcodeInterface
    *   The plugin instance.
    */
-  public function getShortcodePlugin($shortcode_id) {
+  public function getShortcodePlugin(string $shortcode_id): ShortcodeInterface {
     $plugins = &drupal_static(__FUNCTION__, []);
     if (!isset($plugins[$shortcode_id])) {
-
-      /** @var \Drupal\shortcode\Shortcode\ShortcodePluginManager $type */
-      $type = \Drupal::service('plugin.manager.shortcode');
-
-      $plugins[$shortcode_id] = $type->createInstance($shortcode_id);
+      $plugins[$shortcode_id] = $this->shortCodePluginManager->createInstance($shortcode_id);
     }
     return $plugins[$shortcode_id];
   }
@@ -176,9 +165,9 @@ class ShortcodeService {
    * @return bool
    *   Returns TRUE if the given $tag is valid ShortCode tag.
    */
-  public function isValidShortcodeTag($tag) {
+  public function isValidShortcodeTag($tag): bool {
     $tokens = $this->getShortcodePluginTokens();
-    // TODO: This is case-sensitive right now, consider if it should be.
+    // @todo This is case-sensitive right now, consider if it should be.
     return isset($tokens[$tag]);
   }
 
@@ -189,9 +178,11 @@ class ShortcodeService {
    *   The variable.
    *
    * @return bool
-   *   TRUE if $var is a booleany value.
+   *   TRUE if $var is a boolean value.
+   *
+   * @todo rename to isBoolean().
    */
-  protected function isBool($var) {
+  protected function isBool($var): bool {
     switch (strtolower($var)) {
       case FALSE:
       case 'false':
@@ -221,7 +212,7 @@ class ShortcodeService {
    * @return string
    *   The processed string.
    */
-  public function process($text, $langcode = Language::LANGCODE_NOT_SPECIFIED, FilterInterface $filter = NULL) {
+  public function process($text, string $langcode = Language::LANGCODE_NOT_SPECIFIED, FilterInterface $filter = NULL): string {
     $shortcodes = $this->getShortcodePlugins($filter);
 
     // Processing recursively, now embedding tags within other tags is
@@ -366,7 +357,7 @@ class ShortcodeService {
    * @return string
    *   The processed string.
    */
-  public function postprocessText($text, $langcode, FilterInterface $filter = NULL) {
+  public function postprocessText($text, string $langcode, FilterInterface $filter = NULL): string {
 
     // preg_match_all('/<p>s.*<!--.*-->.*<div/isU', $text, $r);
     // dpm($r, '$r');
@@ -409,10 +400,10 @@ class ShortcodeService {
    * @param array $enabled_shortcodes
    *   Array of enabled shortcodes for the active text format.
    *
-   * @return string|false
-   *   FALSE on failure.
+   * @return string
+   *   Processed tag.
    */
-  protected function processTag(array $m, array $enabled_shortcodes) {
+  protected function processTag(array $m, array $enabled_shortcodes): string {
     $shortcode_token = $m[2];
 
     $shortcode = NULL;
@@ -427,10 +418,7 @@ class ShortcodeService {
       if (!is_null($m[4])) {
         return $m[1] . $m[4] . $m[5];
       }
-      // This is a self-closing tag.
-      else {
-        return $m[1] . $m[5];
-      }
+      return $m[1] . $m[5];
     }
 
     // Process if shortcode exists and enabled.
@@ -451,7 +439,7 @@ class ShortcodeService {
    * @return array
    *   List of attributes and their value.
    */
-  protected function parseAttrs($text) {
+  protected function parseAttrs(string $text): array {
     $attributes = [];
     if (empty($text)) {
       return $attributes;

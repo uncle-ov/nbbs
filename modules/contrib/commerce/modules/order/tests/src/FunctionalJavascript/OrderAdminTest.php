@@ -84,7 +84,7 @@ class OrderAdminTest extends OrderWebDriverTestBase {
     // Create an order through the add form.
     $this->drupalGet('/admin/commerce/orders');
     $this->getSession()->getPage()->clickLink('Create a new order');
-    $user = $this->loggedInUser->getAccountName() . ' (' . $this->loggedInUser->id() . ')';
+    $user = $this->loggedInUser->getAccountName() . ' <' . $this->loggedInUser->getEmail() . '>' . ' (' . $this->loggedInUser->id() . ')';
     $this->getSession()->getPage()->fillField('uid', $user);
     $this->assertSession()->assertWaitOnAjaxRequest();
     $edit = [
@@ -333,7 +333,7 @@ class OrderAdminTest extends OrderWebDriverTestBase {
       '@label' => $order->label(),
     ]));
     $this->assertSession()->pageTextContains('This action cannot be undone.');
-    $this->submitForm([], $this->t('Delete'));
+    $this->submitForm([], (string) $this->t('Delete'));
 
     $this->container->get('entity_type.manager')->getStorage('commerce_order')->resetCache([$order->id()]);
     $order_exists = (bool) Order::load($order->id());
@@ -356,7 +356,7 @@ class OrderAdminTest extends OrderWebDriverTestBase {
     $this->assertSession()->pageTextContains($this->t('Are you sure you want to unlock @label?', [
       '@label' => $order->label(),
     ]));
-    $this->submitForm([], $this->t('Unlock'));
+    $this->submitForm([], (string) $this->t('Unlock'));
     $this->assertSession()->pageTextContains($this->t('The @label has been unlocked.', [
       '@label' => $order->label(),
     ]));
@@ -400,7 +400,7 @@ class OrderAdminTest extends OrderWebDriverTestBase {
     $this->assertSession()->pageTextContains($this->t('Are you sure you want to resend the receipt for @label?', [
       '@label' => $order->label(),
     ]));
-    $this->submitForm([], $this->t('Resend receipt'));
+    $this->submitForm([], (string) $this->t('Resend receipt'));
 
     $emails = $this->getMails();
     $this->assertEquals(2, count($emails));
@@ -488,7 +488,7 @@ class OrderAdminTest extends OrderWebDriverTestBase {
       'customer_type' => 'new',
       'mail' => $email,
     ];
-    $this->submitForm($edit, $this->t('Create'));
+    $this->submitForm($edit, (string) $this->t('Create'));
     $this->assertSession()->pageTextContains('The email address guest@example.com is already taken.');
   }
 

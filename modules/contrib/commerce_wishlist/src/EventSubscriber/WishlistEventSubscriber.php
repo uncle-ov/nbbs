@@ -2,9 +2,9 @@
 
 namespace Drupal\commerce_wishlist\EventSubscriber;
 
-use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\commerce_wishlist\Event\WishlistEntityAddEvent;
 use Drupal\commerce_wishlist\Event\WishlistEvents;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\Url;
@@ -42,7 +42,7 @@ class WishlistEventSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     $events = [
       WishlistEvents::WISHLIST_ENTITY_ADD => 'displayAddToWishlistMessage',
     ];

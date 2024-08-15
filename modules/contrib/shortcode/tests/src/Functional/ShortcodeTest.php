@@ -2,9 +2,10 @@
 
 namespace Drupal\Tests\shortcode\Functional;
 
-use Drupal\filter\Entity\FilterFormat;
-use Drupal\Tests\BrowserTestBase;
 use Drupal\Core\Url;
+use Drupal\filter\Entity\FilterFormat;
+use Drupal\node\NodeInterface;
+use Drupal\Tests\BrowserTestBase;
 
 /**
  * Tests the Drupal 8 shortcode module functionality.
@@ -42,16 +43,16 @@ class ShortcodeTest extends BrowserTestBase {
   /**
    * Url of the site.
    *
-   * @var \Drupal\Core\GeneratedUrl|string
+   * @var \Drupal\Core\GeneratedUrl|string|null
    */
   private $siteUrl;
 
   /**
    * A session page.
    *
-   * @var \Behat\Mink\Element\DocumentElement
+   * @var \Behat\Mink\Element\DocumentElement|null
    */
-  private $session_page;
+  private $sessionPage;
 
   /**
    * Perform any initial set up tasks that run before every test method.
@@ -98,13 +99,13 @@ class ShortcodeTest extends BrowserTestBase {
     ]);
     $this->drupalLogin($this->webUser);
 
-    $this->session_page = $this->getSession()->getPage();
+    $this->sessionPage = $this->getSession()->getPage();
   }
 
   /**
    * Return test page with the given content.
    */
-  private function createTestNode(string $contents): \Drupal\node\NodeInterface {
+  private function createTestNode(string $contents): NodeInterface {
     $settings = [];
     $settings['type'] = 'page';
     $settings['title'] = 'Test Button Link';
@@ -142,7 +143,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', 'a.button');
+      $element = $this->sessionPage->find('css', 'a.button');
       $this->assertEquals($set['output'], $element->getOuterHtml(), $set['message']);
     }
   }
@@ -183,7 +184,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', '.clearfix');
+      $element = $this->sessionPage->find('css', '.clearfix');
       $this->assertEquals($set['output'], $element->getOuterHtml(), $set['message']);
     }
   }
@@ -209,7 +210,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', '.dropcap');
+      $element = $this->sessionPage->find('css', '.dropcap');
       $this->assertEquals($set['output'], $element->getOuterHtml(), $set['message']);
     }
   }
@@ -235,7 +236,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', '.highlight');
+      $element = $this->sessionPage->find('css', '.highlight');
       $this->assertEquals($set['output'], $element->getOuterHtml(), $set['message']);
     }
   }
@@ -261,7 +262,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', '.img');
+      $element = $this->sessionPage->find('css', '.img');
       $this->assertEquals($set['output'], $element->getOuterHtml(), $set['message']);
     }
   }
@@ -297,7 +298,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', '.item-class-here');
+      $element = $this->sessionPage->find('css', '.item-class-here');
       $this->assertEquals($set['output'], $element->getOuterHtml(), $set['message']);
     }
   }
@@ -333,7 +334,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', '.link-class');
+      $element = $this->sessionPage->find('css', '.link-class');
       $this->assertEquals($set['output'], $element->getOuterHtml(), $set['message']);
     }
   }
@@ -364,7 +365,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', '.quote');
+      $element = $this->sessionPage->find('css', '.quote');
       $element = preg_replace('/\s+/', ' ', $element->getOuterHtml());
       $this->assertEquals($set['output'], $element, $set['message']);
     }
@@ -396,7 +397,7 @@ class ShortcodeTest extends BrowserTestBase {
     foreach ($sets as $set) {
       $node = $this->createTestNode($set['input']);
       $this->drupalGet('node/' . $node->id());
-      $element = $this->session_page->find('css', '.random-shortcode');
+      $element = $this->sessionPage->find('css', '.random-shortcode');
       $this->assertEquals($set['output'], strlen($element->getText()), $set['message']);
     }
   }

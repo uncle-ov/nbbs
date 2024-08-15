@@ -2,9 +2,6 @@
 
 namespace Drupal\commerce_wishlist\Plugin\views\field;
 
-use Drupal\commerce_cart\CartManagerInterface;
-use Drupal\commerce_wishlist\WishlistManagerInterface;
-use Drupal\commerce_wishlist\WishlistProviderInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\Plugin\views\field\UncacheableFieldHandlerTrait;
@@ -42,41 +39,22 @@ class MoveToWishlist extends FieldPluginBase {
   protected $wishlistProvider;
 
   /**
-   * Constructs a new MoveToWishlist object.
+   * The current user.
    *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin ID for the plugin instance.
-   * @param mixed $plugin_definition
-   *   The plugin implementation definition.
-   * @param \Drupal\commerce_cart\CartManagerInterface $cart_manager
-   *   The cart manager.
-   * @param \Drupal\commerce_wishlist\WishlistManagerInterface $wishlist_manager
-   *   The wishlist manager.
-   * @param \Drupal\commerce_wishlist\WishlistProviderInterface $wishlist_provider
-   *   The wishlist provider.
+   * @var \Drupal\Core\Session\AccountProxyInterface
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, CartManagerInterface $cart_manager, WishlistManagerInterface $wishlist_manager, WishlistProviderInterface $wishlist_provider) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-
-    $this->cartManager = $cart_manager;
-    $this->wishlistManager = $wishlist_manager;
-    $this->wishlistProvider = $wishlist_provider;
-  }
+  protected $currentUser;
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('commerce_cart.cart_manager'),
-      $container->get('commerce_wishlist.wishlist_manager'),
-      $container->get('commerce_wishlist.wishlist_provider')
-    );
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    $instance->cartManager = $container->get('commerce_cart.cart_manager');
+    $instance->wishlistManager = $container->get('commerce_wishlist.wishlist_manager');
+    $instance->wishlistProvider = $container->get('commerce_wishlist.wishlist_provider');
+    $instance->currentUser = $container->get('current_user');
+    return $instance;
   }
 
   /**
@@ -144,15 +122,20 @@ class MoveToWishlist extends FieldPluginBase {
     }
 
     $form[$this->options['id']]['#tree'] = TRUE;
-    foreach ($this->view->result as $row_index => $row) {
-      $form[$this->options['id']][$row_index] = [
-        '#type' => 'submit',
-        '#value' => $this->options['keep_item'] ? $this->t('Copy to wishlist') : $this->t('Move to wishlist'),
-        '#name' => 'move-cart-item-' . $row_index,
-        '#move_cart_item' => TRUE,
-        '#row_index' => $row_index,
-        '#attributes' => ['class' => ['move-cart-item']],
-      ];
+
+    // Check if the user has permission to access wishlists before
+    // adding the buttons.
+    if ($this->currentUser->hasPermission('access wishlist')) {
+      foreach ($this->view->result as $row_index => $row) {
+        $form[$this->options['id']][$row_index] = [
+          '#type' => 'submit',
+          '#value' => $this->options['keep_item'] ? $this->t('Copy to wishlist') : $this->t('Move to wishlist'),
+          '#name' => 'move-cart-item-' . $row_index,
+          '#move_cart_item' => TRUE,
+          '#row_index' => $row_index,
+          '#attributes' => ['class' => ['move-cart-item']],
+        ];
+      }
     }
   }
 

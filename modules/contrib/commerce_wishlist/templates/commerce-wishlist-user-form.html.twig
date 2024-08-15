@@ -13,20 +13,20 @@
   {{ form.header }}
   <div class="wishlist-items">
     {% for key, item in form.items %}
-    {% if key|first != '#' %}
-      <div class="wishlist-item">
-        <div class="wishlist-item__entity">
-          {{ item.entity }}
+      {% if key|first != '#' %}
+        <div class="wishlist-item">
+          <div class="wishlist-item__entity">
+            {{ item.entity }}
+          </div>
+          <div class="wishlist-item__details">
+            {{ item.details }}
+            {{ item.details_edit }}
+          </div>
+          <div class="wishlist-item__actions">
+            {{ item.actions }}
+          </div>
         </div>
-        <div class="wishlist-item__details">
-          {{ item.details }}
-          {{ item.details_edit }}
-        </div>
-        <div class="wishlist-item__actions">
-          {{ item.actions }}
-        </div>
-      </div>
-    {% endif %}
+      {% endif %}
     {% endfor %}
   </div>
   {{ form|without('header', 'items') }}

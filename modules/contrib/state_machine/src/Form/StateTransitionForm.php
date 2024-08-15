@@ -7,8 +7,23 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class StateTransitionForm extends FormBase implements StateTransitionFormInterface {
+
+  /**
+   * The redirect destination.
+   *
+   * @var \Drupal\Core\Routing\RedirectDestinationInterface
+   */
+  protected $redirectDestination;
+
+  /**
+   * The entity repository.
+   *
+   * @var \Drupal\Core\Entity\EntityRepositoryInterface
+   */
+  protected $entityRepository;
 
   /**
    * The entity.
@@ -27,6 +42,16 @@ class StateTransitionForm extends FormBase implements StateTransitionFormInterfa
   /**
    * {@inheritdoc}
    */
+  public static function create(ContainerInterface $container) {
+    $instance = parent::create($container);
+    $instance->redirectDestination = $container->get('redirect.destination');
+    $instance->entityRepository = $container->get('entity.repository');
+    return $instance;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getEntity() {
     return $this->entity;
   }
@@ -35,7 +60,7 @@ class StateTransitionForm extends FormBase implements StateTransitionFormInterfa
    * {@inheritdoc}
    */
   public function setEntity(ContentEntityInterface $entity) {
-    $this->entity = $entity;
+    $this->entity = $this->entityRepository->getTranslationFromContext($entity);
     return $this;
   }
 
@@ -114,7 +139,9 @@ class StateTransitionForm extends FormBase implements StateTransitionFormInterfa
       $form['actions'][$transition_id] = [
         '#type' => 'link',
         '#title' => $transition->getLabel(),
-        '#url' => Url::fromRoute("entity.{$this->entity->getEntityTypeId()}.state_transition_form", $route_parameters),
+        '#url' => Url::fromRoute("entity.{$this->entity->getEntityTypeId()}.state_transition_form", $route_parameters, [
+          'query' => $this->redirectDestination->getAsArray(),
+        ]),
         '#attributes' => [
           'class' => [
             'button',

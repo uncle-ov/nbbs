@@ -97,11 +97,37 @@ class Wishlist extends ContentEntityBase implements WishlistInterface {
   }
 
   /**
+   * Creates a duplicate of the wishlist and adds new wishlist items.
+   */
+  public function createDuplicateWishlist(WishlistInterface $wishlist) {
+    $duplicate = parent::createDuplicate();
+    // Clear items from duplicated wishlist as we create new wishlist items.
+    $duplicate->setItems([]);
+
+    $wishlist_items = $wishlist->getItems();
+    $wishlist_item_storage = $this->entityTypeManager()->getStorage('commerce_wishlist_item');
+    foreach ($wishlist_items as $item) {
+      $purchasable_entity = $item->getPurchasableEntity();
+      $wishlist_item = $wishlist_item_storage->createFromPurchasableEntity($purchasable_entity, [
+        'quantity' => 1,
+      ]);
+      $wishlist_item->save();
+      $duplicate->addItem($wishlist_item);
+    }
+    // New code will be created on save.
+    $duplicate->set('code', NULL);
+    $duplicate->setPublic(TRUE);
+    $duplicate->setCreatedTime(time());
+    $duplicate->save();
+    return $duplicate;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function toUrl($rel = 'canonical', array $options = []) {
     // Can't declare "canonical" as a link template because it requires a
-    // custom parameter, which breaks contribs that don't expect it.
+    // custom parameter, which breaks contrib modules that don't expect it.
     // StringFormatter assumes 'revision' is always a valid link template.
     if (in_array($rel, ['canonical', 'revision'])) {
       $route_name = 'entity.commerce_wishlist.canonical';

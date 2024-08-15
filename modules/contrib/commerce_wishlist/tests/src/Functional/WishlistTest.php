@@ -183,7 +183,7 @@ class WishlistTest extends WishlistBrowserTestBase {
     $this->drupalGet($wishlist->toUrl('delete-form'));
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->pageTextContains('This action cannot be undone.');
-    $this->submitForm([], t('Delete'));
+    $this->submitForm([], 'Delete');
 
     \Drupal::service('entity_type.manager')->getStorage('commerce_wishlist')->resetCache([$wishlist->id()]);
     $wishlist_exists = (bool) Wishlist::load($wishlist->id());

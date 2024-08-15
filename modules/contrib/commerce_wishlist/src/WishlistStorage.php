@@ -31,9 +31,8 @@ class WishlistStorage extends CommerceContentEntityStorage implements WishlistSt
       ->condition('type', $wishlist_type_id)
       ->sort('is_default', 'DESC')
       ->sort('wishlist_id', 'DESC')
-      ->range(0, 1)
-      ->accessCheck(FALSE);
-    $result = $query->execute();
+      ->range(0, 1);
+    $result = $query->accessCheck(FALSE)->execute();
 
     return $result ? $this->load(reset($result)) : NULL;
   }
@@ -47,9 +46,8 @@ class WishlistStorage extends CommerceContentEntityStorage implements WishlistSt
       ->condition('uid', $account->id())
       ->condition('type', $wishlist_type_id)
       ->sort('is_default', 'DESC')
-      ->sort('wishlist_id', 'DESC')
-      ->accessCheck(FALSE);
-    $result = $query->execute();
+      ->sort('wishlist_id', 'DESC');
+    $result = $query->accessCheck(FALSE)->execute();
 
     return $result ? $this->loadMultiple($result) : [];
   }

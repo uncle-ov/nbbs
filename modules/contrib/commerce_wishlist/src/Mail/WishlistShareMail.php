@@ -44,24 +44,33 @@ class WishlistShareMail implements WishlistShareMailInterface {
   /**
    * {@inheritdoc}
    */
-  public function send(WishlistInterface $wishlist, $to) {
+  public function send(WishlistInterface $wishlist, $to, $anonymous_sender) {
     $owner = $wishlist->getOwner();
-    if (!$owner || $owner->isAnonymous()) {
-      // Only wishlists belonging to authenticated users can be shared.
-      return FALSE;
+    if ($owner->isAnonymous()) {
+      // Use the site email address as the from address.
+      $from = $this->configFactory->get('system.site')->get('mail');
+      $duplicate = $this->configFactory->get('commerce_wishlist.settings')->get('duplicate');
+      if ($duplicate) {
+        // Duplicate the wishlist with wishlist items.
+        $duplicate_wishlist = $wishlist->createDuplicateWishlist($wishlist);
+      }
+    }
+    else {
+      $from = $owner->getEmail();
     }
 
-    $subject = $this->t('Check out my @site-name wishlist', [
+    $subject = $this->t('Check out @name @site-name wishlist', [
+      '@name' => $anonymous_sender ? $anonymous_sender . '\'s' : $this->t('my'),
       '@site-name' => $this->configFactory->get('system.site')->get('name'),
     ]);
     $body = [
       '#theme' => 'commerce_wishlist_share_mail',
-      '#wishlist_entity' => $wishlist,
+      '#wishlist_entity' => $duplicate_wishlist ?? $wishlist,
     ];
     $params = [
       'id' => 'wishlist_share',
-      'from' => $owner->getEmail(),
-      'wishlist' => $wishlist,
+      'from' => $from,
+      'wishlist' => $duplicate_wishlist ?? $wishlist,
     ];
 
     return $this->mailHandler->sendMail($to, $subject, $body, $params);

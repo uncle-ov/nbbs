@@ -5,7 +5,7 @@ namespace Drupal\permissions_by_entity\Service;
 use Drupal\Core\Entity\FieldableEntityInterface;
 
 /**
- * Class CheckedEntityCache.
+ * Cache service to remember access-checked entities.
  *
  * @package Drupal\permissions_by_entity\Service
  */
