@@ -1,0 +1,43 @@
+{
+    "description": "This default cspell configuration for contrib projects is based on /core/.cspell.json",
+    "language": "en-US",
+    "allowCompoundWords": false,
+    "globRoot": ".",
+    "minWordLength": 4,
+    "ignorePaths": [
+      "**/.*.json",".*ignore","composer.json","composer.lock","**/LICENSE.txt","COPYRIGHT.txt","MAINTAINERS.txt","package.json","yarn.lock","phpstan*"
+    ],
+    "dictionaries": [
+      "dictionary",
+      "drupal",
+      "companies",
+      "fonts",
+      "html",
+      "php",
+      "softwareTerms",
+      "project-words"
+    ],
+    "dictionaryDefinitions": [
+        {
+             "name": "drupal",
+             "path": "../../../core/misc/cspell/drupal-dictionary.txt"
+        },
+        {
+            "name": "dictionary",
+            "path": "../../../core/misc/cspell/dictionary.txt"
+        },
+        {
+            "description": "The project's own custom dictionary (optional)",
+            "name": "project-words",
+            "path": "./.cspell-project-words.txt"
+        }
+    ],
+    "words": [
+      "commerce_wishlist"
+    ],
+    "flagWords": [
+      "e-mail",
+      "grey",
+      "queuing"
+    ]
+}
