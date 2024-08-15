@@ -429,14 +429,17 @@ class DbUpdateController extends ControllerBase
       $message = '<p>' . $this->t('Updates were attempted. If you see no failures below, you may proceed happily back to your <a href=":url">site</a>. Otherwise, you may need to update your database manually.', [':url' => Url::fromRoute('<front>')->setOption('base_url', $base_url)->toString(TRUE)->getGeneratedUrl()]) . ' ' . $log_message . '</p>';
     } else {
       $last = $session->get('updates_remaining');
-      $last = reset($last) ?? [];
-      [$module, $version] = array_pop($last);
-      $message = '<p class="error">' . $this->t('The update process was aborted prematurely while running <strong>update #@version in @module.module</strong>.', [
-        '@version' => $version,
-        '@module' => $module,
-      ]) . ' ' . $log_message;
-      if ($dblog_exists) {
-        $message .= ' ' . $this->t('You may need to check the <code>watchdog</code> database table manually.');
+      $last = reset($last);
+
+      if (is_array($last)) {
+        [$module, $version] = array_pop($last);
+        $message = '<p class="error">' . $this->t('The update process was aborted prematurely while running <strong>update #@version in @module.module</strong>.', [
+          '@version' => $version,
+          '@module' => $module,
+        ]) . ' ' . $log_message;
+        if ($dblog_exists) {
+          $message .= ' ' . $this->t('You may need to check the <code>watchdog</code> database table manually.');
+        }
       }
       $message .= '</p>';
     }
