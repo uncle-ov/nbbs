@@ -131,9 +131,11 @@
           {% endif %}
         </header>
         <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-          <div class = "lead mt-0">
-            {{ content.field_lead_text }}  
-          </div>
+          {% if content.field_lead_text is not empty %}
+            <div class="lead mt-0">
+              {{ content.field_lead_text }}
+            </div>
+          {% endif %}
           {{ content|without('field_lead_text', 'field_second_title', 'field_comments') }}
         </div>
       </div>
