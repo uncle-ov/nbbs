@@ -101,5 +101,16 @@
       $('#openReviewsTab').click();
     }
 
+    $("#broughtToYouBy a").attr("target","_blank");
+
+    $('a').each(function() {
+      var href = $(this).attr('href');
+      var domain = new URL(href).hostname;
+      var currentDomain = window.location.hostname;
+  
+      if (domain !== currentDomain) {
+        $(this).attr('target', '_blank');
+      }
+    });  
   });
 })(jQuery);
